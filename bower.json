@@ -1,0 +1,10 @@
+{
+  "name": "panlincap",
+  "private": true,
+  "dependencies": {
+    "jquery": "~1.11.1",
+    "marionette": "~2.4.1",
+    "pure": "~0.6.0",
+    "handlebars": "~3.0.2"
+  }
+}
