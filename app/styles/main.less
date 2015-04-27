@@ -8,6 +8,25 @@ body {
   color: #333;
 }
 
+.content {
+  position: relative;
+  width: 100%;
+  border-collapse: collapse;
+  border-color: white;
+
+  tr, td {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  td {
+    vertical-align: top;
+    height: 20rem;
+    background-color: rgba(152,192,209,.7);
+    color: white;
+  }
+}
+
 header#header {
   height: 5rem;
 }
@@ -62,15 +81,15 @@ nav#nav {
   }
   .slide:nth-child(1) {
     background-image: url("/images/bg-1.jpg");
-    animation: slide1 30s linear infinite;
+    animation: slide1 20s linear infinite;
   }
   .slide:nth-child(2) {
     background-image: url("/images/bg-2.jpg");
-    animation: slide2 30s linear infinite;
+    animation: slide2 20s linear infinite;
   }
   .slide:nth-child(3) {
     background-image: url("/images/bg-3.jpg");
-    animation: slide3 30s linear infinite;
+    animation: slide3 20s linear infinite;
   }
 }
 
