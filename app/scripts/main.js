@@ -15,6 +15,16 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
     className: 'description'
   });
 
+  var TeamView = Marionette.ItemView.extend({
+    template: PanlinCapTpl['templates/team.hbs'],
+    className: 'description'
+  });
+
+  var CasesView = Marionette.ItemView.extend({
+    template: PanlinCapTpl['templates/cases.hbs'],
+    className: 'description'
+  });
+
   var StaticController = Marionette.Controller.extend({
     showHome: function() {
       PanlinCap.mainRegion.show(new HomeView());
@@ -24,6 +34,12 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
     },
     showInvestMent: function() {
       PanlinCap.mainRegion.show(new InvestmentView());
+    },
+    showCases: function() {
+      PanlinCap.mainRegion.show(new CasesView());
+    },
+    showTeam: function() {
+      PanlinCap.mainRegion.show(new TeamView());
     }
   });
 
@@ -34,6 +50,8 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
       appRoutes : {
         'investment(/)': 'showInvestMent',
         'about(/)': 'showAbout',
+        'team(/)' : 'showTeam',
+        'cases(/)' : 'showCases',
         '(/)' : 'showHome'
       },
       controller: new StaticController()
