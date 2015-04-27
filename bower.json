@@ -5,6 +5,7 @@
     "jquery": "~1.11.1",
     "marionette": "~2.4.1",
     "handlebars": "~3.0.2",
-    "semantic-ui": "~1.12.0"
+    "semantic-ui": "~1.12.0",
+    "backbone.intercept": "~0.3.2"
   }
 }
