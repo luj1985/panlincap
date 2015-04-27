@@ -48,9 +48,9 @@ module.exports = function (grunt) {
       gruntfile: {
         files: ['Gruntfile.js']
       },
-      sass: {
-        files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
-        tasks: ['sass:server', 'autoprefixer']
+      less: {
+        files: ['<%= config.app %>/styles/{,*/}*.less'],
+        tasks: ['less:server', 'autoprefixer']
       },
       styles: {
         files: ['<%= config.app %>/styles/{,*/}*.css'],
@@ -163,26 +163,33 @@ module.exports = function (grunt) {
       }
     },
 
-    // Compiles Sass to CSS and generates necessary files if requested
-    sass: {
+    less: {
       options: {
-        sourceMap: true,
-        includePaths: ['bower_components']
-        },
+        paths: ['./bower_components'],
+      },
       dist: {
+        options: {
+          cleancss: true,
+          report: 'gzip'
+        },
         files: [{
           expand: true,
           cwd: '<%= config.app %>/styles',
-          src: ['*.{scss,sass}'],
+          src: ['*.less', '!theme.less'],
           dest: '.tmp/styles',
           ext: '.css'
         }]
       },
       server: {
+        options: {
+          sourceMap: true,
+          sourceMapBasepath: '<%= config.app %>/',
+          sourceMapRootpath: '../'
+        },
         files: [{
           expand: true,
           cwd: '<%= config.app %>/styles',
-          src: ['*.{scss,sass}'],
+          src: ['*.less', '!theme.less'],
           dest: '.tmp/styles',
           ext: '.css'
         }]
@@ -210,8 +217,8 @@ module.exports = function (grunt) {
         ignorePath: /^\/|\.\.\//,
         src: ['<%= config.app %>/index.html']
       },
-      sass: {
-        src: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
+      less: {
+        src: ['<%= config.app %>/styles/{,*/}*.less'],
         ignorePath: /(\.\.\/){1,2}bower_components\//
       }
     },
@@ -356,14 +363,14 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up build process
     concurrent: {
       server: [
-        'sass:server',
+        'less:server',
         'copy:styles'
       ],
       test: [
         'copy:styles'
       ],
       dist: [
-        'sass',
+        'less',
         'copy:styles',
         'imagemin',
         'svgmin'

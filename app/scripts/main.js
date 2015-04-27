@@ -5,7 +5,6 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
     template: PanlinCapTpl['templates/home.hbs']
   });
 
-
   PanlinCap.addInitializer(function() {
     PanlinCap.mainRegion.show(new HomeView());
   });
