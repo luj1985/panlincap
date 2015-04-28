@@ -15,7 +15,7 @@ body {
 .topic {
   background-color: rgba(152,192,209,.7);
   color: white;
-  padding: 1rem;
+  padding: 4rem 2rem 0 2rem;
   position: relative;
 
   .header {
@@ -25,11 +25,14 @@ body {
     opacity: 0;
   }
   .more {
+    box-sizing: border-box;
     color: @color-white;
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
+    padding-top: 1rem;
+    display: block;
     opacity: 0;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &:hover {
