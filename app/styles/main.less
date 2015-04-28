@@ -3,6 +3,8 @@
 
 @color-highlight: rgba(211,166,70, .7);
 @color-white: rgba(255,255,255,.9);
+@color-background: rgba(152,192,209,.7);
+@color-main: rgba(133,25,16,.7);
 
 body {
   font-family: YaHei, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -20,7 +22,7 @@ nav#nav > .menu {
 }
 
 .topic {
-  background-color: rgba(152,192,209,.7);
+  background-color: @color-background;
   color: white;
   padding: 3rem 2rem 0 2rem;
   position: relative;
@@ -65,17 +67,48 @@ nav#nav > .menu {
   td {
     width: 30%;
     vertical-align: top;
-    height: 16rem;
+    height: 15rem;
   }
 }
 
 .description {
-  background-color: rgba(152,192,209,.7);
+  background-color: @color-background;
   min-height: 10rem;
 }
 
 header#header {
-  height: 5rem;
+  height: 6rem;
+  position: relative;
+  background-image: url("/images/logo.jpg");
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+
+#lang {
+  position: absolute;
+  right: 0;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  box-sizing: border-box;
+  padding: 1rem;
+
+  a {
+    font-size: .9rem;
+  }
+
+  .divider {
+    font-weight: bolder;
+    margin: 0 .5rem;
+  }
+  p {
+    line-height: 2rem;
+    font-size: 1.2rem;
+  }
 }
 
 nav#nav {
@@ -106,7 +139,7 @@ nav#nav {
   margin: 0 auto;
 }
 
-#main, #nav {
+#main {
   margin-top: 1rem;
 }
 
@@ -142,6 +175,63 @@ nav#nav {
     background-image: url("/images/bg-3.jpg");
     animation: slide3 30s linear infinite;
   }
+}
+
+.incidators {
+  position: absolute;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  bottom: 0;
+  text-align: center;
+  background-color: rgba(0,0,0,.5);
+  height: 2rem;
+  line-height: 2rem;
+  list-style: none;
+
+  .indicator {
+    display: inline-block;
+    line-height: 2rem;
+    height: .5rem;
+    width: .5rem;
+    border-radius: 100%;
+    background-color: white;
+    margin: 0 .2rem;
+  }
+  .indicator:nth-child(1) {
+    animation: indicator1 30s linear infinite;
+  }
+  .indicator:nth-child(2) {
+    animation: indicator2 30s linear infinite;
+  }
+  .indicator:nth-child(3) {
+    animation: indicator3 30s linear infinite;
+  }
+}
+
+@keyframes indicator1 {
+  0%        { background-color: @color-main; }
+  32%       { background-color: @color-main; }
+  33.33333% { background-color: white; }
+  98.66666% { background-color: white; }
+  100%      { background-color: @color-main; }
+}
+
+@keyframes indicator2 {
+  0%        { background-color: white }
+  32%       { background-color: white }
+  33.33333% { background-color: @color-main; } 
+  65.33333% { background-color: @color-main; }
+  66.66666% { background-color: white }
+  100%      { background-color: white }
+}
+@keyframes indicator3 {
+  0%        { background-color: white }
+  65.33333% { background-color: white  }
+  66.66666% { background-color: @color-main;  }
+  98.66666% { background-color: @color-main; }
+  100%      { background-color: white }
 }
 
 @keyframes slide1 {
