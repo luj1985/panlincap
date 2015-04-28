@@ -1,13 +1,15 @@
 
 @import "bower_components/semantic-ui/src/semantic.less";
 
+@color-highlight: rgba(211,166,70, .7);
+@color-white: rgba(255,255,255,.9);
 
 body {
   font-family: YaHei, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .topic, .topic .header, .topic .content, .topic .more {
-  transition: all .5s ease-in-out;
+  transition: all .3s ease-in-out;
 }
 
 .topic {
@@ -17,13 +19,13 @@ body {
   position: relative;
 
   .header {
-    color: rgba(255,255,255,.9);
+    color: @color-white;
   }
   .content {
     opacity: 0;
   }
   .more {
-    color: rgba(255,255,255,.9);
+    color: @color-white;
     position: absolute;
     bottom: 1rem;
     right: 1rem;
@@ -33,7 +35,7 @@ body {
   &:hover {
     background-color: rgba(133,25,16,.7);
     .header {
-      color: rgba(196,144,67, .7);
+      color: @color-highlight;
     }
     .content {
       opacity: 1;
@@ -79,7 +81,10 @@ nav#nav {
     > .item {
       border: none;
       border-radius: none;
-      color: rgba(255,255,255,.9);
+      color: @color-white;
+      &:hover {
+        color: @color-highlight;
+      }
     }
   }
 }
