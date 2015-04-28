@@ -8,6 +8,13 @@ body {
   font-family: YaHei, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+nav#nav > .menu {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+
 .topic, .topic .header, .topic .content, .topic .more {
   transition: all .3s ease-in-out;
 }
@@ -15,7 +22,7 @@ body {
 .topic {
   background-color: rgba(152,192,209,.7);
   color: white;
-  padding: 4rem 2rem 0 2rem;
+  padding: 3rem 2rem 0 2rem;
   position: relative;
 
   .header {
@@ -83,8 +90,9 @@ nav#nav {
     box-shadow: none;
     > .item {
       border: none;
-      border-radius: none;
+      border-radius: 0;
       color: @color-white;
+      font-family: Simli, YaHei, "Helvetica Neue", Helvetica, Arial, sans-serif;
       &:hover {
         color: @color-highlight;
       }
