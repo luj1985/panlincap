@@ -2,7 +2,9 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
   'use strict';
 
   var HomeView = Marionette.ItemView.extend({
-    template: PanlinCapTpl['templates/home.hbs']
+    template: PanlinCapTpl['templates/home.hbs'],
+    tagName: 'table',
+    className: 'content'
   });
 
   var AboutView = Marionette.ItemView.extend({

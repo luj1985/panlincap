@@ -3,7 +3,7 @@
 
 @color-highlight: rgba(211,166,70, .7);
 @color-white: rgba(255,255,255,.9);
-@color-background: rgba(152,192,209,.7);
+@color-background: rgba(152,192,209,.25);
 @color-main: rgba(133,25,16,.7);
 
 body {
@@ -58,16 +58,21 @@ nav#nav > .menu {
   }
 }
 
-.content {
+#main {
+  position: relative;
+}
+
+table.content {
   position: relative;
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 5px;
   border-color: transparent;
 
   td {
     width: 30%;
     vertical-align: top;
-    height: 15rem;
+    height: 16rem;
   }
 }
 
@@ -79,7 +84,7 @@ nav#nav > .menu {
 header#header {
   height: 6rem;
   position: relative;
-  background-image: url("/images/logo.jpg");
+  background-image: url("/images/logo.png");
   background-repeat: no-repeat;
   background-position: left center;
 }
