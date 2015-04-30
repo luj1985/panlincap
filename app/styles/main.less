@@ -51,7 +51,7 @@ nav#nav > .menu {
 
   h2.ui.header {
     color: @color-white;
-    font-size: 20px;
+    font-size: 18px;
     opacity: 0;
     font-family: KaiTi, STKaiTi, YaHei, "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
@@ -135,13 +135,14 @@ header#header {
   background-image: url("/images/logo.png");
   background-repeat: no-repeat;
   background-position: left center;
+  background-size: auto 4rem;
 }
 
 
 #lang {
   position: absolute;
   right: 0;
-  text-align: center;
+  text-align: right;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -164,7 +165,7 @@ header#header {
   }
   p {
     line-height: 2rem;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 }
 
@@ -219,15 +220,15 @@ nav#nav {
   }
   .slide:nth-child(1) {
     background-image: url("/images/bg-1.jpg");
-    animation: slide1 30s linear infinite;
+    animation: slide1 20s linear infinite;
   }
   .slide:nth-child(2) {
     background-image: url("/images/bg-2.jpg");
-    animation: slide2 30s linear infinite;
+    animation: slide2 20s linear infinite;
   }
   .slide:nth-child(3) {
     background-image: url("/images/bg-3.jpg");
-    animation: slide3 30s linear infinite;
+    animation: slide3 20s linear infinite;
   }
 }
 
