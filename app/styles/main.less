@@ -105,10 +105,6 @@ nav#nav > .menu {
   overflow: hidden;
 }
 
-.description {
-  width: 960px;
-  margin: 0 auto;
-}
 
 table.content {
   width: 960px;
@@ -125,7 +121,9 @@ table.content {
 }
 
 .description {
-  background-color: @color-background;
+  background-color: rgba(255, 255, 255, 0);
+  width: 960px;
+  margin: 0 auto;
   min-height: 20rem;
 }
 
@@ -208,27 +206,105 @@ nav#nav {
   margin: 0;
   padding: 0;
   overflow: hidden;
+
   .slide {
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+  }
+}
+
+.slides.investment {
+  white-space: nowrap;
+  overflow: hidden;
+  .slide {
+    display: block;
+    background-repeat: no-repeat;
+    background-clip: border-box;
     background-size: cover;
     background-position: 50% 50%;
+  }
+  .slide.left {
+    background-image: url("/images/invest/left.png");
+  }
+  .slide.right {
+    transition: left .5s ease-in-out;
+    // left: 300px;
+    background-image: url("/images/invest/right.png");
+  }
+
+  &.active {
+    .slide.right {
+      left: 32%;
+    }
+  }
+}
+
+.description {
+  position: relative;
+  .brief {
+    padding: 10rem 0 0 1rem;
     background-repeat: no-repeat;
+    background-image: url("/images/topics/investment.png"); 
+    background-size: 10rem 10rem;
+    color: white;
+    clear: both;
+    .ui.header {
+      color: white;
+    }
   }
-  .slide:nth-child(1) {
-    background-image: url("/images/bg-1.jpg");
-    animation: slide1 20s linear infinite;
+  &.investment {
+    ul {
+      display: inline-block;
+      list-style: none;
+      padding-left: 0;
+      li {
+        border-bottom: 1px solid white;
+        line-height: 2rem;
+        padding: 0 .5rem;
+      }
+    }
+    .reveal {
+      transition: opacity .5s ease-in-out;
+      position: absolute;
+      top : 10rem;
+      left: 30%;
+      width: 30%;
+      opacity: 0;
+
+      h3 {
+        color : @color-highlight;
+      }
+    }
+    &.active {
+      .reveal {
+        opacity: 1;
+      }
+    }
   }
-  .slide:nth-child(2) {
-    background-image: url("/images/bg-2.jpg");
-    animation: slide2 20s linear infinite;
-  }
-  .slide:nth-child(3) {
-    background-image: url("/images/bg-3.jpg");
-    animation: slide3 20s linear infinite;
+
+}
+
+.slides.home {
+  .slide {
+    &:nth-child(1) {
+      background-image: url("/images/bg-1.jpg");
+      animation: slide1 20s linear infinite;
+    }
+    &:nth-child(2) {
+      background-image: url("/images/bg-2.jpg");
+      animation: slide2 20s linear infinite;
+    }
+    &:nth-child(3) {
+      background-image: url("/images/bg-3.jpg");
+      animation: slide3 20s linear infinite;
+    }
   }
 }
 
@@ -261,8 +337,6 @@ nav#nav {
   98.66666% { left:     0; visibility: visible; }
   100%      { left: -100%; visibility: visible; }
 }
-
-
 
 
 

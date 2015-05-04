@@ -22,6 +22,15 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  var singlePage = function(req, res, next) {
+    var url = req.url;
+    if (/.*\.js/.test(url) || /.*\.css/.test(url) || /.*fonts\/icons\./.test(url) || (/.*\/images\//.test(url))) {
+      return next();
+    }
+    req.url = '/index.html';
+    return next();
+  };
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -95,6 +104,7 @@ module.exports = function (grunt) {
         options: {
           middleware: function(connect) {
             return [
+              singlePage,
               connect.static('.tmp'),
               connect().use('/bower_components', connect.static('./bower_components')),
               connect.static(config.app)

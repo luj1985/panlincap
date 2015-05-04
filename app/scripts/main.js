@@ -6,6 +6,12 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
     className: 'home'
   });
 
+  var HomeBg = Marionette.ItemView.extend({
+    template: PanlinCapTpl['templates/homebg.hbs'],
+    tagName: 'ul',
+    className: 'slides home'
+  });
+
   var AboutView = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/about.hbs'],
     className: 'description'
@@ -13,7 +19,20 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
 
   var InvestmentView = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/investment.hbs'],
-    className: 'description'
+    className: 'description investment',
+    events: {
+      'click .brief': 'expandTopic'
+    },
+    expandTopic : function() {
+      $('.slides.investment').toggleClass('active');
+      $('.description.investment').toggleClass('active');
+    }
+  });
+
+  var InvestmentBg = Marionette.ItemView.extend({
+    template: PanlinCapTpl['templates/investmentbg.hbs'],
+    tagName: 'ul',
+    className: 'slides investment'
   });
 
   var TeamView = Marionette.ItemView.extend({
@@ -29,12 +48,14 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
   var StaticController = Marionette.Controller.extend({
     showHome: function() {
       PanlinCap.mainRegion.show(new HomeView());
-    },
-    showAbout: function() {
-      PanlinCap.mainRegion.show(new AboutView());
+      PanlinCap.bgRegion.show(new HomeBg());
     },
     showInvestMent: function() {
       PanlinCap.mainRegion.show(new InvestmentView());
+      PanlinCap.bgRegion.show(new InvestmentBg());
+    },
+    showAbout: function() {
+      PanlinCap.mainRegion.show(new AboutView());
     },
     showCases: function() {
       PanlinCap.mainRegion.show(new CasesView());
