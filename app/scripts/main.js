@@ -6,10 +6,31 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
     className: 'home'
   });
 
+  function play() {
+    var flux = window.myFlux;
+    var column = 28;
+    if (flux) {
+      console.log(column);
+      flux.next('blinds3d', { columns: column });
+    }
+  }
+
   var HomeBg = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/homebg.hbs'],
-    tagName: 'ul',
-    className: 'slides home'
+    className: 'slides home',
+    onRender: function() {
+      $(function() {
+        console.log('start');
+        window.myFlux = new flux.slider('.slides', {
+          autoplay: false
+        });
+        window.setInterval(play, 10000);
+      });
+    },
+    onDestroy: function() {
+      console.log('destroy');
+      clearInterval(play);
+    }
   });
 
   var AboutView = Marionette.ItemView.extend({
