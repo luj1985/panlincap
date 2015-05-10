@@ -9,7 +9,10 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
   function play() {
     var flux = window.myFlux;
     if (flux) {
-      flux.next('blinds3d', { columns: 28 });
+      flux.next('blinds3d', { 
+        columns: 28,
+        delayBetweenBarsX: 85
+      });
     }
   }
 
