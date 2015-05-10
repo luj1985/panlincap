@@ -11,7 +11,7 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
     if (flux) {
       flux.next('blinds3d', { 
         columns: 28,
-        delayBetweenBarsX: 85
+        delayBetweenBarsX: 100
       });
     }
   }
