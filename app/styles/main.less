@@ -1,6 +1,7 @@
 
 @import "bower_components/semantic-ui/src/semantic.less";
 
+
 @color-highlight: rgba(211,166,70, .7);
 @color-white: rgba(255,255,255,.9);
 @color-background: rgba(152,192,209,.25);
@@ -8,6 +9,32 @@
 @font-kaiti: KaiTi, STKaiTi, YaHei, "Helvetica Neue", Helvetica, Arial, sans-serif;
 @font-lishu: "隶书", SimLi, YaHei, "Helvetica Neue", Helvetica, Arial, sans-serif;
 @font-default: YaHei, "Helvetica Neue", Helvetica, Arial, sans-serif;
+@color-stamp: #77181D;
+
+@font-face {
+  font-family: 'panlin';
+  src: url(data:application/x-font-ttf;charset=utf-8;base64,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) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// [class^="panlin-icon"], [class*=" panlin-icon"] {
+//   font-family: 'panlin';
+//   speak: none;
+//   font-style: normal;
+//   font-weight: normal;
+//   font-variant: normal;
+//   text-transform: none;
+//   line-height: 1;
+
+//   /* Better Font Rendering =========== */
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+// }
+
+// .panlin-logo:before {
+//   content: "\e600";
+// }
 
 body {
   font-family: @font-default;
@@ -28,6 +55,7 @@ nav#nav > .menu {
   transition: all .2s ease-in-out;
 }
 
+
 .topic {
   color: white;
   padding: 2rem 2rem 0 2rem;
@@ -47,12 +75,29 @@ nav#nav > .menu {
     width: 90px;
     display: inline-block;
     font-family: @font-kaiti;
-    background: transparent url('/images/stamp.png') no-repeat center 55px;
     padding: 2rem 0;
     border-radius: 50%;
     border: 2px solid @color-main;
     box-sizing: border-box;
     margin-bottom: 5px;
+    position: relative;
+
+    &:after {
+      transition: opacity .2s ease-in-out;
+      opacity: 1;
+      text-shadow: none;
+      font: normal normal normal 1.5rem 'panlin';
+      speak: none;
+      position: absolute;
+      top: 56px;
+      left: 36px;
+
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+
+      content: "\e600";
+      color: @color-stamp;
+    }
   }
   .content {
     opacity: 0;
@@ -98,6 +143,9 @@ nav#nav > .menu {
       border-color: transparent;
       color: @color-highlight;
       opacity: 1;
+      &:after {
+        opacity: 0;
+      }
     }
     .content {
       opacity: 1;
@@ -302,11 +350,22 @@ nav#nav {
         padding-right: 1.75rem;
         display: inline-block;
         color : @color-highlight;
-        background-image: url('/images/stamp.png');
-        background-repeat: no-repeat;
-        background-position: top right;
         font-family: @font-kaiti;
         margin-top: 0;
+        position: relative;
+        &:after {
+          font: normal normal normal 1.5rem 'panlin';
+          speak: none;
+          padding-left: .5rem;
+          position: absolute;
+          top: 0;
+
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+
+          content: "\e600";
+          color: @color-stamp;
+        }
       }
 
       p {
