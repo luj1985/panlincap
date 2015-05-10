@@ -29,11 +29,6 @@ nav#nav > .menu {
 }
 
 .topic {
-  background-color: @color-background;
-  background-size: 10rem 10rem;
-  background-position: 0 0;
-  background-repeat: no-repeat;
-
   color: white;
   padding: 2rem 2rem 0 2rem;
   position: relative;
@@ -73,8 +68,25 @@ nav#nav > .menu {
       text-decoration: underline;
     }
   }
+}
 
-  &:hover {
+#main {
+  position: absolute;
+  top: 9rem;
+  bottom: 0;
+  width: 100%;
+  > .home {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+}
+
+.home {
+  .topic:hover {
     background-color: @color-main;
 
     h2.ui.header {
@@ -93,21 +105,6 @@ nav#nav > .menu {
     .title {
       display: none;
     }
-  }
-}
-
-#main {
-  position: absolute;
-  top: 9rem;
-  bottom: 0;
-  width: 100%;
-  > .home {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
   }
 }
 
@@ -265,17 +262,13 @@ nav#nav {
 
 .description {
   position: relative;
+  height: 100%;
+
   .brief {
-    padding: 10rem 0 0 1rem;
-    background-repeat: no-repeat;
-    background-image: url("/images/topics/investment.png"); 
-    background-size: 10rem 10rem;
-    color: white;
-    clear: both;
-    .ui.header {
-      color: white;
-    }
+    display: inline-block;
+    height: 100%;
   }
+
   &.investment {
     ul {
       display: inline-block;
@@ -292,7 +285,7 @@ nav#nav {
     .reveal {
       transition: opacity .5s ease-in-out;
       position: absolute;
-      top : 10rem;
+      top : 2rem;
       left: 30%;
       width: 30%;
       opacity: 0;
@@ -306,9 +299,16 @@ nav#nav {
         background-repeat: no-repeat;
         background-position: top right;
         font-family: @font-kaiti;
+        margin-top: 0;
       }
+
       p {
         font-size: .9rem;
+        margin-bottom: 1rem;
+      }
+      img {
+        margin-top: 1rem;
+        width: 120px;
       }
     }
     &.active {
