@@ -8,27 +8,22 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
 
   function play() {
     var flux = window.myFlux;
-    var column = 28;
     if (flux) {
-      console.log(column);
-      flux.next('blinds3d', { columns: column });
+      flux.next('blinds3d', { columns: 28 });
     }
   }
 
   var HomeBg = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/homebg.hbs'],
     className: 'slides home',
-    onRender: function() {
-      $(function() {
-        console.log('start');
-        window.myFlux = new flux.slider('.slides', {
-          autoplay: false
-        });
-        window.setInterval(play, 10000);
+    onShow: function() {
+      window.myFlux = new flux.slider('.slides.home', {
+        autoplay: false
       });
+      window.setInterval(play, 10000);
     },
     onDestroy: function() {
-      console.log('destroy');
+      delete window.myFlux;
       clearInterval(play);
     }
   });
