@@ -37,6 +37,8 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
     }
   };
 
+  var playHandler;
+
   var HomeBg = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/homebg.hbs'],
     className: 'slides home',
@@ -44,14 +46,14 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
       window.myFlux = new flux.slider('.slides.home', {
         autoplay: false
       });
-      window.setInterval(play, 10000);
+      playHandler = window.setInterval(play, 10000);
 
       $(document).on('keydown', switchEffect);
     },
     onDestroy: function() {
       delete window.myFlux;
       $(document).off('keydown', switchEffect);
-      clearInterval(play);
+      clearInterval(playHandler);
     }
   });
 
