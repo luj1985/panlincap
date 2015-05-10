@@ -13,7 +13,7 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
     if (flux) {
       flux.next(backgroundSwitchEffect, { 
         columns: 28,
-        delayBetweenBarsX: 100
+        delayBetweenBarsX: 150
       });
     }
   }
