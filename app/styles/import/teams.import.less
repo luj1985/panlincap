@@ -10,7 +10,39 @@
   position: relative;
 
   td {
-    vertical-align: top;
+    position: relative;
+    padding: 0;
+    margin: 0;
+
+    .member {
+      width: 180px;
+      height: 240px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: all .2s ease-in-out;
+      background-color: transparent;
+      padding: 1.5rem 1rem;
+
+      h4 {
+        color: @color-highlight;
+        opacity: 0;
+        font-size: 1.2rem;
+      }
+
+      p {
+        color: white;
+        opacity: 0;
+      }
+
+      &:hover {
+        background-color: @color-main;
+        h4, p {
+          transition: opacity, .2s ease-in-out .2s;
+          opacity: 1;
+        }
+      }
+    }
     img {
       width: 180px;
     }
