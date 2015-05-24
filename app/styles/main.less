@@ -1,8 +1,10 @@
 @import "./import/variables.import.less";
 @import "./import/global.import.less";
+@import "./import/header.import.less";
 @import "./import/teams.import.less";
 @import "./import/cases.import.less";
-
+@import "./import/home.import.less";
+@import "./import/background.import.less";
 
 nav#nav > .menu {
   display: flex;
@@ -17,42 +19,6 @@ nav#nav > .menu {
   padding: 0 4rem;
 }
 
-.topic, .topic .header, .topic .content, .topic .more {
-  transition: all .2s ease-in-out;
-}
-
-.topic {
-  color: white;
-  padding: 2rem 2rem 0 2rem;
-  position: relative;
-  font-size: 11px;
-
-  h2.ui.header {
-    color: @color-main;
-    font-size: 18px;
-    font-family: @font-heiti;
-    padding: 2rem 0 1rem 0;
-    margin-bottom: 0;
-    box-sizing: border-box;
-    position: relative;
-  }
-
-  .content {
-    opacity: 0;
-    line-height: 18px;
-  }
-
-  .more {
-    box-sizing: border-box;
-    color: @color-white;
-    padding-top: 1rem;
-    display: block;
-    opacity: 0;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-}
 
 #main {
   position: absolute;
@@ -69,59 +35,6 @@ nav#nav > .menu {
   }
 }
 
-.home {
-  .topic {
-    background-color: @color-background;
-  }
-  .topic:hover {
-    background-color: @color-main;
-
-    h2.ui.header {
-      text-shadow: none;
-      background-image: none;
-      border-color: transparent;
-      color: @color-highlight;
-      opacity: 1;
-      &:after {
-        opacity: 0;
-      }
-    }
-    .content {
-      opacity: 1;
-    }
-    .more {
-      opacity: 1;
-    }
-    .title {
-      display: none;
-    }
-  }
-}
-
-
-
-table.content {
-  width: 960px;
-  height: 100%;
-  border-collapse: separate;
-  border-spacing: 5px;
-  border-color: transparent;
-  box-sizing: border-box;
-  margin-bottom: 8px;
-
-  td {
-    width: 30%;
-    vertical-align: top;
-  }
-}
-
-.description {
-  background-color: rgba(255, 255, 255, 0);
-  width: @content-width;
-  margin: 0 auto;
-  min-height: 20rem;
-}
-
 header#header {
   height: 6rem;
   position: relative;
@@ -131,137 +44,14 @@ header#header {
   background-size: auto 4rem;
 }
 
-
-#lang {
-  right: 0;
-  text-align: right;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-
-  box-sizing: border-box;
-  padding: 1rem;
-
-  a {
-    font-size: .9rem;
-    color: @color-main;
-    :hover {
-      text-decoration: underline;
-    }
-  }
-
-  .divider {
-    font-weight: bolder;
-    margin: 0 .5rem;
-  }
-
-  .brand {
-    display: inline-block;
-    height: 1.5rem;
-    margin-top: .5rem;
-    font-family: @font-kaiti;
-    font-size: 1.3rem;
-    em {
-      color: @color-main;
-      padding: 0 .5rem;
-      font-weight: bolder;
-    }
-  }
-}
-
-nav#nav {
-  width: 100%;
-  background-color: rgba(133,25,16,.7);
-  > .ui.menu {
-    margin: 0 auto;
-    background-color: transparent;
-    border-radius: 0;
-    border: none;
-    box-shadow: none;
-
-    > .item {
-      border: none;
-      border-radius: 0;
-      color: @color-white;
-      font-family: @font-lishu;
-      font-size: 14px;
-      &:hover {
-        color: @color-highlight;
-      }
-    }
-  }
-
-  .menu.visible {
-    opacity: .9;
-  }
-}
-
-.slides {
-  z-index: -99;
-  position: fixed;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-
-  .slide {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    position: absolute;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-  }
-}
-
-.slides.investment, .slides.about {
-  white-space: nowrap;
-  overflow: hidden;
-  .slide {
-    display: block;
-    background-repeat: no-repeat;
-    background-clip: border-box;
-    background-size: cover;
-    background-position: 50% 50%;
-  }
-  .slide.left {
-    background-image: url("/images/invest/left.png");
-  }
-  .slide.right {
-    transition: left .5s ease-in-out;
-    // left: 300px;
-    background-image: url("/images/invest/right.png");
-  }
-
-  &.active {
-    .slide.right {
-      left: 32%;
-    }
-  }
-  img {
-    width: 100%;
-  }
-}
-
-#background {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  position: absolute;
-  z-index: -10;
-}
-
-
 .description {
   position: relative;
   height: 100%;
+
+  background-color: rgba(255, 255, 255, 0);
+  width: @content-width;
+  margin: 0 auto;
+  min-height: 20rem;
 
   .brief {
     display: inline-block;

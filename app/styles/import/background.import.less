@@ -1,0 +1,61 @@
+
+.slides {
+  z-index: -99;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  .slide {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+  }
+}
+
+.slides.investment, .slides.about {
+  white-space: nowrap;
+  overflow: hidden;
+  .slide {
+    display: block;
+    background-repeat: no-repeat;
+    background-clip: border-box;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  .slide.left {
+    background-image: url("/images/invest/left.png");
+  }
+  .slide.right {
+    transition: left .5s ease-in-out;
+    // left: 300px;
+    background-image: url("/images/invest/right.png");
+  }
+
+  &.active {
+    .slide.right {
+      left: 32%;
+    }
+  }
+  img {
+    width: 100%;
+  }
+}
+
+#background {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: -10;
+}

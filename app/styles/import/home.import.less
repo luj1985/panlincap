@@ -1,0 +1,82 @@
+.topic, .topic .header, .topic .content, .topic .more {
+  transition: all .2s ease-in-out;
+}
+
+.topic {
+  color: white;
+  padding: 2rem 2rem 0 2rem;
+  position: relative;
+  font-size: 11px;
+
+  h2.ui.header {
+    color: @color-main;
+    font-size: 18px;
+    font-family: @font-heiti;
+    padding: 2rem 0 1rem 0;
+    margin-bottom: 0;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  .content {
+    opacity: 0;
+    line-height: 18px;
+  }
+
+  .more {
+    box-sizing: border-box;
+    color: @color-white;
+    padding-top: 1rem;
+    display: block;
+    opacity: 0;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.home {
+  .topic {
+    background-color: @color-background;
+  }
+  .topic:hover {
+    background-color: @color-main;
+
+    h2.ui.header {
+      text-shadow: none;
+      background-image: none;
+      border-color: transparent;
+      color: @color-highlight;
+      opacity: 1;
+      &:after {
+        opacity: 0;
+      }
+    }
+    .content {
+      opacity: 1;
+    }
+    .more {
+      opacity: 1;
+    }
+    .title {
+      display: none;
+    }
+  }
+}
+
+
+
+table.content {
+  width: 960px;
+  height: 100%;
+  border-collapse: separate;
+  border-spacing: 5px;
+  border-color: transparent;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+
+  td {
+    width: 30%;
+    vertical-align: top;
+  }
+}
