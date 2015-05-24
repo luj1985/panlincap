@@ -355,6 +355,7 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             'images/{,*/}*.webp',
             '{,*/}*.html',
+            'themes/default/assets/{,*/}*.*',
             'styles/fonts/{,*/}*.*'
           ]
         }, {
