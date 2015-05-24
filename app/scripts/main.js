@@ -23,7 +23,6 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
         autoplay: false
       });
       playHandler = window.setInterval(play, 10000);
-
     },
     onDestroy: function() {
       delete window.myFlux;
