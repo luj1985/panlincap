@@ -86,11 +86,16 @@ header#header {
 
   &.investment, &.about {
     .reveal {
-      transition: opacity .5s ease-in-out;
+      &.active {
+        opacity: 1;
+      }
+
+      transition: opacity .5s ease-in-out .4s;
       position: absolute;
       top : 2rem;
+      padding : 1rem;
       left: 30%;
-      width: 30%;
+      width: 300px;
       opacity: 0;
 
       h3 {
@@ -123,11 +128,6 @@ header#header {
       img {
         margin-top: 1rem;
         width: 120px;
-      }
-    }
-    &.active {
-      .reveal {
-        opacity: 1;
       }
     }
   }

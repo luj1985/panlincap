@@ -1,11 +1,25 @@
 .slides.about {
   .slide {
     background-image: url("/images/about.jpg");
-    &:nth-child(1) {
-      
-    }
-    &:nth-child(2) {
-      
+    &.back {
+      opacity: .1;
+      z-index: -999;
     }
   }
+}
+
+#main .description.about .reveal img {
+  width: 200px;
+}
+
+.about .reveal p:before {
+  content: "\e600";
+  font-family: 'panlin';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  color: @color-main;
 }
