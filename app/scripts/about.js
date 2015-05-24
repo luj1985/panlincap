@@ -8,7 +8,7 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
 
   var AboutBgView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/about/aboutbg.hbs'],
-    className: 'slides home'
+    className: 'slides about'
   });
 
   var StaticController = Marionette.Controller.extend({

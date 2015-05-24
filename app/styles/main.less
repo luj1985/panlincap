@@ -4,6 +4,7 @@
 @import "./import/teams.import.less";
 @import "./import/cases.import.less";
 @import "./import/home.import.less";
+@import "./import/about.import.less";
 @import "./import/background.import.less";
 
 nav#nav > .menu {
@@ -48,6 +49,13 @@ header#header {
 .brief {
   display: inline-block;
   height: 100%;
+
+  .ui.breadcrumb {
+    padding: 1rem 0 0 2rem;
+    a, .divider {
+      color: @color-white;
+    }
+  }
 
   ul {
     display: inline-block;
