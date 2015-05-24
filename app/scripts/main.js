@@ -32,7 +32,12 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
 
   var AboutView = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/about.hbs'],
-    className: 'description'
+    className: 'description about'
+  });
+
+  var AboutBgView = Marionette.ItemView.extend({
+    template : PanlinCapTpl['templates/aboutbg.hbs'],
+    className: 'slides home'
   });
 
   var InvestmentView = Marionette.ItemView.extend({
@@ -74,6 +79,7 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
     },
     showAbout: function() {
       PanlinCap.mainRegion.show(new AboutView());
+      PanlinCap.bgRegion.show(new AboutBgView());
     },
     showCases: function() {
       PanlinCap.mainRegion.show(new CasesView());
