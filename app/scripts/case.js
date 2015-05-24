@@ -4,7 +4,10 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
 
   var CasesView = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/case/cases.hbs'],
-    className: 'cases'
+    className: 'cases',
+    onShow : function() {
+      this.$el.coverflow();
+    }
   });
 
   var CasesBgView = Marionette.ItemView.extend({
