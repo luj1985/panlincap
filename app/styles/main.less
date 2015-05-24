@@ -1,5 +1,5 @@
 
-@import "bower_components/semantic-ui/src/semantic.less";
+
 
 
 @color-highlight: rgba(211,166,70, .7);
@@ -34,10 +34,15 @@ nav#nav > .menu {
   justify-content: flex-end;
 }
 
+#nav, #header {
+  display: block;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
 .topic, .topic .header, .topic .content, .topic .more {
   transition: all .2s ease-in-out;
 }
-
 
 .topic {
   color: white;
@@ -171,13 +176,12 @@ header#header {
   position: relative;
   background-image: url("/images/logo.png");
   background-repeat: no-repeat;
-  background-position: left center;
+  background-position: 4rem center;
   background-size: auto 4rem;
 }
 
 
 #lang {
-  position: absolute;
   right: 0;
   text-align: right;
   height: 100%;
@@ -219,7 +223,6 @@ nav#nav {
   width: 100%;
   background-color: rgba(133,25,16,.7);
   > .ui.menu {
-    width: 960px;
     margin: 0 auto;
     background-color: transparent;
     border-radius: 0;
@@ -241,12 +244,6 @@ nav#nav {
   .menu.visible {
     opacity: .9;
   }
-}
-
-#nav, #header {
-  display: block;
-  width: 960px;
-  margin: 0 auto;
 }
 
 .slides {
