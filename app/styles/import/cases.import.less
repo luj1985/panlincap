@@ -1,14 +1,30 @@
-#main .cases {
+.showcase {
   width: 960px;
   margin: 0 auto;
+  position: relative;
+
+  .brief {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+#main .cases {
+  width: 800px;
+  position: relative;
+  top: 3rem;
+  margin-left: 160px;
+  display: inline-block;
 
   .case {
-    width: 400px;
-    height: 300px;
+    width: 320px;
+    height: 240px;
     background-color: white;
-    // position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: .9;
   }
 }
+
