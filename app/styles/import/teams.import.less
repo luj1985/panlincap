@@ -8,43 +8,71 @@
 
   background-color: @color-background;
   position: relative;
+}
 
-  td {
-    position: relative;
-    padding: 0;
-    margin: 0;
+.person {
+  display: inline-block;
+  width: 180px;
+  height: 240px;
+  position: relative;
 
-    .member {
-      width: 180px;
-      height: 240px;
-      position: absolute;
-      top: 0;
-      left: 0;
-      transition: all .2s ease-in-out;
-      background-color: transparent;
-      padding: 1.5rem 1rem;
+  .member {
+    width: 180px;
+    height: 240px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all .2s ease-in-out;
+    background-color: transparent;
+    padding: 1.5rem 1rem;
 
-      h4 {
-        color: @color-highlight;
-        opacity: 0;
-        font-size: 1.2rem;
-      }
+    h4 {
+      color: @color-highlight;
+      opacity: 0;
+      font-size: 1.2rem;
+    }
 
-      p {
-        color: white;
-        opacity: 0;
-      }
+    p {
+      color: white;
+      opacity: 0;
+    }
 
-      &:hover {
-        background-color: @color-main;
-        h4, p {
-          transition: opacity, .2s ease-in-out .2s;
-          opacity: 1;
-        }
+    article {
+      display: none;
+    }
+
+    &:hover {
+      background-color: @color-main;
+      h4, p {
+        transition: opacity, .2s ease-in-out .2s;
+        opacity: 1;
       }
     }
-    img {
-      width: 180px;
+  }
+  img {
+    width: 180px;
+  }
+}
+
+.ui.modal.panlin {
+  width: 100%;
+  left: 0;
+  margin: 0;
+  border-radius: 0;
+
+  .content {
+    width: 960px;
+    margin: 0 auto;
+
+    h4 {
+      color: @color-main;
+      font-size: 1.5rem;
+    }
+    h5 {
+      color: @color-main;
+      margin-top: 1rem;
+      font-size: 1.2rem;
     }
   }
 }
+
