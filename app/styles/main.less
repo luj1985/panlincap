@@ -29,45 +29,19 @@ nav#nav > .menu {
 
   h2.ui.header {
     color: @color-main;
-    text-shadow:
-     -1px -1px 0 white,  
-      1px -1px 0 white,
-      -1px 1px 0 white,
-       1px 1px 0 white;
     font-size: 18px;
-    text-align: center;
-    height: 90px;
-    width: 90px;
-    display: inline-block;
     font-family: @font-heiti;
-    padding: 2rem 0;
-    border-radius: 50%;
-    border: 2px solid @color-main;
+    padding-top: 2rem;
+    margin-bottom: 0;
     box-sizing: border-box;
-    margin-bottom: 5px;
     position: relative;
-
-    &:after {
-      transition: opacity .2s ease-in-out;
-      opacity: 1;
-      text-shadow: none;
-      font: normal normal normal 1.5rem 'panlin';
-      speak: none;
-      position: absolute;
-      top: 56px;
-      left: 36px;
-
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-
-      content: "\e600";
-      color: @color-stamp;
-    }
   }
+
   .content {
     opacity: 0;
     line-height: 18px;
   }
+
   .more {
     box-sizing: border-box;
     color: @color-white;
