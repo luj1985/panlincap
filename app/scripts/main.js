@@ -6,36 +6,12 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
     className: 'home'
   });
 
-  var backgroundSwitchEffect = 'blinds3d';
-
   function play() {
     var flux = window.myFlux;
     if (flux) {
-      flux.next(backgroundSwitchEffect, { 
-        columns: 28,
-        delayBetweenBarsX: 150
-      });
+      flux.next('slide');
     }
   }
-
-  var SWITCHER = {
-    'blinds3d' : 'slide',
-    'slide' : 'blinds3d'
-  };
-
-  var MESSAGES = {
-    'blinds3d' : '背景切换为百叶窗效果',
-    'slide' : '背景切换为滑动效果'
-  };
-
-  function switchEffect(e) {
-    var code = e.keyCode, ctrl = e.ctrlKey, shift = e.shiftKey;
-    if (ctrl && shift && code === 83) {
-      var effect = SWITCHER[backgroundSwitchEffect];
-      backgroundSwitchEffect = effect;
-      window.alert(MESSAGES[effect]);
-    }
-  };
 
   var playHandler;
 
@@ -48,11 +24,9 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
       });
       playHandler = window.setInterval(play, 10000);
 
-      $(document).on('keydown', switchEffect);
     },
     onDestroy: function() {
       delete window.myFlux;
-      $(document).off('keydown', switchEffect);
       clearInterval(playHandler);
     }
   });
