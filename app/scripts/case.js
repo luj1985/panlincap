@@ -85,15 +85,15 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
       'click .carousel-control.left' : function(e) {
         e.preventDefault();
         var index = this.$('.cases').coverflow('index');
-        if (index > 0) {
-          this.$('.cases').coverflow('index', --index); 
+        if (index < this._length - 1) {
+          this.$('.cases').coverflow('index', ++index);
         }
       },
       'click .carousel-control.right' : function(e) {
         e.preventDefault();
         var index = this.$('.cases').coverflow('index');
-        if (index < this._length - 1) {
-          this.$('.cases').coverflow('index', ++index);
+        if (index > 0) {
+          this.$('.cases').coverflow('index', --index); 
         }
       }
     }
