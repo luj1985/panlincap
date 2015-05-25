@@ -69,9 +69,12 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
     className : 'showcase',
     childView : CaseView,
     childViewContainer : '.cases',
+    _index : 4,
     onShow : function() {
-      this.$('.cases').coverflow({
-        index : 4,
+      this._length = this.$('.cases .case').length;
+      var index = this._index;
+      this.coverflow = this.$('.cases').coverflow({
+        index : index,
         easing: 'easeInOutQuad',
         innerAngle: -20,
         outerAngle: 0,
@@ -79,6 +82,22 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
         outerScale: 0.5,
         innerOffset: 100 / 3
       });
+    },
+    events : {
+      'click .carousel-control.left' : function(e) {
+        e.preventDefault();
+        if (this._index > 0) {
+          this._index--;
+          this.$('.cases').coverflow('index', this._index); 
+        }
+      },
+      'click .carousel-control.right' : function(e) {
+        e.preventDefault();
+        if (this._index < this._length - 1) {
+          this._index++;
+          this.$('.cases').coverflow('index', this._index);
+        }
+      }
     }
   });
 
