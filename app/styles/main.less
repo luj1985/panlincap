@@ -8,6 +8,7 @@
 @import "./import/invest.import.less";
 @import "./import/dialog.import.less";
 @import "./import/carousel.import.less";
+@import "./import/reveal.import.less";
 @import "./import/background.import.less";
 
 nav#nav > .menu {
@@ -65,6 +66,7 @@ header#header {
     list-style: none;
     padding-left: 0;
     font-family: @font-kaiti;
+    cursor: pointer;
     li {
       border-bottom: 1px solid black;
       line-height: 2.5rem;
@@ -86,52 +88,4 @@ header#header {
   width: 960px;
   margin: 0 auto;
   min-height: 20rem;
-
-  &.investment, &.about {
-    .reveal {
-      &.active {
-        opacity: 1;
-      }
-
-      z-index: -800;
-      transition: opacity .5s ease-in-out .4s;
-      position: absolute;
-      top : 2rem;
-      padding : 1rem;
-      width: 300px;
-      opacity: 0;
-
-      h3 {
-        padding-top: .5rem;
-        padding-right: 1.75rem;
-        display: inline-block;
-        color : @color-highlight;
-        font-family: @font-kaiti;
-        margin-top: 0;
-        position: relative;
-        &:after {
-          font: normal normal normal 1.5rem 'panlin';
-          speak: none;
-          padding-left: .5rem;
-          position: absolute;
-          top: 0;
-
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-
-          content: "\e600";
-          color: @color-stamp;
-        }
-      }
-
-      p {
-        font-size: .9rem;
-        margin-bottom: 1rem;
-      }
-      img {
-        margin-top: 1rem;
-        width: 120px;
-      }
-    }
-  }
 }

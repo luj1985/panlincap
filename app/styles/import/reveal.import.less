@@ -1,0 +1,47 @@
+.description .reveal {
+  z-index: -800;
+  transition: opacity .5s ease-in-out .2s;
+  position: absolute;
+  top : 2rem;
+  padding : 1rem;
+  width: 300px;
+  opacity: 0;
+
+  h3 {
+    padding-top: .5rem;
+    padding-right: 1.75rem;
+    display: inline-block;
+    color : @color-highlight;
+    font-family: @font-kaiti;
+    margin-top: 0;
+    position: relative;
+    &:after {
+      font: normal normal normal 1.5rem 'panlin';
+      speak: none;
+      padding-left: .5rem;
+      position: absolute;
+      top: 0;
+
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+
+      content: "\e600";
+      color: @color-stamp;
+    }
+  }
+
+  p {
+    font-size: .9rem;
+    margin-bottom: 1rem;
+  }
+  img {
+    margin-top: 1rem;
+    width: 120px;
+  }
+}
+
+.investment, .about {
+  .reveal.active {
+    opacity: 1;
+  }
+}
