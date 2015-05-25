@@ -86,9 +86,19 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
     }
   });
 
-  var TeamsView = Marionette.CollectionView.extend({
+  var TeamsView = Marionette.CompositeView.extend({
+    template : PanlinCapTpl['templates/team/teams.hbs'],
+    className : 'team-show',
     childView : TeamView,
-    className: 'teams'
+    childViewContainer : '.teams',
+    events : {
+      'click .carousel-control.left' : function(e) {
+        e.preventDefault();
+      },
+      'click .carousel-control.right' : function(e) {
+        e.preventDefault();
+      }
+    }
   })
 
   var TeamBgView = Marionette.ItemView.extend({
