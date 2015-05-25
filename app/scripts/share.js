@@ -8,7 +8,8 @@ PanlinCap.module('Share', function(Share, PanlinCap, Backbone, Marionette) {
       this.$('.reveal').toggleClass('active');
     },
     triggers : {
-      'click .topic.detail' : 'expand'
+      'click .topic.detail' : 'expand',
+      'click .close' : 'expand'
     }
   });
 

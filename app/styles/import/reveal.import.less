@@ -1,5 +1,5 @@
 .description .reveal {
-  z-index: -800;
+    z-index: -800;
   transition: opacity .5s ease-in-out .2s;
   position: absolute;
   top : 2rem;
@@ -7,7 +7,16 @@
   width: 300px;
   opacity: 0;
   left: 160px;
+}
 
+.investment, .about {
+  .reveal.active {
+    z-index: auto;
+    opacity: 1;
+  }
+}
+
+.description .reveal {
   h3 {
     padding-top: .5rem;
     padding-right: 1.75rem;
@@ -34,15 +43,15 @@
   p {
     font-size: .9rem;
     margin-bottom: 1rem;
+    line-height: 1.5rem;
+    text-indent: 1.8rem;
+  }
+  a.close {
+    font-size: .8rem;
+    color: black;
   }
   img {
     margin-top: 1rem;
     width: 120px;
-  }
-}
-
-.investment, .about {
-  .reveal.active {
-    opacity: 1;
   }
 }
