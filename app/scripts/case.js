@@ -58,7 +58,7 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
 
   var CaseExpandView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/case/dialog.hbs'],
-    className : 'ui panlin modal',
+    className : 'ui panlin modal case-dialog',
     onShow : function() {
       this.$el.modal('show');
     }
