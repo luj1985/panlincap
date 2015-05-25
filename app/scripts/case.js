@@ -101,7 +101,7 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
 
   var CasesBgView = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/case/casesbg.hbs'],
-    className: 'cases'
+    className: 'slides cases'
   });
 
   var StaticController = Marionette.Controller.extend({
