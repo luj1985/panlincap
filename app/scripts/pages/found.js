@@ -11,7 +11,7 @@ PanlinCap.module('Found', function(Found, PanlinCap, Backbone, Marionette) {
     className : 'founds'
   });
 
-  var homeController = {
+  var foundController = {
     showFound: function() {
       var founds = PanlinCap.reqres.request('founds:fetch');
       PanlinCap.bodyRegion.show(new FoundCollectionView({ collection : founds }));
@@ -24,7 +24,7 @@ PanlinCap.module('Found', function(Found, PanlinCap, Backbone, Marionette) {
       appRoutes : {
         'founds(/)' : 'showFound'
       },
-      controller: homeController
+      controller: foundController
     });
   });
 });

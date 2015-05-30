@@ -22,6 +22,12 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
     }
   });
 
+  Sidebar.SideMenuView = Marionette.ItemView.extend({
+    template : PanlinCapTpl["templates/layout/sidebar.hbs"],
+    tagName : 'ul',
+    className : 'brief'
+  });
+
   Sidebar.RevealView = Marionette.ItemView.extend({
     initialize : function() {
       this.listenTo(PanlinCap.vent, 'reveal', this.revealView, this);

@@ -13,7 +13,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
       // this.showChildView('main', new Shared.RevealView({
       //   model : new Backbone.Model(reveal)
       // }));
-      this.showChildView('sidebar', new Shared.SidebarView({
+      this.showChildView('sidebar', new Shared.SideMenuView({
         collection : new Backbone.Collection(slogan)
       }));
       this.showChildView('breadcrumb', new Shared.BreadcrumbView({
@@ -22,7 +22,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
     }
   });
 
-  var aboutController = {
+  var newsController = {
     showNews: function() {
       PanlinCap.bodyRegion.show(new NewsView());
       PanlinCap.execute('showBackground', 'news');
@@ -35,7 +35,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
       appRoutes : {
         'news(/)': 'showNews'
       },
-      controller: aboutController
+      controller: newsController
     });
 
   });

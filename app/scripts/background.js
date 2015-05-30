@@ -27,6 +27,7 @@ PanlinCap.module('Background', function(Background, PanlinCap, Backbone, Marione
       case 'found':
       case 'news':
       case 'contact':
+      case 'cases':
         var cls = ['slides', page].join(' ');
         PanlinCap.bgRegion.show(new SingleBackground({ className: cls })); 
         break;
