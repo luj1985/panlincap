@@ -7,7 +7,6 @@
     "handlebars": "~3.0.2",
     "semantic-ui": "~1.12.0",
     "backbone.intercept": "~0.3.2",
-    "flux-slider": "~1.4.4",
     "jquery-ui": "~1.11.4",
     "coverflow": "~1.1.10"
   }
