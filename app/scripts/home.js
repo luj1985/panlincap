@@ -14,7 +14,7 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
 
   var StaticController = Marionette.Controller.extend({
     showHome: function() {
-      PanlinCap.mainRegion.show(new HomeView());
+      PanlinCap.bodyRegion.show(new HomeView());
       PanlinCap.bgRegion.show(new HomeBg());
     }
   });

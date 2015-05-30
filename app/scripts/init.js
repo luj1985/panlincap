@@ -1,6 +1,6 @@
 PanlinCap.addRegions({
   navRegion: '#nav',
-  mainRegion: '#main',
+  bodyRegion: '#body',
   dialogRegion: '#dialog',
   bgRegion: '#background'
 });

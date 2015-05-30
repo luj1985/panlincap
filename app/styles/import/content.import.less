@@ -1,0 +1,46 @@
+#body {
+  position: absolute;
+  top: 9rem;
+  bottom: 0;
+  width: 100%;
+}
+
+.brief {
+  display: inline-block;
+  height: 100%;
+
+  .ui.breadcrumb {
+    padding: 1rem 0 0 2rem;
+    a, .divider {
+      color: @color-white;
+    }
+  }
+
+  ul {
+    display: inline-block;
+    list-style: none;
+    padding-left: 0;
+    font-family: @font-kaiti;
+    cursor: pointer;
+    li {
+      border-bottom: 1px solid black;
+      line-height: 2.5rem;
+      padding: 0 .5rem;
+      font-size: 1rem;
+      color: black;
+      &:first-of-type {
+        border-top: 1px solid black;
+      }
+    }
+  }
+}
+
+.description {
+  position: relative;
+  height: 100%;
+
+  background-color: rgba(255, 255, 255, 0);
+  width: 960px;
+  margin: 0 auto;
+  min-height: 20rem;
+}

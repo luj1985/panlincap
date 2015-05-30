@@ -106,7 +106,7 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
 
   var StaticController = Marionette.Controller.extend({
     showCases: function() {
-      PanlinCap.mainRegion.show(new CasesView({
+      PanlinCap.bodyRegion.show(new CasesView({
         collection: new Backbone.Collection(data)
       }));
       PanlinCap.bgRegion.show(new CasesBgView());

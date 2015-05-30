@@ -109,7 +109,7 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
   var StaticController = Marionette.Controller.extend({
     showTeam: function() {
       var teams = new Backbone.Collection(data);
-      PanlinCap.mainRegion.show(new TeamsView({collection: teams}));
+      PanlinCap.bodyRegion.show(new TeamsView({collection: teams}));
       PanlinCap.bgRegion.show(new TeamBgView());
     }
   });

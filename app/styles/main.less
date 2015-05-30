@@ -1,6 +1,7 @@
 @import "./import/variables.import.less";
 @import "./import/global.import.less";
 @import "./import/header.import.less";
+@import "./import/content.import.less";
 @import "./import/teams.import.less";
 @import "./import/cases.import.less";
 @import "./import/home.import.less";
@@ -11,81 +12,3 @@
 @import "./import/reveal.import.less";
 @import "./import/background.import.less";
 
-nav#nav > .menu {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-end;
-}
-
-#nav, #header {
-  display: block;
-  margin: 0 auto;
-  padding: 0 4rem;
-}
-
-
-#main {
-  position: absolute;
-  top: 9rem;
-  bottom: 0;
-  width: 100%;
-  > .home {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
-}
-
-header#header {
-  height: 6rem;
-  position: relative;
-  background-image: url("/images/logo.png");
-  background-repeat: no-repeat;
-  background-position: 4rem center;
-  background-size: auto 4rem;
-}
-
-
-.brief {
-  display: inline-block;
-  height: 100%;
-
-  .ui.breadcrumb {
-    padding: 1rem 0 0 2rem;
-    a, .divider {
-      color: @color-white;
-    }
-  }
-
-  ul {
-    display: inline-block;
-    list-style: none;
-    padding-left: 0;
-    font-family: @font-kaiti;
-    cursor: pointer;
-    li {
-      border-bottom: 1px solid black;
-      line-height: 2.5rem;
-      padding: 0 .5rem;
-      font-size: 1rem;
-      color: black;
-      &:first-of-type {
-        border-top: 1px solid black;
-      }
-    }
-  }
-}
-
-.description {
-  position: relative;
-  height: 100%;
-
-  background-color: rgba(255, 255, 255, 0);
-  width: 960px;
-  margin: 0 auto;
-  min-height: 20rem;
-}

@@ -17,7 +17,7 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
         view.toggleReveal();
       })
       
-      PanlinCap.mainRegion.show(view);
+      PanlinCap.bodyRegion.show(view);
       PanlinCap.bgRegion.show(bgView);
     }
   });
