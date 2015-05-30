@@ -33,8 +33,7 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
 
   var aboutController = {
     showAbout: function() {
-      var view = new AboutView();
-      PanlinCap.bodyRegion.show(view);
+      PanlinCap.bodyRegion.show(new AboutView());
       PanlinCap.execute('showBackground', 'about');
     }
   };

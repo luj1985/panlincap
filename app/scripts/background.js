@@ -31,6 +31,12 @@ PanlinCap.module('Background', function(Background, PanlinCap, Backbone, Marione
           className: 'slides investment'
         })); 
         break;
+      case 'team':
+        PanlinCap.bgRegion.show(new SingleBackground({
+          className: 'slides team'
+        })); 
+        break;
+
     }
   });
 

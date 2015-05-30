@@ -20,23 +20,16 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
     }
   });
 
-  var TeamsView = Marionette.CompositeView.extend({
-    template : PanlinCapTpl['templates/team/teams.hbs'],
-    className : 'team-show',
+  var TeamsView = Marionette.CollectionView.extend({
+    className : 'teams',
     childView : TeamView,
-    childViewContainer : '.teams',
-  })
-
-  var TeamBgView = Marionette.ItemView.extend({
-    template : PanlinCapTpl['templates/team/teambg.hbs'],
-    className: 'slides home'
   });
 
   var StaticController = Marionette.Controller.extend({
     showTeam: function() {
       var members = PanlinCap.reqres.request('members:fetch');
       PanlinCap.bodyRegion.show(new TeamsView({collection: members}));
-      PanlinCap.bgRegion.show(new TeamBgView());
+      PanlinCap.execute('showBackground', 'team');
     }
   });
 
