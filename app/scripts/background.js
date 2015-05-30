@@ -22,21 +22,17 @@ PanlinCap.module('Background', function(Background, PanlinCap, Backbone, Marione
         PanlinCap.bgRegion.show(new HomeBg()); 
         break;
       case 'about': 
-        PanlinCap.bgRegion.show(new SingleBackground({
-          className: 'slides about'
-        })); 
+        PanlinCap.bgRegion.show(new SingleBackground({ className: 'slides about' })); 
         break;
       case 'invest':
-        PanlinCap.bgRegion.show(new SingleBackground({
-          className: 'slides investment'
-        })); 
+        PanlinCap.bgRegion.show(new SingleBackground({ className: 'slides investment' })); 
         break;
       case 'team':
-        PanlinCap.bgRegion.show(new SingleBackground({
-          className: 'slides team'
-        })); 
+        PanlinCap.bgRegion.show(new SingleBackground({ className: 'slides team' })); 
         break;
-
+      case 'found':
+        PanlinCap.bgRegion.show(new SingleBackground({ className: 'slides found' }));
+        break;
     }
   });
 

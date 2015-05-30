@@ -1,3 +1,27 @@
+PanlinCap.reqres.setHandler('founds:fetch', function() {
+  var data = [{
+    issue : '壹期基金',
+    name : '磐霖东方股权投资基金'
+  }, {
+    issue : '贰期基金',
+    name : '磐霖平安股权投资基金'
+  }, {
+    issue : '叁期基金',
+    name : '磐霖盛泰股权投资基金'
+  }, {
+    issue : '肆期基金',
+    name : '磐霖丹阳股权投资基金'
+  }, {
+    issue : '伍期基金',
+    name : '磐霖仟源股权投资基金'
+  }, {
+    issue : '陆期基金',
+    name : '磐霖滨海医疗健康股权投资基金'
+  }];
+  return new Backbone.Collection(data);
+});
+
+
 PanlinCap.reqres.setHandler('topics:fetch', function() {
   var data = [{
     title : '关于磐霖',
@@ -17,8 +41,7 @@ PanlinCap.reqres.setHandler('topics:fetch', function() {
     link : '/cases'
   }];
 
-  var topics = new Backbone.Collection(data);
-  return topics;
+  return new Backbone.Collection(data);
 });
 
 
