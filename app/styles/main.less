@@ -7,3 +7,52 @@
 @import "./import/reveal.import.less";
 @import "./import/background.import.less";
 @import "./import/pages.import.less";
+
+
+@sidebar-width: 160px;
+.sidebar-layout {
+  aside {
+    float: left;
+    width: @sidebar-width;
+    display: inline-block;
+  }
+
+  main {
+    display: block;
+    padding-left: @sidebar-width;
+  }
+}
+
+.sidebar-layout {
+  position: relative;
+  height: 100%;
+}
+
+#breadcrumb .ui.breadcrumb {
+  a, .divider {
+    color: @color-white;
+  }
+}
+
+ul.brief  {
+  display: inline-block;
+  list-style: none;
+  padding-left: 0;
+  padding-top: 2rem;
+  font-family: @font-kaiti;
+  cursor: pointer;
+  li {
+    border-bottom: 1px solid black;
+    line-height: 2.5rem;
+    padding: 0 .5rem;
+    font-size: 1rem;
+    color: black;
+    &:first-of-type {
+      border-top: 1px solid black;
+    }
+  }
+}
+
+.content-wrapper {
+  position: relative;
+}

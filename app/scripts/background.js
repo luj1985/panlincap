@@ -6,9 +6,19 @@ PanlinCap.module('Background', function(Background, PanlinCap, Backbone, Marione
     className: 'slides home'
   });
 
+  var AboutBg = Marionette.ItemView.extend({
+    template : PanlinCapTpl['templates/revealbg.hbs'],
+    className: 'slides about'
+  });
+
   PanlinCap.commands.setHandler('showBackground', function(page) {
-    if (page === 'home') {
-      PanlinCap.bgRegion.show(new HomeBg());
+    switch (page) {
+      case 'home': 
+        PanlinCap.bgRegion.show(new HomeBg()); 
+        break;
+      case 'about': 
+        PanlinCap.bgRegion.show(new AboutBg()); 
+        break;
     }
   });
 
