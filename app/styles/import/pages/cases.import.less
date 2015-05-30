@@ -1,40 +1,30 @@
-.showcase {
-  width: 960px;
-  margin: 0 auto;
-  position: relative;
-
-  .brief {
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-}
-
 #body .cases {
-  width: 760px;
-  position: relative;
-  top: 3rem;
-  margin-left: 40px;
-  display: inline-block;
+  max-width: 960px;
 
-  .case {
-    width: 320px;
-    height: 240px;
+  section.case-group {
     background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     opacity: .9;
     user-select : none;
+    margin: 1rem 0;
+    padding: 1rem;
+    h4 {
+      line-height: 30px;
+      font-size: 1rem;
+      border-bottom: 2px solid #777;
+    }
+  }
+
+  .brands {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    img {
+      width: 120px;
+      margin: 10px;
+    }
   }
 }
 
-.coverflow {
-  left: 120px;
-  position: absolute;
-  right: 0;
-}
 
 .ui.modal.panlin.case-dialog .content{
   h4, h5 {

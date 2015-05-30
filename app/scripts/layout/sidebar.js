@@ -23,7 +23,7 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
   });
 
   Sidebar.SideMenuView = Marionette.ItemView.extend({
-    template : PanlinCapTpl['templates/layout/sidebar.hbs'],
+    template : PanlinCapTpl['templates/layout/sidelinks.hbs'],
     tagName : 'ul',
     className : 'brief'
   });
