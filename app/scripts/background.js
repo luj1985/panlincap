@@ -6,15 +6,14 @@ PanlinCap.module('Background', function(Background, PanlinCap, Backbone, Marione
     className: 'slides home'
   });
 
-  var AboutBg = Marionette.ItemView.extend({
+  var SingleBackground = Marionette.ItemView.extend({
     initialize : function() {
       this.listenTo(PanlinCap.vent, 'reveal', this.revealView, this);
     },
     revealView : function () {
       this.$('.revealbg').toggleClass('active');
     },
-    template : PanlinCapTpl['templates/revealbg.hbs'],
-    className: 'slides about'
+    template : PanlinCapTpl['templates/revealbg.hbs']
   });
 
   PanlinCap.commands.setHandler('showBackground', function(page) {
@@ -23,7 +22,14 @@ PanlinCap.module('Background', function(Background, PanlinCap, Backbone, Marione
         PanlinCap.bgRegion.show(new HomeBg()); 
         break;
       case 'about': 
-        PanlinCap.bgRegion.show(new AboutBg()); 
+        PanlinCap.bgRegion.show(new SingleBackground({
+          className: 'slides about'
+        })); 
+        break;
+      case 'invest':
+        PanlinCap.bgRegion.show(new SingleBackground({
+          className: 'slides investment'
+        })); 
         break;
     }
   });

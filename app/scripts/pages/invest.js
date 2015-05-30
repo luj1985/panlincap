@@ -37,7 +37,7 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
     showInvestMent: function() {
       var view = new InvestmentView();
       PanlinCap.bodyRegion.show(view);
-      PanlinCap.execute('showBackground', 'about');
+      PanlinCap.execute('showBackground', 'invest');
     }
   };
 
