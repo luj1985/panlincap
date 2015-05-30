@@ -1,6 +1,23 @@
 (function(PanlinCap, Marionette, Backbone) {
   'use strict';
 
+  PanlinCap.reqres.setHandler('news:fetch', function() {
+    var news = [{
+      title : '2015/05/12   [ 高能环境隆重亮相第16届中国环博会 ]',
+      descriptions : '5月6——8日，由德国慕尼黑国际博览集团、中国环境科学学会、全联环境服务业商会、中贸慕尼黑展览（上海）有限公司等单位联合举办的第十...'
+    }, {
+      title : '2015/05/04   [ 东方时尚走进"4.29"首都网络安全日 ]',
+      descriptions : '“4.29首都网络安全日”活动，即网络与信息安全博览会在北京展览馆里隆重召开。此次博览会在公安部、工业与信息化部的支持下，经北京市...'
+    }, {
+      title : '2015/04/30   [ 高能环境绿色小学隆重揭牌 ]',
+      descriptions : '高能环境在四川阿坝松潘县捐建首座希望小学   4月22日，北京高能时代环境技术股份有限公司捐助四川省阿坝州松潘县水晶...'
+    }, {
+      title : '2015/04/30   [ 东方时尚--全国驾校教练员素质提升培训班第一期圆满结束 ]',
+      descriptions : '由中国道路运输协会汽车驾驶员工作委员会组织，东方时尚驾驶学校股份有限公司承办,“2015年全国驾校教练员素质提升培训班”，于201...'
+    }];
+    return new Backbone.Collection(news);
+  });
+
   PanlinCap.reqres.setHandler('cases:fetch', function() {
 
     var cases = [{
