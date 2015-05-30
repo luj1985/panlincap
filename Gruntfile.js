@@ -58,7 +58,10 @@ module.exports = function (grunt) {
         files: ['Gruntfile.js']
       },
       less: {
-        files: ['<%= config.app %>/styles/{,*/}*.less'],
+        files: [
+          '<%= config.app %>/styles/{,*/}*.less',
+          '<%= config.app %>/styles/import/**/*.less'
+        ],
         tasks: ['less:server', 'autoprefixer']
       },
       styles: {
@@ -186,7 +189,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= config.app %>/styles',
-          src: ['*.less', '!theme.less'],
+          src: ['*.less', '!semantic.less', '!theme.less'],
           dest: '.tmp/styles',
           ext: '.css'
         }]

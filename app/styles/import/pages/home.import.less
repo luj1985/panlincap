@@ -1,22 +1,56 @@
-#body > .home {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-
+.topics {
+  width: 750px;
+  height: 530px;
+  margin: 0 auto;
+  position: relative;
 }
 
-.topic, .topic .header, .topic .content, .topic .more {
+.topic:nth-child(1) {
+  height: 100%; 
+  width: percentage(1/3);
+  top: 0;
+  left: 0;
+}
+
+.topic:nth-child(2) {
+  height: 50%;
+  width: percentage(1/3);
+  top: 0;
+  left: percentage(1/3);
+}
+
+.topic:nth-child(3) {
+  height: 50%;
+  width: percentage(1/3);
+  top: 0;
+  left: percentage(2/3);
+}
+
+.topic:nth-child(4) {
+  height: 50%;
+  width: percentage(2/3);
+  top: 50%;
+  left: percentage(1/3);
+}
+
+.topic .inner, .topic .inner > * {
   transition: all .2s ease-in-out;
 }
 
 .topic {
+  padding: 3px;
+  position: absolute;
   color: white;
-  padding: 2rem 2rem 0 2rem;
-  position: relative;
   font-size: 11px;
+
+  .inner {
+    padding: 2rem 2rem 0 2rem;
+    background-color: @color-background;
+
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+  }
 
   h2.ui.header {
     color: @color-main;
@@ -24,7 +58,6 @@
     font-family: @font-heiti;
     padding: 2rem 0 1rem 0;
     margin-bottom: 0;
-    box-sizing: border-box;
     position: relative;
   }
 
@@ -34,7 +67,6 @@
   }
 
   .more {
-    box-sizing: border-box;
     color: @color-white;
     padding-top: 1rem;
     display: block;
@@ -43,73 +75,29 @@
       text-decoration: underline;
     }
   }
-}
+} 
 
-.home {
-  .topic {
-    background-color: @color-background;
-  }
-  .topic:hover {
-    background-color: @color-main;
+.topic:hover .inner {
+  background-color: @color-main;
 
-    h2.ui.header {
-      text-shadow: none;
-      background-image: none;
-      border-color: transparent;
-      color: @color-highlight;
-      opacity: 1;
-      &:after {
-        opacity: 0;
-      }
-    }
-    .content {
-      opacity: 1;
-    }
-    .more {
-      opacity: 1;
-    }
-    .title {
-      display: none;
+  h2.ui.header {
+    text-shadow: none;
+    background-image: none;
+    border-color: transparent;
+    color: @color-highlight;
+    opacity: 1;
+    &:after {
+      opacity: 0;
     }
   }
-}
-
-
-table.content {
-  width: @content-width;
-  height: 530px;
-  border-collapse: separate;
-  border-spacing: 5px;
-  border-color: transparent;
-  box-sizing: border-box;
-  margin-bottom: 8px;
-
-  td {
-    width: 33.333%;
-    vertical-align: top;
+  .content {
+    opacity: 1;
   }
-}
-
-.slides {
-  z-index: -99;
-  position: fixed;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-
-  .slide {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    position: absolute;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 0 0;
+  .more {
+    opacity: 1;
+  }
+  .title {
+    display: none;
   }
 }
 
