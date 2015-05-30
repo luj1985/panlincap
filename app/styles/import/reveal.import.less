@@ -2,7 +2,7 @@
   box-sizing: border-box;
   transition: opacity .5s ease-in-out .35s;
   position: absolute;
-  top : 2rem;
+  top : 0;
   padding : 1rem;
   width: 300px;
   opacity: 0;
@@ -17,10 +17,17 @@
     padding-top: .5rem;
     padding-right: 1.75rem;
     display: inline-block;
-    color : @color-highlight;
+    color : @color-main;
     font-family: @font-kaiti;
     margin-top: 0;
+    margin-bottom: .3rem;
     position: relative;
+  }
+
+  h2 {
+    color : @color-main;
+    font-family: @font-kaiti;
+    margin-bottom: .5rem;
   }
 
   p {
