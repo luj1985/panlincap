@@ -1,22 +1,18 @@
 #main .reveal {
-  // z-index: -800;
-  transition: opacity .5s ease-in-out .2s;
+  box-sizing: border-box;
+  transition: opacity .5s ease-in-out .35s;
   position: absolute;
   top : 2rem;
   padding : 1rem;
   width: 300px;
-  // opacity: 0;
+  opacity: 0;
   left: 160px;
-}
-
-.investment, .about {
-  .reveal.active {
-    // z-index: auto;
+  visibility: hidden;
+  &.active {
+    visibility: visible;
     opacity: 1;
   }
-}
 
-#main .reveal {
   h3 {
     padding-top: .5rem;
     padding-right: 1.75rem;
@@ -37,5 +33,20 @@
     font-size: .8rem;
     color: black;
     margin-top: 3rem;
+  }
+}
+
+.revealbg {
+  transition: all .2s ease-in-out;
+  display: inline-block;
+  width: 0;
+  height: 100%;
+  left: 216px;
+  position: absolute;
+  background-color: transparent;
+  z-index: -500;
+  &.active {
+    width: 300px;
+    background-color: rgba(255,255,255,.8);
   }
 }

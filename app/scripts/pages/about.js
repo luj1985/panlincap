@@ -12,16 +12,31 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
   var Shared = PanlinCap.module('Layout.Sidebar');
   
   var AboutView = Shared.SidebarLayoutView.extend({
+    
     onBeforeShow : function() {
+      var revealView = new Shared.RevealView({
+        model : new Backbone.Model(reveal),
+        events : {
+          'click a.close' : function() {
+            PanlinCap.execute('revealContent');
+            revealView.$el.toggleClass('active');
+          }
+        }
+      });
+
+      this.showChildView('main', revealView);
       this.showChildView('sidebar', new Shared.SidebarView({
-        collection : new Backbone.Collection(slogan)
-      }));
-      this.showChildView('main', new Shared.RevealView({
-        model : new Backbone.Model(reveal)
+        collection : new Backbone.Collection(slogan),
+        events : {
+          'click li' : function() {
+            PanlinCap.execute('revealContent');
+            revealView.$el.toggleClass('active');
+          }
+        }
       }));
       this.showChildView('breadcrumb', new Shared.BreadcrumbView({
         model : new Backbone.Model(breadcrumb)
-      }))
+      }));
     }
   });
 
