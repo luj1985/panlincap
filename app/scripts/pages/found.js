@@ -17,7 +17,7 @@ PanlinCap.module('Found', function(Found, PanlinCap, Backbone, Marionette) {
       PanlinCap.bodyRegion.show(new FoundCollectionView({ collection : founds }));
       PanlinCap.execute('showBackground', 'found');
     }
-  }
+  };
 
   PanlinCap.addInitializer(function() {
     new Marionette.AppRouter({

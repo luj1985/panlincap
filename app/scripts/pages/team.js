@@ -1,7 +1,6 @@
 PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
   'use strict';
 
-
   var MemberView = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/team/member.hbs'],
     className : 'ui panlin modal',
@@ -17,7 +16,7 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
       var model = this.model;
       this.$el.click(function() {
         PanlinCap.dialogRegion.show(new MemberView({model : model}));
-      })
+      });
     }
   });
 

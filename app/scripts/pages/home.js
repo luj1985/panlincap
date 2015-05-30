@@ -12,7 +12,7 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
       PanlinCap.bodyRegion.show(new HomeView({ collection : topics }));
       PanlinCap.execute('showBackground', 'home');
     }
-  }
+  };
 
   PanlinCap.addInitializer(function() {
     new Marionette.AppRouter({

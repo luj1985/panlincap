@@ -1,8 +1,8 @@
-PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marionette, $, _) {
+PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marionette) {
   'use strict';
 
   Sidebar.SidebarLayoutView = Marionette.LayoutView.extend({
-    template : PanlinCapTpl["templates/layout/sidebarLayout.hbs"],
+    template : PanlinCapTpl['templates/layout/sidebarLayout.hbs'],
     className : 'sidebar-layout',
     regions : {
       breadcrumb : '#breadcrumb',
@@ -12,7 +12,7 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
   });
 
   Sidebar.SidebarView = Marionette.ItemView.extend({
-    template : PanlinCapTpl["templates/layout/sidebar.hbs"],
+    template : PanlinCapTpl['templates/layout/sidebar.hbs'],
     tagName : 'ul',
     className : 'brief',
     events : {
@@ -23,7 +23,7 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
   });
 
   Sidebar.SideMenuView = Marionette.ItemView.extend({
-    template : PanlinCapTpl["templates/layout/sidebar.hbs"],
+    template : PanlinCapTpl['templates/layout/sidebar.hbs'],
     tagName : 'ul',
     className : 'brief'
   });
@@ -40,12 +40,12 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
         PanlinCap.vent.trigger('reveal');
       }
     },
-    template : PanlinCapTpl["templates/layout/reveal.hbs"],
+    template : PanlinCapTpl['templates/layout/reveal.hbs'],
     className : 'reveal'
   });
 
   Sidebar.BreadcrumbView = Marionette.ItemView.extend({
-    template : PanlinCapTpl["templates/layout/breadcrumb.hbs"],
+    template : PanlinCapTpl['templates/layout/breadcrumb.hbs'],
     className : 'ui breadcrumb'
   });
 });
