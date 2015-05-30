@@ -13,10 +13,11 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
   var TeamView = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/team/team.hbs'],
     className : 'person',
-    events : {
-      'click .member' : function() {
-        PanlinCap.dialogRegion.show(new MemberView({model : this.model}));
-      }
+    onRender : function() {
+      var model = this.model;
+      this.$el.click(function() {
+        PanlinCap.dialogRegion.show(new MemberView({model : model}));
+      })
     }
   });
 
