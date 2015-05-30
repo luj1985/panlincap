@@ -21,25 +21,11 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
   
   var InvestmentView = Shared.SidebarLayoutView.extend({
     onBeforeShow : function() {
-      var revealView = new Shared.RevealView({
-        model : new Backbone.Model(reveal),
-        events : {
-          'click a.close' : function() {
-            PanlinCap.execute('revealContent');
-            revealView.$el.toggleClass('active');
-          }
-        }
-      });
-
-      this.showChildView('main', revealView);
+      this.showChildView('main', new Shared.RevealView({
+        model : new Backbone.Model(reveal)
+      }));
       this.showChildView('sidebar', new Shared.SidebarView({
-        collection : new Backbone.Collection(slogan),
-        events : {
-          'click li' : function() {
-            PanlinCap.execute('revealContent');
-            revealView.$el.toggleClass('active');
-          }
-        }
+        collection : new Backbone.Collection(slogan)
       }));
       this.showChildView('breadcrumb', new Shared.BreadcrumbView({
         model : new Backbone.Model(breadcrumb)

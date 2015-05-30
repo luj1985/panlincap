@@ -14,10 +14,26 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
   Sidebar.SidebarView = Marionette.ItemView.extend({
     template : PanlinCapTpl["templates/layout/sidebar.hbs"],
     tagName : 'ul',
-    className : 'brief'
+    className : 'brief',
+    events : {
+      'click li' : function() {
+        PanlinCap.vent.trigger('reveal');
+      }
+    }
   });
 
   Sidebar.RevealView = Marionette.ItemView.extend({
+    initialize : function() {
+      this.listenTo(PanlinCap.vent, 'reveal', this.revealView, this);
+    },
+    revealView : function () {
+      this.$el.toggleClass('active');
+    },
+    events : {
+      'click a.close' : function() {
+        PanlinCap.vent.trigger('reveal');
+      }
+    },
     template : PanlinCapTpl["templates/layout/reveal.hbs"],
     className : 'reveal'
   });
