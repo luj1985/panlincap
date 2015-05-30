@@ -1,64 +1,14 @@
-<a href="/" class="ui link item">首页</a>
-
+{{#each menu}}
+{{#if menu}}
 <div class="ui pointing dropdown link item">
-  关于我们
+  {{text}}
   <div class="menu">
-    <a href="/about" class="item">关于我们</a>
-    <a href="#" class="item">特点/优势</a>
+    {{#each menu}}
+    <a href="{{link}}" class="item">{{text}}</a>
+    {{/each}}
   </div>
 </div>
-
-<div class="ui pointing dropdown link item">
-  投资理念
-  <div class="menu">
-    <a href="#" class="item">投资策略</a>
-    <a href="/investment" class="item">投资理念</a>
-    <a href="#" class="item">价值提升机制</a>
-  </div>
-</div>
-
-<div class="ui pointing dropdown link item">
-  核心团队
-  <div class="menu">
-    <a href="/team" class="item">投资团队</a>
-  </div>
-</div>
-
-
-
-<div class="ui pointing dropdown link item">
-  基金管理
-  <div class="menu">
-    <a href="#" class="item">一期基金</a>
-    <a href="#" class="item">二期基金</a>
-    <a href="#" class="item">三期基金</a>
-    <a href="#" class="item">四期基金</a>
-    <a href="#" class="item">五期基金</a>
-  </div>
-</div>
-
-<div class="ui pointing dropdown link item">
-  投资组合
-  <div class="menu">
-    <a href="/cases" class="item">投资案例</a>
-  </div>
-</div>
-
-
-<div class="ui pointing dropdown link item">
-  新闻中心
-  <div class="menu">
-    <a href="#" class="item">公司新闻</a>
-    <a href="#" class="item">被投公司新闻</a>
-  </div>
-</div>
-
-
-<div class="ui pointing dropdown link item">
-  联系我们
-  <div class="menu">
-    <a href="#" class="item">招贤纳士</a>
-    <a href="#" class="item">联系我们</a>
-    <a href="#" class="item">商业计划书</a>
-  </div>
-</div>
+{{else}}
+<a href="{{link}}" class="ui link item">{{text}}</a>
+{{/if}}
+{{/each}}
