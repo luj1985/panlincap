@@ -25,20 +25,20 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
     childView : TeamView,
   });
 
-  var StaticController = Marionette.Controller.extend({
-    showTeam: function() {
+  var teamController = {
+    showTeam :function() {
       var members = PanlinCap.reqres.request('members:fetch');
       PanlinCap.bodyRegion.show(new TeamsView({collection: members}));
       PanlinCap.execute('showBackground', 'team');
     }
-  });
+  };
 
   PanlinCap.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : {
         'team(/)' : 'showTeam'
       },
-      controller: new StaticController()
+      controller: teamController
     });
 
   });
