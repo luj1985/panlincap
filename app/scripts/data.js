@@ -8,7 +8,7 @@ PanlinCap.reqres.setHandler('menus:fetch', function() {
     { text : '基金管理', link : '/founds' },
     { text : '投资组合', menu : [ { text : '投资案例', link : '/cases' }]},
     { text : '新闻中心', link : '/news' },
-    { text : '联系我们', menu : [ { text : '招贤纳士', link : '#' }, { text : '联系我们', link : '#' }, { text : '商业计划书', link : '#'}]}
+    { text : '联系我们', link : '/contacts'}
   ];
 
   return new Backbone.Model(data);
