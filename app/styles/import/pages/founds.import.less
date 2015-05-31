@@ -6,13 +6,15 @@
 
   .found {
     display: inline-block;
+    margin: 5px;
     padding: 2.5rem 1rem;
     width: 310px;
     height: 240px;
-    margin: 5px;
     background-color: @color-background;
     position: relative;
     box-sizing: border-box;
+    vertical-align: top;
+    cursor: pointer;
 
     h3 {
       font-family: @font-kaiti;
@@ -24,6 +26,10 @@
       margin-top: 0;
       color: @color-main;
       font-family: @font-heiti;
+    }
+    &:active, &:focus {
+      border: none;
+      box-shadow: none;
     }
   }
 }

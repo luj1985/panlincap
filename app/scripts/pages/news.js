@@ -6,12 +6,12 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
   var slogan = [{ text : '被投公司资讯', link : '/news/invested' }, { text : '公司新闻', link : '/news/company' }];
 
   var NewsView = Marionette.ItemView.extend({
-    template : PanlinCapTpl["templates/news/news.hbs"],
+    template : PanlinCapTpl['templates/news/news.hbs'],
     tagName : 'li'
   });
 
   var NewsCollectionView = Marionette.CompositeView.extend({
-    template : PanlinCapTpl["templates/news/pages.hbs"],
+    template : PanlinCapTpl['templates/news/pages.hbs'],
     className : 'main-container',
     childView : NewsView,
     childViewContainer : 'ul.news'

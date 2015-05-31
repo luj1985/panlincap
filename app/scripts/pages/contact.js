@@ -10,17 +10,17 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
   ];
 
   var AddressView = Marionette.ItemView.extend({
-    template : PanlinCapTpl["templates/contact/address.hbs"],
+    template : PanlinCapTpl['templates/contact/address.hbs'],
     className : 'main-container'
   });
 
   var HireView = Marionette.ItemView.extend({
-    template : PanlinCapTpl["templates/contact/hire.hbs"],
+    template : PanlinCapTpl['templates/contact/hire.hbs'],
     className : 'main-container'
   });
 
   var BizPlanView = Marionette.ItemView.extend({
-    template : PanlinCapTpl["templates/contact/plan.hbs"],
+    template : PanlinCapTpl['templates/contact/plan.hbs'],
     className : 'main-container'
   });
   

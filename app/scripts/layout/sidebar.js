@@ -44,7 +44,7 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
     initializeLayout : function() {
       var background = this.getOption('background');
       if (!background) {
-        throw new Error("doesn't have background assigned");
+        throw new Error('must assign background');
       }
       if (!this.layout || (this.layout && this.layout.isDestroyed)) {
         this.layout = new Sidebar.SidebarLayoutView();

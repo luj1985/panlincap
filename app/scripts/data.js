@@ -144,21 +144,33 @@
 
   PanlinCap.reqres.setHandler('founds:fetch', function() {
     var data = [{
+      id : 1,
       issue : '壹期基金',
-      name : '磐霖东方股权投资基金'
+      name : '磐霖东方股权投资基金',
+      description : [
+        '• 基金名称：磐霖东方股权投资基金<br>',
+        '• 投资周期：2010年至2016年<br>',
+        '• 投资项目：高能环境、瑞翔材料、东方时尚、骏梦网络等<br>',
+        '• 投资行业分布：<br>'
+      ].join('')
     }, {
+      id : 2,
       issue : '贰期基金',
       name : '磐霖平安股权投资基金'
     }, {
+      id : 3,
       issue : '叁期基金',
       name : '磐霖盛泰股权投资基金'
     }, {
+      id : 4,
       issue : '肆期基金',
       name : '磐霖丹阳股权投资基金'
     }, {
+      id : 5,
       issue : '伍期基金',
       name : '磐霖仟源股权投资基金'
     }, {
+      id : 6,
       issue : '陆期基金',
       name : '磐霖滨海医疗健康股权投资基金'
     }];

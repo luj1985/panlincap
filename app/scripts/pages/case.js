@@ -8,7 +8,7 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
   var breadcrumb = { text : '投资案例', link : '/cases' };
 
   var CasesView = Marionette.ItemView.extend({
-    template : PanlinCapTpl["templates/case/case.hbs"],
+    template : PanlinCapTpl['templates/case/case.hbs'],
     className : 'case-group',
     tagName : 'section'
   });
