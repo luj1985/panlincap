@@ -4,23 +4,46 @@
   }
 }
 
-table.address {
-  td {
+.main-container.hire {
+  h3 {
+    color: @color-main;
+  }
+}
+
+table.address, table.hire {
+  td, th {
     vertical-align: top;
     padding: .5rem 0;
     font-size: 14px;
     line-height: 25px;
+  }
+}
 
-    address {
-      margin: .5rem;
-      font-size: 12px;
-      font-style: normal;
-      a {
-        color: black;
-      }
-    }
+address {
+  margin: .5rem;
+  font-size: 12px;
+  font-style: normal;
+  a {
+    color: black;
+  }
+}
+
+table.hire {
+  width : 500px;
+  margin: 1rem;
+  th {
+    text-align: left;
+  }
+  tr > td:nth-child(1) {
+    width : 70px
   }
 
+  tr > td:nth-child(2) {
+    width: 150px;
+  }
+}
+
+table.address {
   tr > td:nth-child(1) {
     width: 90px;
   }

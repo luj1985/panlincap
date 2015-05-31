@@ -16,7 +16,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
 
   var HireView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/contact/hire.hbs'],
-    className : 'main-container'
+    className : 'main-container hire'
   });
 
   var BizPlanView = Marionette.ItemView.extend({
