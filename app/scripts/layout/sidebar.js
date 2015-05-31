@@ -36,4 +36,22 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
     template : PanlinCapTpl['templates/layout/breadcrumb.hbs'],
     className : 'ui breadcrumb'
   });
+
+  Sidebar.MainRegionController = Marionette.Controller.extend({
+    initialize : function(options) {
+      this.mergeOptions(options, ['background']);
+    },
+    initializeLayout : function() {
+      var background = this.getOption('background');
+      if (!background) {
+        throw new Error("doesn't have background assigned");
+      }
+      if (!this.layout || (this.layout && this.layout.isDestroyed)) {
+        this.layout = new Sidebar.SidebarLayoutView();
+        PanlinCap.bodyRegion.show(this.layout);
+        PanlinCap.execute('showBackground', background);
+      }
+      return this.layout;
+    }
+  });
 });

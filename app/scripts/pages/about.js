@@ -22,59 +22,33 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
   };
 
   var Shared = PanlinCap.module('Layout.Sidebar');
-  
-  var AboutView = Shared.SidebarLayoutView.extend({
-    
-    onBeforeShow : function() {
-      this.showChildView('sidebar', new Shared.SideMenuView({
-        collection : new Backbone.Collection(slogan)
-      }));
-    }
-  });
 
-  var aboutController = {
-    initLayout : function() {
-      if (!this.layout || (this.layout && this.layout.isDestroyed)) {
-        this.layout = new AboutView();
-        PanlinCap.bodyRegion.show(this.layout);
-        PanlinCap.execute('showBackground', 'about');
-      }
-      return this.layout;
-    },
-    showAbout: function() {
-      var layout = this.initLayout();
+  var AboutController = Shared.MainRegionController.extend({
+    background : 'about',
+    showAbout : function() {
+      var layout = this.initializeLayout();
       layout.getRegion('main').empty();
+      layout.showChildView('sidebar', new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
+      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({ collection : new Backbone.Collection([{ text : '关于我们', link : '/about' }]) }));
 
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
-        collection : new Backbone.Collection([{ text : '关于我们', link : '/about' }])
-      }));
       PanlinCap.vent.trigger('reveal:hide');
     },
     showAboutPanlin : function() {
-      var layout = this.initLayout();
-
-      layout.showChildView('main', new Shared.RevealView({
-        model : new Backbone.Model(reveal)
-      }));
-
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
-        collection : new Backbone.Collection([{ text : '关于我们', link : '/about' }, { text : '关于磐霖', link : '/about/panlin'}])
-      }));
+      var layout = this.initializeLayout();
+      layout.showChildView('sidebar', new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
+      layout.showChildView('main', new Shared.RevealView({ model : new Backbone.Model(reveal)}));
+      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({ collection : new Backbone.Collection([{ text : '关于我们', link : '/about' }, { text : '关于磐霖', link : '/about/panlin'}]) }));
       PanlinCap.vent.trigger('reveal:active');
     },
     showAdvantage : function() {
-      var layout = this.initLayout();
-
-      layout.showChildView('main', new Shared.RevealView({
-        model : new Backbone.Model(advantage)
-      }));
-
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
-        collection : new Backbone.Collection([{ text : '关于我们', link : '/about' }, { text : '我们的优势', link : '/about/advantage'}])
-      }));
+      var layout = this.initializeLayout();
+      layout.showChildView('sidebar', new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
+      layout.showChildView('main', new Shared.RevealView({ model : new Backbone.Model(advantage) }));
+      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({ collection : new Backbone.Collection([{ text : '关于我们', link : '/about' }, { text : '我们的优势', link : '/about/advantage'}]) }));
+      
       PanlinCap.vent.trigger('reveal:active');
     }
-  };
+  });
 
   PanlinCap.addInitializer(function() {
 
@@ -84,7 +58,7 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
         'about/panlin(/)' : 'showAboutPanlin',
         'about/advantage(/)' : 'showAdvantage'
       },
-      controller: aboutController
+      controller: new AboutController()
     });
 
   });
