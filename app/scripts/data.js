@@ -152,7 +152,6 @@
 
   PanlinCap.reqres.setHandler('founds:fetch', function() {
     var data = [{
-      id : 1,
       issue : '壹期基金',
       name : '磐霖东方股权投资基金',
       description : [
@@ -176,23 +175,77 @@
         '</table>'
       ].join('')
     }, {
-      id : 2,
       issue : '贰期基金',
-      name : '磐霖平安股权投资基金'
+      name : '磐霖平安股权投资基金',
+      description : [
+        '<p>基金名称：磐霖平安股权投资基金</p>',
+        '<p>投资周期：2010年至2015年</p>',
+        '<p>投资项目：东方时尚、八达园林、凯普生物、康泰生物等</p>',
+        '<p>投资行业分布：</p>',
+        '<table class="chart distribution">',
+          '<tr>',
+            '<td width="17%" style="background-color:rgb(180,6,12)">17%</td>',
+            '<td width="48%" style="background-color:rgb(199,99,103)">48%</td>',
+            '<td width="34%"  style="background-color:rgb(178,53,55)">34%</td>',
+          '</tr>',
+          '<tr>',
+            '<td>培训教育</td>',
+            '<td>医疗健康</td>',
+            '<td>城市园林绿化</td>',
+          '</tr>',
+        '</table>'
+      ].join('')
     }, {
-      id : 3,
       issue : '叁期基金',
-      name : '磐霖盛泰股权投资基金'
+      name : '磐霖盛泰股权投资基金',
+      description : [
+        '<p>基金名称：磐霖盛泰股权投资基金</p>',
+        '<p>投资周期：2011年至2016年</p>',
+        '<p>投资项目：康泰生物、爱德牛业、德勤集团、盛世骄阳等</p>',
+        '<p>投资行业分布：</p>',
+        '<table class="chart distribution">',
+          '<tr>',
+            '<td width="49%" style="background-color:rgb(180,6,12)">49%</td>',
+            '<td width="11%" style="background-color:rgb(199,99,103)">11%</td>',
+            '<td width="18%"  style="background-color:rgb(178,53,55)">18%</td>',
+            '<td width="23%" style="background-color:rgb(208,145,148)">23%</td>',
+          '</tr>',
+          '<tr>',
+            '<td>医疗健康</td>',
+            '<td>现代农业</td>',
+            '<td>航运/现代物流</td>',
+            '<td>文化传媒</td>',
+          '</tr>',
+        '</table>'
+      ].join('')
     }, {
-      id : 4,
       issue : '肆期基金',
-      name : '磐霖丹阳股权投资基金'
+      name : '磐霖丹阳股权投资基金',
+      description : [
+        '<p>基金名称：磐霖丹阳股权投资基金</p>',
+        '<p>投资周期：2012年至2017年</p>',
+        '<p>投资项目：华杉环保、康泰生物、德易东方、华夏滤园、赛安生物等</p>',
+        '<p>投资行业分布：</p>',
+        '<table class="chart distribution">',
+          '<tr>',
+            '<td width="72%" style="background-color:rgb(180,6,12)">72%</td>',
+            '<td width="28%" style="background-color:rgb(199,99,103)">28%</td>',
+          '</tr>',
+          '<tr>',
+            '<td>医疗健康</td>',
+            '<td>节能环保</td>',
+          '</tr>',
+        '</table>'
+      ].join('')
     }, {
-      id : 5,
       issue : '伍期基金',
-      name : '磐霖仟源股权投资基金'
+      name : '磐霖仟源股权投资基金',
+      description : [
+        '<p>基金名称：磐霖仟源股权投资基金</p>',
+        '<p>投资周期：2015年至2020年</p>',
+        '<p>投资行业分布：投资组合尚在进行中</p>'
+      ].join('')
     }, {
-      id : 6,
       issue : '陆期基金',
       name : '磐霖滨海医疗健康股权投资基金'
     }];
