@@ -1,10 +1,12 @@
+@reveal-width: 320px;
+
 #main .reveal {
   box-sizing: border-box;
   transition: opacity .5s ease-in-out .35s;
   position: absolute;
   top : 0;
   padding : 1rem;
-  width: 300px;
+  width: @reveal-width;
   opacity: 0;
   left: 160px;
   visibility: hidden;
@@ -54,7 +56,7 @@
   width: 0;
   background-color: transparent;
   &.active {
-    width: 300px;
+    width: @reveal-width;
     background-color: rgba(255,255,255,.8);
   }
 }

@@ -32,17 +32,30 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
     showInvestMent : function() {
       var layout = this.initializeLayout();
       layout.getRegion('main').empty();
-      layout.showChildView('sidebar', new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({ collection : new Backbone.Model([{ text : '投资理念', link : '/investment' }]) }));
+      layout.showChildView('sidebar', new Shared.SidebarView({ 
+        collection : new Backbone.Collection(slogan) 
+      }));
+      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({ 
+        collection : new Backbone.Model([{ text : '投资理念', link : '/investment' }]) 
+      }));
       
       PanlinCap.vent.trigger('reveal:hide');
     },
     showDetail : function() {
       var layout = this.initializeLayout();
       layout.getRegion('main').empty();
-      layout.showChildView('sidebar', new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({ collection : new Backbone.Model([{ text : '投资理念', link : '/investment' }, {text : '投资核心原则', link : '/investment/show'}]) }));
-      layout.showChildView('main', new Shared.RevealView({ model : new Backbone.Model(reveal) }));
+      layout.showChildView('sidebar', new Shared.SidebarView({ 
+        collection : new Backbone.Collection(slogan) 
+      }));
+      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({ 
+        collection : new Backbone.Model([
+          { text : '投资理念', link : '/investment' }, 
+          {text : '投资核心原则', link : '/investment/show'}
+        ]) 
+      }));
+      layout.showChildView('main', new Shared.RevealView({ 
+        model : new Backbone.Model(reveal) 
+      }));
 
       PanlinCap.vent.trigger('reveal:active');
     }

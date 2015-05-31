@@ -12,7 +12,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
 
   var NewsCollectionView = Marionette.CompositeView.extend({
     template : PanlinCapTpl["templates/news/pages.hbs"],
-    className : 'news-container',
+    className : 'main-container',
     childView : NewsView,
     childViewContainer : 'ul.news'
   });
