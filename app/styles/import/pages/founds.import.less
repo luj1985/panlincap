@@ -9,7 +9,9 @@
     margin-top: 0;
     color: @color-main;
     font-family: @font-heiti;
+    font-size: 1.3rem;
   }
+
 }
 
 .founds {
@@ -37,14 +39,35 @@
     }
   }
 }
-
 .content.found {
-  column-count: 2;
+
+  .content-column-left, .content-column-right {
+    position: relative;
+    display: inline-block;
+    float: left;
+    clear: right;
+  }
+  .content-column-left {
+    width: 35%;
+  }
+  table.content-column-left {
+    td {
+      vertical-align: top;
+      line-height: 1.5rem;
+    }
+    tr > td:nth-child(1) {
+      width: 80px;
+    }
+  }
+  .content-column-right {
+    width: 65%;
+    padding-left: 2rem;
+  }
 }
 
 table.chart.distribution {
   text-align: center;
-  width: 600px;
+  width: 100%;
   tr:nth-child(1) {
     height: 40px;
     color: @color-white;
