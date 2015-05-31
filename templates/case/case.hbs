@@ -1,6 +1,10 @@
 <div class="content">
-  <img src="{{brand}}" />
-  <h4>{{title}}</h4>
-  <h5>{{website}}</h5>
-  <p class="description">{{{description}}}</p>
+  <div class="case-preview">
+    <img src="{{brand}}" />
+    <h4>{{title}}</h4>
+    {{#if website}}
+      <a href="{{website}}">{{website}}</a>
+    {{/if}}
+    <p class="description">{{{description}}}</p>
+  </div>
 </div>
