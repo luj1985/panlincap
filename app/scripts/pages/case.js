@@ -3,14 +3,35 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
 
   var Shared = PanlinCap.module('Layout.Sidebar');
 
-  var slogan = [{ text : '投资案例', link : '/cases' }, { text : '重点案例', link : '/cases' }];
+  var CaseView = Marionette.ItemView.extend({
+    template : Handlebars.compile('<img src="{{brand}}" />'),
+    className : 'brand',
+    onRender : function() {
+      var model = this.model;
+      this.$el.on('click', function() {
+        var dialog = new CaseDialogView({model : model});
+        PanlinCap.dialogRegion.show(dialog);
+      });
+    }
+  });
 
-  var breadcrumb = { text : '投资案例', link : '/cases' };
-
-  var CasesView = Marionette.ItemView.extend({
+  var CaseDialogView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/case/case.hbs'],
+    className : 'ui panlin modal',
+    onShow : function() {
+      this.$el.modal('show');
+    }
+  });
+
+  var CasesView = Marionette.CompositeView.extend({
+    template : Handlebars.compile('<h4>{{title}}</h4><div class="brands"></div>'),
+    childView : CaseView,
+    childViewContainer : '.brands',
     className : 'case-group',
-    tagName : 'section'
+    tagName : 'section',
+    initialize : function() {
+      this.collection = new Backbone.Collection(this.model.get('brands'));
+    }
   });
 
   var CasesCollectionView = Marionette.CollectionView.extend({
@@ -26,10 +47,10 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
         collection : cases
       }));
       this.showChildView('sidebar', new Shared.SideMenuView({
-        collection : new Backbone.Collection(slogan)
+        collection : new Backbone.Collection([{ text : '投资案例', link : '/cases' }, { text : '重点案例', link : '/cases' }])
       }));
       this.showChildView('breadcrumb', new Shared.BreadcrumbView({
-        model : new Backbone.Model(breadcrumb)
+        collection : new Backbone.Collection([{ text : '投资案例', link : '/cases' }])
       }));
     }
   });
