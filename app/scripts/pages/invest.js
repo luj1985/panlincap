@@ -1,10 +1,10 @@
 PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
   'use strict';
 
-
   var slogan = [{ text : '投资核心原则' }, { text : '重点投资领域' }, { text : '价值提升机制'}];
 
   var reveal = {
+    back : '/invest',
     description : [
       '<h2>投资核心原则</h2>',
       '<h3>新兴产业</h3>',

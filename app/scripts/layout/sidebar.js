@@ -11,37 +11,25 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
     }
   });
 
-  Sidebar.SidebarView = Marionette.ItemView.extend({
-    template : PanlinCapTpl['templates/layout/sidebar.hbs'],
-    tagName : 'ul',
-    className : 'brief',
-    events : {
-      'click li' : function() {
-        PanlinCap.vent.trigger('reveal');
-      }
-    }
-  });
-
-  Sidebar.SideMenuView = Marionette.ItemView.extend({
+  Sidebar.SidebarView = Sidebar.SideMenuView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/layout/sidelinks.hbs'],
     tagName : 'ul',
     className : 'brief'
   });
 
   Sidebar.RevealView = Marionette.ItemView.extend({
+    template : PanlinCapTpl['templates/layout/reveal.hbs'],
+    className : 'reveal',
     initialize : function() {
-      this.listenTo(PanlinCap.vent, 'reveal', this.revealView, this);
+      this.listenTo(PanlinCap.vent, 'reveal:active', this.revealView, this);
+      this.listenTo(PanlinCap.vent, 'reveal:hide', this.hideView, this);
+    },
+    hideView : function() {
+      this.$el.removeClass('active');
     },
     revealView : function () {
-      this.$el.toggleClass('active');
-    },
-    events : {
-      'click a.close' : function() {
-        PanlinCap.vent.trigger('reveal');
-      }
-    },
-    template : PanlinCapTpl['templates/layout/reveal.hbs'],
-    className : 'reveal'
+      this.$el.addClass('active');
+    }
   });
 
   Sidebar.BreadcrumbView = Marionette.ItemView.extend({

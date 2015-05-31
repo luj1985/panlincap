@@ -7,13 +7,17 @@ PanlinCap.module('Background', function(Background, PanlinCap, Backbone, Marione
   });
 
   var SingleBackground = Marionette.ItemView.extend({
+    template : PanlinCapTpl['templates/revealbg.hbs'],
     initialize : function() {
-      this.listenTo(PanlinCap.vent, 'reveal', this.revealView, this);
+      this.listenTo(PanlinCap.vent, 'reveal:active', this.revealView, this);
+      this.listenTo(PanlinCap.vent, 'reveal:hide', this.hideView, this);
+    },
+    hideView : function() {
+      this.$('.revealbg').removeClass('active');
     },
     revealView : function () {
-      this.$('.revealbg').toggleClass('active');
-    },
-    template : PanlinCapTpl['templates/revealbg.hbs']
+      this.$('.revealbg').addClass('active');
+    }
   });
 
   PanlinCap.commands.setHandler('showBackground', function(page) {

@@ -5,8 +5,6 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
 
   var slogan = [{ text : '被投公司资讯', link : '/news/invested' }, { text : '公司新闻', link : '/news/company' }];
 
-  var breadcrumb = { text : '新闻中心', link : '/news' };
-
   var NewsView = Marionette.ItemView.extend({
     template : PanlinCapTpl["templates/news/news.hbs"],
     tagName : 'li'
@@ -29,39 +27,46 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
       this.showChildView('sidebar', new NewsSidebarView({
         collection : new Backbone.Collection(slogan)
       }));
-      this.showChildView('breadcrumb', new Shared.BreadcrumbView({
-        model : new Backbone.Model(breadcrumb)
-      }));
     }
   });
 
   var newsController = {
     initLayout : function() {
-      if (!this.layout) {
+      if (!this.layout || (this.layout && this.layout.isDestroyed)) {
         this.layout = new NewsLayoutView();
+        PanlinCap.bodyRegion.show(this.layout);
+        PanlinCap.execute('showBackground', 'news');
       }
       return this.layout;
     },
     showNews: function() {
       var layout = this.initLayout();
       layout.getRegion('main').empty();
-      PanlinCap.bodyRegion.show(layout);
-      PanlinCap.execute('showBackground', 'news');
+
+      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
+        collection : new Backbone.Collection({ text : '新闻中心', link : '/news' })
+      }));
     },
     showInvestedCompanyNews : function() {
-      this.showNews();
 
       var layout = this.initLayout();
       var news = PanlinCap.reqres.request('news:fetch');
+
+      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
+        collection : new Backbone.Collection([{ text : '新闻中心', link : '/news' }, { text : '被投公司新闻', link : '/news/invested '}])
+      }));
       layout.showChildView('main', new NewsCollectionView({
         collection : news
       }));
     },
     showCompanyNews : function() {
-      this.showNews();
-
       var layout = this.initLayout();
+
       var news = PanlinCap.reqres.request('company-news:fetch');
+
+      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
+        collection : new Backbone.Collection([{ text : '新闻中心', link : '/news' }, { text : '公司新闻', link : '/news/company '}])
+      }));
       layout.showChildView('main', new NewsCollectionView({
         collection : news
       }));
