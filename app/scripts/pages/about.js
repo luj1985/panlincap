@@ -1,7 +1,7 @@
 PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
   'use strict';
 
-  var slogan = [{ text : '关于磐霖' }, { text : '我们的优势' }];
+  var slogan = [{ text : '关于磐霖', link : '/about/panlin' }, { text : '我们的优势', link : '/about/advantage' }];
 
   var reveal = {
     description : [
@@ -12,6 +12,13 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
     ].join('\n')
   };
 
+  var advantage = {
+    description : [
+      '<h2>我们的优势</h2>',
+      '<p>充分秉承“专业创造价值”的理念，磐霖资本组合了高度互补的投资管理团队；对企业价值的专业判断能力和辅导企业在国内各板块上市的能力是我们的核心竞争力</p>'
+    ].join('\n')
+  };
+
   var breadcrumb = { text : '关于我们', link : '/about' };
 
   var Shared = PanlinCap.module('Layout.Sidebar');
@@ -19,10 +26,7 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
   var AboutView = Shared.SidebarLayoutView.extend({
     
     onBeforeShow : function() {
-      this.showChildView('main', new Shared.RevealView({
-        model : new Backbone.Model(reveal)
-      }));
-      this.showChildView('sidebar', new Shared.SidebarView({
+      this.showChildView('sidebar', new Shared.SideMenuView({
         collection : new Backbone.Collection(slogan)
       }));
       this.showChildView('breadcrumb', new Shared.BreadcrumbView({
@@ -32,9 +36,35 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
   });
 
   var aboutController = {
+    initLayout : function() {
+      if (!this.layout) {
+        this.layout = new AboutView();
+      }
+      return this.layout;
+    },
     showAbout: function() {
-      PanlinCap.bodyRegion.show(new AboutView());
+      var layout = this.initLayout();
+      layout.getRegion('main').empty();
+
+      PanlinCap.bodyRegion.show(layout);
       PanlinCap.execute('showBackground', 'about');
+      return layout;
+    },
+    showAboutPanlin : function() {
+      var layout = this.showAbout();
+
+      layout.showChildView('main', new Shared.RevealView({
+        model : new Backbone.Model(reveal)
+      }));
+      PanlinCap.vent.trigger('reveal');
+    },
+    showAdvantage : function() {
+      var layout = this.showAbout();
+
+      layout.showChildView('main', new Shared.RevealView({
+        model : new Backbone.Model(advantage)
+      }));
+      PanlinCap.vent.trigger('reveal');
     }
   };
 
@@ -42,7 +72,9 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
 
     new Marionette.AppRouter({
       appRoutes : {
-        'about(/)': 'showAbout'
+        'about(/)': 'showAbout',
+        'about/panlin(/)' : 'showAboutPanlin',
+        'about/advantage(/)' : 'showAdvantage'
       },
       controller: aboutController
     });
