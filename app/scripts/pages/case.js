@@ -36,7 +36,7 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
 
   var CasesCollectionView = Marionette.CollectionView.extend({
     childView : CasesView,
-    className : 'cases'
+    className : 'main-container cases'
   });
   
   var CaseLayoutView = Shared.SidebarLayoutView.extend({

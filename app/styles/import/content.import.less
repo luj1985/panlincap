@@ -1,4 +1,57 @@
 
+
+@sidebar-width: 160px;
+.sidebar-layout {
+  aside {
+    float: left;
+    padding-top: 2rem;
+    position : absolute;
+    width: @sidebar-width;
+    display: inline-block;
+  }
+
+  main {
+    display: block;
+    // padding-left: @sidebar-width;
+    margin: 0 auto;
+  }
+}
+
+.sidebar-layout {
+  position: relative;
+}
+
+#breadcrumb .ui.breadcrumb {
+  margin: 1rem 0;
+  a, .divider {
+    color: @color-white;
+  }
+}
+
+ul.brief  {
+  display: inline-block;
+  list-style: none;
+  padding-left: 0;
+  font-family: @font-kaiti;
+  li {
+    border-bottom: 1px solid black;
+    line-height: 2.5rem;
+    padding: 0 .5rem;
+    font-size: 1rem;
+    color: black;
+    a {
+      color: black;
+      font-family: @font-kaiti;
+    }
+    &:first-of-type {
+      border-top: 1px solid black;
+    }
+  }
+}
+
+.content-wrapper {
+  position: relative;
+}
 #body {
   position: absolute;
   top: 9rem;
@@ -10,8 +63,43 @@
 
 .main-container {
   max-width: 750px;
+  margin: 0 auto;
   background-color: rgba(255,255,255,.5);
   padding: 2rem 3rem;
   min-height: 350px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px;
+}
+
+.main-container.address {
+  h3 {
+    color: @color-main;
+  }
+}
+
+.main-container.hire {
+  h3 {
+    color: @color-main;
+  }
+}
+
+.main-container.plan {
+  h3 {
+    color: @color-main;
+  }
+  .myplan {
+    width: 500px;
+    margin: 4rem auto;
+  }
+  .actions {
+    margin: 2rem 0;
+  }
+}
+
+.main-container.cases {
+  padding: 0;
+  background-color: transparent;
+  box-shadow: none;
+  .case-group {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px;
+  }
 }
