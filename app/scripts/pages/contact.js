@@ -21,7 +21,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
 
   var BizPlanView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/contact/plan.hbs'],
-    className : 'main-container'
+    className : 'main-container plan'
   });
   
   var ContactController = Shared.MainRegionController.extend({
