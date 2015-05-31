@@ -3,7 +3,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
 
   var Shared = PanlinCap.module('Layout.Sidebar');
 
-  var slogan = [{ text : '被投公司资讯' }, { text : '公司新闻' }];
+  var slogan = [{ text : '被投公司资讯', link : '/news/invested' }, { text : '公司新闻', link : '/news/company' }];
 
   var breadcrumb = { text : '新闻中心', link : '/news' };
 
@@ -25,12 +25,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
   });
   
   var NewsLayoutView = Shared.SidebarLayoutView.extend({
-    
     onBeforeShow : function() {
-      var news = PanlinCap.reqres.request('news:fetch');
-      this.showChildView('main', new NewsCollectionView({
-        collection : news
-      }));
       this.showChildView('sidebar', new NewsSidebarView({
         collection : new Backbone.Collection(slogan)
       }));
@@ -41,9 +36,35 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
   });
 
   var newsController = {
+    initLayout : function() {
+      if (!this.layout) {
+        this.layout = new NewsLayoutView();
+      }
+      return this.layout;
+    },
     showNews: function() {
-      PanlinCap.bodyRegion.show(new NewsLayoutView());
+      var layout = this.initLayout();
+      layout.getRegion('main').empty();
+      PanlinCap.bodyRegion.show(layout);
       PanlinCap.execute('showBackground', 'news');
+    },
+    showInvestedCompanyNews : function() {
+      this.showNews();
+
+      var layout = this.initLayout();
+      var news = PanlinCap.reqres.request('news:fetch');
+      layout.showChildView('main', new NewsCollectionView({
+        collection : news
+      }));
+    },
+    showCompanyNews : function() {
+      this.showNews();
+
+      var layout = this.initLayout();
+      var news = PanlinCap.reqres.request('company-news:fetch');
+      layout.showChildView('main', new NewsCollectionView({
+        collection : news
+      }));
     }
   };
 
@@ -51,7 +72,9 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
 
     new Marionette.AppRouter({
       appRoutes : {
-        'news(/)': 'showNews'
+        'news(/)': 'showNews',
+        'news/invested(/)' : 'showInvestedCompanyNews',
+        'news/company(/)' : 'showCompanyNews'
       },
       controller: newsController
     });

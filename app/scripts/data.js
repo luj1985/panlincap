@@ -18,6 +18,23 @@
     return new Backbone.Collection(news);
   });
 
+  PanlinCap.reqres.setHandler('company-news:fetch', function() {
+    var news = [{
+      title : '2015/05/18   [ 磐霖资本股权投资基金A轮主导投资上海赛安生物医药科技有限公司 ]',
+      descriptions : '近日，磐霖资本股权投资基金作为A轮主导投资人，投资了上海赛安生物医药科技有限公司。   公司长期致力于肿瘤个体化治疗...'
+    }, {
+      title : '2015/03/25   [ 磐霖东方、磐霖盛泰基金投资的上海骏梦网络被富春通信收购100%股权获证监会无条件通过 ]',
+      descriptions : '2015年3月23日，磐霖东方、磐霖盛泰基金投资的上海骏梦网络科技有限公司被富春通信（300299）收购100%股权获证监会无条件...'
+    }, {
+      title : '2015/03/05   [ 磐霖仟源医疗健康产业基金正式成立，总规模达3亿人民币 ]',
+      descriptions : '由上海磐霖资产管理有限公司（以下简称“磐霖资本”）与山西仟源医药集团股份有限公司（以下简称“仟源医药”）共同发起设立的医疗健康产业...'
+    }, {
+      title : '2015/02/26   [ 磐霖盛泰基金投资的盛世骄阳拟被皇氏集团以7.8亿元收购100%股权 ]',
+      descriptions : '2015年1月29日晚间，皇氏集团股份有限公司（002329.SZ）（以下简称“皇氏集团”）发布公告，磐霖盛泰基金投资的北京盛世骄...'
+    }];
+    return new Backbone.Collection(news);
+  });
+
   PanlinCap.reqres.setHandler('cases:fetch', function() {
 
     var cases = [{
