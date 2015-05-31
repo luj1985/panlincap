@@ -156,10 +156,24 @@
       issue : '壹期基金',
       name : '磐霖东方股权投资基金',
       description : [
-        '• 基金名称：磐霖东方股权投资基金<br>',
-        '• 投资周期：2010年至2016年<br>',
-        '• 投资项目：高能环境、瑞翔材料、东方时尚、骏梦网络等<br>',
-        '• 投资行业分布：<br>'
+        '<p>基金名称：磐霖东方股权投资基金</p>',
+        '<p>投资周期：2010年至2016年</p>',
+        '<p>投资项目：高能环境、瑞翔材料、东方时尚、骏梦网络等</p>',
+        '<p>投资行业分布：</p>',
+        '<table class="chart distribution">',
+          '<tr>',
+            '<td width="62%" style="background-color:rgb(180,6,12)">62%</td>',
+            '<td width="20%" style="background-color:rgb(199,99,103)">20%</td>',
+            '<td width="8%"  style="background-color:rgb(178,53,55)">8%</td>',
+            '<td width="10%" style="background-color:rgb(208,145,148)">10%</td>',
+          '</tr>',
+          '<tr>',
+            '<td>节能环保</td>',
+            '<td>教育培训</td>',
+            '<td>新能源/新材料</td>',
+            '<td>文化传媒</td>',
+          '</tr>',
+        '</table>'
       ].join('')
     }, {
       id : 2,

@@ -1,3 +1,17 @@
+.found {
+  h3 {
+    font-family: @font-kaiti;
+    color: @color-main;
+    margin-bottom: .3rem;
+  }
+
+  h4 {
+    margin-top: 0;
+    color: @color-main;
+    font-family: @font-heiti;
+  }
+}
+
 .founds {
   max-width: 960px;
   margin: 0 auto;
@@ -16,20 +30,28 @@
     vertical-align: top;
     cursor: pointer;
 
-    h3 {
-      font-family: @font-kaiti;
-      color: @color-main;
-      margin-bottom: .3rem;
-    }
-
-    h4 {
-      margin-top: 0;
-      color: @color-main;
-      font-family: @font-heiti;
-    }
+    
     &:active, &:focus {
       border: none;
       box-shadow: none;
     }
   }
 }
+
+.content.found {
+  column-count: 2;
+}
+
+table.chart.distribution {
+  text-align: center;
+  tr:nth-child(1) {
+    height: 40px;
+    color: @color-white;
+  }
+  tr:nth-child(2) td{
+    height: 20px;
+    font-size: 11px;
+    vertical-align: middle;
+  }
+}
+

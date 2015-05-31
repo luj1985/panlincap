@@ -18,5 +18,5 @@
   "trailing": true,
   "smarttabs": true,
   "jquery": true,
-  "predef": ["Backbone", "jQuery", "Marionette", "Mn", "PanlinCapTpl", "PanlinCap"]
+  "predef": ["Backbone", "jQuery", "Marionette", "Mn", "PanlinCapTpl", "PanlinCap", "Handlebars"]
 }
