@@ -136,12 +136,12 @@
   PanlinCap.reqres.setHandler('menus:fetch', function() {
 
     var data = [
-      { text : '首页', link : '/' }, 
+      { text : '首页',    link : '/' }, 
       { text : '关于我们', link : '/about' }, 
       { text : '投资理念', link : '/investment' },
-      { text : '核心团队', menu : [ { text : '投资团队', link : '/team'} ]},
+      { text : '核心团队', link : '/team' },
       { text : '基金管理', link : '/founds' },
-      { text : '投资组合', menu : [ { text : '投资案例', link : '/cases' }]},
+      { text : '投资组合', link : '/cases' },
       { text : '新闻中心', link : '/news' },
       { text : '联系我们', link : '/contacts'}
     ];
