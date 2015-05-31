@@ -137,7 +137,7 @@
 
     var data = [
       { text : '首页', link : '/' }, 
-      { text : '关于我们', menu : [ { text : '关于我们', link : '/about' }, { text : '特点/优势', link : '#' }] }, 
+      { text : '关于我们', link : '/about' }, 
       { text : '投资理念', menu : [ { text : '投资策略', link : '#' },  { text : '投资理念', link : '/investment' }, { text : '价值提升机制', link : '#' }]},
       { text : '核心团队', menu : [ { text : '投资团队', link : '/team'} ]},
       { text : '基金管理', link : '/founds' },
