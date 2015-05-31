@@ -8,7 +8,7 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
   ];
 
   var reveal = {
-    back : '/invest',
+    back : '/investment',
     description : [
       '<h2>投资核心原则</h2>',
       '<h3>新兴产业</h3>',
