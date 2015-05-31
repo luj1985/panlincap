@@ -44,7 +44,7 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
 
   var InvestmentController = Shared.MainRegionController.extend({
     background : 'invest',
-    showInvestMent : function() {
+    showInvestment : function() {
       var layout = this.initializeLayout();
       layout.getRegion('main').empty();
       layout.showChildView('sidebar', new Shared.SidebarView({ 
@@ -114,7 +114,7 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
   PanlinCap.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : {
-        'investment(/)': 'showInvestMent',
+        'investment(/)': 'showInvestment',
         'investment/principle(/)' : 'showPrinciple',
         'investment/strategy(/)' : 'showStrategy',
         'investment/price' : 'showPrice'
