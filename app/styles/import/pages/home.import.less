@@ -56,7 +56,7 @@
     color: @color-main;
     font-size: 18px;
     font-family: @font-heiti;
-    padding: 2rem 0 1rem 0;
+    padding: 1.5rem 0 1rem 0;
     margin-bottom: 0;
     position: relative;
   }
@@ -75,7 +75,25 @@
       text-decoration: underline;
     }
   }
+
 } 
+
+.news-preview {
+  h4 {
+    margin: 10px 0 0 0;
+    font-family: @font-heiti;
+    font-size: 13px;
+  }
+  h4:nth-child(1) {
+    margin-top: 0;
+  }
+
+  h4, p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
 
 .topic:hover .inner {
   background-color: @color-main;

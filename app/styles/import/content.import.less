@@ -1,6 +1,20 @@
 
 
 @sidebar-width: 160px;
+
+html, body {
+  height: 100%;
+}
+
+#body {
+  position: absolute;
+  top: 121px;
+  bottom: 0;
+  padding: 1rem 4rem 0 4rem;
+  width: 100%;
+  overflow: auto;
+}
+
 .sidebar-layout {
   aside {
     float: left;
@@ -63,15 +77,6 @@ ul.brief  {
 .content-wrapper {
   position: relative;
 }
-#body {
-  position: absolute;
-  top: 10rem;
-  bottom: 0;
-  width: 100%;
-  padding: 0 4rem;
-}
-
-
 .main-container {
   max-width: 750px;
   margin: 0 auto;
