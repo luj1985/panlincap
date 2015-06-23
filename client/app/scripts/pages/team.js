@@ -4,8 +4,8 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
   var Shared = PanlinCap.module('Layout.Sidebar');
 
   var slogan = [
-      { text : '合伙人', link : '/team/top' }, 
-      { text : '核心团队', link : '/team/bottom' }
+      { text : '合伙人', link : '/team/partner' }, 
+      { text : '核心团队', link : '/team/members' }
     ];
 
   var MemberView = Marionette.ItemView.extend({
@@ -45,31 +45,34 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
     }
   });
 
-  var teamController = {
-    showTeam :function() {
-      var members = PanlinCap.reqres.request('members:fetch');
-      PanlinCap.bodyRegion.show(new TeamLayoutView({collection: members}));
-      PanlinCap.execute('showBackground', 'team');
-    },
-    showTop :function() {
-      var members = PanlinCap.reqres.request('members:fetch');
-      PanlinCap.bodyRegion.show(new TeamLayoutView({collection: members}));
-      PanlinCap.execute('showBackground', 'team');
-    },
-    showBottom :function() {
-      var members = PanlinCap.reqres.request('members:fetch');
-      PanlinCap.bodyRegion.show(new TeamLayoutView({collection: members}));
-      PanlinCap.execute('showBackground', 'team');
-      window.scrollTo(0,document.body.scrollHeight);
+  var teamController = (function() {
+    var pageLoaded = false;
+
+    function loadTeamPage() {
+      if (!pageLoaded) {
+        var members = PanlinCap.reqres.request('members:fetch');
+        PanlinCap.bodyRegion.show(new TeamLayoutView({collection: members}));
+        PanlinCap.execute('showBackground', 'team');
+        pageLoaded = true;
+      }
     }
-  };
+    return {
+      showTeam : loadTeamPage,
+      showPartner :function() {
+        loadTeamPage();
+      },
+      showMembers :function() {
+        loadTeamPage();
+      }
+    };
+  })();
 
   PanlinCap.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : {
         'team(/)' : 'showTeam',
-        'team/top(/)' : 'showTop',
-        'team/bottom(/)' : 'showBottom'
+        'team/partner(/)' : 'showPartner',
+        'team/members(/)' : 'showMembers'
       },
       controller: teamController
     });
