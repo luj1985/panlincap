@@ -27,9 +27,10 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
     }
   });
 
-  var TeamsView = Marionette.CollectionView.extend({
-    className : 'teams',
+  var TeamsView = Marionette.CompositeView.extend({
+    template : PanlinCapTpl['templates/team/container.hbs'],
     childView : TeamView,
+    childViewContainer : '.teams'
   });
 
   var TeamLayoutView = Shared.SidebarLayoutView.extend({
@@ -46,24 +47,18 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
   });
 
   var teamController = (function() {
-    var pageLoaded = false;
-
-    function loadTeamPage() {
-      if (!pageLoaded) {
+    return {
+      showTeam : function() {
         var members = PanlinCap.reqres.request('members:fetch');
         PanlinCap.bodyRegion.show(new TeamLayoutView({collection: members}));
         PanlinCap.execute('showBackground', 'team');
-        pageLoaded = true;
-      }
-    }
-    return {
-      showTeam : loadTeamPage,
+      },
       showPartner :function() {
-        loadTeamPage();
+        this.showTeam();
         $('#body').animate({scrollTop: 0}, { duration: 'slow', easing: 'swing'});
       },
       showMembers :function() {
-        loadTeamPage();
+        this.showTeam();
         $('#body').animate({scrollTop: 640}, { duration: 'slow', easing: 'swing'});
       }
     };
