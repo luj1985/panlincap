@@ -50,7 +50,7 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
         collection : new Backbone.Collection([{ text : '投资案例', link : '/cases' }, { text : '重点案例', link : '/cases' }])
       }));
       this.showChildView('breadcrumb', new Shared.BreadcrumbView({
-        collection : new Backbone.Collection([{ text : '投资案例', link : '/cases' }])
+        collection : new Backbone.Collection([{ text : '投资组合', link : '/cases' }])
       }));
     }
   });
