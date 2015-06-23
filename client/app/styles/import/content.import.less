@@ -83,7 +83,11 @@ ul.brief  {
 .content-wrapper {
   position: relative;
 }
+
 .main-container {
+  h3{
+    font-size: 15px;
+  }
   max-width: 750px;
   margin: 0 auto;
   background-color: rgba(255,255,255,.5);
@@ -91,69 +95,5 @@ ul.brief  {
   min-height: 350px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px;
 }
-.main-container {
-  h3{
-    font-size: 15px;
-  }
-}
 
-.main-container.address {
-  h3 {
-    color: @color-main;
-  }
-}
 
-.main-container.hire {
-  h3 {
-    color: @color-main;
-  }
-}
-
-.main-container.plan {
-  h3 {
-    color: @color-main;
-  }
-  .myplan {
-    width: 300px;
-    margin: 4rem auto;
-  }
-  .actions {
-    margin: 2rem 0;
-    text-align: center;
-  }
-
-  #upload, #cancel {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    margin: 10px;
-    font-size: 12px;
-    color: rgba(0,0,0,.7);
-  }
-
-  .email {
-    color: black;
-    font-family: Arial;
-    font-size: 16px;
-    text-decoration: underline;
-  }
-
-  #copy {
-    font-size: 12px;
-    color: rgba(0,0,0,.8);
-    background-color: rgba(0,0,0,.2);
-    padding: 3px 20px;
-    outline : none;
-    border : none;
-    margin-left: 20px;
-  }
-}
-
-.main-container.cases {
-  padding: 0;
-  background-color: transparent;
-  box-shadow: none;
-  .case-group {
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px;
-  }
-}
