@@ -280,6 +280,9 @@
     }, {
       issue : '陆期基金',
       name : '磐霖滨海医疗健康股权投资基金'
+    }, {
+      issue : '柒期基金',
+      name : '磐霖高能产业并购基金'
     }];
     return new Backbone.Collection(data);
   });

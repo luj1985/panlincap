@@ -9,7 +9,7 @@
     margin-top: 0;
     color: @color-main;
     font-family: @font-heiti;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 
 }
@@ -19,19 +19,22 @@
   margin: 0 auto;
   box-sizing: content-box;
   position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content : center;
 
   .found {
     display: inline-block;
     margin: 5px;
     padding: 2.5rem 1rem;
-    width: 310px;
+    min-width: 220px;
     height: 240px;
     background-color: @color-background;
     position: relative;
     box-sizing: border-box;
     vertical-align: top;
     cursor: pointer;
-
+    flex-grow : 1;
     
     &:active, &:focus {
       border: none;
