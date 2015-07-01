@@ -5,10 +5,10 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
     onRender : function() {
       var $wrapper = $('#body');
       function startScrollUp() {
-        $wrapper.animate({scrollTop: '+=40'}, 'normal', 'linear', startScrollUp);
+        $wrapper.animate({scrollTop: '-=50'}, 'fast', 'linear', startScrollUp);
       }
       function startScrollDown() {
-        $wrapper.animate({scrollTop: '-=40'}, 'normal', 'linear', startScrollDown); 
+        $wrapper.animate({scrollTop: '+=50'}, 'fast', 'linear', startScrollDown); 
       }
       function stopScrolling() {
         $wrapper.stop();

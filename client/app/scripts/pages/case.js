@@ -12,6 +12,7 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
         var dialog = new CaseDialogView({model : model});
         PanlinCap.dialogRegion.show(dialog);
       });
+      this.$el.attr('company', this.model.get('title'));
     }
   });
 
