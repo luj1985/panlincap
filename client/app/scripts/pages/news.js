@@ -10,10 +10,10 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
     tagName : 'li'
   });
 
-  var NewsCollectionView = Marionette.CompositeView.extend({
+  var NewsCollectionView = Shared.ScrollView.extend({
     template : PanlinCapTpl['templates/news/pages.hbs'],
-    className : 'main-container',
     childView : NewsView,
+    className : 'main-container news',
     childViewContainer : 'ul.news'
   });
 

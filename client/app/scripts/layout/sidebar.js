@@ -1,6 +1,31 @@
 PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marionette) {
   'use strict';
 
+  Sidebar.ScrollView = Marionette.CompositeView.extend({
+    onRender : function() {
+      var $wrapper = $('#body');
+      function startScrollUp() {
+        $wrapper.animate({scrollTop: '+=40'}, 'normal', 'linear', startScrollUp);
+      }
+      function startScrollDown() {
+        $wrapper.animate({scrollTop: '-=40'}, 'normal', 'linear', startScrollDown); 
+      }
+      function stopScrolling() {
+        $wrapper.stop();
+      }
+      this.$('.scroll.up').mousedown(startScrollUp).mouseup(stopScrolling);
+      this.$('.scroll.down').mousedown(startScrollDown).mouseup(stopScrolling);
+    },
+    events : {
+      'click .scroll.up' : function(e) {
+        e.preventDefault();
+      },
+      'click .scroll.down' : function(e) {
+        e.preventDefault();
+      }
+    }
+  });
+
   Sidebar.SidebarLayoutView = Marionette.LayoutView.extend({
     template : PanlinCapTpl['templates/layout/sidebarLayout.hbs'],
     className : 'sidebar-layout',
