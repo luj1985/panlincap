@@ -37,7 +37,30 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
   var CasesCollectionView = Marionette.CompositeView.extend({
     template : PanlinCapTpl['templates/case/container.hbs'],
     childView : CasesView,
-    childViewContainer : '.main-container.cases'
+    childViewContainer : '.main-container.cases',
+    onRender : function() {
+      var $wrapper = $('#body');
+      function startScrollUp() {
+        $wrapper.animate({scrollTop: '+=40'}, 'normal', 'linear', startScrollUp);
+      }
+      function startScrollDown() {
+        $wrapper.animate({scrollTop: '-=40'}, 'normal', 'linear', startScrollDown); 
+      }
+      function stopScrolling() {
+        $wrapper.stop();
+      }
+      this.$('.scroll.up').mousedown(startScrollUp).mouseup(stopScrolling);
+      this.$('.scroll.down').mousedown(startScrollDown).mouseup(stopScrolling);
+    },
+    events : {
+      'click .scroll.up' : function(e) {
+        e.preventDefault();
+      },
+      'click .scroll.down' : function(e) {
+        e.preventDefault();
+      }
+    }
+
   });
   
   var CaseLayoutView = Shared.SidebarLayoutView.extend({
