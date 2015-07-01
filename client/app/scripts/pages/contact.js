@@ -19,6 +19,16 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
     className : 'main-container hire'
   });
 
+  var HireAccoutingView = Marionette.ItemView.extend({
+    template : PanlinCapTpl['templates/contact/accouting.hbs'],
+    className : 'main-container hire'
+  });
+
+  var HireAssistantView = Marionette.ItemView.extend({
+    template : PanlinCapTpl['templates/contact/assistant.hbs'],
+    className : 'main-container hire'
+  });
+
   var BizPlanView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/contact/plan.hbs'],
     className : 'main-container plan'
@@ -48,6 +58,30 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
         ])
       }));
       layout.showChildView('main', new HireView());
+    },
+    showHireAccounting : function() {
+      var layout = this.initializeLayout();
+      layout.showChildView('sidebar', new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
+      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
+        collection : new Backbone.Collection([
+          { text : '联系我们', link : '/contacts' }, 
+          { text : '招贤纳士', link : '/contacts/hire'},
+          { text : '会计', link : '/contacts/hire/accouting' }
+        ])
+      }));
+      layout.showChildView('main', new HireAccoutingView());
+    },
+    showHireAssistant : function() {
+      var layout = this.initializeLayout();
+      layout.showChildView('sidebar', new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
+      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
+        collection : new Backbone.Collection([
+          { text : '联系我们', link : '/contacts' }, 
+          { text : '招贤纳士', link : '/contacts/hire'},
+          { text : '行政助理', link : '/contacts/hire/accouting' }
+        ])
+      }));
+      layout.showChildView('main', new HireAssistantView());
     },
     showAddress : function() {
       var layout = this.initializeLayout();
@@ -79,6 +113,8 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
       appRoutes : {
         'contacts(/)': 'showContacts',
         'contacts/hire(/)' : 'showHire',
+        'contacts/hire/accouting(/)' : 'showHireAccounting',
+        'contacts/hire/assistant(/)' : 'showHireAssistant',
         'contacts/address(/)' : 'showAddress',
         'contacts/plan(/)' : 'showPlan'
       },
