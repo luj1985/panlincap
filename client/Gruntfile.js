@@ -24,7 +24,7 @@ module.exports = function (grunt) {
 
   var singlePage = function(req, res, next) {
     var url = req.url;
-    if (/.*\.js/.test(url) || /.*\.css/.test(url) || /.*fonts\/icons\./.test(url) || (/.*\/images\//.test(url))) {
+    if (/.*\.js/.test(url) || /.*\.css/.test(url) || /.*fonts\//.test(url) || (/.*\/images\//.test(url))) {
       return next();
     }
     req.url = '/index.html';
