@@ -31,7 +31,7 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
   });
 
   var CasesView = Marionette.CompositeView.extend({
-    template : Handlebars.compile('<h4>{{title}}</h4><div class="brands"></div>'),
+    template : PanlinCapTpl['templates/case/case-group.hbs'],
     childView : CaseView,
     childViewContainer : '.brands',
     className : 'case-group',
@@ -46,14 +46,34 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
     childView : CasesView,
     childViewContainer : '.main-container.cases'
   });
+
+  function regroupBrands(collection) {
+    var reGrouped = new Backbone.Collection();
+    collection.each(function(model) {
+      var brands = model.get('brands'), length = brands.length;
+      if (length > 4) {
+        var acc = []
+        for (var i = 0; i < length; i++) {
+          if (i % 4 === 0) {
+            acc = [];
+            var data = i === 0 ? { title : model.get('title'), brands : acc } : { brands : acc } ;
+            reGrouped.add(new Backbone.Model(data));
+          }
+          acc.push(brands[i]);
+        }
+      } else {
+        reGrouped.add(model);
+      }
+    });
+    return reGrouped;
+  }
   
   var CaseLayoutView = Shared.SidebarLayoutView.extend({
     
     onBeforeShow : function() {
       var cases = PanlinCap.reqres.request('cases:fetch');
-      this.showChildView('main', new CasesCollectionView({
-        collection : cases
-      }));
+      var collection = regroupBrands(cases);
+      this.showChildView('main', new CasesCollectionView({ collection : collection }));
       this.showChildView('sidebar', new Shared.SideMenuView({
         collection : new Backbone.Collection([{ text : '投资案例', link : '/cases' }, { text : '重点案例', link : '/cases' }])
       }));
