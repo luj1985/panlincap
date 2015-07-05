@@ -16,6 +16,8 @@ module.exports = function (grunt) {
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
+  grunt.loadNpmTasks('grunt-font-spider');
+
   // Configurable paths
   var config = {
     app: 'app',
@@ -222,6 +224,13 @@ module.exports = function (grunt) {
           src: '{,*/}*.css',
           dest: '.tmp/styles/'
         }]
+      }
+    },
+
+    'font-spider': {
+      main: {
+        src: 'dist/fonts.html',
+        ignore : ['semantic.css']
       }
     },
 
@@ -445,6 +454,7 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'copy:dist',
+    'font-spider',
     'rev',
     'usemin',
     'htmlmin'

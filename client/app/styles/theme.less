@@ -35,8 +35,10 @@
 -------------------*/
 
 .loadFonts() when (@importGoogleFonts) {
+
+  // no need google font for Chinese
   //@import (css) '@{googleProtocol}fonts.googleapis.com/css?family=@{googleFontRequest}';
-  @import (css) 'http://fonts.useso.com/css?family=@{googleFontRequest}';
+  //@import (css) 'http://fonts.useso.com/css?family=@{googleFontRequest}';
 }
 
 /*------------------
