@@ -4,8 +4,8 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
   var Shared = PanlinCap.module('Layout.Sidebar');
 
   var slogan = [
-      { text : '合伙人', link : '/team/top' }, 
-      { text : '核心团队', link : '/team/bottom' }
+      { text : '合伙人', link : '/team/partner' }, 
+      { text : '核心团队', link : '/team/members' }
     ];
 
   var MemberView = Marionette.ItemView.extend({
@@ -27,9 +27,10 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
     }
   });
 
-  var TeamsView = Marionette.CollectionView.extend({
-    className : 'teams',
+  var TeamsView = Marionette.CompositeView.extend({
+    template : PanlinCapTpl['templates/team/container.hbs'],
     childView : TeamView,
+    childViewContainer : '.teams'
   });
 
   var TeamLayoutView = Shared.SidebarLayoutView.extend({
@@ -45,31 +46,30 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
     }
   });
 
-  var teamController = {
-    showTeam :function() {
-      var members = PanlinCap.reqres.request('members:fetch');
-      PanlinCap.bodyRegion.show(new TeamLayoutView({collection: members}));
-      PanlinCap.execute('showBackground', 'team');
-    },
-    showTop :function() {
-      var members = PanlinCap.reqres.request('members:fetch');
-      PanlinCap.bodyRegion.show(new TeamLayoutView({collection: members}));
-      PanlinCap.execute('showBackground', 'team');
-    },
-    showBottom :function() {
-      var members = PanlinCap.reqres.request('members:fetch');
-      PanlinCap.bodyRegion.show(new TeamLayoutView({collection: members}));
-      PanlinCap.execute('showBackground', 'team');
-      window.scrollTo(0,document.body.scrollHeight);
-    }
-  };
+  var teamController = (function() {
+    return {
+      showTeam : function() {
+        var members = PanlinCap.reqres.request('members:fetch');
+        PanlinCap.bodyRegion.show(new TeamLayoutView({collection: members}));
+        PanlinCap.execute('showBackground', 'team');
+      },
+      showPartner :function() {
+        this.showTeam();
+        $('#body').animate({scrollTop: 0}, { duration: 300, easing: 'swing'});
+      },
+      showMembers :function() {
+        this.showTeam();
+        $('#body').animate({scrollTop: 640}, { duration: 300, easing: 'swing'});
+      }
+    };
+  })();
 
   PanlinCap.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : {
         'team(/)' : 'showTeam',
-        'team/top(/)' : 'showTop',
-        'team/bottom(/)' : 'showBottom'
+        'team/partner(/)' : 'showPartner',
+        'team/members(/)' : 'showMembers'
       },
       controller: teamController
     });

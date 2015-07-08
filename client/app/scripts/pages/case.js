@@ -4,7 +4,7 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
   var Shared = PanlinCap.module('Layout.Sidebar');
 
   var CaseView = Marionette.ItemView.extend({
-    template : Handlebars.compile('<img src="{{brand}}" />'),
+    template : Handlebars.compile('<img src="{{brand}}" /><p class="code">{{#if code}} {{code}} {{/if}}</p>'),
     className : 'brand',
     onRender : function() {
       var model = this.model;
@@ -34,9 +34,10 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
     }
   });
 
-  var CasesCollectionView = Marionette.CollectionView.extend({
+  var CasesCollectionView = Marionette.CompositeView.extend({
+    template : PanlinCapTpl['templates/case/container.hbs'],
     childView : CasesView,
-    className : 'main-container cases'
+    childViewContainer : '.main-container.cases'
   });
   
   var CaseLayoutView = Shared.SidebarLayoutView.extend({
