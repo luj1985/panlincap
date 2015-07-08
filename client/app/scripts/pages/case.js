@@ -4,15 +4,15 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
   var Shared = PanlinCap.module('Layout.Sidebar');
 
   var CaseView = Marionette.ItemView.extend({
-    template : Handlebars.compile('<img src="{{brand}}" />'),
-    className : 'brand',
+    template : Handlebars.compile('<div class="brand-logo"></div><p>{{title}}</p>'),
+    className : 'brand column',
     onRender : function() {
       var model = this.model;
       this.$el.on('click', function() {
         var dialog = new CaseDialogView({model : model});
         PanlinCap.dialogRegion.show(dialog);
       });
-      this.$el.attr('company', this.model.get('title'));
+      this.$('.brand-logo').css('background-image', 'url(' + this.model.get('brand') + ')');
     }
   });
 

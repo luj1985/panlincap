@@ -8,38 +8,27 @@
     padding: 15px 25px;
     h4 {
       line-height: 20px;
-      font-size: 1rem;
+      font-size: 15px;
       margin-bottom: 0;
     }
   }
 
   .brands {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap : wrap;
+    display: block;
   }
 
   .brand {
     cursor: pointer;
-    width: 24%;
-    margin: 10px 0 30px 0;
+    margin: 10px 0px 5px 0px;
+    text-align: center;
+  }
+
+  .brand-logo {
     height : 125px;
     border : 1px solid rgba(0,0,0,.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    &:after {
-      content : attr(company);
-      position: absolute;
-      width: 100%;
-      left : 0;
-      text-align: center;
-      bottom: -23px;
-      font-size: 13px;
-      color: rgba(0,0,0,.8);
-    }
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-bottom: 5px;
   }
 }
 
