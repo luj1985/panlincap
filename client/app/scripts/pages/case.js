@@ -4,7 +4,8 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
   var Shared = PanlinCap.module('Layout.Sidebar');
 
   var CaseView = Marionette.ItemView.extend({
-    template : Handlebars.compile('<div class="brand-logo"></div><p>{{title}}</p>'),
+    template : Handlebars.compile(
+      '<div class="brand-logo"><div class="logo"></div><p>{{title}}</p></div>'),
     className : 'brand column',
     onRender : function() {
       var model = this.model;
@@ -12,7 +13,8 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
         var dialog = new CaseDialogView({model : model});
         PanlinCap.dialogRegion.show(dialog);
       });
-      this.$('.brand-logo').css('background-image', 'url(' + this.model.get('brand') + ')');
+
+      this.$('.logo').css('background-image', 'url(' + this.model.get('brand') + ')');
     }
   });
 
@@ -46,33 +48,11 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
     childView : CasesView,
     childViewContainer : '.main-container.cases'
   });
-
-  function regroupBrands(collection) {
-    var reGrouped = new Backbone.Collection();
-    collection.each(function(model) {
-      var brands = model.get('brands'), length = brands.length;
-      if (length > 4) {
-        var acc = []
-        for (var i = 0; i < length; i++) {
-          if (i % 4 === 0) {
-            acc = [];
-            var data = i === 0 ? { title : model.get('title'), brands : acc } : { brands : acc } ;
-            reGrouped.add(new Backbone.Model(data));
-          }
-          acc.push(brands[i]);
-        }
-      } else {
-        reGrouped.add(model);
-      }
-    });
-    return reGrouped;
-  }
   
   var CaseLayoutView = Shared.SidebarLayoutView.extend({
     
     onBeforeShow : function() {
-      var cases = PanlinCap.reqres.request('cases:fetch');
-      var collection = regroupBrands(cases);
+      var collection = PanlinCap.reqres.request('cases:fetch');
       this.showChildView('main', new CasesCollectionView({ collection : collection }));
       this.showChildView('sidebar', new Shared.SideMenuView({
         collection : new Backbone.Collection([{ text : '投资案例', link : '/cases' }, { text : '重点案例', link : '/cases' }])
