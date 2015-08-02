@@ -1,11 +1,11 @@
-working_directory "/var/www/panlincap"
+working_directory "/var/www/panlincap/panlincap"
 
-pid "/var/www/panlincap/pids/unicorn.pid"
+pid "/var/www/panlincap/panlincap/pids/unicorn.pid"
 
-stderr_path "/var/www/panlincap/log/unicorn.err.log"
-stdout_path "/var/www/panlincap/log/unicorn.out.log"
+stderr_path "/var/www/panlincap/panlincap/log/unicorn.err.log"
+stdout_path "/var/www/panlincap/panlincap/log/unicorn.out.log"
 
-listen "/tmp/unicorn.panlincap.sock"
+listen "/tmp/unicorn.panlincap/panlincap.sock"
 
 worker_processes 1
 
