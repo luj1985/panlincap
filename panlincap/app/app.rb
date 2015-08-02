@@ -7,6 +7,10 @@ module Panlincap
 
     enable :sessions
 
+    get /.*/ do
+      render "../../public/index.html"
+    end
+
     ##
     # Caching support.
     #
