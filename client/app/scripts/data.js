@@ -333,11 +333,11 @@
       ].join('')
     }, {
       issue : '柒期基金',
-      name : '磐霖高能产业并购基金',
+      name : '磐霖高能环保产业基金',
 	    description : [
         '<div class="found-wrapper">',
           '<table class="content-column-left">',
-            '<tr><td>基金名称：</td><td>磐霖高能产业并购基金</td></tr>',
+            '<tr><td>基金名称：</td><td>磐霖高能环保产业基金</td></tr>',
             '<tr><td> </td><td> 正在募集成立中</td></tr>',
           '</table>',
         '</div>'
