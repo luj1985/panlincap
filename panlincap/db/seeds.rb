@@ -5,6 +5,23 @@
 #   name = shell.ask("What's your name?")
 #   shell.say name
 #
+
+require 'csv'
+require 'date'
+
+reader = CSV.open(File.join(File.dirname(__FILE__), "news.csv"), "r") 
+reader.shift # ignore header
+
+reader.each do |article|
+  id, category, title, _, date, author, content, keyword, count = article 
+  timestamp = Date.strptime(date, "%m/%d/%y %H:%M:%S") 
+  Article.create(
+    :title => title, :body => content, :keyword => keyword,
+    :author_id => author, :category_id => category, 
+    :created_at => timestamp, :count => count.to_i)
+end
+
+
 email     = shell.ask "Which email do you want use for logging into admin?"
 password  = shell.ask "Tell me the password to use:"
 
