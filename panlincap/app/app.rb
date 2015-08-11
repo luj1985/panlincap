@@ -49,9 +49,40 @@ module Panlincap
       data.to_json
     end
 
-    get '/api/article/latest', :provides => :json do
-      articles = Article.limit(3).order('created_at desc')
-      articles.to_json
+    #168 公司新闻
+    get '/api/article/company', :provides => :json do
+      articles = Article.where(:category_id => 168).limit(10).order('created_at desc')
+      preview = articles.map do |article|
+        title = article.title
+        date = article.created_at.strftime('%Y/%m/%d') 
+        content = strip_tags(article.body).gsub(/&nbsp;/, ' ')
+        lines = content.split("\n")
+
+        news = {}
+        news[:id] = article.id
+        news[:title] =  date + '  ' + article.title;
+        news[:descriptions] = lines[0]
+        news
+      end
+      preview.to_json
+    end
+
+
+    #163 被投公司资讯
+    get '/api/article/invested', :provides => :json do
+      articles = Article.where(:category_id => 163).limit(10).order('created_at desc')
+      preview = articles.map do |article|
+        date = article.created_at.strftime('%Y/%m/%d') 
+        content = strip_tags(article.body).gsub(/&nbsp;/, ' ')
+        lines = content.split("\n")
+
+        news = {}
+        news[:id] = article.id
+        news[:title] =  date + '  ' + article.title;
+        news[:descriptions] = lines[0]
+        news
+      end
+      preview.to_json
     end
 
     get '/api/article', :with => :id, :provides => :json do

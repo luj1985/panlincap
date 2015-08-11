@@ -48,27 +48,34 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
       }));
     },
     showInvestedCompanyNews : function() {
-
       var layout = this.initLayout();
-      var news = PanlinCap.reqres.request('news:fetch');
+      var promise = PanlinCap.reqres.request('news:fetch');
+
+      promise.then(function(data) {
+        var news = new Backbone.Collection(data);
+        layout.showChildView('main', new NewsCollectionView({
+          collection : news
+        }));
+      });
 
       layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
         collection : new Backbone.Collection([{ text : '新闻中心', link : '/news' }, { text : '被投公司新闻', link : '/news/invested '}])
       }));
-      layout.showChildView('main', new NewsCollectionView({
-        collection : news
-      }));
+      
     },
     showCompanyNews : function() {
       var layout = this.initLayout();
 
-      var news = PanlinCap.reqres.request('company-news:fetch');
+      var promise = PanlinCap.reqres.request('company-news:fetch');
+      promise.then(function(data) {
+        var news = new Backbone.Collection(data);
+        layout.showChildView('main', new NewsCollectionView({
+          collection : news
+        }));
+      })
 
       layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
         collection : new Backbone.Collection([{ text : '新闻中心', link : '/news' }, { text : '公司新闻', link : '/news/company '}])
-      }));
-      layout.showChildView('main', new NewsCollectionView({
-        collection : news
       }));
     }
   };
