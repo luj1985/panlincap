@@ -7,7 +7,18 @@ module Panlincap
 
     enable :sessions
 
-    get /.*/ do
+
+    get '/article/latest', :provides => :json do
+      articles = Article.limit(3).order('created_at desc')
+      articles.to_json
+    end
+
+    get '/article', :with => :id, :provides => :json do
+      article = Article.find params[:id]
+      article.to_json
+    end
+
+    get /.*[^(\.js)|(\.css)|(\.json)$]/ do
       render "../../public/index.html"
     end
 
