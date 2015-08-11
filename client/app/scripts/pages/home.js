@@ -8,8 +8,11 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
 
   var homeController = {
     showHome: function() {
-      var topics = PanlinCap.reqres.request('topics:fetch');
-      PanlinCap.bodyRegion.show(new HomeView({ collection : topics }));
+      var promise = PanlinCap.reqres.request('topics:fetch');
+      promise.then(function(data) {
+        var topics = new Backbone.Collection(data);
+        PanlinCap.bodyRegion.show(new HomeView({ collection : topics }));
+      });
       PanlinCap.execute('showBackground', 'home');
     }
   };

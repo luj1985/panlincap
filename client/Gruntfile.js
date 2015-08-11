@@ -24,6 +24,9 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+
+  var backendProxy = require('grunt-connect-proxy/lib/utils').proxyRequest ;
+
   var singlePage = function(req, res, next) {
     var url = req.url;
     if (/.*\.js/.test(url) || /.*\.css/.test(url) || /.*fonts\//.test(url) || (/.*\/images\//.test(url))) {
@@ -106,10 +109,18 @@ module.exports = function (grunt) {
         // Change this to '0.0.0.0' to access the server from outside
         hostname: '0.0.0.0'
       },
+      proxies: [{
+        context: ['/api'],
+        host: 'localhost',
+        port: 3000,
+        https: false,
+        changeOrigin: true
+      }],
       livereload: {
         options: {
           middleware: function(connect) {
             return [
+              backendProxy,
               singlePage,
               connect.static('.tmp'),
               connect().use('/bower_components', connect.static('./bower_components')),
@@ -416,6 +427,7 @@ module.exports = function (grunt) {
       'handlebars',
       'wiredep',
       'concurrent:server',
+      'configureProxies:server',
       'autoprefixer',
       'connect:livereload',
       'watch'

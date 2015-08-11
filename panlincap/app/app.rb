@@ -8,12 +8,53 @@ module Panlincap
     enable :sessions
 
 
-    get '/article/latest', :provides => :json do
+    get '/api/home', :provides => :json do
+      data = [{
+        :title => '关于磐霖',
+        :description => '上海磐霖资产管理有限公司是专业的人民币私募股权投资基金（以下简称PE基金）的投资管理平台, 主要从事未上市企业的股权投资和投资后的资产管理...',
+        :link => '/about'    
+      }, {
+        :title => '投资理念',
+        :description => '核心投资理念 –- “快乐投资”<br>差异化投资模式 –- “专业创造价值”',
+        :link => '/investment'
+      }, {
+        :title => '投资案例',
+        :description => '我们既有已在创业板首批上市的成功投资案例，也有已经入股而预期在三年内上市的项目...',
+        :link => '/cases'
+      }]
+
+
+      news_preview = ''
+      news_preview += '<div class="news-preview">'
+
+      Article.where(:category_id => 163).limit(3).order('created_at desc').each do |article|
+        title = article.title
+        date = article.created_at.strftime('%Y/%m/%d') 
+        body = article.body
+        content = strip_tags(body).gsub(/&nbsp;/, ' ')
+        lines = content.split("\n")
+
+        news_preview += '<h4>' + date + '  [ ' + title + ' ]</h4>'
+        news_preview += '<p>' + lines[0] + '</p>'
+      end
+      news_preview += '</div>'
+
+      news = { 
+        :title => '新闻中心',
+        :link => '/news',
+        :description => news_preview
+      }
+
+      data.push(news)
+      data.to_json
+    end
+
+    get '/api/article/latest', :provides => :json do
       articles = Article.limit(3).order('created_at desc')
       articles.to_json
     end
 
-    get '/article', :with => :id, :provides => :json do
+    get '/api/article', :with => :id, :provides => :json do
       article = Article.find params[:id]
       article.to_json
     end
