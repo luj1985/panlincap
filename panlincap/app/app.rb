@@ -87,7 +87,15 @@ module Panlincap
 
     get '/api/article', :with => :id, :provides => :json do
       article = Article.find params[:id]
-      article.to_json
+      article.count += 1
+      article.save
+      data = {
+        :date => article.created_at.strftime('%Y/%m/%d'),
+        :count => article.count,
+        :title => article.title,
+        :body => article.body
+      }
+      data.to_json
     end
 
     get /.*[^(\.js)|(\.css)|(\.json)$]/ do

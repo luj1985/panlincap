@@ -21,6 +21,12 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
   var NewsSidebarView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/news/searchnews.hbs']
   });
+
+
+  var NewsDetailView = Marionette.ItemView.extend({
+    template : PanlinCapTpl['templates/news/detail.hbs'],
+    className : 'main-container news'
+  });
   
   var NewsLayoutView = Shared.SidebarLayoutView.extend({
     onBeforeShow : function() {
@@ -46,6 +52,21 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
       layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
         collection : new Backbone.Collection({ text : '新闻中心', link : '/news' })
       }));
+    },
+    showDetail : function(id) {
+      var layout = this.initLayout();
+      var promise = PanlinCap.reqres.request('news:detail', id);
+      promise.then(function(data) {
+        var model = new Backbone.Model(data);
+        layout.showChildView('main', new NewsDetailView({
+          model : model
+        }))
+      });
+
+      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
+        collection : new Backbone.Collection({ text : '新闻中心', link : '/news' })
+      }));
+
     },
     showInvestedCompanyNews : function() {
       var layout = this.initLayout();
@@ -86,7 +107,8 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
       appRoutes : {
         'news(/)': 'showNews',
         'news/invested(/)' : 'showInvestedCompanyNews',
-        'news/company(/)' : 'showCompanyNews'
+        'news/company(/)' : 'showCompanyNews',
+        'news/detail/:id(/)' : 'showDetail'
       },
       controller: newsController
     });

@@ -9,6 +9,10 @@
     return $.get('/api/article/company');
   });
 
+  PanlinCap.reqres.setHandler('news:detail', function(id) {
+    return $.get('/api/article/' + id + '.json');
+  });
+
   PanlinCap.reqres.setHandler('cases:fetch', function() {
 
     var cases = [{
