@@ -65,6 +65,18 @@ end
 
 
 
+
+
+reader = CSV.open(File.join(File.dirname(__FILE__), "members.csv"), "r") 
+reader.shift
+
+reader.each do |line|
+  name,suffix,title,avatar,description = line
+  Member.create(:name => name, :suffix => suffix, :title => title, :avatar => avatar, :description => description)
+end
+
+
+
 email     = shell.ask "Which email do you want use for logging into admin?"
 password  = shell.ask "Tell me the password to use:"
 

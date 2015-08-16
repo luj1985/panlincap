@@ -41,8 +41,13 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
 
   var TeamLayoutView = Shared.SidebarLayoutView.extend({
     onBeforeShow : function() {
-      var members = PanlinCap.reqres.request('members:fetch');
-      this.showChildView('main', new TeamsView({collection : members}));
+      var self = this;
+
+      var promise = PanlinCap.reqres.request('members:fetch');
+      promise.then(function(raw) {
+        var members = new Backbone.Collection(raw);
+        self.showChildView('main', new TeamsView({collection : members}));
+      });
       this.showChildView('sidebar', new Shared.SideMenuView({
         collection : new Backbone.Collection(slogan)
       }));
@@ -55,8 +60,11 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
   var teamController = (function() {
     return {
       showTeam : function() {
-        var members = PanlinCap.reqres.request('members:fetch');
-        PanlinCap.bodyRegion.show(new TeamLayoutView({collection: members}));
+        var promise = PanlinCap.reqres.request('members:fetch');
+        promise.then(function(raw) {
+          var members = new Backbone.Collection(raw);
+          PanlinCap.bodyRegion.show(new TeamLayoutView({collection: members}));
+        });
         PanlinCap.execute('showBackground', 'team');
       },
       showPartner :function() {

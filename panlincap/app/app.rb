@@ -80,6 +80,10 @@ module Panlincap
       Found.all.to_json
     end
 
+    get '/api/members', :provides => :json do
+      Member.all.to_json
+    end
+
 
     #163 被投公司资讯
     get '/api/article/invested', :provides => :json do
