@@ -3,7 +3,7 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
 
   var MenuView = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/nav.hbs'],
-    className: 'ui menu',
+    className: 'navigation',
     onRender : function() {
       this.$el.find('.ui.dropdown').dropdown();
     }
