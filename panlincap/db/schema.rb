@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 4) do
+ActiveRecord::Schema.define(version: 5) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -26,10 +26,20 @@ ActiveRecord::Schema.define(version: 4) do
   create_table "articles", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
-    t.string   "author"
     t.string   "keyword"
+    t.integer  "author_id"
     t.integer  "category_id"
     t.integer  "count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cases", force: :cascade do |t|
+    t.string   "name"
+    t.string   "area"
+    t.string   "website"
+    t.string   "logo"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

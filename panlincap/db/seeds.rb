@@ -22,6 +22,15 @@ reader.each do |article|
 end
 
 
+reader = CSV.open(File.join(File.dirname(__FILE__), "cases.csv"), "r") 
+reader.shift # ignore header
+
+reader.each do |line|
+  name, area, website, logo, description = line
+  Case.create(:name => name, :area => area, :website => website, :logo => logo, :description => description)
+end
+
+
 email     = shell.ask "Which email do you want use for logging into admin?"
 password  = shell.ask "Tell me the password to use:"
 
