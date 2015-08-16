@@ -34,8 +34,30 @@ PanlinCap.module('Found', function(Found, PanlinCap, Backbone, Marionette) {
 
   var foundController = {
     showFounds: function() {
-      var founds = PanlinCap.reqres.request('founds:fetch');
-      PanlinCap.bodyRegion.show(new FoundCollectionView({ collection : founds }));
+      var promise = PanlinCap.reqres.request('founds:fetch');
+      var colors = [ 'rgb(180,6,12)', 'rgb(199,99,103)', 'rgb(178,53,55)', 'rgb(208,145,148)' ];
+      promise.then(function(raw) {
+        var data = _.map(raw, function(found) {
+          var portfolio = found.portfolio;
+          var status = found.status;
+          if (status === 'building') {
+            found.statusMsg = '正在募集成立中';
+          }
+          if (portfolio) {
+            var items = portfolio.split(',');
+            found.portfolio = _.map(items, function(item, i) {
+              var parts = item.split(':');
+              return {
+                area : parts[0],
+                percentage : parseInt(parts[1]),
+                color : colors[i]
+              };
+            });
+          }
+        });
+        var founds = new Backbone.Collection(raw);
+        PanlinCap.bodyRegion.show(new FoundCollectionView({ collection : founds }));
+      });
       PanlinCap.execute('showBackground', 'found');
     }
   };

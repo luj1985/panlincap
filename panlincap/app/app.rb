@@ -76,6 +76,10 @@ module Panlincap
       Menu.all.to_json
     end
 
+    get '/api/founds', :provides => :json do
+      Found.all.to_json
+    end
+
 
     #163 被投公司资讯
     get '/api/article/invested', :provides => :json do

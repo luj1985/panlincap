@@ -22,6 +22,12 @@ reader.each do |article|
 end
 
 
+
+
+
+
+
+
 reader = CSV.open(File.join(File.dirname(__FILE__), "cases.csv"), "r") 
 reader.shift # ignore header
 
@@ -31,6 +37,11 @@ reader.each do |line|
 end
 
 
+
+
+
+
+
 reader = CSV.open(File.join(File.dirname(__FILE__), "menus.csv"), "r") 
 reader.shift
 
@@ -38,6 +49,20 @@ reader.each do |line|
   text, link = line
   Menu.create(:title => text, :link => link)
 end
+
+
+
+
+
+reader = CSV.open(File.join(File.dirname(__FILE__), "founds.csv"), "r") 
+reader.shift
+
+reader.each do |line|
+  issue,name,status,period,company,portfolio = line
+  Found.create(:issue => issue, :name => name, :status => status, :period => period, :company => company, :portfolio => portfolio)
+end
+
+
 
 
 email     = shell.ask "Which email do you want use for logging into admin?"
