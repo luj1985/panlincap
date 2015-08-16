@@ -69,8 +69,11 @@ module Panlincap
 
 
     get '/api/cases', :provides => :json do
-      cases = Case.all
-      cases.to_json
+      Case.all.to_json
+    end
+
+    get '/api/menus', :provides => :json do
+      Menu.all.to_json
     end
 
 

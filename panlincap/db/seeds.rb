@@ -31,6 +31,15 @@ reader.each do |line|
 end
 
 
+reader = CSV.open(File.join(File.dirname(__FILE__), "menus.csv"), "r") 
+reader.shift
+
+reader.each do |line|
+  text, link = line
+  Menu.create(:title => text, :link => link)
+end
+
+
 email     = shell.ask "Which email do you want use for logging into admin?"
 password  = shell.ask "Tell me the password to use:"
 

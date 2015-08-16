@@ -1,14 +1,14 @@
 {{#each items}}
 {{#if menu}}
 <div class="ui pointing dropdown link item">
-  {{text}}
+  {{title}}
   <div class="menu">
     {{#each menu}}
-    <a href="{{link}}" class="item">{{text}}</a>
+    <a href="{{link}}" class="item">{{title}}</a>
     {{/each}}
   </div>
 </div>
 {{else}}
-<a href="{{link}}" class="ui link item">{{text}}</a>
+<a href="{{link}}" class="ui link item">{{title}}</a>
 {{/if}}
 {{/each}}
