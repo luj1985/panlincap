@@ -5,7 +5,7 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
 
   var CaseView = Marionette.ItemView.extend({
     template : Handlebars.compile(
-      '<div class="brand-logo"><div class="logo"></div><p>{{title}}</p></div>'),
+      '<div class="brand-logo"><div class="logo"></div><p>{{name}}</p></div>'),
     className : 'brand column',
     onRender : function() {
       var model = this.model;
@@ -14,7 +14,7 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
         PanlinCap.dialogRegion.show(dialog);
       });
 
-      this.$('.logo').css('background-image', 'url(' + this.model.get('brand') + ')');
+      this.$('.logo').css('background-image', 'url(' + this.model.get('logo') + ')');
     }
   });
 
@@ -52,8 +52,17 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
   var CaseLayoutView = Shared.SidebarLayoutView.extend({
     
     onBeforeShow : function() {
-      var collection = PanlinCap.reqres.request('cases:fetch');
-      this.showChildView('main', new CasesCollectionView({ collection : collection }));
+      var self = this;
+      var promise = PanlinCap.reqres.request('cases:fetch');
+      promise.then(function(raw) {
+        var data = _.chain(raw).groupBy('area').map(function(brands, area) {
+          return { area : area, brands : brands };
+        }).value();
+
+        var cases = new Backbone.Collection(data);
+        self.showChildView('main', new CasesCollectionView({ collection : cases }));
+      });
+
       this.showChildView('sidebar', new Shared.SideMenuView({
         collection : new Backbone.Collection([{ text : '投资案例', link : '/cases' }, { text : '重点案例', link : '/cases' }])
       }));
@@ -65,10 +74,7 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
 
   var casesController = {
     showCases: function() {
-      var cases = PanlinCap.reqres.request('cases:fetch');
-      PanlinCap.bodyRegion.show(new CaseLayoutView({
-        collection: cases
-      }));
+      PanlinCap.bodyRegion.show(new CaseLayoutView({}));
       PanlinCap.execute('showBackground', 'cases');
     }
   };

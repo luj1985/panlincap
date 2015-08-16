@@ -68,6 +68,12 @@ module Panlincap
     end
 
 
+    get '/api/cases', :provides => :json do
+      cases = Case.all
+      cases.to_json
+    end
+
+
     #163 被投公司资讯
     get '/api/article/invested', :provides => :json do
       articles = Article.where(:category_id => 163).limit(10).order('created_at desc')
