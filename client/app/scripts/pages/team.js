@@ -4,21 +4,23 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
   var Shared = PanlinCap.module('Layout.Sidebar');
 
   var slogan = [
-      { text : '合伙人', link : '/team/partner' }, 
-      { text : '核心团队', link : '/team/members' }
-    ];
+    { text : '合伙人', link : '/team/partner' }, 
+    { text : '核心团队', link : '/team/members' }
+  ];
 
   var MemberView = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/team/member.hbs'],
-    className : 'ui panlin modal',
+    className : 'panlin dialog',
     events : {
       'click a.dialog-close' : function(e) {
         e.preventDefault();
-        this.$el.modal('hide');
       }
     },
     onShow : function() {
-      this.$el.modal('show');
+      this.$el.bPopup({ 
+        closeClass : 'close',
+        positionStyle: 'fixed'
+      });
     }
   });
 

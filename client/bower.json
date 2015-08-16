@@ -6,6 +6,7 @@
     "marionette": "~2.4.1",
     "handlebars": "~3.0.2",
     "semantic-ui": "~1.12.0",
-    "backbone.intercept": "~0.3.2"
+    "backbone.intercept": "~0.3.2",
+    "bpopup": "~0.11.0"
   }
 }

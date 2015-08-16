@@ -1,5 +1,59 @@
 @charset "UTF-8";
 
+.panlin.dialog {
+  background-color: white;
+  position: relative;
+  width: 100%;
+  overflow: auto;
+
+  .content-body {
+    max-width: 960px;
+    min-height: 400px;
+    margin: 0 auto;
+    position: relative;
+    padding : 28px;
+
+    em {
+      font-family: @font-kaiti; 
+      font-weight: normal;
+      font-style: normal;
+    }
+  }
+
+  .content-body.member {
+    display: table;
+    .avatar {
+      display: table-cell;
+      vertical-align: top;
+      max-width: 180px;
+    }
+
+    .description {
+      display: table-cell;
+      vertical-align: top;
+      padding-left: 28px;
+    }
+
+  }
+
+
+  .close {
+    position: absolute;;
+    font-size : 30px;
+    color: black;
+    opacity: .3;
+    right: 2rem;
+    top : 2rem;
+    padding: 0;
+    line-height: 0;
+
+    &:hover {
+      opacity: .9;
+    }
+  }
+
+}
+
 .ui.modal.panlin {
   width: 100%;
   left: 0;
