@@ -24,6 +24,7 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
     onShow : function() {
       this.$el.bPopup({ 
         closeClass : 'close',
+        opacity: 0.3,
         positionStyle: 'fixed'
       });
     }

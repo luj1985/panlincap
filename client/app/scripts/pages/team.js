@@ -14,6 +14,7 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
     onShow : function() {
       this.$el.bPopup({ 
         closeClass : 'close',
+        opacity: 0.3,
         positionStyle: 'fixed'
       });
     }
