@@ -33,8 +33,9 @@ module Panlincap
         body = article.body
         content = strip_tags(body).gsub(/&nbsp;/, ' ')
         lines = content.split("\n")
+        id = article.id.to_s
 
-        news_preview += '<h4>' + date + '  [ ' + title + ' ]</h4>'
+        news_preview += '<h4><a href="/news/detail/' + id + '">' + date + '  [ ' + title + ' ]</a></h4>'
         news_preview += '<p>' + lines[0] + '</p>'
       end
       news_preview += '</div>'
