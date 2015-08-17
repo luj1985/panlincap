@@ -20,15 +20,12 @@ PanlinCap.module('Found', function(Found, PanlinCap, Backbone, Marionette) {
 
   var FoundDialogView = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/found/dialog.hbs'],
-    className : 'ui panlin modal',
-    events : {
-      'click a.dialog-close' : function(e) {
-        e.preventDefault();
-        this.$el.modal('hide');
-      }
-    },
+    className : 'panlin dialog',
     onShow : function() {
-      this.$el.modal('show');
+      this.$el.bPopup({ 
+        closeClass : 'close',
+        positionStyle: 'fixed'
+      });
     }
   });
 

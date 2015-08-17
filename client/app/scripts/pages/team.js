@@ -11,11 +11,6 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
   var MemberView = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/team/member.hbs'],
     className : 'panlin dialog',
-    events : {
-      'click a.dialog-close' : function(e) {
-        e.preventDefault();
-      }
-    },
     onShow : function() {
       this.$el.bPopup({ 
         closeClass : 'close',

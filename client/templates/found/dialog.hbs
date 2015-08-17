@@ -1,40 +1,42 @@
-<div class="content found">
-  <a href="#" class="dialog-close">&times;</a>
-  <h3>{{ issue }}</h3>
-  <h4>{{ name }}</h4>
-  <div class="found-wrapper">
-    <table class="content-column-left">
-      <tr><td>基金名称：</td><td>{{ name }}</td></tr>
-      {{#if period}}
-      <tr><td>投资周期：</td><td>{{ period }}</td></tr>
-      {{/if}}
+<div class="content-wrapper">
+  <div class="content-body found">
+    <a href="#" class="close">&times;</a>
+    <h3>{{ issue }}</h3>
+    <h4>{{ name }}</h4>
+    <div class="found-wrapper">
+      <table class="content-column-left">
+        <tr><td>基金名称：</td><td>{{ name }}</td></tr>
+        {{#if period}}
+        <tr><td>投资周期：</td><td>{{ period }}</td></tr>
+        {{/if}}
 
-      {{#if company }}
-      <tr><td>投资项目：</td><td>{{ company }}</td></tr>
-      {{/if}}
+        {{#if company }}
+        <tr><td>投资项目：</td><td>{{ company }}</td></tr>
+        {{/if}}
 
-      {{#if statusMsg }}
-      <tr><td></td><td>{{ statusMsg }}</td></tr>
-      {{/if}}
-    </table>
-
-    <div class="content-column-right">
-      {{#if portfolio}}
-      <p>投资行业分布：</p>
-      <table class="chart distribution">
-        <tr>
-        {{#each portfolio}}
-          <td width="{{percentage}}%" style="background-color:{{color}}">{{percentage}}%</td>
-        {{/each}}
-        </tr>
-        <tr>
-
-        {{#each portfolio}}
-          <td>{{ area }}</td>
-        {{/each}}
-        </tr>
+        {{#if statusMsg }}
+        <tr><td></td><td>{{ statusMsg }}</td></tr>
+        {{/if}}
       </table>
-      {{/if}}
+
+      <div class="content-column-right">
+        {{#if portfolio}}
+        <p>投资行业分布：</p>
+        <table class="chart distribution">
+          <tr>
+          {{#each portfolio}}
+            <td width="{{percentage}}%" style="background-color:{{color}}">{{percentage}}%</td>
+          {{/each}}
+          </tr>
+          <tr>
+
+          {{#each portfolio}}
+            <td>{{ area }}</td>
+          {{/each}}
+          </tr>
+        </table>
+        {{/if}}
+      </div>
     </div>
   </div>
 </div>
