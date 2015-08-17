@@ -102,8 +102,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
   };
 
   PanlinCap.addInitializer(function() {
-
-    new Marionette.AppRouter({
+    var router = new Marionette.AppRouter({
       appRoutes : {
         'news(/)': 'showNews',
         'news/invested(/)' : 'showInvestedCompanyNews',
@@ -113,5 +112,8 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
       controller: newsController
     });
 
+    router.on('route', function(route, params) {
+      $('#body').scrollTop(0);
+    });
   });
 });
