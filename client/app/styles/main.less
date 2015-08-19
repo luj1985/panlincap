@@ -28,6 +28,11 @@ a {
 .fixed-header {
   left : 0;
 
+  a {
+    font-size: 13px;
+    color: @color-main;
+  }
+
   .brand img {
     height : 15px;
   }
@@ -35,52 +40,23 @@ a {
   nav, header {
     display: block;
     margin: 0 auto;
-    padding: 0 56px;
   }
 
   nav {
     background-color: @color-main;
+    padding: 0 56px;
   }
 
   header {
-    height: 84px;
+    text-align: right;
+    padding: 14px 70px;
+    height: @header-height;
     position: relative;
     background-image: url("/images/logo.png");
     background-repeat: no-repeat;
     background-position: 56px center;
-    background-size: auto 56px;
+    background-size: auto @header-height;
   }
-
-  #lang {
-    text-align: right;
-    padding: 14px;
-
-    a {
-      font-size: 13px;
-      color: @color-main;
-    }
-
-    .divider {
-      font-weight: bolder;
-      margin: 0 7px;
-    }
-
-    .brand {
-      display: inline-block;
-      height: 1.5rem;
-      margin-top: .5rem;
-      font-family: @font-title;
-      font-size: 1.3rem;
-      em {
-        color: @color-main;
-        padding: 0 .5rem;
-        font-family: monospace;
-        font-style: normal;
-        font-weight: bolder;
-      }
-    }
-  }
-
 }
 
 
