@@ -1,12 +1,16 @@
 @charset "UTF-8";
 
+
 @font-face {
   font-family: '隶书';
-  src: local("隶书"),
-       url('./fonts/lishu.ttf') format('truetype'),
-       url('./fonts/lishu.woff') format('woff');
+  src: url('./fonts/panlin.lishu.eot');
+  src: url('./fonts/panlin.lishu.eot?#iefix') format('embedded-opentype'),
+       url('./fonts/panlin.lishu.woff') format('woff'),
+       url('./fonts/panlin.lishu.ttf') format('truetype'),
+       url('./fonts/panlin.lishu.svg#lishu') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
-
 
 html, body {
   height: 100%;
@@ -64,16 +68,6 @@ a {
   }
 }
 
-
-@import "./import/variables.import.less";
-@import "./import/global.import.less";
-@import "./import/content.import.less";
-@import "./import/dialog.import.less";
-@import "./import/reveal.import.less";
-@import "./import/background.import.less";
-@import "./import/pages.import.less";
-@import "./import/pagination.import.less";
-
 .navigation {
   box-sizing: border-box;
   text-align: right;
@@ -93,6 +87,17 @@ a {
     }
   }
 }
+
+
+@import "./import/variables.import.less";
+@import "./import/global.import.less";
+@import "./import/content.import.less";
+@import "./import/dialog.import.less";
+@import "./import/reveal.import.less";
+@import "./import/background.import.less";
+@import "./import/pages.import.less";
+@import "./import/pagination.import.less";
+
 
 
 #copyright {
