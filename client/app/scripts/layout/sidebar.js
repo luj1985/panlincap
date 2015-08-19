@@ -3,7 +3,7 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
 
   Sidebar.ScrollView = Marionette.CompositeView.extend({
     onRender : function() {
-      var $wrapper = $('#body');
+      var $wrapper = $('.page');
       function startScrollUp() {
         $wrapper.animate({scrollTop: '-=50'}, 'normal', 'linear', startScrollUp);
       }
