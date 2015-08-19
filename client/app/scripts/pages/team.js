@@ -15,7 +15,8 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
       this.$el.bPopup({ 
         closeClass : 'close',
         opacity: 0.3,
-        positionStyle: 'fixed'
+        positionStyle: 'fixed',
+        amsl : 0
       });
     }
   });

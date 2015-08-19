@@ -25,7 +25,8 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
       this.$el.bPopup({ 
         closeClass : 'close',
         opacity: 0.3,
-        positionStyle: 'fixed'
+        positionStyle: 'fixed',
+        amsl : 0
       });
     }
   });

@@ -13,9 +13,4 @@
     Backbone.Intercept.start();
   });
 
-
-  var router = new Marionette.AppRouter({});
-  router.on('route', function(route, params) {
-    // console.log(arguments);
-  });
 })(PanlinCap);
