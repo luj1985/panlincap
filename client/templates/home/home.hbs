@@ -1,8 +1,8 @@
 {{#each items}}
-<div class="topic">
+<div class="topic topic-{{@index}}">
   <div class="inner">
-    <h2 class="ui header">{{title}}</h2>
-    <div class="ui content">{{{description}}}</div>
+    <h2 class="header">{{title}}</h2>
+    <div class="content">{{{description}}}</div>
     <a href="{{link}}" class="more">+更多</a>
   </div>
 </div>

@@ -2,7 +2,11 @@ PanlinCap.module('Background', function(Background, PanlinCap, Backbone, Marione
   'use strict';
 
   var HomeBg = Marionette.ItemView.extend({
-    template: PanlinCapTpl['templates/home/homebg.hbs'],
+    template:  Handlebars.compile(
+      '<div class="slide"></div>' + 
+      '<div class="slide"></div>' + 
+      '<div class="slide"></div>'
+    ),
     className: 'slides home'
   });
 

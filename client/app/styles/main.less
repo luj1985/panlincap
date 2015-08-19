@@ -66,25 +66,51 @@ a {
     background-position: 56px center;
     background-size: auto @header-height;
   }
+
+  .navigation {
+    box-sizing: border-box;
+    text-align: right;
+    white-space: nowrap;
+
+    a {
+      font-family: '隶书';
+      font-size: 17px;
+      box-sizing: border-box;
+      padding : 8px 14px;
+      display: inline-block;
+      color : white;
+      text-decoration: none;
+
+      &:hover {
+        color: @color-highlight;
+      }
+    }
+  }
 }
 
-.navigation {
-  box-sizing: border-box;
+.page {
+  position: absolute;
+  display: block;
+  overflow: auto;
+  width: 100%;
+  top: 123px;
+  bottom: 0;
+}
+
+#body {
+  padding: 14px 0;
+  min-height: 100%;
+}
+
+
+#copyright {
+  line-height: 50px;
   text-align: right;
-  white-space: nowrap;
-
+  display: block;
+  background-color: rgba(255,255,255,.9);
+  padding: 0 28px;
   a {
-    font-family: '隶书';
-    font-size: 17px;
-    box-sizing: border-box;
-    padding : 8px 14px;
-    display: inline-block;
-    color : white;
-    text-decoration: none;
-
-    &:hover {
-      color: @color-highlight;
-    }
+    color: @color-main;
   }
 }
 
@@ -98,19 +124,3 @@ a {
 @import "./import/pages.import.less";
 @import "./import/pagination.import.less";
 
-
-
-#copyright {
-  position: absolute;
-  bottom: -50px;
-  height: 50px;
-  line-height: 50px;
-  text-align: right;
-  display: block;
-  width: 100%;
-  background-color: rgba(255,255,255,.8);
-  padding: 0 28px;
-  a {
-    color: @color-main;
-  }
-}

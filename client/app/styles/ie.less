@@ -1,6 +1,7 @@
 @ie-color-highlight: rgb(211,166,70);
 @ie-color-main: rgb(133,25,16);
 @ie-color-highlight: rgb(211,166,70);
+@ie-color-background: rgb(152,192,209);
 
 .fixed-header {
   a {
@@ -8,6 +9,28 @@
   }
   nav {
     background-color: @ie-color-main;
+  }
+}
+
+.topic .inner {
+  background-color: @ie-color-background;
+
+  h2.header {
+    color : @ie-color-main;
+  }
+  a, .content {
+    color : @ie-color-background;
+  }
+}
+
+.topic:hover .inner {
+  background-color: @ie-color-main;
+  h2.header {
+    color : @ie-color-highlight;
+  }
+
+  a, .content {
+    color : white;
   }
 }
 
@@ -22,5 +45,11 @@
   // additional empty link will be generated in IE8, ignore them
   a[href=""] {
     display: none;
+  }
+}
+
+#copyright {
+  a {
+    color: @ie-color-main;
   }
 }
