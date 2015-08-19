@@ -1,5 +1,26 @@
+@ie-color-highlight: rgb(211,166,70);
+@ie-color-main: rgb(133,25,16);
+@ie-color-highlight: rgb(211,166,70);
+
 .fixed-header {
   a {
-    color: rgb(133,25,16);
+    color: @ie-color-main;
+  }
+  nav {
+    background-color: @ie-color-main;
+  }
+}
+
+.navigation {
+  a {
+    color : white;
+    &:hover {
+      color : @ie-color-highlight;
+    } 
+  }
+
+  // additional empty link will be generated in IE8, ignore them
+  a[href=""] {
+    display: none;
   }
 }

@@ -2,7 +2,11 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
   'use strict';
 
   var MenuView = Marionette.ItemView.extend({
-    template: PanlinCapTpl['templates/nav.hbs'],
+    template: Handlebars.compile(
+      '{{#each items}}' + 
+      '<a href="{{link}}">{{title}}</a>' +
+      '{{/each}}'
+    ),
     className: 'navigation'
   });
 
