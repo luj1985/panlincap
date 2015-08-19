@@ -384,6 +384,9 @@ module.exports = function (grunt) {
         }, {
           src: 'node_modules/apache-server-configs/dist/.htaccess',
           dest: '<%= config.dist %>/.htaccess'
+        }, {
+          src: '.tmp/styles/ie.css',
+          dest: '<%= config.dist %>/styles/ie.css'
         }]
       },
       styles: {
