@@ -2,7 +2,7 @@
   'use strict';
 
   PanlinCap.addRegions({
-    navRegion: '#nav',
+    navRegion: '.fixed-header nav',
     bodyRegion: '#body',
     dialogRegion: '#dialog',
     bgRegion: '#background'
@@ -16,7 +16,6 @@
 
   var router = new Marionette.AppRouter({});
   router.on('route', function(route, params) {
-    console.log(arguments);
-
+    // console.log(arguments);
   });
 })(PanlinCap);

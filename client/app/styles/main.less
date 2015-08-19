@@ -7,9 +7,85 @@
        url('./fonts/lishu.woff') format('woff');
 }
 
+
+html, body {
+  height: 100%;
+}
+
+body {
+  padding : 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.fixed-header {
+  left : 0;
+
+  .brand img {
+    height : 15px;
+  }
+
+  nav, header {
+    display: block;
+    margin: 0 auto;
+    padding: 0 56px;
+  }
+
+  nav {
+    background-color: @color-main;
+  }
+
+  header {
+    height: 84px;
+    position: relative;
+    background-image: url("/images/logo.png");
+    background-repeat: no-repeat;
+    background-position: 56px center;
+    background-size: auto 56px;
+  }
+
+  #lang {
+    text-align: right;
+    padding: 14px;
+
+    a {
+      font-size: 13px;
+      color: @color-main;
+    }
+
+    .divider {
+      font-weight: bolder;
+      margin: 0 7px;
+    }
+
+    .brand {
+      display: inline-block;
+      height: 1.5rem;
+      margin-top: .5rem;
+      font-family: @font-title;
+      font-size: 1.3rem;
+      em {
+        color: @color-main;
+        padding: 0 .5rem;
+        font-family: monospace;
+        font-style: normal;
+        font-weight: bolder;
+      }
+    }
+  }
+
+}
+
+
 @import "./import/variables.import.less";
 @import "./import/global.import.less";
-@import "./import/header.import.less";
 @import "./import/content.import.less";
 @import "./import/dialog.import.less";
 @import "./import/reveal.import.less";
