@@ -3,34 +3,42 @@
 @ie-color-highlight: rgb(211,166,70);
 @ie-color-background: rgb(152,192,209);
 
+
+
+// rgba(133,25,16,.7)
+@ie-main-color-png : url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNolRTYBAADNgFhdT7p9AAAAABJRU5ErkJggg==);
+// rgba(152,192,209,.25)
+@ie-bg-color-png : url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOYceDiJgAG+QLcDC5MpgAAAABJRU5ErkJggg==);
+
 .fixed-header {
   a {
     color: @ie-color-main;
   }
   nav {
-    background-color: @ie-color-main;
+    background-image: @ie-main-color-png;
   }
 }
 
 .topic .inner {
-  background-color: @ie-color-background;
+  background-image: @ie-bg-color-png;
 
   h2.header {
     color : @ie-color-main;
   }
   a, .content {
-    color : @ie-color-background;
+    visibility: hidden;
   }
 }
 
 .topic:hover .inner {
-  background-color: @ie-color-main;
+  background-image: @ie-main-color-png;
   h2.header {
     color : @ie-color-highlight;
   }
 
   a, .content {
     color : white;
+    visibility: visible;
   }
 }
 
