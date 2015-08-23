@@ -9,7 +9,7 @@
   });
 
   PanlinCap.on('start', function() {
-    Backbone.history.start({ pushState: true });
+    Backbone.history.start({ pushState: false });
     Backbone.Intercept.start();
   });
 

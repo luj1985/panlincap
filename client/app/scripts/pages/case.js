@@ -5,7 +5,11 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
 
   var CaseView = Marionette.ItemView.extend({
     template : Handlebars.compile(
-      '<div class="brand-logo"><div class="logo"></div><p>{{name}}</p></div>'),
+      '<div class="brand-logo">' +
+      '<div class="logo"></div>' + 
+      '<p>{{name}}</p>' + 
+      '</div>'
+    ),
     className : 'brand column',
     onRender : function() {
       var model = this.model;
@@ -63,10 +67,10 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
       });
 
       this.sidebar.show(new Shared.SideMenuView({
-        collection : new Backbone.Collection([{ text : '投资案例', link : '/cases' }, { text : '重点案例', link : '/cases' }])
+        collection : new Backbone.Collection([{ text : '投资案例', link : '#/cases' }, { text : '重点案例', link : '/cases' }])
       }));
       this.breadcrumb.show(new Shared.BreadcrumbView({
-        collection : new Backbone.Collection([{ text : '投资组合', link : '/cases' }])
+        collection : new Backbone.Collection([{ text : '投资组合', link : '#/cases' }])
       }));
     }
   });

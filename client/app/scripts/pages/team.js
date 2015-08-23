@@ -4,8 +4,8 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
   var Shared = PanlinCap.module('Layout.Sidebar');
 
   var slogan = [
-    { text : '合伙人', link : '/team/partner' }, 
-    { text : '核心团队', link : '/team/members' }
+    { text : '合伙人', link : '#/team/partner' }, 
+    { text : '核心团队', link : '#/team/members' }
   ];
 
   var MemberView = Marionette.ItemView.extend({
@@ -51,7 +51,7 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
         collection : new Backbone.Collection(slogan)
       }));
       this.breadcrumb.show(new Shared.BreadcrumbView({
-        collection : new Backbone.Collection([{ text : '核心团队', link : '/team' }])
+        collection : new Backbone.Collection([{ text : '核心团队', link : '#/team' }])
       }));
     }
   });

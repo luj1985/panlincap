@@ -13,6 +13,11 @@
 @ie-bg-copyright : url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP4bw8AAkABP9Dd9wQAAAAASUVORK5CYII=);
 // rgba(255,255,255,.8)
 @ie-bg-reveal : url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP4fwYAAs0BzF1VEXcAAAAASUVORK5CYII=);
+
+a {
+  color: @ie-color-main;
+}
+
 .fixed-header {
   a {
     color: @ie-color-main;
@@ -21,7 +26,11 @@
     background-image: @ie-main-color-png;
   }
 }
-
+#breadcrumb .ui.breadcrumb {
+  a, .divider {
+    color: white;
+  }
+}
 
 .topic .inner {
   background-image: @ie-bg-color-png;

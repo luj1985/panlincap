@@ -3,7 +3,10 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
 
   var Shared = PanlinCap.module('Layout.Sidebar');
 
-  var slogan = [{ text : '被投公司资讯', link : '/news/invested' }, { text : '公司新闻', link : '/news/company' }];
+  var slogan = [
+    { text : '被投公司资讯', link : '#/news/invested' }, 
+    { text : '公司新闻', link : '#/news/company' }
+  ];
 
   var NewsView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/news/news.hbs'],
@@ -50,7 +53,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
       layout.getRegion('main').empty();
 
       layout.breadcrumb.show(new Shared.BreadcrumbView({
-        collection : new Backbone.Collection({ text : '新闻中心', link : '/news' })
+        collection : new Backbone.Collection({ text : '新闻中心', link : '#/news' })
       }));
     },
     showDetail : function(id) {
@@ -64,7 +67,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
       });
 
       layout.breadcrumb.show(new Shared.BreadcrumbView({
-        collection : new Backbone.Collection({ text : '新闻中心', link : '/news' })
+        collection : new Backbone.Collection({ text : '新闻中心', link : '#/news' })
       }));
 
     },
@@ -80,7 +83,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
       });
 
       layout.breadcrumb.show(new Shared.BreadcrumbView({
-        collection : new Backbone.Collection([{ text : '新闻中心', link : '/news' }, { text : '被投公司新闻', link : '/news/invested '}])
+        collection : new Backbone.Collection([{ text : '新闻中心', link : '#/news' }, { text : '被投公司新闻', link : '#/news/invested '}])
       }));
       
     },
@@ -96,7 +99,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
       })
 
       layout.breadcrumb.show(new Shared.BreadcrumbView({
-        collection : new Backbone.Collection([{ text : '新闻中心', link : '/news' }, { text : '公司新闻', link : '/news/company '}])
+        collection : new Backbone.Collection([{ text : '新闻中心', link : '#/news' }, { text : '公司新闻', link : '#/news/company '}])
       }));
     }
   };

@@ -4,7 +4,7 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
   var MenuView = Marionette.ItemView.extend({
     template: Handlebars.compile(
       '{{#each items}}' + 
-      '<a href="{{link}}">{{title}}</a>' +
+      '<a href="#{{link}}">{{title}}</a>' +
       '{{/each}}'
     ),
     className: 'navigation'

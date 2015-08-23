@@ -4,9 +4,9 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
   var Shared = PanlinCap.module('Layout.Sidebar');
 
   var slogan = [
-    { text : '招贤纳士', link : '/contacts/hire' }, 
-    { text : '公司地址', link : '/contacts/address' }, 
-    { text : '商业计划书', link : '/contacts/plan' }
+    { text : '招贤纳士', link : '#/contacts/hire' }, 
+    { text : '公司地址', link : '#/contacts/address' }, 
+    { text : '商业计划书', link : '#/contacts/plan' }
   ];
 
   var AddressView = Marionette.ItemView.extend({
@@ -44,7 +44,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
       }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({ 
         collection : new Backbone.Collection([
-          { text : '联系我们', link : '/contacts' 
+          { text : '联系我们', link : '#/contacts' 
         }]) 
       }));
     },
@@ -53,8 +53,8 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
       layout.sidebar.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
-          { text : '联系我们', link : '/contacts' }, 
-          { text : '招贤纳士', link : '/contacts/hire'}
+          { text : '联系我们', link : '#/contacts' }, 
+          { text : '招贤纳士', link : '#/contacts/hire'}
         ])
       }));
       layout.main.show(new HireView());
@@ -64,9 +64,9 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
       layout.sidebar.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
-          { text : '联系我们', link : '/contacts' }, 
-          { text : '招贤纳士', link : '/contacts/hire'},
-          { text : '会计', link : '/contacts/hire/accouting' }
+          { text : '联系我们', link : '#/contacts' }, 
+          { text : '招贤纳士', link : '#/contacts/hire'},
+          { text : '会计', link : '#/contacts/hire/accouting' }
         ])
       }));
       layout.main.show(new HireAccoutingView());
@@ -76,9 +76,9 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
       layout.sidebar.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
-          { text : '联系我们', link : '/contacts' }, 
-          { text : '招贤纳士', link : '/contacts/hire'},
-          { text : '行政助理', link : '/contacts/hire/accouting' }
+          { text : '联系我们', link : '#/contacts' }, 
+          { text : '招贤纳士', link : '#/contacts/hire'},
+          { text : '行政助理', link : '#/contacts/hire/accouting' }
         ])
       }));
       layout.main.show(new HireAssistantView());
@@ -88,8 +88,8 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
       layout.sidebar.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
-          { text : '联系我们', link : '/contacts' }, 
-          { text : '公司地址', link : '/contacts/address'}
+          { text : '联系我们', link : '#/contacts' }, 
+          { text : '公司地址', link : '#/contacts/address'}
         ])
       }));
       layout.main.show(new AddressView());
@@ -99,8 +99,8 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
       layout.sidebar.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
-          { text : '联系我们', link : '/contacts' }, 
-          { text : '商业计划书', link : '/contacts/plan'}
+          { text : '联系我们', link : '#/contacts' }, 
+          { text : '商业计划书', link : '#/contacts/plan'}
         ])
       }));
       layout.main.show(new BizPlanView());

@@ -2,13 +2,13 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
   'use strict';
 
   var slogan = [
-    { text : '核心理念', link : '/investment/principle' }, 
-    { text : '投资策略', link : '/investment/strategy' }, 
-    { text : '价值提升机制', link : '/investment/price' }
+    { text : '核心理念', link : '#/investment/principle' }, 
+    { text : '投资策略', link : '#/investment/strategy' }, 
+    { text : '价值提升机制', link : '#/investment/price' }
   ];
 
   var principle = {
-    back : '/investment',
+    back : '#/investment',
     description : [
       '<h2>核心投资理念 – “快乐投资”</h2>',
       '<p>即被投企业获得理念认同和加速成功的快乐；投资人获得共同见证企业的高速成长，与合作伙伴分享财富倍增和事业跃升的快乐；而基金管理人则获得成就卓越、创造共赢、促进民族经济升级和创新的快乐。</p>'
@@ -17,7 +17,7 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
 
 
   var strategy = {
-    back : '/investment',
+    back : '#/investment',
     description : [
       '<h2>投资核心原则</h2>',
       '<p>新兴产业：紧密贴合国家政策所长期支持的产业创新升级的大趋势，精选拥有扎实基础并具备做大做强DNA的创新型民企</p>',
@@ -31,7 +31,7 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
   };
 
   var price = {
-    back : '/investment',
+    back : '#/investment',
     description : [
       '<h2>价值提升机制</h2>',
       '<p>整合产业资源：基于专业的投资背景和过往的成功投资经验，我们在重点投资行业积累了丰富的行业资源，能够在被投企业的战略规划、市场开拓、人才引进等方面提供有效的帮助。</p>',
@@ -51,7 +51,7 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
         collection : new Backbone.Collection(slogan) 
       }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({ 
-        collection : new Backbone.Collection([{ text : '投资理念', link : '/investment' }]) 
+        collection : new Backbone.Collection([{ text : '投资理念', link : '#/investment' }]) 
       }));
       
       PanlinCap.vent.trigger('reveal:hide');
@@ -62,9 +62,9 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
         collection : new Backbone.Collection(slogan) 
       }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({ 
-        collection : new Backbone.Model([
-          { text : '投资理念', link : '/investment' }, 
-          { text : '价值提升机制', link : '/investment/price'}
+        collection : new Backbone.Collection([
+          { text : '投资理念', link : '#/investment' }, 
+          { text : '价值提升机制', link : '#/investment/price'}
         ]) 
       }));
       layout.main.show(new Shared.RevealView({ 
@@ -79,9 +79,9 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
         collection : new Backbone.Collection(slogan) 
       }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({ 
-        collection : new Backbone.Model([
-          { text : '投资理念', link : '/investment' }, 
-          { text : '投资核心原则', link : '/investment/principle'}
+        collection : new Backbone.Collection([
+          { text : '投资理念', link : '#/investment' }, 
+          { text : '投资核心原则', link : '#/investment/principle'}
         ]) 
       }));
       layout.main.show(new Shared.RevealView({ 
@@ -96,9 +96,9 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
         collection : new Backbone.Collection(slogan) 
       }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({ 
-        collection : new Backbone.Model([
-          { text : '投资理念', link : '/investment' }, 
-          { text : '投资策略', link : '/investment/strategy'}
+        collection : new Backbone.Collection([
+          { text : '投资理念', link : '#/investment' }, 
+          { text : '投资策略', link : '#/investment/strategy'}
         ]) 
       }));
       layout.main.show(new Shared.RevealView({ 

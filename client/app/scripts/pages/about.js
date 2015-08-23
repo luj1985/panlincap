@@ -1,10 +1,13 @@
 PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
   'use strict';
 
-  var slogan = [{ text : '磐霖介绍', link : '/about/panlin' }, { text : '我们的优势', link : '/about/advantage' }];
+  var slogan = [
+    { text : '磐霖介绍', link : '#/about/panlin' }, 
+    { text : '我们的优势', link : '#/about/advantage' }
+  ];
 
   var reveal = {
-    back : '/about',
+    back : '#/about',
     description : [
       '<h2>磐霖介绍</h2>',
       '<p>上海磐霖资产管理有限公司是专业的人民币私募股权投资基金（以下简称PE基金）的投资管理平台, 主要从事未上市企业的股权投资和投资后的资产管理。公司为中国证券投资基金业协会备案登记的私募股权基金管理人（备案登记号：P1000741）。迄今，公司已成功发起成立并管理了七期PE基金，包括一家医疗健康行业创投基金和一家环保产业并购基金。公司连同其管理的PE基金合称磐霖资本。</p>',
@@ -16,7 +19,7 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
   };
 
   var advantage = {
-    back : '/about',
+    back : '#/about',
     description : [
       '<h2>我们的优势</h2>',
       '<h3>优秀的投资业绩</h3>',
@@ -39,7 +42,7 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
         collection : new Backbone.Collection(slogan)
       }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({
-        collection : new Backbone.Collection([{ text : '关于我们', link : '/about' }]) 
+        collection : new Backbone.Collection([{ text : '关于我们', link : '#/about' }]) 
       }));
 
       PanlinCap.vent.trigger('reveal:hide');
@@ -54,8 +57,8 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
       }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
-          { text : '关于我们', link : '/about' }, 
-          { text : '关于磐霖', link : '/about/panlin'}
+          { text : '关于我们', link : '#/about' }, 
+          { text : '关于磐霖', link : '#/about/panlin'}
         ])
       }));
 
@@ -71,8 +74,8 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
       }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({ 
         collection : new Backbone.Collection([
-          { text : '关于我们', link : '/about' }, 
-          { text : '我们的优势', link : '/about/advantage'}
+          { text : '关于我们', link : '#/about' }, 
+          { text : '我们的优势', link : '#/about/advantage'}
         ]) 
       }));
       
