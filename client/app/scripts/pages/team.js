@@ -45,12 +45,12 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
       var promise = PanlinCap.reqres.request('members:fetch');
       promise.then(function(raw) {
         var members = new Backbone.Collection(raw);
-        self.showChildView('main', new TeamsView({collection : members}));
+        self.main.show(new TeamsView({collection : members}));
       });
-      this.showChildView('sidebar', new Shared.SideMenuView({
+      this.sidebar.show(new Shared.SideMenuView({
         collection : new Backbone.Collection(slogan)
       }));
-      this.showChildView('breadcrumb', new Shared.BreadcrumbView({
+      this.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([{ text : '核心团队', link : '/team' }])
       }));
     }

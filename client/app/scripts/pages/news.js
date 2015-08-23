@@ -30,7 +30,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
   
   var NewsLayoutView = Shared.SidebarLayoutView.extend({
     onBeforeShow : function() {
-      this.showChildView('sidebar', new NewsSidebarView({
+      this.sidebar.show(new NewsSidebarView({
         collection : new Backbone.Collection(slogan)
       }));
     }
@@ -49,7 +49,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
       var layout = this.initLayout();
       layout.getRegion('main').empty();
 
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
+      layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection({ text : '新闻中心', link : '/news' })
       }));
     },
@@ -58,12 +58,12 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
       var promise = PanlinCap.reqres.request('news:detail', id);
       promise.then(function(data) {
         var model = new Backbone.Model(data);
-        layout.showChildView('main', new NewsDetailView({
+        layout.main.show(new NewsDetailView({
           model : model
         }))
       });
 
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
+      layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection({ text : '新闻中心', link : '/news' })
       }));
 
@@ -74,12 +74,12 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
 
       promise.then(function(data) {
         var news = new Backbone.Collection(data);
-        layout.showChildView('main', new NewsCollectionView({
+        layout.main.show(new NewsCollectionView({
           collection : news
         }));
       });
 
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
+      layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([{ text : '新闻中心', link : '/news' }, { text : '被投公司新闻', link : '/news/invested '}])
       }));
       
@@ -90,12 +90,12 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
       var promise = PanlinCap.reqres.request('company-news:fetch');
       promise.then(function(data) {
         var news = new Backbone.Collection(data);
-        layout.showChildView('main', new NewsCollectionView({
+        layout.main.show(new NewsCollectionView({
           collection : news
         }));
       })
 
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
+      layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([{ text : '新闻中心', link : '/news' }, { text : '公司新闻', link : '/news/company '}])
       }));
     }

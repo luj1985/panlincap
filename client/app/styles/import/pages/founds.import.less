@@ -1,17 +1,18 @@
 .found {
+  h3, h4 {
+    color: @color-main;
+    font-size:15px;
+  }
+
   h3 {
     font-family: @font-title;
-    color: @color-main;
     margin-bottom: .3rem;
     margin-top: 0;
-	  font-size:15px;
   }
 
   h4 {
     margin-top: 0;
-    color: @color-main;
     font-family: @font-heiti;
-    font-size: 15px;
   }
 
 }
@@ -37,11 +38,6 @@
     vertical-align: top;
     cursor: pointer;
     flex-grow : 1;
-    
-    &:active, &:focus {
-      border: none;
-      box-shadow: none;
-    }
   }
 }
 
@@ -55,7 +51,7 @@ table.content-column-left {
     vertical-align: top;
     line-height: 1.5rem;
   }
-  tr > td:nth-child(1) {
+  tr, td:first-child {
     width: 80px;
   }
 }
@@ -77,11 +73,11 @@ table.content-column-left {
 table.chart.distribution {
   text-align: center;
   width: 100%;
-  tr:nth-child(1) {
+  tr.bar {
     height: 40px;
     color: @color-white;
   }
-  tr:nth-child(2) td{
+  tr.caption {
     height: 20px;
     font-size: 11px;
     vertical-align: middle;

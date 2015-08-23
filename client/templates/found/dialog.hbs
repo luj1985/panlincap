@@ -23,13 +23,12 @@
         {{#if portfolio}}
         <p>投资行业分布：</p>
         <table class="chart distribution">
-          <tr>
+          <tr class="bar">
           {{#each portfolio}}
             <td width="{{percentage}}%" style="background-color:{{color}}">{{percentage}}%</td>
           {{/each}}
           </tr>
-          <tr>
-
+          <tr class="caption">
           {{#each portfolio}}
             <td>{{ area }}</td>
           {{/each}}

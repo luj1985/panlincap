@@ -47,10 +47,10 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
     showInvestment : function() {
       var layout = this.initializeLayout();
       layout.getRegion('main').empty();
-      layout.showChildView('sidebar', new Shared.SidebarView({ 
+      layout.sidebar.show(new Shared.SidebarView({ 
         collection : new Backbone.Collection(slogan) 
       }));
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({ 
+      layout.breadcrumb.show(new Shared.BreadcrumbView({ 
         collection : new Backbone.Model([{ text : '投资理念', link : '/investment' }]) 
       }));
       
@@ -58,16 +58,16 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
     },
     showPrice : function() {
       var layout = this.initializeLayout();
-      layout.showChildView('sidebar', new Shared.SidebarView({ 
+      layout.sidebar.show(new Shared.SidebarView({ 
         collection : new Backbone.Collection(slogan) 
       }));
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({ 
+      layout.breadcrumb.show(new Shared.BreadcrumbView({ 
         collection : new Backbone.Model([
           { text : '投资理念', link : '/investment' }, 
           { text : '价值提升机制', link : '/investment/price'}
         ]) 
       }));
-      layout.showChildView('main', new Shared.RevealView({ 
+      layout.main.show(new Shared.RevealView({ 
         model : new Backbone.Model(price) 
       }));
 
@@ -75,16 +75,16 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
     },
     showPrinciple : function() {
       var layout = this.initializeLayout();
-      layout.showChildView('sidebar', new Shared.SidebarView({ 
+      layout.sidebar.show(new Shared.SidebarView({ 
         collection : new Backbone.Collection(slogan) 
       }));
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({ 
+      layout.breadcrumb.show(new Shared.BreadcrumbView({ 
         collection : new Backbone.Model([
           { text : '投资理念', link : '/investment' }, 
           { text : '投资核心原则', link : '/investment/principle'}
         ]) 
       }));
-      layout.showChildView('main', new Shared.RevealView({ 
+      layout.main.show(new Shared.RevealView({ 
         model : new Backbone.Model(principle) 
       }));
 
@@ -92,16 +92,16 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
     },
     showStrategy : function() {
       var layout = this.initializeLayout();
-      layout.showChildView('sidebar', new Shared.SidebarView({ 
+      layout.sidebar.show(new Shared.SidebarView({ 
         collection : new Backbone.Collection(slogan) 
       }));
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({ 
+      layout.breadcrumb.show(new Shared.BreadcrumbView({ 
         collection : new Backbone.Model([
           { text : '投资理念', link : '/investment' }, 
           { text : '投资策略', link : '/investment/strategy'}
         ]) 
       }));
-      layout.showChildView('main', new Shared.RevealView({ 
+      layout.main.show(new Shared.RevealView({ 
         model : new Backbone.Model(strategy) 
       }));
 

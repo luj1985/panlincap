@@ -59,13 +59,13 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
         }).value();
 
         var cases = new Backbone.Collection(data);
-        self.showChildView('main', new CasesCollectionView({ collection : cases }));
+        self.main.show(new CasesCollectionView({ collection : cases }));
       });
 
-      this.showChildView('sidebar', new Shared.SideMenuView({
+      this.sidebar.show(new Shared.SideMenuView({
         collection : new Backbone.Collection([{ text : '投资案例', link : '/cases' }, { text : '重点案例', link : '/cases' }])
       }));
-      this.showChildView('breadcrumb', new Shared.BreadcrumbView({
+      this.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([{ text : '投资组合', link : '/cases' }])
       }));
     }

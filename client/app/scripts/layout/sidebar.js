@@ -63,9 +63,6 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
   });
 
   Sidebar.MainRegionController = Marionette.Controller.extend({
-    initialize : function(options) {
-      this.mergeOptions(options, ['background']);
-    },
     initializeLayout : function() {
       var background = this.getOption('background');
       if (!background) {

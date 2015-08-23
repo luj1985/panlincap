@@ -39,10 +39,10 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
     showContacts : function() {
       var layout = this.initializeLayout();
       layout.getRegion('main').empty();
-      layout.showChildView('sidebar', new Shared.SidebarView({ 
+      layout.sidebar.show(new Shared.SidebarView({ 
         collection : new Backbone.Collection(slogan) 
       }));
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({ 
+      layout.breadcrumb.show(new Shared.BreadcrumbView({ 
         collection : new Backbone.Collection([
           { text : '联系我们', link : '/contacts' 
         }]) 
@@ -50,60 +50,60 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
     },
     showHire : function() {
       var layout = this.initializeLayout();
-      layout.showChildView('sidebar', new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
+      layout.sidebar.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
+      layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '联系我们', link : '/contacts' }, 
           { text : '招贤纳士', link : '/contacts/hire'}
         ])
       }));
-      layout.showChildView('main', new HireView());
+      layout.main.show(new HireView());
     },
     showHireAccounting : function() {
       var layout = this.initializeLayout();
-      layout.showChildView('sidebar', new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
+      layout.sidebar.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
+      layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '联系我们', link : '/contacts' }, 
           { text : '招贤纳士', link : '/contacts/hire'},
           { text : '会计', link : '/contacts/hire/accouting' }
         ])
       }));
-      layout.showChildView('main', new HireAccoutingView());
+      layout.main.show(new HireAccoutingView());
     },
     showHireAssistant : function() {
       var layout = this.initializeLayout();
-      layout.showChildView('sidebar', new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
+      layout.sidebar.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
+      layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '联系我们', link : '/contacts' }, 
           { text : '招贤纳士', link : '/contacts/hire'},
           { text : '行政助理', link : '/contacts/hire/accouting' }
         ])
       }));
-      layout.showChildView('main', new HireAssistantView());
+      layout.main.show(new HireAssistantView());
     },
     showAddress : function() {
       var layout = this.initializeLayout();
-      layout.showChildView('sidebar', new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
+      layout.sidebar.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
+      layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '联系我们', link : '/contacts' }, 
           { text : '公司地址', link : '/contacts/address'}
         ])
       }));
-      layout.showChildView('main', new AddressView());
+      layout.main.show(new AddressView());
     },
     showPlan : function() {
       var layout = this.initializeLayout();
-      layout.showChildView('sidebar', new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
+      layout.sidebar.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
+      layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '联系我们', link : '/contacts' }, 
           { text : '商业计划书', link : '/contacts/plan'}
         ])
       }));
-      layout.showChildView('main', new BizPlanView());
+      layout.main.show(new BizPlanView());
     }
   });
 

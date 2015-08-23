@@ -35,10 +35,10 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
     showAbout : function() {
       var layout = this.initializeLayout();
       layout.getRegion('main').empty();
-      layout.showChildView('sidebar', new Shared.SidebarView({
+      layout.sidebar.show(new Shared.SidebarView({
         collection : new Backbone.Collection(slogan)
       }));
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
+      layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([{ text : '关于我们', link : '/about' }]) 
       }));
 
@@ -46,13 +46,13 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
     },
     showAboutPanlin : function() {
       var layout = this.initializeLayout();
-      layout.showChildView('sidebar', new Shared.SidebarView({
+      layout.sidebar.show(new Shared.SidebarView({
         collection : new Backbone.Collection(slogan)
       }));
-      layout.showChildView('main', new Shared.RevealView({
+      layout.main.show(new Shared.RevealView({
         model : new Backbone.Model(reveal)
       }));
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({
+      layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '关于我们', link : '/about' }, 
           { text : '关于磐霖', link : '/about/panlin'}
@@ -63,13 +63,13 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
     },
     showAdvantage : function() {
       var layout = this.initializeLayout();
-      layout.showChildView('sidebar', new Shared.SidebarView({ 
+      layout.sidebar.show(new Shared.SidebarView({ 
         collection : new Backbone.Collection(slogan) 
       }));
-      layout.showChildView('main', new Shared.RevealView({ 
+      layout.main.show(new Shared.RevealView({ 
         model : new Backbone.Model(advantage) 
       }));
-      layout.showChildView('breadcrumb', new Shared.BreadcrumbView({ 
+      layout.breadcrumb.show(new Shared.BreadcrumbView({ 
         collection : new Backbone.Collection([
           { text : '关于我们', link : '/about' }, 
           { text : '我们的优势', link : '/about/advantage'}
