@@ -27,7 +27,13 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
   });
 
   Sidebar.SidebarLayoutView = Marionette.LayoutView.extend({
-    template : PanlinCapTpl['templates/layout/sidebarLayout.hbs'],
+    template : Handlebars.compile(
+      '<nav id="breadcrumb"></nav>' +
+      '<div class="content-wrapper">' +
+      '<aside id="sidebar"></aside>' +
+      '<main id="main"></main>' +
+      '</div>'
+    ),
     className : 'sidebar-layout',
     regions : {
       breadcrumb : '#breadcrumb',
@@ -37,13 +43,22 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
   });
 
   Sidebar.SidebarView = Sidebar.SideMenuView = Marionette.ItemView.extend({
-    template : PanlinCapTpl['templates/layout/sidelinks.hbs'],
+    template : Handlebars.compile(
+      '{{#each items}}' +
+      '<li><a href="{{link}}">{{text}}</a></li>' +
+      '{{/each}}'
+    ),
     tagName : 'ul',
     className : 'brief'
   });
 
   Sidebar.RevealView = Marionette.ItemView.extend({
-    template : PanlinCapTpl['templates/layout/reveal.hbs'],
+    template : Handlebars.compile(
+      '{{{description}}}' + 
+      '<a href="{{back}}" class="close">' + 
+      '  <i class="fa fa-angle-double-left"></i> 收起' +
+      '</a>'
+    ),
     className : 'reveal',
     initialize : function() {
       this.listenTo(PanlinCap.vent, 'reveal:active', this.revealView, this);
@@ -58,7 +73,13 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
   });
 
   Sidebar.BreadcrumbView = Marionette.ItemView.extend({
-    template : PanlinCapTpl['templates/layout/breadcrumb.hbs'],
+    template : Handlebars.compile(
+      '<a class="section" href="/">首页</a>' +
+      '{{#each items}}' +
+      ' <i class="fa fa-chevron-right"></i> ' +
+      '<a class="section" href="{{link}}">{{text}}</a>' +
+      '{{/each}}'
+    ),
     className : 'ui breadcrumb'
   });
 
