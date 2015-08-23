@@ -38,7 +38,7 @@ a {
 }
 #body .founds .found {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOYceCiPQAGhgJpxZKj6QAAAABJRU5ErkJggg==);
-  width: 200px;
+  min-width: 200px;
 }
 table.chart.distribution tr.bar {
   color: white;
