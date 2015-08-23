@@ -77,7 +77,7 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
 
   var casesController = {
     showCases: function() {
-      PanlinCap.bodyRegion.show(new CaseLayoutView({}));
+      PanlinCap.bodyRegion.show(new CaseLayoutView({className : 'sidebar-layout content'}));
       PanlinCap.execute('showBackground', 'cases');
     }
   };

@@ -37,7 +37,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
   var ContactController = Shared.MainRegionController.extend({
     background: 'contact',
     showContacts : function() {
-      var layout = this.initializeLayout();
+      var layout = this.initializeLayout({className : 'sidebar-layout content'});
       layout.getRegion('main').empty();
       layout.sidebar.show(new Shared.SidebarView({ 
         collection : new Backbone.Collection(slogan) 
@@ -49,7 +49,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
       }));
     },
     showHire : function() {
-      var layout = this.initializeLayout();
+      var layout = this.initializeLayout({className : 'sidebar-layout content'});
       layout.sidebar.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
@@ -60,7 +60,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
       layout.main.show(new HireView());
     },
     showHireAccounting : function() {
-      var layout = this.initializeLayout();
+      var layout = this.initializeLayout({className : 'sidebar-layout content'});
       layout.sidebar.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
@@ -72,7 +72,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
       layout.main.show(new HireAccoutingView());
     },
     showHireAssistant : function() {
-      var layout = this.initializeLayout();
+      var layout = this.initializeLayout({className : 'sidebar-layout content'});
       layout.sidebar.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
@@ -84,7 +84,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
       layout.main.show(new HireAssistantView());
     },
     showAddress : function() {
-      var layout = this.initializeLayout();
+      var layout = this.initializeLayout({className : 'sidebar-layout content'});
       layout.sidebar.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
@@ -95,7 +95,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
       layout.main.show(new AddressView());
     },
     showPlan : function() {
-      var layout = this.initializeLayout();
+      var layout = this.initializeLayout({className : 'sidebar-layout content'});
       layout.sidebar.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([

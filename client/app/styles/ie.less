@@ -13,7 +13,8 @@
 @ie-bg-copyright : url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP4bw8AAkABP9Dd9wQAAAAASUVORK5CYII=);
 // rgba(255,255,255,.8)
 @ie-bg-reveal : url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP4fwYAAs0BzF1VEXcAAAAASUVORK5CYII=);
-
+// rgba(255,255,255,.5)
+@ie-bg-main : url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP4Xw8AAoABf5/NhYYAAAAASUVORK5CYII=);
 a {
   color: @ie-color-main;
 }
@@ -99,6 +100,13 @@ table.chart.distribution {
 
 #main .reveal {
   h2 {
+    color: @ie-color-main;
+  }
+}
+
+.main-container.address, .main-container.hire, .main-container.plan {
+  background-image: @ie-bg-main;
+  h3 {
     color: @ie-color-main;
   }
 }

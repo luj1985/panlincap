@@ -74,7 +74,7 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
 
   Sidebar.BreadcrumbView = Marionette.ItemView.extend({
     template : Handlebars.compile(
-      '<a class="section" href="#/">首页</a>' +
+      '<a class="section" href="/#">首页</a>' +
       '{{#each items}}' +
       ' <i class="fa fa-chevron-right"></i> ' +
       '<a class="section" href="{{link}}">{{text}}</a>' +
@@ -84,13 +84,13 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
   });
 
   Sidebar.MainRegionController = Marionette.Controller.extend({
-    initializeLayout : function() {
+    initializeLayout : function(options) {
       var background = this.getOption('background');
       if (!background) {
         throw new Error('must assign background');
       }
       if (!this.layout || (this.layout && this.layout.isDestroyed)) {
-        this.layout = new Sidebar.SidebarLayoutView();
+        this.layout = new Sidebar.SidebarLayoutView(options); 
         PanlinCap.bodyRegion.show(this.layout);
         PanlinCap.execute('showBackground', background);
       }

@@ -42,7 +42,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
   var newsController = {
     initLayout : function() {
       if (!this.layout || (this.layout && this.layout.isDestroyed)) {
-        this.layout = new NewsLayoutView();
+        this.layout = new NewsLayoutView({className : 'sidebar-layout content'});
         PanlinCap.bodyRegion.show(this.layout);
         PanlinCap.execute('showBackground', 'news');
       }
