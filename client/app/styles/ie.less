@@ -11,7 +11,8 @@
 @ie-bg-color-png : url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOYceCiPQAGhgJpxZKj6QAAAABJRU5ErkJggg==);
 // rgba(255,255,255,.2)
 @ie-bg-copyright : url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP4bw8AAkABP9Dd9wQAAAAASUVORK5CYII=);
-
+// rgba(255,255,255,.8)
+@ie-bg-reveal : url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP4fwYAAs0BzF1VEXcAAAAASUVORK5CYII=);
 .fixed-header {
   a {
     color: @ie-color-main;
@@ -87,6 +88,12 @@ table.chart.distribution {
   }
 }
 
+#main .reveal {
+  h2 {
+    color: @ie-color-main;
+  }
+}
+
 .revealbg.active {
-  background-color: white;
+  background-image: @ie-bg-reveal;
 }
