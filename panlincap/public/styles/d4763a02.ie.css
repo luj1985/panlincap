@@ -1,0 +1,80 @@
+a {
+  color: #851910;
+}
+.fixed-header a {
+  color: #851910;
+}
+.fixed-header nav {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNolRTYBAADNgFhdT7p9AAAAABJRU5ErkJggg==);
+}
+#breadcrumb .ui.breadcrumb a,
+#breadcrumb .ui.breadcrumb .divider {
+  color: white;
+}
+.topic .inner {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOYceCiPQAGhgJpxZKj6QAAAABJRU5ErkJggg==);
+}
+.topic .inner h2.header {
+  color: #851910;
+}
+.topic .inner a,
+.topic .inner .content {
+  visibility: hidden;
+}
+.topic:hover .inner {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNolRTYBAADNgFhdT7p9AAAAABJRU5ErkJggg==);
+}
+.topic:hover .inner h2.header {
+  color: #d3a646;
+}
+.topic:hover .inner a,
+.topic:hover .inner .content {
+  color: white;
+  visibility: visible;
+}
+.found h3,
+.found h4 {
+  color: #851910;
+}
+#body .founds .found {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOYceCiPQAGhgJpxZKj6QAAAABJRU5ErkJggg==);
+  width: 200px;
+}
+table.chart.distribution tr.bar {
+  color: white;
+}
+.navigation a {
+  color: white;
+}
+.navigation a:hover {
+  color: #d3a646;
+}
+.navigation a[href="#"] {
+  display: none;
+}
+#copyright {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP4bw8AAkABP9Dd9wQAAAAASUVORK5CYII=);
+}
+#copyright a {
+  color: #851910;
+}
+.content-body a,
+.news .detail a {
+  color: #851910;
+}
+#main .reveal h2 {
+  color: #851910;
+}
+.main-container.address,
+.main-container.hire,
+.main-container.plan {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP4Xw8AAoABf5/NhYYAAAAASUVORK5CYII=);
+}
+.main-container.address h3,
+.main-container.hire h3,
+.main-container.plan h3 {
+  color: #851910;
+}
+.revealbg.active {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP4fwYAAs0BzF1VEXcAAAAASUVORK5CYII=);
+}
