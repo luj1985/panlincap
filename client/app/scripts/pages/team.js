@@ -68,11 +68,11 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
       },
       showPartner :function() {
         this.showTeam();
-        $('#body').animate({scrollTop: 0}, { duration: 300, easing: 'swing'});
+        $('.page').animate({scrollTop: 0}, { duration: 300, easing: 'swing'});
       },
       showMembers :function() {
         this.showTeam();
-        $('#body').animate({scrollTop: 640}, { duration: 300, easing: 'swing'});
+        $('.page').animate({scrollTop: 640}, { duration: 300, easing: 'swing'});
       }
     };
   })();
