@@ -12,15 +12,15 @@ module Panlincap
       data = [{
         :title => '关于磐霖',
         :description => '上海磐霖资产管理有限公司是专业的人民币私募股权投资基金（以下简称PE基金）的投资管理平台, 主要从事未上市企业的股权投资和投资后的资产管理...',
-        :link => '/about'    
+        :link => '#/about'    
       }, {
         :title => '投资理念',
         :description => '核心投资理念 –- “快乐投资”<br>差异化投资模式 –- “专业创造价值”',
-        :link => '/investment'
+        :link => '#/investment'
       }, {
         :title => '投资案例',
         :description => '我们既有已在创业板首批上市的成功投资案例，也有已经入股而预期在三年内上市的项目...',
-        :link => '/cases'
+        :link => '#/cases'
       }]
 
 
@@ -35,14 +35,14 @@ module Panlincap
         lines = content.split("\n")
         id = article.id.to_s
 
-        news_preview += '<h4><a href="/news/detail/' + id + '">' + date + '  [ ' + title + ' ]</a></h4>'
+        news_preview += '<h4><a href="#/news/detail/' + id + '">' + date + '  [ ' + title + ' ]</a></h4>'
         news_preview += '<p>' + lines[0] + '</p>'
       end
       news_preview += '</div>'
 
       news = { 
         :title => '新闻中心',
-        :link => '/news',
+        :link => '#/news',
         :description => news_preview
       }
 
