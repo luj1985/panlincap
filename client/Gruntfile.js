@@ -202,7 +202,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= config.app %>/styles',
-          src: ['*.less', '!semantic.less', '!theme.less'],
+          src: ['*.less'],
           dest: '.tmp/styles',
           ext: '.css'
         }]
@@ -216,7 +216,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= config.app %>/styles',
-          src: ['*.less', '!theme.less'],
+          src: ['*.less'],
           dest: '.tmp/styles',
           ext: '.css'
         }]
@@ -240,8 +240,7 @@ module.exports = function (grunt) {
 
     'font-spider': {
       main: {
-        src: 'dist/fonts.html',
-        ignore : ['semantic.css']
+        src: 'dist/fonts.html'
       }
     },
 
@@ -378,7 +377,6 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             'images/{,*/}*.webp',
             '{,*/}*.html',
-            'themes/default/assets/{,*/}*.*',
             'styles/fonts/{,*/}*.*'
           ]
         }, {
