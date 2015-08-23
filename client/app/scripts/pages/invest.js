@@ -51,7 +51,7 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
         collection : new Backbone.Collection(slogan) 
       }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({ 
-        collection : new Backbone.Model([{ text : '投资理念', link : '/investment' }]) 
+        collection : new Backbone.Collection([{ text : '投资理念', link : '/investment' }]) 
       }));
       
       PanlinCap.vent.trigger('reveal:hide');
