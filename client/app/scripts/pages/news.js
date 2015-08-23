@@ -116,7 +116,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
     });
 
     router.on('route', function(route, params) {
-      $('#body').scrollTop(0);
+      $('.page').scrollTop(0);
     });
   });
 });

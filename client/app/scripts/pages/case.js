@@ -84,11 +84,15 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
 
   PanlinCap.addInitializer(function() {
 
-    new Marionette.AppRouter({
+    var router = new Marionette.AppRouter({
       appRoutes : {
         'cases(/)' : 'showCases'
       },
       controller: casesController
+    });
+
+    router.on('route', function(route, params) {
+      $('.page').scrollTop(0);
     });
 
   });

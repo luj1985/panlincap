@@ -112,7 +112,7 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
 
 
   PanlinCap.addInitializer(function() {
-    new Marionette.AppRouter({
+    var router = new Marionette.AppRouter({
       appRoutes : {
         'investment(/)': 'showInvestment',
         'investment/principle(/)' : 'showPrinciple',
@@ -120,6 +120,10 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
         'investment/price' : 'showPrice'
       },
       controller: new InvestmentController()
+    });
+
+    router.on('route', function(route, params) {
+      $('.page').scrollTop(0);
     });
 
   });

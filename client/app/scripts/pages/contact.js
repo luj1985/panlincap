@@ -109,7 +109,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
 
   PanlinCap.addInitializer(function() {
 
-    new Marionette.AppRouter({
+    var router = new Marionette.AppRouter({
       appRoutes : {
         'contacts(/)': 'showContacts',
         'contacts/hire(/)' : 'showHire',
@@ -119,6 +119,10 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
         'contacts/plan(/)' : 'showPlan'
       },
       controller: new ContactController()
+    });
+
+    router.on('route', function(route, params) {
+      $('.page').scrollTop(0);
     });
 
   });

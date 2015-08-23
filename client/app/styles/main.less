@@ -7,6 +7,7 @@
 @import "./import/background.import.less";
 @import "./import/pages.import.less";
 @import "./import/pagination.import.less";
+@import "./import/responsive.import.less";
 
 @font-face {
   font-family: '隶书';
@@ -34,26 +35,31 @@ body {
   padding : 0;
   margin: 0;
   font-family: @font-default;
-  font-size: 14px;
+  font-size: @base-font-size;
 }
 
 a {
+  color : @color-main;
   text-decoration: none;
   &:hover {
     text-decoration: underline;
   }
+  &.close:hover {
+    text-decoration: none;
+  }
 }
-a.close:hover {
-  text-decoration: none;
+
+p {
+  .content-font();
 }
 
 .fixed-header {
-  left : 0;
   box-shadow: 0 3px 8px 0 rgba(0,0,0,.26);
-  z-index: 100;
   position: fixed;
   top: 0;
+  left : 0;
   width: 100%;
+  z-index: 100;
 
   a {
     font-size: 13px;
@@ -92,7 +98,7 @@ a.close:hover {
 
     a {
       font-family: '隶书';
-      font-size: 17px;
+      font-size: @menu-font-size;
       box-sizing: border-box;
       padding : 8px 14px;
       display: inline-block;
@@ -106,10 +112,25 @@ a.close:hover {
   }
 }
 
-.breadcrumb .fa {
-  color : #e8e8e8;  
-  font-size: 12px;
+#breadcrumb {
+  top : 135px;
+  position: fixed;
+  z-index: 100;
 }
+
+#breadcrumb .ui.breadcrumb {
+  margin: 14px 0;
+  a, .divider {
+    color: @color-white;
+    font-size: @breadcrumb-font-size;
+    text-shadow: 0 0 5px #3E3E3E;
+  }
+  .fa {
+    color : #e8e8e8;  
+    font-size: @breadcrumb-font-size;
+  }
+}
+
 
 .page {
   position: absolute;

@@ -85,13 +85,17 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
 
   PanlinCap.addInitializer(function() {
 
-    new Marionette.AppRouter({
+    var router = new Marionette.AppRouter({
       appRoutes : {
         'about(/)': 'showAbout',
         'about/panlin(/)' : 'showAboutPanlin',
         'about/advantage(/)' : 'showAdvantage'
       },
       controller: new AboutController()
+    });
+
+    router.on('route', function(route, params) {
+      $('.page').scrollTop(0);
     });
 
   });

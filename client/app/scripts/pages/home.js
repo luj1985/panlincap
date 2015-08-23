@@ -18,11 +18,15 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
   };
 
   PanlinCap.addInitializer(function() {
-    new Marionette.AppRouter({
+    var router = new Marionette.AppRouter({
       appRoutes : {
         '(/)' : 'showHome'
       },
       controller: homeController
+    });
+
+    router.on('route', function(route, params) {
+      $('.page').scrollTop(0);
     });
   });
 });

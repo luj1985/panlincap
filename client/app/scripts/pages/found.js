@@ -2,7 +2,12 @@ PanlinCap.module('Found', function(Found, PanlinCap, Backbone, Marionette) {
   'use strict';
 
   var FoundView = Marionette.ItemView.extend({
-    template: PanlinCapTpl['templates/found/found.hbs'],
+    template: Handlebars.compile(
+      '<div class="inner">' +
+      '<h3>{{issue}}</h3>' +
+      '<h4>{{name}}</h4>' + 
+      '</div>'
+    ),
     className: 'found',
     onRender : function() {
       var model = this.model;
@@ -62,11 +67,15 @@ PanlinCap.module('Found', function(Found, PanlinCap, Backbone, Marionette) {
   };
 
   PanlinCap.addInitializer(function() {
-    new Marionette.AppRouter({
+    var router = new Marionette.AppRouter({
       appRoutes : {
         'founds(/)' : 'showFounds'
       },
       controller: foundController
+    });
+
+    router.on('route', function(route, params) {
+      $('.page').scrollTop(0);
     });
   });
 });

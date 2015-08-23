@@ -61,8 +61,10 @@ a {
     color: @ie-color-main;
   }
 }
-.founds .found {
+
+#body .founds .found {
   background-image: @ie-bg-color-png;
+  width: 200px;
 }
 
 table.chart.distribution {
@@ -80,7 +82,7 @@ table.chart.distribution {
   }
 
   // additional empty link will be generated in IE8, ignore them
-  a[href=""] {
+  a[href="#"] {
     display: none;
   }
 }

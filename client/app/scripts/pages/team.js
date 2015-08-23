@@ -78,13 +78,17 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
   })();
 
   PanlinCap.addInitializer(function() {
-    new Marionette.AppRouter({
+    var router = new Marionette.AppRouter({
       appRoutes : {
         'team(/)' : 'showTeam',
         'team/partner(/)' : 'showPartner',
         'team/members(/)' : 'showMembers'
       },
       controller: teamController
+    });
+
+    router.on('route', function(route, params) {
+      $('.page').scrollTop(0);
     });
 
   });
