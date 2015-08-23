@@ -9,6 +9,8 @@
 @ie-main-color-png : url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNolRTYBAADNgFhdT7p9AAAAABJRU5ErkJggg==);
 // rgba(152,192,209,.25)
 @ie-bg-color-png : url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOYceCiPQAGhgJpxZKj6QAAAABJRU5ErkJggg==);
+// rgba(255,255,255,.2)
+@ie-bg-copyright : url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP4bw8AAkABP9Dd9wQAAAAASUVORK5CYII=);
 
 .fixed-header {
   a {
@@ -73,12 +75,11 @@ table.chart.distribution {
 }
 
 #copyright {
+  background-image: @ie-bg-copyright;
   a {
     color: @ie-color-main;
   }
 }
-
-
 
 .content-body, .news .detail {
   a {
