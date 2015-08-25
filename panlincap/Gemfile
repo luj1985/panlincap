@@ -17,6 +17,8 @@ gem 'rake'
 gem 'bcrypt'
 gem 'sass'
 gem 'erubis', '~> 2.7.0'
+gem 'will_paginate', '~>3.0'
+gem 'will_paginate-bootstrap'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'sqlite3'
 

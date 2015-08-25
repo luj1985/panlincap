@@ -2,11 +2,11 @@
   'use strict';
 
   PanlinCap.reqres.setHandler('news:fetch', function() {
-    return $.get('/api/article/invested');
+    return $.get('/api/article?type=invested');
   });
 
   PanlinCap.reqres.setHandler('company-news:fetch', function() {
-    return $.get('/api/article/company');
+    return $.get('/api/article?type=company');
   });
 
   PanlinCap.reqres.setHandler('news:detail', function(id) {

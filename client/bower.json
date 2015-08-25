@@ -7,6 +7,7 @@
     "handlebars": "~3.0.2",
     "backbone.intercept": "~0.3.2",
     "bpopup": "~0.11.0",
-    "jquery-html5-placeholder-shim": "*"
+    "jquery-html5-placeholder-shim": "*",
+    "backbone.paginator": "~2.0.2"
   }
 }

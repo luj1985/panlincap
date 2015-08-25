@@ -17,7 +17,22 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
     template : PanlinCapTpl['templates/news/pages.hbs'],
     childView : NewsView,
     className : 'main-container news',
-    childViewContainer : 'ul.news'
+    childViewContainer : 'ul.news',
+    events : {
+      'click a.prev' : function(e) {
+        e.preventDefault();
+        if (this.collection.hasPreviousPage()) {
+          this.collection.prevPage();  
+        }
+      },
+      'click a.next' : function(e) {
+        e.preventDefault();
+        console.log('next page');
+        if (this.collection.hasNextPage()) {
+          this.collection.nextPage();
+        }
+      }
+    }
   });
 
 
@@ -76,7 +91,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
       var promise = PanlinCap.reqres.request('news:fetch');
 
       promise.then(function(data) {
-        var news = new Backbone.Collection(data);
+        var news = new Backbone.PageableCollection(data);
         layout.main.show(new NewsCollectionView({
           collection : news
         }));
@@ -92,7 +107,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
 
       var promise = PanlinCap.reqres.request('company-news:fetch');
       promise.then(function(data) {
-        var news = new Backbone.Collection(data);
+        var news = new Backbone.PageableCollection(data);
         layout.main.show(new NewsCollectionView({
           collection : news
         }));
