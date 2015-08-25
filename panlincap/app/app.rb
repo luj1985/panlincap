@@ -59,7 +59,7 @@ module Panlincap
       }
       type = categories[params[:type]]
 
-      articles = Article.where(:category_id => type).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
+      articles = Article.where(:category_id => type).page(params[:page]).order('created_at DESC')
 
       preview = articles.map do |article|
         title = article.title
@@ -73,7 +73,16 @@ module Panlincap
         news[:descriptions] = lines[0]
         news
       end
-      preview.to_json
+      
+      [
+        {
+          :page => articles.current_page,
+          :per_page => articles.per_page,
+          :total_pages => articles.total_pages,
+          :total_entries => articles.total_entries
+        },
+        preview
+      ].to_json
     end
 
 

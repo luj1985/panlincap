@@ -18,19 +18,52 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
     childView : NewsView,
     className : 'main-container news',
     childViewContainer : 'ul.news',
+    initialize : function() {
+      this.listenTo(this.collection, 'reset', this.render);
+    },
+    templateHelpers : function() {
+      var state = this.collection.state;
+      return {
+        hasPrev : this.collection.hasPreviousPage(),
+        hasNext : this.collection.hasNextPage(),
+        currentPage : state.currentPage,
+        totalPage : state.totalPages,
+        pageSize : state.pageSize,
+        items : this.collection.toJSON()
+      };
+    },
     events : {
+      'click a.first' : function(e) {
+        e.preventDefault();
+        this.collection.getFirstPage({
+          success : function() { $('.page').scrollTop(0); },
+          reset : true
+        });
+      },
       'click a.prev' : function(e) {
         e.preventDefault();
         if (this.collection.hasPreviousPage()) {
-          this.collection.prevPage();  
+          this.collection.getPreviousPage({
+            success : function() { $('.page').scrollTop(0); },
+            reset : true
+          });  
         }
       },
       'click a.next' : function(e) {
         e.preventDefault();
-        console.log('next page');
         if (this.collection.hasNextPage()) {
-          this.collection.nextPage();
+          this.collection.getNextPage({
+            success : function() { $('.page').scrollTop(0); },
+            reset : true
+          });
         }
+      },
+      'click a.last' : function(e) {
+        e.preventDefault();
+        this.collection.getLastPage({
+          success : function() { $('.page').scrollTop(0); },
+          reset : true
+        });
       }
     }
   });
@@ -52,6 +85,18 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
         collection : new Backbone.Collection(slogan)
       }));
     }
+  });
+
+  var CompanyNewsCollection = Backbone.PageableCollection.extend({
+    url : '/api/article?type=company',
+    state : {
+      currentPage : 1,
+      pageSize : 10
+    }
+  });
+
+  var InvestedCompanyNewsCollection = Backbone.PageableCollection.extend({
+    url : '/api/article?type=invested'
   });
 
   var newsController = {
@@ -88,30 +133,23 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
     },
     showInvestedCompanyNews : function() {
       var layout = this.initLayout();
-      var promise = PanlinCap.reqres.request('news:fetch');
 
-      promise.then(function(data) {
-        var news = new Backbone.PageableCollection(data);
-        layout.main.show(new NewsCollectionView({
-          collection : news
-        }));
-      });
+      var news = new InvestedCompanyNewsCollection();
+      layout.main.show(new NewsCollectionView({ collection : news }));
+
+      news.fetch({ reset : true });
 
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([{ text : '新闻中心', link : '#/news' }, { text : '被投公司新闻', link : '#/news/invested '}])
       }));
-      
     },
     showCompanyNews : function() {
       var layout = this.initLayout();
 
-      var promise = PanlinCap.reqres.request('company-news:fetch');
-      promise.then(function(data) {
-        var news = new Backbone.PageableCollection(data);
-        layout.main.show(new NewsCollectionView({
-          collection : news
-        }));
-      })
+      var news = new CompanyNewsCollection();
+      layout.main.show(new NewsCollectionView({ collection : news }));
+
+      news.fetch({ reset : true });
 
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([{ text : '新闻中心', link : '#/news' }, { text : '公司新闻', link : '#/news/company '}])

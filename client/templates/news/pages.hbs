@@ -1,10 +1,20 @@
-<ul class="news">
-</ul>
+<ul class="news"></ul>
 <div class="pagination">
-  <a href="#" class="prev">上一页</a>
+  {{#if hasPrev}}
+    <a href="#" class="first">首页</a>
+    <a href="#" class="prev">上一页</a>
+  {{else}}
+    <span class="first disabled">首页</span>
+    <span class="prev disabled">上一页</span>
+  {{/if}}
+  <span class="current">第 {{currentPage}} / {{totalPage}} 页</span>
+  {{#if hasNext}}
   <a href="#" class="next">下一页</a>
-  <span class="current">第<input type="text" />页</span>
   <a href="#" class="last">尾页</a>
+  {{else}}
+  <span class="next disabled">下一页</span>
+  <span class="last disabled">尾页</span>
+  {{/if}}
 </div>
 <div class="vertical pagination">
   <a href="#" class="scroll up"><i class="fa fa-chevron-circle-up"></i></a>
