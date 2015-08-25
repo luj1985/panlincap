@@ -3,11 +3,39 @@ PanlinCap.module('Background', function(Background, PanlinCap, Backbone, Marione
 
   var HomeBg = Marionette.ItemView.extend({
     template:  Handlebars.compile(
-      '<div class="slide homebg-1"></div>' + 
-      '<div class="slide homebg-2"></div>' + 
-      '<div class="slide homebg-3"></div>'
+      '<div class="slide homebg-1 order-1"></div>' + 
+      '<div class="slide homebg-2 order-2"></div>' + 
+      '<div class="slide homebg-3 order-3"></div>'
     ),
-    className: 'slides home'
+    className: 'slides home',
+    onRender : function() {
+      var self = this;
+      this.handler = setInterval(function() {
+        var current = self.$('.slide.order-3');
+        var next = self.$('.slide.order-2');
+
+        next.animate({left : '-=100%'}, {
+          easing: 'swing',
+          duration: 500
+        });
+
+        current.animate({ left : "-=100%" }, {
+          easing: 'swing',
+          duration: 500, 
+          complete: function() {
+            var last = self.$('.order-3').detach();
+            last.insertBefore(self.$('.slide.order-1'));
+
+            self.$('.slide').each(function(i) {
+              $(this).removeClass('order-1 order-2 order-3').addClass('order-' + (i + 1)).removeAttr('style');
+            });
+          }
+        });
+      }, 7000);
+    },
+    onDestroy : function() {
+      clearInterval(this.handler);
+    }
   });
 
   var SingleBackground = Marionette.ItemView.extend({
