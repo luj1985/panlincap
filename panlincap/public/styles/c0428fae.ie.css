@@ -9,7 +9,8 @@ a {
 }
 #breadcrumb .ui.breadcrumb a,
 #breadcrumb .ui.breadcrumb .divider {
-  color: white;
+  -webkit-filter: glow(color="#3E3E3E",strength=5);
+          filter: glow(color="#3E3E3E",strength=5);
 }
 .topic .inner {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOYceCiPQAGhgJpxZKj6QAAAABJRU5ErkJggg==);
