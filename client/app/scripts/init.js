@@ -2,7 +2,7 @@
   'use strict';
 
   PanlinCap.addRegions({
-    navRegion: '.fixed-header nav',
+    navRegion: '#navigation',
     bodyRegion: '#body',
     dialogRegion: '#dialog',
     bgRegion: '#background'

@@ -7,7 +7,7 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
       '<a href="#{{link}}">{{title}}</a>' +
       '{{/each}}'
     ),
-    className: 'navigation'
+    className: 'wrapper'
   });
 
   PanlinCap.addInitializer(function() {
@@ -16,5 +16,12 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
       var menus = new Backbone.Model(raw);
       PanlinCap.navRegion.show(new MenuView({ collection : menus }));
     });
+
+    $('.mobile.menu.trigger').click(function() {
+      $('body').toggleClass('push');
+    });
+    $('#navigation').on('click', 'a', function() {
+      $('body').removeClass('push');
+    })
   });
 });

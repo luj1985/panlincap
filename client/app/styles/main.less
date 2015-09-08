@@ -8,6 +8,7 @@
 @import "./import/pages.import.less";
 @import "./import/pagination.import.less";
 @import "./import/responsive.import.less";
+@import "./import/mobile.import.less";
 
 @font-face {
   font-family: '隶书';
@@ -38,6 +39,10 @@ body {
   font-size: @base-font-size;
 }
 
+.mobile {
+  display: none;
+}
+
 a {
   color : @color-main;
   text-decoration: none;
@@ -54,8 +59,41 @@ p, ol li {
   line-height: @base-line-height;
 }
 
-.fixed-header {
+
+
+#navigation {
+  background-color: @color-main;
+  box-sizing: border-box;
+  padding: 0 56px;
+  display: block;
+  margin: 0 auto;
+  position: fixed;
+  top: 84px;
+  width: 100%;
   box-shadow: 0 3px 8px 0 rgba(0,0,0,.26);
+
+  .wrapper {
+    box-sizing: border-box;
+    text-align: right;
+    white-space: nowrap;
+
+    a {
+      font-family: '隶书';
+      font-size: @menu-font-size;
+      box-sizing: border-box;
+      padding : 8px 14px;
+      display: inline-block;
+      color : white;
+      text-decoration: none;
+
+      &:hover {
+        color: @color-highlight;
+      }
+    }
+  }
+}
+
+.fixed-header {
   position: fixed;
   top: 0;
   left : 0;
@@ -76,11 +114,6 @@ p, ol li {
     margin: 0 auto;
   }
 
-  nav {
-    background-color: @color-main;
-    padding: 0 56px;
-  }
-
   header {
     text-align: right;
     padding: 14px 70px;
@@ -92,25 +125,7 @@ p, ol li {
     background-size: auto @header-height;
   }
 
-  .navigation {
-    box-sizing: border-box;
-    text-align: right;
-    white-space: nowrap;
-
-    a {
-      font-family: '隶书';
-      font-size: @menu-font-size;
-      box-sizing: border-box;
-      padding : 8px 14px;
-      display: inline-block;
-      color : white;
-      text-decoration: none;
-
-      &:hover {
-        color: @color-highlight;
-      }
-    }
-  }
+  
 }
 
 #breadcrumb {
