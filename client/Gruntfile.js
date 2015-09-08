@@ -385,6 +385,9 @@ module.exports = function (grunt) {
         }, {
           src: '.tmp/styles/ie.css',
           dest: '<%= config.dist %>/styles/ie.css'
+        }, {
+          src: '.tmp/styles/ie-css3.htc',
+          dest: '<%= config.dist %>/styles/ie-css3.htc'
         }]
       },
       styles: {
@@ -393,6 +396,12 @@ module.exports = function (grunt) {
         cwd: '<%= config.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      ie : {
+        expand: true,
+        cwd: '<%= config.app %>/styles',
+        dest: '.tmp/styles/',
+        src: '{,*/}*.htc'
       }
     },
 
@@ -400,7 +409,8 @@ module.exports = function (grunt) {
     concurrent: {
       server: [
         'less:server',
-        'copy:styles'
+        'copy:styles',
+        'copy:ie'
       ],
       // test: [
       //   'copy:styles'
@@ -408,6 +418,7 @@ module.exports = function (grunt) {
       dist: [
         'less',
         'copy:styles',
+        'copy:ie',
         'imagemin',
         'svgmin'
       ]
