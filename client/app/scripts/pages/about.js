@@ -69,9 +69,7 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
     },
     showAdvantage : function() {
       var layout = this.initializeLayout();
-      layout.main.show(new Shared.RevealView({ 
-        model : new Backbone.Model(advantage) 
-      }));
+      layout.main.show(new Shared.RevealView({ model : new Backbone.Model(advantage) }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({ 
         collection : new Backbone.Collection([
           { text : '关于我们', link : '#/about' }, 
@@ -79,10 +77,7 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
         ]) 
       }));
 
-      PanlinCap.subRegion.show(new Shared.SidebarView({
-        collection : new Backbone.Collection(slogan)
-      }));
-      
+      PanlinCap.subRegion.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
       PanlinCap.vent.trigger('reveal:active');
     }
   });
