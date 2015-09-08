@@ -30,7 +30,6 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
     template : Handlebars.compile(
       '<nav id="breadcrumb"></nav>' +
       '<div class="content-wrapper">' +
-      '<aside id="sidebar"></aside>' +
       '<main id="main"></main>' +
       '</div>'
     ),

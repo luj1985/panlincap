@@ -1,7 +1,28 @@
 /* phones */
 @media only screen and (max-width: 767px) {
   #copyright {
-    padding: 0 16px !important;
+    display: none !important
+  }
+  div#submenu {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    background-color: @color-main;
+    ul {
+      display: flex;
+    }
+    li {
+      flex-grow: 3;
+      text-align: center;
+      display: inline-block;
+      border: none;
+      a {
+        color: @color-white;
+        font-size: 18px;
+      }
+    }
   }
   #header {
     padding-left: 16px;
@@ -96,6 +117,19 @@
     .topic.topic-3 {
       top: 300px;
       left: 50%;
+    }
+  }
+
+  .revealbg {
+    display: none !important;
+  }
+
+  #main .reveal {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+    a.close {
+      display: none !important;
     }
   }
 }
