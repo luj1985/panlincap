@@ -47,11 +47,12 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
         var members = new Backbone.Collection(raw);
         self.main.show(new TeamsView({collection : members}));
       });
-      this.sidebar.show(new Shared.SideMenuView({
-        collection : new Backbone.Collection(slogan)
-      }));
       this.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([{ text : '核心团队', link : '#/team' }])
+      }));
+
+      PanlinCap.subRegion.show(new Shared.SidebarView({
+        collection : new Backbone.Collection(slogan)
       }));
     }
   });

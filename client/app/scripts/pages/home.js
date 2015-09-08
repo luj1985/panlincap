@@ -13,6 +13,7 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
         var topics = new Backbone.Collection(data);
         PanlinCap.bodyRegion.show(new HomeView({ collection : topics }));
       });
+      PanlinCap.subRegion.empty();
       PanlinCap.execute('showBackground', 'home');
     }
   };

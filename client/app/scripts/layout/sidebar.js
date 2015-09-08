@@ -37,7 +37,6 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
     className : 'sidebar-layout',
     regions : {
       breadcrumb : '#breadcrumb',
-      sidebar : '#sidebar',
       main : '#main'
     }
   });

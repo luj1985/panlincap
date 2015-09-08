@@ -39,8 +39,9 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
     showContacts : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
       layout.getRegion('main').empty();
-      layout.sidebar.show(new Shared.SidebarView({ 
-        collection : new Backbone.Collection(slogan) 
+
+      PanlinCap.subRegion.show(new Shared.SidebarView({
+        collection : new Backbone.Collection(slogan)
       }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({ 
         collection : new Backbone.Collection([
@@ -50,7 +51,10 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
     },
     showHire : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
-      layout.sidebar.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
+
+      PanlinCap.subRegion.show(new Shared.SidebarView({
+        collection : new Backbone.Collection(slogan)
+      }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '联系我们', link : '#/contacts' }, 
@@ -61,7 +65,10 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
     },
     showHireAccounting : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
-      layout.sidebar.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
+
+      PanlinCap.subRegion.show(new Shared.SidebarView({
+        collection : new Backbone.Collection(slogan)
+      }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '联系我们', link : '#/contacts' }, 
@@ -73,7 +80,10 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
     },
     showHireAssistant : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
-      layout.sidebar.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
+
+      PanlinCap.subRegion.show(new Shared.SidebarView({
+        collection : new Backbone.Collection(slogan)
+      }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '联系我们', link : '#/contacts' }, 
@@ -85,7 +95,10 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
     },
     showAddress : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
-      layout.sidebar.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
+      
+      PanlinCap.subRegion.show(new Shared.SidebarView({
+        collection : new Backbone.Collection(slogan)
+      }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '联系我们', link : '#/contacts' }, 
@@ -96,7 +109,10 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
     },
     showPlan : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
-      layout.sidebar.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
+      
+      PanlinCap.subRegion.show(new Shared.SidebarView({
+        collection : new Backbone.Collection(slogan)
+      }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '联系我们', link : '#/contacts' }, 

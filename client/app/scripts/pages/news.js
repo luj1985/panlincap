@@ -81,7 +81,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
   
   var NewsLayoutView = Shared.SidebarLayoutView.extend({
     onBeforeShow : function() {
-      this.sidebar.show(new NewsSidebarView({
+      PanlinCap.subRegion.show(new NewsSidebarView({
         collection : new Backbone.Collection(slogan)
       }));
     }

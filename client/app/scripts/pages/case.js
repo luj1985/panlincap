@@ -66,9 +66,11 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
         self.main.show(new CasesCollectionView({ collection : cases }));
       });
 
-      this.sidebar.show(new Shared.SideMenuView({
+
+      PanlinCap.subRegion.show(new Shared.SidebarView({
         collection : new Backbone.Collection([{ text : '投资案例', link : '#/cases' }, { text : '重点案例', link : '/cases' }])
       }));
+
       this.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([{ text : '投资组合', link : '#/cases' }])
       }));

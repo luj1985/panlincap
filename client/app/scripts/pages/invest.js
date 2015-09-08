@@ -47,25 +47,26 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
     showInvestment : function() {
       var layout = this.initializeLayout();
       layout.getRegion('main').empty();
-      layout.sidebar.show(new Shared.SidebarView({ 
-        collection : new Backbone.Collection(slogan) 
-      }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({ 
         collection : new Backbone.Collection([{ text : '投资理念', link : '#/investment' }]) 
+      }));
+
+      PanlinCap.subRegion.show(new Shared.SidebarView({
+        collection : new Backbone.Collection(slogan)
       }));
       
       PanlinCap.vent.trigger('reveal:hide');
     },
     showPrice : function() {
       var layout = this.initializeLayout();
-      layout.sidebar.show(new Shared.SidebarView({ 
-        collection : new Backbone.Collection(slogan) 
-      }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({ 
         collection : new Backbone.Collection([
           { text : '投资理念', link : '#/investment' }, 
           { text : '价值提升机制', link : '#/investment/price'}
         ]) 
+      }));
+      PanlinCap.subRegion.show(new Shared.SidebarView({
+        collection : new Backbone.Collection(slogan)
       }));
       layout.main.show(new Shared.RevealView({ 
         model : new Backbone.Model(price) 
@@ -75,9 +76,6 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
     },
     showPrinciple : function() {
       var layout = this.initializeLayout();
-      layout.sidebar.show(new Shared.SidebarView({ 
-        collection : new Backbone.Collection(slogan) 
-      }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({ 
         collection : new Backbone.Collection([
           { text : '投资理念', link : '#/investment' }, 
@@ -87,20 +85,25 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
       layout.main.show(new Shared.RevealView({ 
         model : new Backbone.Model(principle) 
       }));
+      PanlinCap.subRegion.show(new Shared.SidebarView({
+        collection : new Backbone.Collection(slogan)
+      }));
 
       PanlinCap.vent.trigger('reveal:active');
     },
     showStrategy : function() {
       var layout = this.initializeLayout();
-      layout.sidebar.show(new Shared.SidebarView({ 
-        collection : new Backbone.Collection(slogan) 
-      }));
       layout.breadcrumb.show(new Shared.BreadcrumbView({ 
         collection : new Backbone.Collection([
           { text : '投资理念', link : '#/investment' }, 
           { text : '投资策略', link : '#/investment/strategy'}
         ]) 
       }));
+
+      PanlinCap.subRegion.show(new Shared.SidebarView({
+        collection : new Backbone.Collection(slogan)
+      }));
+      
       layout.main.show(new Shared.RevealView({ 
         model : new Backbone.Model(strategy) 
       }));

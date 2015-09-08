@@ -38,6 +38,9 @@ PanlinCap.module('Found', function(Found, PanlinCap, Backbone, Marionette) {
 
   var foundController = {
     showFounds: function() {
+
+      PanlinCap.subRegion.empty();
+      
       var promise = PanlinCap.reqres.request('founds:fetch');
       var colors = [ 'rgb(180,6,12)', 'rgb(199,99,103)', 'rgb(178,53,55)', 'rgb(208,145,148)' ];
       promise.then(function(raw) {

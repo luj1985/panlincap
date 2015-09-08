@@ -38,20 +38,19 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
     showAbout : function() {
       var layout = this.initializeLayout();
       layout.getRegion('main').empty();
-      layout.sidebar.show(new Shared.SidebarView({
-        collection : new Backbone.Collection(slogan)
-      }));
+
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([{ text : '关于我们', link : '#/about' }]) 
       }));
+
+      PanlinCap.subRegion.show(new Shared.SidebarView({
+        collection : new Backbone.Collection(slogan)
+      }))
 
       PanlinCap.vent.trigger('reveal:hide');
     },
     showAboutPanlin : function() {
       var layout = this.initializeLayout();
-      layout.sidebar.show(new Shared.SidebarView({
-        collection : new Backbone.Collection(slogan)
-      }));
       layout.main.show(new Shared.RevealView({
         model : new Backbone.Model(reveal)
       }));
@@ -62,13 +61,14 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
         ])
       }));
 
+      PanlinCap.subRegion.show(new Shared.SidebarView({
+        collection : new Backbone.Collection(slogan)
+      }))
+
       PanlinCap.vent.trigger('reveal:active');
     },
     showAdvantage : function() {
       var layout = this.initializeLayout();
-      layout.sidebar.show(new Shared.SidebarView({ 
-        collection : new Backbone.Collection(slogan) 
-      }));
       layout.main.show(new Shared.RevealView({ 
         model : new Backbone.Model(advantage) 
       }));
@@ -77,6 +77,10 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
           { text : '关于我们', link : '#/about' }, 
           { text : '我们的优势', link : '#/about/advantage'}
         ]) 
+      }));
+
+      PanlinCap.subRegion.show(new Shared.SidebarView({
+        collection : new Backbone.Collection(slogan)
       }));
       
       PanlinCap.vent.trigger('reveal:active');

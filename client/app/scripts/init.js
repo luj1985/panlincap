@@ -5,7 +5,8 @@
     navRegion: '#navigation',
     bodyRegion: '#body',
     dialogRegion: '#dialog',
-    bgRegion: '#background'
+    bgRegion: '#background',
+    subRegion: '#submenu'
   });
 
   PanlinCap.on('start', function() {
