@@ -1,12 +1,6 @@
 PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionette) {
   'use strict';
 
-  // XXX: this is a hack way to detect mobile device
-  // in mobile, the breadcrumb was hidden
-  function isMobile() {
-    return $('#breadcrumb').css('display') === 'none';
-  }
-
   var Layout = PanlinCap.module('PanlinCap.Layout');
 
   var MemberDialogView = Marionette.ItemView.extend({
@@ -31,7 +25,7 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
     className : 'person',
     onRender : function() {
       var model = this.model;
-      if (!isMobile()) {
+      if (!PanlinCap.isMobile()) {
         this.$el.click(function(e) {
           e.preventDefault();
           PanlinCap.dialogRegion.show(new MemberDialogView({model : model}));
