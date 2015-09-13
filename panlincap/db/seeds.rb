@@ -46,8 +46,8 @@ reader = CSV.open(File.join(File.dirname(__FILE__), "menus.csv"), "r")
 reader.shift
 
 reader.each do |line|
-  text, link = line
-  Menu.create(:title => text, :link => link)
+  id, text, link, parent = line
+  Menu.create(:id => id, :title => text, :link => link, :parent => parent)
 end
 
 

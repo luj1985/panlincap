@@ -43,7 +43,7 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
   Sidebar.SidebarView = Sidebar.SideMenuView = Marionette.ItemView.extend({
     template : Handlebars.compile(
       '{{#each items}}' +
-      '<li><a href="{{link}}">{{text}}</a></li>' +
+      '<li><a href="{{link}}">{{title}}</a></li>' +
       '{{/each}}'
     ),
     tagName : 'ul',

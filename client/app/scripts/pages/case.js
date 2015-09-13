@@ -51,6 +51,15 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
     childView : CasesView,
     childViewContainer : '.main-container.cases'
   });
+
+  function renderSubmenu(menuid) {
+    var promise = PanlinCap.reqres.request('submenu:fetch', menuid);
+    promise.then(function(raw) {
+      PanlinCap.subRegion.show(new Shared.SidebarView({
+        collection : new Backbone.Collection(raw)
+      }));
+    });
+  }
   
   var CaseLayoutView = Shared.SidebarLayoutView.extend({
     
@@ -66,10 +75,7 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
         self.main.show(new CasesCollectionView({ collection : cases }));
       });
 
-
-      PanlinCap.subRegion.show(new Shared.SidebarView({
-        collection : new Backbone.Collection([{ text : '投资案例', link : '#/cases' }, { text : '重点案例', link : '/cases' }])
-      }));
+      renderSubmenu(6);
 
       this.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([{ text : '投资组合', link : '#/cases' }])

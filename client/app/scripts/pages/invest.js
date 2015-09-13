@@ -40,6 +40,16 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
   };
 
 
+  function renderSubmenu(menuid) {
+    var promise = PanlinCap.reqres.request('submenu:fetch', menuid);
+    promise.then(function(raw) {
+      PanlinCap.subRegion.show(new Shared.SidebarView({
+        collection : new Backbone.Collection(raw)
+      }));
+    });
+  }
+
+
   var Shared = PanlinCap.module('Layout.Sidebar');
 
   var InvestmentController = Shared.MainRegionController.extend({
@@ -51,9 +61,7 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
         collection : new Backbone.Collection([{ text : '投资理念', link : '#/investment' }]) 
       }));
 
-      PanlinCap.subRegion.show(new Shared.SidebarView({
-        collection : new Backbone.Collection(slogan)
-      }));
+      renderSubmenu(3);
       
       PanlinCap.vent.trigger('reveal:hide');
     },
@@ -65,9 +73,7 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
           { text : '价值提升机制', link : '#/investment/price'}
         ]) 
       }));
-      PanlinCap.subRegion.show(new Shared.SidebarView({
-        collection : new Backbone.Collection(slogan)
-      }));
+      renderSubmenu(3);
       layout.main.show(new Shared.RevealView({ 
         model : new Backbone.Model(price) 
       }));
@@ -85,9 +91,7 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
       layout.main.show(new Shared.RevealView({ 
         model : new Backbone.Model(principle) 
       }));
-      PanlinCap.subRegion.show(new Shared.SidebarView({
-        collection : new Backbone.Collection(slogan)
-      }));
+      renderSubmenu(3);
 
       PanlinCap.vent.trigger('reveal:active');
     },
@@ -100,9 +104,7 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
         ]) 
       }));
 
-      PanlinCap.subRegion.show(new Shared.SidebarView({
-        collection : new Backbone.Collection(slogan)
-      }));
+      renderSubmenu(3);
       
       layout.main.show(new Shared.RevealView({ 
         model : new Backbone.Model(strategy) 

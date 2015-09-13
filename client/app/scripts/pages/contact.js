@@ -3,12 +3,6 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
 
   var Shared = PanlinCap.module('Layout.Sidebar');
 
-  var slogan = [
-    { text : '招贤纳士', link : '#/contacts/hire' }, 
-    { text : '公司地址', link : '#/contacts/address' }, 
-    { text : '商业计划书', link : '#/contacts/plan' }
-  ];
-
   var AddressView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/contact/address.hbs'],
     className : 'main-container address'
@@ -33,6 +27,15 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
     template : PanlinCapTpl['templates/contact/plan.hbs'],
     className : 'main-container plan'
   });
+
+  function renderSubmenu(menuid) {
+    var promise = PanlinCap.reqres.request('submenu:fetch', menuid);
+    promise.then(function(raw) {
+      PanlinCap.subRegion.show(new Shared.SidebarView({
+        collection : new Backbone.Collection(raw)
+      }));
+    });
+  }
   
   var ContactController = Shared.MainRegionController.extend({
     background: 'contact',
@@ -40,9 +43,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
       layout.getRegion('main').empty();
 
-      PanlinCap.subRegion.show(new Shared.SidebarView({
-        collection : new Backbone.Collection(slogan)
-      }));
+      renderSubmenu(8);
       layout.breadcrumb.show(new Shared.BreadcrumbView({ 
         collection : new Backbone.Collection([
           { text : '联系我们', link : '#/contacts' 
@@ -52,9 +53,8 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
     showHire : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
 
-      PanlinCap.subRegion.show(new Shared.SidebarView({
-        collection : new Backbone.Collection(slogan)
-      }));
+      renderSubmenu(8);
+
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '联系我们', link : '#/contacts' }, 
@@ -66,9 +66,8 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
     showHireAccounting : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
 
-      PanlinCap.subRegion.show(new Shared.SidebarView({
-        collection : new Backbone.Collection(slogan)
-      }));
+      renderSubmenu(8);
+
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '联系我们', link : '#/contacts' }, 
@@ -81,9 +80,8 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
     showHireAssistant : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
 
-      PanlinCap.subRegion.show(new Shared.SidebarView({
-        collection : new Backbone.Collection(slogan)
-      }));
+      renderSubmenu(8);
+
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '联系我们', link : '#/contacts' }, 
@@ -96,9 +94,8 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
     showAddress : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
       
-      PanlinCap.subRegion.show(new Shared.SidebarView({
-        collection : new Backbone.Collection(slogan)
-      }));
+      renderSubmenu(8);
+
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '联系我们', link : '#/contacts' }, 
@@ -110,9 +107,8 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
     showPlan : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
       
-      PanlinCap.subRegion.show(new Shared.SidebarView({
-        collection : new Backbone.Collection(slogan)
-      }));
+      renderSubmenu(8);
+
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '联系我们', link : '#/contacts' }, 

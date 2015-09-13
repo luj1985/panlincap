@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 8) do
   create_table "menus", force: :cascade do |t|
     t.string   "title"
     t.string   "link"
+    t.integer  "parent"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

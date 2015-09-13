@@ -1,11 +1,6 @@
 PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
   'use strict';
 
-  var slogan = [
-    { text : '磐霖介绍', link : '#/about/panlin' }, 
-    { text : '我们的优势', link : '#/about/advantage' }
-  ];
-
   var reveal = {
     back : '#/about',
     description : [
@@ -33,19 +28,26 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
 
   var Shared = PanlinCap.module('Layout.Sidebar');
 
+  function renderSubmenu(menuid) {
+    var promise = PanlinCap.reqres.request('submenu:fetch', menuid);
+    promise.then(function(raw) {
+      PanlinCap.subRegion.show(new Shared.SidebarView({
+        collection : new Backbone.Collection(raw)
+      }));
+    });
+  }
+
   var AboutController = Shared.MainRegionController.extend({
     background : 'about',
     showAbout : function() {
       var layout = this.initializeLayout();
       layout.getRegion('main').empty();
 
+      renderSubmenu(2);
+
       layout.breadcrumb.show(new Shared.BreadcrumbView({
         collection : new Backbone.Collection([{ text : '关于我们', link : '#/about' }]) 
       }));
-
-      PanlinCap.subRegion.show(new Shared.SidebarView({
-        collection : new Backbone.Collection(slogan)
-      }))
 
       PanlinCap.vent.trigger('reveal:hide');
     },
@@ -61,9 +63,7 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
         ])
       }));
 
-      PanlinCap.subRegion.show(new Shared.SidebarView({
-        collection : new Backbone.Collection(slogan)
-      }))
+      renderSubmenu(2);
 
       PanlinCap.vent.trigger('reveal:active');
     },
@@ -77,7 +77,7 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
         ]) 
       }));
 
-      PanlinCap.subRegion.show(new Shared.SidebarView({ collection : new Backbone.Collection(slogan) }));
+      renderSubmenu(2);
       PanlinCap.vent.trigger('reveal:active');
     }
   });
