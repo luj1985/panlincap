@@ -34,6 +34,8 @@ PanlinCap.module('PanlinCap.Layout', function(Layout, PanlinCap, Backbone, Mario
             collection : new Backbone.Collection(breadcrumbs)
           }));
         }
+      }).fail(function() {
+        PanlinCap.breadcrumbRegion.empty();
       });
     });
   });

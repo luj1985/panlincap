@@ -34,38 +34,25 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
       layout.getRegion('main').empty();
 
-      PanlinCap.subRegion.loadMenu(8);
     },
     showHire : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
-
-      PanlinCap.subRegion.loadMenu(8);
-
       layout.main.show(new HireView());
     },
     showHireAccounting : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
-
-      PanlinCap.subRegion.loadMenu(8);
       layout.main.show(new HireAccoutingView());
     },
     showHireAssistant : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
-
-      PanlinCap.subRegion.loadMenu(8);
       layout.main.show(new HireAssistantView());
     },
     showAddress : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
-      
-      PanlinCap.subRegion.loadMenu(8);
-
       layout.main.show(new AddressView());
     },
     showPlan : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
-      
-      PanlinCap.subRegion.loadMenu(8);
       layout.main.show(new BizPlanView());
     }
   });

@@ -13,6 +13,23 @@ PanlinCap.module('PanlinCap.Menu', function(Menu, PanlinCap, Backbone, Marionett
     return deferred;
   });
 
+  PanlinCap.reqres.setHandler('submenus:fetch', function(fragment) {
+    var deferred = $.Deferred();
+    promise.then(function(raw) {
+      var link = fragment[0] === '/' ? fragment : '/' + fragment;
+      var entry = collection.findWhere({ link : link });
+      while (entry.get('parent')) {
+        entry = collection.get(entry.get('parent'));
+      }
+      if (entry) {
+        deferred.resolve(collection.where( { parent : entry.id }));
+      } else {
+        deferred.reject();
+      }
+    });
+    return deferred;
+  });
+
   PanlinCap.reqres.setHandler('breadcrumb:fetch', function(fragment) {
     var deferred = $.Deferred(), breadcrumbs = [], i, length;
     promise.then(function() {

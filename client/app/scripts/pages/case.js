@@ -65,8 +65,6 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
         var cases = new Backbone.Collection(data);
         self.main.show(new CasesCollectionView({ collection : cases }));
       });
-
-      PanlinCap.subRegion.loadMenu(6);
     }
   });
 

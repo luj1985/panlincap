@@ -76,7 +76,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
   
   var NewsLayoutView = Layout.SidebarLayoutView.extend({
     onBeforeShow : function() {
-      PanlinCap.subRegion.loadMenu(7);
+      
     }
   });
 

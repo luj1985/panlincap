@@ -42,8 +42,6 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
         var members = new Backbone.Collection(raw);
         self.main.show(new TeamsView({collection : members}));
       });
-
-      PanlinCap.subRegion.loadMenu(4);
     }
   });
 
