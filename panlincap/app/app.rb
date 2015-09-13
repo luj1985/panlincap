@@ -94,11 +94,7 @@ module Panlincap
     end
 
     get '/api/menus', :provides => :json do
-      Menu.where(:parent => nil).to_json
-    end
-
-    get '/api/submenus/:id', :provides => :json do
-      Menu.where(:parent => params['id']).to_json
+      Menu.all.to_json
     end
 
     get '/api/founds', :provides => :json do

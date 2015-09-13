@@ -14,7 +14,7 @@ PanlinCap.module('Region', function(Region, PanlinCap, Backbone, Marionette) {
     el: '#submenu',
     loadMenu : function(menuid) {
       this.empty();
-      PanlinCap.reqres.request('submenu:fetch', menuid).then(function(submenu) {
+      PanlinCap.reqres.request('menus:fetch', menuid).then(function(submenu) {
         this.show(new Layout.SubMenuView({
           collection : new Backbone.Collection(submenu)
         }));
