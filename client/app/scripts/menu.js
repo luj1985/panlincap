@@ -1,13 +1,24 @@
-PanlinCap.module('PanlinCap.Menu', function(Menu, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('PanlinCap.Menu', function(Menu, PanlinCap, Backbone, Marionette, $, _) {
   'use strict';
 
-  var collection = new Backbone.Collection();
-  var promise = collection.fetch({ url : '/api/menus' });
+  var MenuModel = Backbone.Model.extend({
+    defaults : { parent : null }
+  });
+
+  var MenuCollection = Backbone.Collection.extend({
+    model : MenuModel,
+    url : '/api/menus'
+  });
+
+  var collection = new MenuCollection();
+  var promise = collection.fetch();
 
   PanlinCap.reqres.setHandler('menus:fetch', function(parentid) {
     var deferred = $.Deferred();
     promise.then(function(raw) {
-      var menu = _.filter(raw, function(d) { return d.parent == parentid; });
+      var menu = _.filter(raw, function(d) { 
+        return d.parent === parentid;
+      });
       deferred.resolve(menu);
     });
     return deferred;
@@ -32,7 +43,7 @@ PanlinCap.module('PanlinCap.Menu', function(Menu, PanlinCap, Backbone, Marionett
 
   PanlinCap.reqres.setHandler('submenus:fetch', function(fragment) {
     var deferred = $.Deferred();
-    promise.then(function(raw) {
+    promise.then(function() {
       var link = fragment[0] === '/' ? fragment : '/' + fragment;
       var entry = fetchMenuItem(collection, link);
       if (entry) {

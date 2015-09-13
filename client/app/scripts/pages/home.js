@@ -1,4 +1,4 @@
-PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('PanlinCap.Home', function(Home, PanlinCap, Backbone, Marionette) {
   'use strict';
 
   var HomeView = Marionette.ItemView.extend({
@@ -18,16 +18,5 @@ PanlinCap.module('Home', function(Home, PanlinCap, Backbone, Marionette) {
     }
   };
 
-  PanlinCap.addInitializer(function() {
-    var router = new Marionette.AppRouter({
-      appRoutes : {
-        '(/)' : 'showHome'
-      },
-      controller: homeController
-    });
-
-    router.on('route', function(route, params) {
-      $('.page').scrollTop(0);
-    });
-  });
+  Home.Controller = homeController;
 });

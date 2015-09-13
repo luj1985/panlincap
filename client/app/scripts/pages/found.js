@@ -1,4 +1,4 @@
-PanlinCap.module('PanlinCap.Found', function(Found, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('PanlinCap.Found', function(Found, PanlinCap, Backbone, Marionette, $, _) {
   'use strict';
 
   var FoundView = Marionette.ItemView.extend({
@@ -43,7 +43,7 @@ PanlinCap.module('PanlinCap.Found', function(Found, PanlinCap, Backbone, Marione
       var promise = PanlinCap.reqres.request('founds:fetch');
       var colors = [ 'rgb(180,6,12)', 'rgb(199,99,103)', 'rgb(178,53,55)', 'rgb(208,145,148)' ];
       promise.then(function(raw) {
-        var data = _.map(raw, function(found) {
+        _.each(raw, function(found) {
           var portfolio = found.portfolio;
           var status = found.status;
           if (status === 'building') {

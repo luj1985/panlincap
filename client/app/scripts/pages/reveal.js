@@ -1,4 +1,4 @@
-PanlinCap.module('PanlinCap.Reveal', function(Reveal, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('PanlinCap.Reveal', function(Reveal, PanlinCap, Backbone) {
   'use strict';
 
   var Layout = PanlinCap.module('PanlinCap.Layout');

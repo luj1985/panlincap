@@ -63,12 +63,6 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
     }
   });
 
-
-  var NewsSidebarView = Marionette.ItemView.extend({
-    template : PanlinCapTpl['templates/news/searchnews.hbs']
-  });
-
-
   var NewsDetailView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/news/detail.hbs'],
     className : 'main-container news'
@@ -104,17 +98,17 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
       if (id) {
         var promise = PanlinCap.reqres.request('news:detail', id);
         promise.then(function(data) {
-          layout.main.show(new NewsDetailView({ model : new Backbone.Model(data) }))
+          layout.main.show(new NewsDetailView({ model : new Backbone.Model(data) }));
         });
       } else {
         if (subpage === 'company') {
-          var news = new CompanyNewsCollection();
-          layout.main.show(new NewsCollectionView({ collection : news }));
-          news.fetch({ reset : true });
+          var companyNews = new CompanyNewsCollection();
+          layout.main.show(new NewsCollectionView({ collection : companyNews }));
+          companyNews.fetch({ reset : true });
         } else if (subpage === 'invested') {
-          var news = new InvestedCompanyNewsCollection();
-          layout.main.show(new NewsCollectionView({ collection : news }));
-          news.fetch({ reset : true });
+          var investedNews = new InvestedCompanyNewsCollection();
+          layout.main.show(new NewsCollectionView({ collection : investedNews }));
+          investedNews.fetch({ reset : true });
         }
       }
     }

@@ -11,7 +11,7 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
   });
 
   PanlinCap.addInitializer(function() {
-    var promise = PanlinCap.reqres.request('menus:fetch');
+    var promise = PanlinCap.reqres.request('menus:fetch', null);
     promise.then(function(menus) {
       PanlinCap.navRegion.show(new MenuView({ collection : new Backbone.Collection(menus) }));
     });

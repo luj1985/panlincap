@@ -1,4 +1,4 @@
-PanlinCap.module('PanlinCap.Case', function(Case, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('PanlinCap.Case', function(Case, PanlinCap, Backbone, Marionette, $, _) {
   'use strict';
 
   var Layout = PanlinCap.module('PanlinCap.Layout');

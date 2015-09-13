@@ -1,13 +1,5 @@
-PanlinCap.module('PanlinCap.Layout', function(Layout, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('PanlinCap.Breadcrumb', function(Breadcrumb, PanlinCap, Backbone, Marionette) {
   'use strict';
-
-  var Breadcrumb = Backbone.Model.extend({
-    defaults:{ text : '', link : '' } 
-  });
-
-  var BreadcrumbList = Backbone.Collection.extend({
-    model : Breadcrumb
-  });
 
   var BreadcrumbView = Marionette.ItemView.extend({
     template : Handlebars.compile(
@@ -20,22 +12,19 @@ PanlinCap.module('PanlinCap.Layout', function(Layout, PanlinCap, Backbone, Mario
     className : 'ui breadcrumb'
   });
 
-  Layout.BreadcrumbView = BreadcrumbView;
-
-  PanlinCap.addInitializer(function() {
-    Backbone.history.on('route', function(ctx, name, args) {
-      var fragment = this.getFragment() || '';
-      PanlinCap.reqres.request('breadcrumb:fetch', fragment).then(function(breadcrumbs) {
-        if (breadcrumbs.length === 0) {
-          PanlinCap.breadcrumbRegion.empty();
-        } else {
-          PanlinCap.breadcrumbRegion.show(new Layout.BreadcrumbView({
-            collection : new Backbone.Collection(breadcrumbs)
-          }));
-        }
-      }).fail(function() {
+  
+  Backbone.history.on('route', function() {
+    var fragment = this.getFragment() || '';
+    PanlinCap.reqres.request('breadcrumb:fetch', fragment).then(function(breadcrumbs) {
+      if (breadcrumbs.length === 0) {
         PanlinCap.breadcrumbRegion.empty();
-      });
+      } else {
+        PanlinCap.breadcrumbRegion.show(new BreadcrumbView({
+          collection : new Backbone.Collection(breadcrumbs)
+        }));
+      }
+    }).fail(function() {
+      PanlinCap.breadcrumbRegion.empty();
     });
   });
 });

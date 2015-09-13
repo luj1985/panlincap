@@ -19,7 +19,7 @@ PanlinCap.module('Background', function(Background, PanlinCap, Backbone, Marione
           duration: 500
         });
 
-        current.animate({ left : "-=100%" }, {
+        current.animate({ left : '-=100%' }, {
           easing: 'swing',
           duration: 500, 
           complete: function() {

@@ -1,6 +1,5 @@
-(function(PanlinCap, Marionette, Backbone) {
+(function(PanlinCap) {
   'use strict';
-
 
   PanlinCap.reqres.setHandler('news:fetch', function() {
     return $.get('/api/article?type=invested');
@@ -38,4 +37,4 @@
     return $.get('/api/members');
   });
 
-})(PanlinCap, Marionette, Backbone);
+})(PanlinCap);

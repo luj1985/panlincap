@@ -2,7 +2,8 @@ PanlinCap.module('PanlinCap.Route', function(Route, PanlinCap, Backbone, Marione
   'use strict';
 
   PanlinCap.addInitializer(function() {
-    var RevealController = PanlinCap.module('PanlinCap.Reveal').Controller,
+    var HomeController = PanlinCap.module('PanlinCap.Home').Controller,
+        RevealController = PanlinCap.module('PanlinCap.Reveal').Controller,
         TeamController = PanlinCap.module('PanlinCap.Team').Controller,
         FoundController = PanlinCap.module('PanlinCap.Found').Controller,
         CaseController = PanlinCap.module('PanlinCap.Case').Controller,
@@ -30,11 +31,15 @@ PanlinCap.module('PanlinCap.Route', function(Route, PanlinCap, Backbone, Marione
       },
       showContacts : function(subpage, id) {
         return ContactController.showContacts(subpage, id);
+      },
+      showHome : function() {
+        return HomeController.showHome();
       }
-    }
+    };
 
     var router = new Marionette.AppRouter({
       appRoutes : {
+        '(/)' : 'showHome',
         'about(/:subpage)': 'showAbout',
         'investment(/:subpage)': 'showInvestment',
         'team(/:subpage)' : 'showTeam',
@@ -46,8 +51,7 @@ PanlinCap.module('PanlinCap.Route', function(Route, PanlinCap, Backbone, Marione
       controller: controller
     });
 
-
-    router.on('route', function(route, params) {
+    router.on('route', function() {
       $('.page').scrollTop(0);
     });
   });
