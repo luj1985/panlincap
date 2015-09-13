@@ -1,10 +1,16 @@
 PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionette) {
   'use strict';
 
+  // XXX: this is a hack way to detect mobile device
+  // in mobile, the breadcrumb was hidden
+  function isMobile() {
+    return $('#breadcrumb').css('display') === 'none';
+  }
+
   var Layout = PanlinCap.module('PanlinCap.Layout');
 
-  var MemberView = Marionette.ItemView.extend({
-    template: PanlinCapTpl['templates/team/member.hbs'],
+  var MemberDialogView = Marionette.ItemView.extend({
+    template: PanlinCapTpl['templates/team/memberdialog.hbs'],
     className : 'panlin dialog',
     onShow : function() {
       this.$el.bPopup({ 
@@ -15,14 +21,22 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
     }
   });
 
+  var MemberView = Marionette.ItemView.extend({
+    template: PanlinCapTpl['templates/team/member.hbs'],
+    className : 'panlin member'
+  });
+
   var TeamView = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/team/team.hbs'],
     className : 'person',
     onRender : function() {
       var model = this.model;
-      this.$el.click(function() {
-        PanlinCap.dialogRegion.show(new MemberView({model : model}));
-      });
+      if (!isMobile()) {
+        this.$el.click(function(e) {
+          e.preventDefault();
+          PanlinCap.dialogRegion.show(new MemberDialogView({model : model}));
+        });
+      }
     }
   });
 
@@ -36,18 +50,22 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
 
   var teamController = (function() {
     return {
-      showTeam : function(subpage) {
+      showTeam : function(subpage, id) {
         PanlinCap.reqres.request('members:fetch').then(function(raw) {
           var members = new Backbone.Collection(raw);
           PanlinCap.bodyRegion.show(new TeamsView({collection: members}));
+          if (id) {
+            var person = members.get(id);
+            PanlinCap.bodyRegion.show(new MemberView({model : person}));
+          } else {
+            if (subpage === 'partner') {
+              $('.page').animate({scrollTop: 0}, SCROLL_ANIMATION);
+            } else if (subpage === 'members') {
+              var member = $('.page .pos-member:first')[0];
+              var mm = $(member).offset().top - $('.page').offset().top;
 
-          if (subpage === 'partner') {
-            $('.page').animate({scrollTop: 0}, SCROLL_ANIMATION);
-          } else if (subpage === 'members') {
-            var member = $('.page .pos-member:first')[0];
-            var mm = $(member).offset().top - $('.page').offset().top;
-
-            $('.page').animate({scrollTop: mm}, SCROLL_ANIMATION);
+              $('.page').animate({scrollTop: mm}, SCROLL_ANIMATION);
+            }
           }
         });
         PanlinCap.execute('showBackground', 'team');

@@ -17,24 +17,12 @@ PanlinCap.module('PanlinCap.Route', function(Route, PanlinCap, Backbone, Marione
       showInvestment : function(subpage) {
         return RevealController.showRevealPage(subpage, 'invest', '#/investment');
       },
-      showTeam : function(subpage) {
-        return TeamController.showTeam(subpage);
-      },
-      showFounds : function() {
-        return FoundController.showFounds();
-      },
-      showCases : function() {
-        return CaseController.showCases();
-      },
-      showNews : function(subpage, id) {
-        return NewsController.showNews(subpage, id);
-      },
-      showContacts : function(subpage, id) {
-        return ContactController.showContacts(subpage, id);
-      },
-      showHome : function() {
-        return HomeController.showHome();
-      }
+      showTeam : TeamController.showTeam.bind(TeamController),
+      showFounds : FoundController.showFounds.bind(FoundController),
+      showCases : CaseController.showCases.bind(CaseController),
+      showNews : NewsController.showNews.bind(NewsController),
+      showContacts : ContactController.showContacts.bind(ContactController),
+      showHome : HomeController.showHome.bind(HomeController)
     };
 
     var router = new Marionette.AppRouter({
@@ -42,7 +30,7 @@ PanlinCap.module('PanlinCap.Route', function(Route, PanlinCap, Backbone, Marione
         '(/)' : 'showHome',
         'about(/:subpage)': 'showAbout',
         'investment(/:subpage)': 'showInvestment',
-        'team(/:subpage)' : 'showTeam',
+        'team(/:subpage)(/:id)' : 'showTeam',
         'founds(/)' : 'showFounds',
         'cases(/)' : 'showCases',
         'news(/:subpage)(/:id)': 'showNews',
