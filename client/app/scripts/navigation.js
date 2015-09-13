@@ -22,6 +22,10 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
     });
     $('#navigation').on('click', 'a', function() {
       $('body').removeClass('push');
-    })
+    });
+
+    $('#dimmer').on('click', function() {
+      $('body').removeClass('push');
+    });
   });
 });

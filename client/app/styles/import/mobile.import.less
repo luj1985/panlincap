@@ -1,6 +1,17 @@
 /* phones */
 @media only screen and (max-width: 767px) {
 
+  #dimmer {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 900;
+    background-color: rgba(0,0,0,.3);
+  }
+
   #copyright {
     display: none !important
   }
@@ -152,6 +163,10 @@
   body.push {
     #navigation, #submenu, .fixed-header, .page {
       transform: translateX(-140px);
+    }
+
+    #dimmer {
+      display: block;
     }
   }
 
