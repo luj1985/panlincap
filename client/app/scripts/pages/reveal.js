@@ -7,8 +7,8 @@ PanlinCap.module('PanlinCap.Reveal', function(Reveal, PanlinCap, Backbone) {
     showRevealPage : function(subpage, module, fragment) {
       var layout = this.initializeLayout();
       layout.getRegion('main').empty();
-      PanlinCap.execute('showBackground', module);
 
+      PanlinCap.execute('showBackground', module);
       if (!subpage) {
         PanlinCap.vent.trigger('reveal:hide');
         return;

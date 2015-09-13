@@ -10,7 +10,6 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
       this.$el.bPopup({ 
         closeClass : 'close',
         opacity: 0.3,
-        positionStyle: 'fixed',
         amsl : 0
       });
     }
@@ -33,20 +32,22 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
     childViewContainer : '.teams'
   });
 
+  var SCROLL_ANIMATION = { duration: 300, easing: 'swing'};
+
   var teamController = (function() {
     return {
-      showTeam : function(sub) {
+      showTeam : function(subpage) {
         PanlinCap.reqres.request('members:fetch').then(function(raw) {
           var members = new Backbone.Collection(raw);
           PanlinCap.bodyRegion.show(new TeamsView({collection: members}));
 
-          if (sub === 'partner') {
-            $('.page').animate({scrollTop: 0}, { duration: 300, easing: 'swing'});
-          } else if (sub === 'members') {
+          if (subpage === 'partner') {
+            $('.page').animate({scrollTop: 0}, SCROLL_ANIMATION);
+          } else if (subpage === 'members') {
             var member = $('.page .pos-member:first')[0];
             var mm = $(member).offset().top - $('.page').offset().top;
 
-            $('.page').animate({scrollTop: mm}, { duration: 300, easing: 'swing'});
+            $('.page').animate({scrollTop: mm}, SCROLL_ANIMATION);
           }
         });
         PanlinCap.execute('showBackground', 'team');
