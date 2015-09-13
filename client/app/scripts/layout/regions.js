@@ -4,7 +4,8 @@ PanlinCap.module('Region', function(Region, PanlinCap, Backbone, Marionette) {
   PanlinCap.addRegions({
     navRegion: '#navigation',
     bodyRegion: '#body',
-    dialogRegion: '#dialog'
+    dialogRegion: '#dialog',
+    breadcrumbRegion: '#breadcrumb'
   });
 
   var Layout = PanlinCap.module('PanlinCap.Layout');

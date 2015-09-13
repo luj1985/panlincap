@@ -2,13 +2,9 @@ PanlinCap.module('PanlinCap.Layout', function(Layout, PanlinCap, Backbone, Mario
   'use strict';
 
   Layout.SidebarLayoutView = Marionette.LayoutView.extend({
-    template : Handlebars.compile(
-      '<nav id="breadcrumb"></nav>' +
-      '<main id="main"></main>'
-    ),
+    template : Handlebars.compile('<main id="main"></main>'),
     className : 'sidebar-layout',
     regions : {
-      breadcrumb : '#breadcrumb',
       main : '#main'
     }
   });

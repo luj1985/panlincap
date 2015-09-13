@@ -67,10 +67,6 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
       });
 
       PanlinCap.subRegion.loadMenu(6);
-
-      this.breadcrumb.show(new Layout.BreadcrumbView({
-        collection : new Backbone.Collection([{ text : '投资组合', link : '#/cases' }])
-      }));
     }
   });
 

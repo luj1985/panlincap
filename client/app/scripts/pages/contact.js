@@ -35,51 +35,24 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
       layout.getRegion('main').empty();
 
       PanlinCap.subRegion.loadMenu(8);
-      layout.breadcrumb.show(new Layout.BreadcrumbView({ 
-        collection : new Backbone.Collection([
-          { text : '联系我们', link : '#/contacts' 
-        }]) 
-      }));
     },
     showHire : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
 
       PanlinCap.subRegion.loadMenu(8);
 
-      layout.breadcrumb.show(new Layout.BreadcrumbView({
-        collection : new Backbone.Collection([
-          { text : '联系我们', link : '#/contacts' }, 
-          { text : '招贤纳士', link : '#/contacts/hire'}
-        ])
-      }));
       layout.main.show(new HireView());
     },
     showHireAccounting : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
 
       PanlinCap.subRegion.loadMenu(8);
-
-      layout.breadcrumb.show(new Layout.BreadcrumbView({
-        collection : new Backbone.Collection([
-          { text : '联系我们', link : '#/contacts' }, 
-          { text : '招贤纳士', link : '#/contacts/hire'},
-          { text : '会计', link : '#/contacts/hire/accouting' }
-        ])
-      }));
       layout.main.show(new HireAccoutingView());
     },
     showHireAssistant : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
 
       PanlinCap.subRegion.loadMenu(8);
-
-      layout.breadcrumb.show(new Layout.BreadcrumbView({
-        collection : new Backbone.Collection([
-          { text : '联系我们', link : '#/contacts' }, 
-          { text : '招贤纳士', link : '#/contacts/hire'},
-          { text : '行政助理', link : '#/contacts/hire/accouting' }
-        ])
-      }));
       layout.main.show(new HireAssistantView());
     },
     showAddress : function() {
@@ -87,25 +60,12 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
       
       PanlinCap.subRegion.loadMenu(8);
 
-      layout.breadcrumb.show(new Layout.BreadcrumbView({
-        collection : new Backbone.Collection([
-          { text : '联系我们', link : '#/contacts' }, 
-          { text : '公司地址', link : '#/contacts/address'}
-        ])
-      }));
       layout.main.show(new AddressView());
     },
     showPlan : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
       
       PanlinCap.subRegion.loadMenu(8);
-
-      layout.breadcrumb.show(new Layout.BreadcrumbView({
-        collection : new Backbone.Collection([
-          { text : '联系我们', link : '#/contacts' }, 
-          { text : '商业计划书', link : '#/contacts/plan'}
-        ])
-      }));
       layout.main.show(new BizPlanView());
     }
   });

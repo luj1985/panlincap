@@ -42,9 +42,6 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
         var members = new Backbone.Collection(raw);
         self.main.show(new TeamsView({collection : members}));
       });
-      this.breadcrumb.show(new Layout.BreadcrumbView({
-        collection : new Backbone.Collection([{ text : '核心团队', link : '#/team' }])
-      }));
 
       PanlinCap.subRegion.loadMenu(4);
     }

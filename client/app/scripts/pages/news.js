@@ -105,9 +105,6 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
       var layout = this.initLayout();
       layout.getRegion('main').empty();
 
-      layout.breadcrumb.show(new Layout.BreadcrumbView({
-        collection : new Backbone.Collection({ text : '新闻中心', link : '#/news' })
-      }));
     },
     showDetail : function(id) {
       var layout = this.initLayout();
@@ -119,10 +116,6 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
         }))
       });
 
-      layout.breadcrumb.show(new Layout.BreadcrumbView({
-        collection : new Backbone.Collection({ text : '新闻中心', link : '#/news' })
-      }));
-
     },
     showInvestedCompanyNews : function() {
       var layout = this.initLayout();
@@ -131,10 +124,6 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
       layout.main.show(new NewsCollectionView({ collection : news }));
 
       news.fetch({ reset : true });
-
-      layout.breadcrumb.show(new Layout.BreadcrumbView({
-        collection : new Backbone.Collection([{ text : '新闻中心', link : '#/news' }, { text : '被投公司新闻', link : '#/news/invested '}])
-      }));
     },
     showCompanyNews : function() {
       var layout = this.initLayout();
@@ -143,10 +132,6 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
       layout.main.show(new NewsCollectionView({ collection : news }));
 
       news.fetch({ reset : true });
-
-      layout.breadcrumb.show(new Layout.BreadcrumbView({
-        collection : new Backbone.Collection([{ text : '新闻中心', link : '#/news' }, { text : '公司新闻', link : '#/news/company '}])
-      }));
     }
   };
 
