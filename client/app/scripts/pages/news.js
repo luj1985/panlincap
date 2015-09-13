@@ -1,4 +1,4 @@
-PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionette) {
   'use strict';
 
   var Layout = PanlinCap.module('PanlinCap.Layout');
@@ -74,11 +74,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
     className : 'main-container news'
   });
   
-  var NewsLayoutView = Layout.SidebarLayoutView.extend({
-    onBeforeShow : function() {
-      
-    }
-  });
+  var NewsLayoutView = Layout.SidebarLayoutView.extend({});
 
   var CompanyNewsCollection = Backbone.PageableCollection.extend({
     url : '/api/article?type=company',
@@ -101,53 +97,28 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
       }
       return this.layout;
     },
-    showNews: function() {
+    showNews: function(subpage, id) {
       var layout = this.initLayout();
       layout.getRegion('main').empty();
 
-    },
-    showDetail : function(id) {
-      var layout = this.initLayout();
-      var promise = PanlinCap.reqres.request('news:detail', id);
-      promise.then(function(data) {
-        var model = new Backbone.Model(data);
-        layout.main.show(new NewsDetailView({
-          model : model
-        }))
-      });
-
-    },
-    showInvestedCompanyNews : function() {
-      var layout = this.initLayout();
-
-      var news = new InvestedCompanyNewsCollection();
-      layout.main.show(new NewsCollectionView({ collection : news }));
-
-      news.fetch({ reset : true });
-    },
-    showCompanyNews : function() {
-      var layout = this.initLayout();
-
-      var news = new CompanyNewsCollection();
-      layout.main.show(new NewsCollectionView({ collection : news }));
-
-      news.fetch({ reset : true });
+      if (id) {
+        var promise = PanlinCap.reqres.request('news:detail', id);
+        promise.then(function(data) {
+          layout.main.show(new NewsDetailView({ model : new Backbone.Model(data) }))
+        });
+      } else {
+        if (subpage === 'company') {
+          var news = new CompanyNewsCollection();
+          layout.main.show(new NewsCollectionView({ collection : news }));
+          news.fetch({ reset : true });
+        } else if (subpage === 'invested') {
+          var news = new InvestedCompanyNewsCollection();
+          layout.main.show(new NewsCollectionView({ collection : news }));
+          news.fetch({ reset : true });
+        }
+      }
     }
   };
 
-  PanlinCap.addInitializer(function() {
-    var router = new Marionette.AppRouter({
-      appRoutes : {
-        'news(/)': 'showNews',
-        'news/invested(/)' : 'showInvestedCompanyNews',
-        'news/company(/)' : 'showCompanyNews',
-        'news/detail/:id(/)' : 'showDetail'
-      },
-      controller: newsController
-    });
-
-    router.on('route', function(route, params) {
-      $('.page').scrollTop(0);
-    });
-  });
+  News.Controller = newsController;
 });

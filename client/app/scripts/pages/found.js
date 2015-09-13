@@ -1,4 +1,4 @@
-PanlinCap.module('Found', function(Found, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('PanlinCap.Found', function(Found, PanlinCap, Backbone, Marionette) {
   'use strict';
 
   var FoundView = Marionette.ItemView.extend({
@@ -38,7 +38,6 @@ PanlinCap.module('Found', function(Found, PanlinCap, Backbone, Marionette) {
 
   var foundController = {
     showFounds: function() {
-
       PanlinCap.subRegion.empty();
       
       var promise = PanlinCap.reqres.request('founds:fetch');
@@ -69,16 +68,5 @@ PanlinCap.module('Found', function(Found, PanlinCap, Backbone, Marionette) {
     }
   };
 
-  PanlinCap.addInitializer(function() {
-    var router = new Marionette.AppRouter({
-      appRoutes : {
-        'founds(/)' : 'showFounds'
-      },
-      controller: foundController
-    });
-
-    router.on('route', function(route, params) {
-      $('.page').scrollTop(0);
-    });
-  });
+  Found.Controller = foundController;
 });

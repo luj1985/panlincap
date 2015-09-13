@@ -27,6 +27,12 @@ module Panlincap
       news_preview = ''
       news_preview += '<div class="news-preview">'
 
+      categories = {
+        168 => "company",
+        163 => "invested"
+      }
+      type = categories[params[:type]]
+
       Article.where(:category_id => 163).limit(3).order('created_at desc').each do |article|
         title = article.title
         date = article.created_at.strftime('%Y/%m/%d') 
@@ -34,8 +40,9 @@ module Panlincap
         content = strip_tags(body).gsub(/&nbsp;/, ' ')
         lines = content.split("\n")
         id = article.id.to_s
+        category = categories[article.category_id];
 
-        news_preview += '<h4><a href="#/news/detail/' + id + '">' + date + '  [ ' + title + ' ]</a></h4>'
+        news_preview += '<h4><a href="#/news/' + category +'/' + id + '">' + date + '  [ ' + title + ' ]</a></h4>'
         news_preview += '<p>' + lines[0] + '</p>'
       end
       news_preview += '</div>'
@@ -71,6 +78,7 @@ module Panlincap
         news[:id] = article.id
         news[:title] =  date + '  ' + article.title;
         news[:descriptions] = lines[0]
+        news[:category] = params[:type]
         news
       end
       

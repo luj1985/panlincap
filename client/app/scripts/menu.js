@@ -13,14 +13,28 @@ PanlinCap.module('PanlinCap.Menu', function(Menu, PanlinCap, Backbone, Marionett
     return deferred;
   });
 
+  function fetchMenuItem(collection, link) {
+    var entry = collection.findWhere({ link : link });
+    if (entry) {
+      while (entry.get('parent')) {
+        entry = collection.get(entry.get('parent'));
+      }
+      return entry;
+    } else {
+      var pos = _.lastIndexOf(link, '/');
+      if (pos > 0) {
+        link = link.slice(0, pos);
+        return fetchMenuItem(collection, link);
+      }
+    }
+    return null;
+  }
+
   PanlinCap.reqres.setHandler('submenus:fetch', function(fragment) {
     var deferred = $.Deferred();
     promise.then(function(raw) {
       var link = fragment[0] === '/' ? fragment : '/' + fragment;
-      var entry = collection.findWhere({ link : link });
-      while (entry.get('parent')) {
-        entry = collection.get(entry.get('parent'));
-      }
+      var entry = fetchMenuItem(collection, link);
       if (entry) {
         deferred.resolve(collection.where( { parent : entry.id }));
       } else {

@@ -1,4 +1,4 @@
-PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('PanlinCap.Contact', function(Contact, PanlinCap, Backbone, Marionette) {
   'use strict';
 
   var Layout = PanlinCap.module('PanlinCap.Layout');
@@ -30,50 +30,27 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
   
   var ContactController = Layout.MainRegionController.extend({
     background: 'contact',
-    showContacts : function() {
+    showContacts : function(subpage, id) {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
       layout.getRegion('main').empty();
+      if (id) {
+        if (id === 'accouting') {
+          layout.main.show(new HireAccoutingView());
+        } else if (id === 'assistant') {
+          layout.main.show(new HireAssistantView());
+        }
 
-    },
-    showHire : function() {
-      var layout = this.initializeLayout({className : 'sidebar-layout content'});
-      layout.main.show(new HireView());
-    },
-    showHireAccounting : function() {
-      var layout = this.initializeLayout({className : 'sidebar-layout content'});
-      layout.main.show(new HireAccoutingView());
-    },
-    showHireAssistant : function() {
-      var layout = this.initializeLayout({className : 'sidebar-layout content'});
-      layout.main.show(new HireAssistantView());
-    },
-    showAddress : function() {
-      var layout = this.initializeLayout({className : 'sidebar-layout content'});
-      layout.main.show(new AddressView());
-    },
-    showPlan : function() {
-      var layout = this.initializeLayout({className : 'sidebar-layout content'});
-      layout.main.show(new BizPlanView());
+      } else {
+        if (subpage === 'hire') {
+          layout.main.show(new HireView());
+        } else if (subpage === 'address') {
+          layout.main.show(new AddressView());
+        } else if (subpage === 'plan') {
+          layout.main.show(new BizPlanView());
+        }
+      }
     }
   });
 
-  PanlinCap.addInitializer(function() {
-
-    var router = new Marionette.AppRouter({
-      appRoutes : {
-        'contacts(/)': 'showContacts',
-        'contacts/hire(/)' : 'showHire',
-        'contacts/hire/accouting(/)' : 'showHireAccounting',
-        'contacts/hire/assistant(/)' : 'showHireAssistant',
-        'contacts/address(/)' : 'showAddress',
-        'contacts/plan(/)' : 'showPlan'
-      },
-      controller: new ContactController()
-    });
-
-    router.on('route', function(route, params) {
-      $('.page').scrollTop(0);
-    });
-
-  });
+  Contact.Controller = new ContactController();
 });

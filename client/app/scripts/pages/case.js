@@ -1,4 +1,4 @@
-PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('PanlinCap.Case', function(Case, PanlinCap, Backbone, Marionette) {
   'use strict';
 
   var Layout = PanlinCap.module('PanlinCap.Layout');
@@ -75,18 +75,5 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
     }
   };
 
-  PanlinCap.addInitializer(function() {
-
-    var router = new Marionette.AppRouter({
-      appRoutes : {
-        'cases(/)' : 'showCases'
-      },
-      controller: casesController
-    });
-
-    router.on('route', function(route, params) {
-      $('.page').scrollTop(0);
-    });
-
-  });
+  Case.Controller = casesController;
 });
