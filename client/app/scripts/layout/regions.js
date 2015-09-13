@@ -30,5 +30,25 @@ PanlinCap.module('Region', function(Region, PanlinCap, Backbone, Marionette) {
       subRegion: SubMenuRegion,
       bgRegion: BackgroundRegion
     });
+
+    var About = PanlinCap.module('PanlinCap.About').Controller;
+    var Invest = PanlinCap.module('PanlinCap.Invest').Controller;
+
+    var controller = {
+      showAbout : About.showAbout.bind(About),
+      showInvestment : Invest.showInvestment.bind(Invest)
+    }
+
+    var router = new Marionette.AppRouter({
+      appRoutes : {
+        'about(/:sub)': 'showAbout',
+        'investment(/:sub)': 'showInvestment'
+      },
+      controller: controller
+    });
+
+    router.on('route', function(route, params) {
+      $('.page').scrollTop(0);
+    });
   });
 });

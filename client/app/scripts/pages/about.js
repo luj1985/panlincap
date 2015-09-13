@@ -1,4 +1,4 @@
-PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('PanlinCap.About', function(About, PanlinCap, Backbone, Marionette) {
   'use strict';
 
   var Layout = PanlinCap.module('PanlinCap.Layout');
@@ -15,7 +15,7 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
 
   var AboutController = Layout.MainRegionController.extend({
     background : 'about',
-    showAbout : function() {
+    showAbout : function(sub) {
       var layout = this.initializeLayout();
       layout.getRegion('main').empty();
 
@@ -24,49 +24,31 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
       }));
 
       PanlinCap.subRegion.loadMenu(2);
-      PanlinCap.vent.trigger('reveal:hide');
-    },
-    showAboutPanlin : function() {
-      var layout = this.initializeLayout();
 
-      layout.breadcrumb.show(new Layout.BreadcrumbView({
-        collection : new Backbone.Collection([
-          { text : '关于我们', link : '#/about' }, 
-          { text : '关于磐霖', link : '#/about/panlin'}
-        ])
-      }));
+      if (!sub) {
+        PanlinCap.vent.trigger('reveal:hide');
+        return;
+      }
 
-      PanlinCap.subRegion.loadMenu(2);
-      renderDeclaration(layout, 'introduction');
-    },
-    showAdvantage : function() {
-      var layout = this.initializeLayout();
-      layout.breadcrumb.show(new Layout.BreadcrumbView({ 
-        collection : new Backbone.Collection([
-          { text : '关于我们', link : '#/about' }, 
-          { text : '我们的优势', link : '#/about/advantage'}
-        ]) 
-      }));
-
-      PanlinCap.subRegion.loadMenu(2);
-      renderDeclaration(layout, 'advantage');
+      renderDeclaration(layout, sub);
+      
+      if (sub === 'panlin') {
+        layout.breadcrumb.show(new Layout.BreadcrumbView({
+          collection : new Backbone.Collection([
+            { text : '关于我们', link : '#/about' }, 
+            { text : '关于磐霖', link : '#/about/panlin'}
+          ])
+        }));
+      } else if (sub === 'advantage') {
+        layout.breadcrumb.show(new Layout.BreadcrumbView({ 
+          collection : new Backbone.Collection([
+            { text : '关于我们', link : '#/about' }, 
+            { text : '我们的优势', link : '#/about/advantage'}
+          ]) 
+        }));
+      }
     }
   });
 
-  PanlinCap.addInitializer(function() {
-
-    var router = new Marionette.AppRouter({
-      appRoutes : {
-        'about(/)': 'showAbout',
-        'about/panlin(/)' : 'showAboutPanlin',
-        'about/advantage(/)' : 'showAdvantage'
-      },
-      controller: new AboutController()
-    });
-
-    router.on('route', function(route, params) {
-      $('.page').scrollTop(0);
-    });
-
-  });
+  About.Controller = new AboutController();
 });
