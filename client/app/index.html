@@ -56,6 +56,7 @@
     <script type="text/javascript" src="//libs.useso.com/js/underscore.js/1.6.0/underscore.js"></script>
     <script type="text/javascript" src="//libs.useso.com/js/backbone.js/1.1.2/backbone.js"></script>
     <script type="text/javascript" src="//apps.bdimg.com/libs/backbone.marionette/2.2.0/backbone.marionette.js"></script>
+    <script type="text/javascript" src="//apps.bdimg.com/libs/fastclick/1.0.0/fastclick.min.js"></script>
     
 
     <!-- build:js(.) /scripts/vendor.js -->
@@ -79,6 +80,9 @@
 
 
     <script>
+    window.addEventListener('load', function() {
+      new FastClick(document.body);
+    }, false);
     var PanlinCap = new Backbone.Marionette.Application();
     </script>
     <!-- build:js({app,.tmp}) /scripts/main.js -->
