@@ -1,4 +1,4 @@
-PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionette) {
   'use strict';
 
   var Layout = PanlinCap.module('PanlinCap.Layout');
@@ -33,52 +33,22 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
     childViewContainer : '.teams'
   });
 
-  var TeamLayoutView = Layout.SidebarLayoutView.extend({
-    onBeforeShow : function() {
-      var self = this;
-
-      var promise = PanlinCap.reqres.request('members:fetch');
-      promise.then(function(raw) {
-        var members = new Backbone.Collection(raw);
-        self.main.show(new TeamsView({collection : members}));
-      });
-    }
-  });
-
   var teamController = (function() {
     return {
-      showTeam : function() {
-        var promise = PanlinCap.reqres.request('members:fetch');
-        promise.then(function(raw) {
+      showTeam : function(sub) {
+        PanlinCap.reqres.request('members:fetch').then(function(raw) {
           var members = new Backbone.Collection(raw);
-          PanlinCap.bodyRegion.show(new TeamLayoutView({collection: members}));
+          PanlinCap.bodyRegion.show(new TeamsView({collection: members}));
         });
         PanlinCap.execute('showBackground', 'team');
-      },
-      showPartner :function() {
-        this.showTeam();
-        $('.page').animate({scrollTop: 0}, { duration: 300, easing: 'swing'});
-      },
-      showMembers :function() {
-        this.showTeam();
-        $('.page').animate({scrollTop: 640}, { duration: 300, easing: 'swing'});
+        if (sub === 'partner') {
+          $('.page').animate({scrollTop: 0}, { duration: 300, easing: 'swing'});
+        } else if (sub === 'members') {
+          $('.page').animate({scrollTop: 640}, { duration: 300, easing: 'swing'});
+        }
       }
     };
   })();
 
-  PanlinCap.addInitializer(function() {
-    var router = new Marionette.AppRouter({
-      appRoutes : {
-        'team(/)' : 'showTeam',
-        'team/partner(/)' : 'showPartner',
-        'team/members(/)' : 'showMembers'
-      },
-      controller: teamController
-    });
-
-    router.on('route', function(route, params) {
-      $('.page').scrollTop(0);
-    });
-
-  });
+  Team.Controller = teamController; 
 });
