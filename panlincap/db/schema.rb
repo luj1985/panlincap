@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 9) do
   create_table "members", force: :cascade do |t|
     t.string   "name"
     t.string   "suffix"
+    t.string   "position"
     t.string   "title"
     t.string   "avatar"
     t.text     "description"
