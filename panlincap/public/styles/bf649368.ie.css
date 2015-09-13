@@ -4,13 +4,13 @@ a {
 .fixed-header a {
   color: #851910;
 }
-.fixed-header nav {
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNolRTYBAADNgFhdT7p9AAAAABJRU5ErkJggg==);
-}
 #breadcrumb .ui.breadcrumb a,
 #breadcrumb .ui.breadcrumb .divider {
   -webkit-filter: glow(color="#3E3E3E",strength=5);
           filter: glow(color="#3E3E3E",strength=5);
+}
+#navigation {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNolRTYBAADNgFhdT7p9AAAAABJRU5ErkJggg==);
 }
 .topic .inner {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOYceCiPQAGhgJpxZKj6QAAAABJRU5ErkJggg==);
