@@ -29,9 +29,7 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
   Sidebar.SidebarLayoutView = Marionette.LayoutView.extend({
     template : Handlebars.compile(
       '<nav id="breadcrumb"></nav>' +
-      '<div class="content-wrapper">' +
-      '<main id="main"></main>' +
-      '</div>'
+      '<main id="main"></main>'
     ),
     className : 'sidebar-layout',
     regions : {
