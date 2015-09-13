@@ -24,7 +24,7 @@ PanlinCap.module('PanlinCap.Layout', function(Layout, PanlinCap, Backbone, Mario
           PanlinCap.subRegion.empty();
         }
       }).fail(function() {
-        console.log('failed to load sub menu');
+        PanlinCap.subRegion.empty();
       });
     });
   });

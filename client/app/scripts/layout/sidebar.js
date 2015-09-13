@@ -12,13 +12,14 @@ PanlinCap.module('PanlinCap.Layout', function(Layout, PanlinCap, Backbone, Mario
   Layout.MainRegionController = Marionette.Controller.extend({
     initializeLayout : function(options) {
       var background = this.getOption('background');
-      if (!background) {
-        throw new Error('must assign background');
-      }
+      
       if (!this.layout || (this.layout && this.layout.isDestroyed)) {
         this.layout = new Layout.SidebarLayoutView(options); 
         PanlinCap.bodyRegion.show(this.layout);
-        PanlinCap.execute('showBackground', background);
+
+        if (background) {
+          PanlinCap.execute('showBackground', background);
+        }
       }
       return this.layout;
     }

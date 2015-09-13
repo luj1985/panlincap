@@ -6,26 +6,23 @@ PanlinCap.module('Region', function(Region, PanlinCap, Backbone, Marionette) {
     bodyRegion: '#body',
     dialogRegion: '#dialog',
     subRegion: '#submenu',
-    breadcrumbRegion: '#breadcrumb'
+    breadcrumbRegion: '#breadcrumb',
+    bgRegion: '#background'
   });
 
   var Layout = PanlinCap.module('PanlinCap.Layout');
 
-  var BackgroundRegion = Marionette.Region.extend({
-    el: '#background'
-  });
 
   PanlinCap.addInitializer(function() {
-    PanlinCap.addRegions({ 
-      bgRegion: BackgroundRegion
-    });
-
-    var About = PanlinCap.module('PanlinCap.About').Controller;
-    var Invest = PanlinCap.module('PanlinCap.Invest').Controller;
+    var RevealController = PanlinCap.module('PanlinCap.Reveal').Controller;
 
     var controller = {
-      showAbout : About.showAbout.bind(About),
-      showInvestment : Invest.showInvestment.bind(Invest)
+      showAbout : function(sub) {
+        return RevealController.showRevealPage(sub, 'about', '#/about');
+      },
+      showInvestment : function(sub) {
+        return RevealController.showRevealPage(sub, 'invest', '#/investment');
+      }
     }
 
     var router = new Marionette.AppRouter({
@@ -35,6 +32,7 @@ PanlinCap.module('Region', function(Region, PanlinCap, Backbone, Marionette) {
       },
       controller: controller
     });
+
 
     router.on('route', function(route, params) {
       $('.page').scrollTop(0);

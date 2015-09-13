@@ -25,8 +25,7 @@ PanlinCap.module('PanlinCap.Layout', function(Layout, PanlinCap, Backbone, Mario
   PanlinCap.addInitializer(function() {
     Backbone.history.on('route', function(ctx, name, args) {
       var fragment = this.getFragment() || '';
-      var promise = PanlinCap.reqres.request('breadcrumb:fetch', fragment);
-      promise.then(function(breadcrumbs) {
+      PanlinCap.reqres.request('breadcrumb:fetch', fragment).then(function(breadcrumbs) {
         if (breadcrumbs.length === 0) {
           PanlinCap.breadcrumbRegion.empty();
         } else {
