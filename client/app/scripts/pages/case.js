@@ -51,15 +51,6 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
     childView : CasesView,
     childViewContainer : '.main-container.cases'
   });
-
-  function renderSubmenu(menuid) {
-    var promise = PanlinCap.reqres.request('submenu:fetch', menuid);
-    promise.then(function(raw) {
-      PanlinCap.subRegion.show(new Layout.SubMenuView({
-        collection : new Backbone.Collection(raw)
-      }));
-    });
-  }
   
   var CaseLayoutView = Layout.SidebarLayoutView.extend({
     
@@ -75,7 +66,7 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
         self.main.show(new CasesCollectionView({ collection : cases }));
       });
 
-      renderSubmenu(6);
+      PanlinCap.subRegion.loadMenu(6);
 
       this.breadcrumb.show(new Layout.BreadcrumbView({
         collection : new Backbone.Collection([{ text : '投资组合', link : '#/cases' }])

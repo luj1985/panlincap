@@ -3,15 +3,6 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
 
   var Layout = PanlinCap.module('PanlinCap.Layout');
 
-  function renderSubmenu(menuid) {
-    var promise = PanlinCap.reqres.request('submenu:fetch', menuid);
-    promise.then(function(raw) {
-      PanlinCap.subRegion.show(new Layout.SubMenuView({
-        collection : new Backbone.Collection(raw)
-      }));
-    });
-  }
-
   function renderDeclaration(layout, name) {
     var promise = PanlinCap.reqres.request('declaration:fetch', name);
     promise.then(function(raw) {
@@ -32,7 +23,7 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
         collection : new Backbone.Collection([{ text : '关于我们', link : '#/about' }]) 
       }));
 
-      renderSubmenu(2);
+      PanlinCap.subRegion.loadMenu(2);
       PanlinCap.vent.trigger('reveal:hide');
     },
     showAboutPanlin : function() {
@@ -45,7 +36,7 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
         ])
       }));
 
-      renderSubmenu(2);
+      PanlinCap.subRegion.loadMenu(2);
       renderDeclaration(layout, 'introduction');
     },
     showAdvantage : function() {
@@ -57,7 +48,7 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
         ]) 
       }));
 
-      renderSubmenu(2);
+      PanlinCap.subRegion.loadMenu(2);
       renderDeclaration(layout, 'advantage');
     }
   });

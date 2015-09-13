@@ -8,15 +8,6 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
     tagName : 'li'
   });
 
-  function renderSubmenu(menuid) {
-    var promise = PanlinCap.reqres.request('submenu:fetch', menuid);
-    promise.then(function(raw) {
-      PanlinCap.subRegion.show(new Layout.SubMenuView({
-        collection : new Backbone.Collection(raw)
-      }));
-    });
-  }
-
   var NewsCollectionView = Layout.ScrollView.extend({
     template : PanlinCapTpl['templates/news/pages.hbs'],
     childView : NewsView,
@@ -85,7 +76,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
   
   var NewsLayoutView = Layout.SidebarLayoutView.extend({
     onBeforeShow : function() {
-      renderSubmenu(7);
+      PanlinCap.subRegion.loadMenu(7);
     }
   });
 

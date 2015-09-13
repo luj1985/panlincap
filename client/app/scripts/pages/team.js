@@ -3,15 +3,6 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
 
   var Layout = PanlinCap.module('PanlinCap.Layout');
 
-  function renderSubmenu(menuid) {
-    var promise = PanlinCap.reqres.request('submenu:fetch', menuid);
-    promise.then(function(raw) {
-      PanlinCap.subRegion.show(new Layout.SubMenuView({
-        collection : new Backbone.Collection(raw)
-      }));
-    });
-  }
-
   var MemberView = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/team/member.hbs'],
     className : 'panlin dialog',
@@ -55,7 +46,7 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
         collection : new Backbone.Collection([{ text : '核心团队', link : '#/team' }])
       }));
 
-      renderSubmenu(4);
+      PanlinCap.subRegion.loadMenu(4);
     }
   });
 

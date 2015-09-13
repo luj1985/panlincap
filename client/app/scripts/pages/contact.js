@@ -27,15 +27,6 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
     template : PanlinCapTpl['templates/contact/plan.hbs'],
     className : 'main-container plan'
   });
-
-  function renderSubmenu(menuid) {
-    var promise = PanlinCap.reqres.request('submenu:fetch', menuid);
-    promise.then(function(raw) {
-      PanlinCap.subRegion.show(new Layout.SubMenuView({
-        collection : new Backbone.Collection(raw)
-      }));
-    });
-  }
   
   var ContactController = Layout.MainRegionController.extend({
     background: 'contact',
@@ -43,7 +34,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
       layout.getRegion('main').empty();
 
-      renderSubmenu(8);
+      PanlinCap.subRegion.loadMenu(8);
       layout.breadcrumb.show(new Layout.BreadcrumbView({ 
         collection : new Backbone.Collection([
           { text : '联系我们', link : '#/contacts' 
@@ -53,7 +44,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
     showHire : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
 
-      renderSubmenu(8);
+      PanlinCap.subRegion.loadMenu(8);
 
       layout.breadcrumb.show(new Layout.BreadcrumbView({
         collection : new Backbone.Collection([
@@ -66,7 +57,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
     showHireAccounting : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
 
-      renderSubmenu(8);
+      PanlinCap.subRegion.loadMenu(8);
 
       layout.breadcrumb.show(new Layout.BreadcrumbView({
         collection : new Backbone.Collection([
@@ -80,7 +71,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
     showHireAssistant : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
 
-      renderSubmenu(8);
+      PanlinCap.subRegion.loadMenu(8);
 
       layout.breadcrumb.show(new Layout.BreadcrumbView({
         collection : new Backbone.Collection([
@@ -94,7 +85,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
     showAddress : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
       
-      renderSubmenu(8);
+      PanlinCap.subRegion.loadMenu(8);
 
       layout.breadcrumb.show(new Layout.BreadcrumbView({
         collection : new Backbone.Collection([
@@ -107,7 +98,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
     showPlan : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
       
-      renderSubmenu(8);
+      PanlinCap.subRegion.loadMenu(8);
 
       layout.breadcrumb.show(new Layout.BreadcrumbView({
         collection : new Backbone.Collection([

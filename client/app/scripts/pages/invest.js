@@ -3,15 +3,6 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
 
   var Layout = PanlinCap.module('PanlinCap.Layout');
 
-  function renderSubmenu(menuid) {
-    var promise = PanlinCap.reqres.request('submenu:fetch', menuid);
-    promise.then(function(raw) {
-      PanlinCap.subRegion.show(new Layout.SubMenuView({
-        collection : new Backbone.Collection(raw)
-      }));
-    });
-  }
-
   function renderDeclaration(layout, name) {
     var promise = PanlinCap.reqres.request('declaration:fetch', name);
     promise.then(function(raw) {
@@ -31,7 +22,7 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
         collection : new Backbone.Collection([{ text : '投资理念', link : '#/investment' }]) 
       }));
 
-      renderSubmenu(3);
+      PanlinCap.subRegion.loadMenu(3);
       
       PanlinCap.vent.trigger('reveal:hide');
     },
@@ -43,7 +34,7 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
           { text : '价值提升机制', link : '#/investment/price'}
         ]) 
       }));
-      renderSubmenu(3);
+      PanlinCap.subRegion.loadMenu(3);
       renderDeclaration(layout, 'price');
       PanlinCap.vent.trigger('reveal:active');
     },
@@ -57,7 +48,7 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
       }));
 
       renderDeclaration(layout, 'principle');
-      renderSubmenu(3);
+      PanlinCap.subRegion.loadMenu(3);
       PanlinCap.vent.trigger('reveal:active');
     },
     showStrategy : function() {
@@ -69,7 +60,7 @@ PanlinCap.module('Invest', function(Invest, PanlinCap, Backbone, Marionette) {
         ]) 
       }));
 
-      renderSubmenu(3);
+      PanlinCap.subRegion.loadMenu(3);
       renderDeclaration(layout, 'strategy');
       PanlinCap.vent.trigger('reveal:active');
 
