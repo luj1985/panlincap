@@ -1,7 +1,7 @@
-PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('PanlinCap.Layout', function(Layout, PanlinCap, Backbone, Marionette) {
   'use strict';
 
-  Sidebar.SidebarView = Sidebar.SideMenuView = Marionette.ItemView.extend({
+  Layout.SubMenuView = Layout.SideMenuView = Marionette.ItemView.extend({
     template : Handlebars.compile(
       '{{#each items}}' +
       '<li><a href="#{{link}}">{{title}}</a></li>' +

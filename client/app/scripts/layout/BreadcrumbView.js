@@ -1,7 +1,7 @@
-PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('PanlinCap.Layout', function(Layout, PanlinCap, Backbone, Marionette) {
   'use strict';
 
-  Sidebar.BreadcrumbView = Marionette.ItemView.extend({
+  Layout.BreadcrumbView = Marionette.ItemView.extend({
     template : Handlebars.compile(
       '<a class="section" href="/#">首页</a>' +
       '{{#each items}}' +

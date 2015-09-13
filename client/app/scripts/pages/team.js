@@ -1,12 +1,12 @@
 PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
   'use strict';
 
-  var Shared = PanlinCap.module('Layout.Sidebar');
+  var Layout = PanlinCap.module('PanlinCap.Layout');
 
   function renderSubmenu(menuid) {
     var promise = PanlinCap.reqres.request('submenu:fetch', menuid);
     promise.then(function(raw) {
-      PanlinCap.subRegion.show(new Shared.SidebarView({
+      PanlinCap.subRegion.show(new Layout.SubMenuView({
         collection : new Backbone.Collection(raw)
       }));
     });
@@ -36,13 +36,13 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
     }
   });
 
-  var TeamsView = Shared.ScrollView.extend({
+  var TeamsView = Layout.ScrollView.extend({
     template : PanlinCapTpl['templates/team/container.hbs'],
     childView : TeamView,
     childViewContainer : '.teams'
   });
 
-  var TeamLayoutView = Shared.SidebarLayoutView.extend({
+  var TeamLayoutView = Layout.SidebarLayoutView.extend({
     onBeforeShow : function() {
       var self = this;
 
@@ -51,7 +51,7 @@ PanlinCap.module('Team', function(Team, PanlinCap, Backbone, Marionette) {
         var members = new Backbone.Collection(raw);
         self.main.show(new TeamsView({collection : members}));
       });
-      this.breadcrumb.show(new Shared.BreadcrumbView({
+      this.breadcrumb.show(new Layout.BreadcrumbView({
         collection : new Backbone.Collection([{ text : '核心团队', link : '#/team' }])
       }));
 

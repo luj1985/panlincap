@@ -1,7 +1,7 @@
 PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
   'use strict';
 
-  var Shared = PanlinCap.module('Layout.Sidebar');
+  var Layout = PanlinCap.module('PanlinCap.Layout');
 
   var AddressView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/contact/address.hbs'],
@@ -31,20 +31,20 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
   function renderSubmenu(menuid) {
     var promise = PanlinCap.reqres.request('submenu:fetch', menuid);
     promise.then(function(raw) {
-      PanlinCap.subRegion.show(new Shared.SidebarView({
+      PanlinCap.subRegion.show(new Layout.SubMenuView({
         collection : new Backbone.Collection(raw)
       }));
     });
   }
   
-  var ContactController = Shared.MainRegionController.extend({
+  var ContactController = Layout.MainRegionController.extend({
     background: 'contact',
     showContacts : function() {
       var layout = this.initializeLayout({className : 'sidebar-layout content'});
       layout.getRegion('main').empty();
 
       renderSubmenu(8);
-      layout.breadcrumb.show(new Shared.BreadcrumbView({ 
+      layout.breadcrumb.show(new Layout.BreadcrumbView({ 
         collection : new Backbone.Collection([
           { text : '联系我们', link : '#/contacts' 
         }]) 
@@ -55,7 +55,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
 
       renderSubmenu(8);
 
-      layout.breadcrumb.show(new Shared.BreadcrumbView({
+      layout.breadcrumb.show(new Layout.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '联系我们', link : '#/contacts' }, 
           { text : '招贤纳士', link : '#/contacts/hire'}
@@ -68,7 +68,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
 
       renderSubmenu(8);
 
-      layout.breadcrumb.show(new Shared.BreadcrumbView({
+      layout.breadcrumb.show(new Layout.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '联系我们', link : '#/contacts' }, 
           { text : '招贤纳士', link : '#/contacts/hire'},
@@ -82,7 +82,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
 
       renderSubmenu(8);
 
-      layout.breadcrumb.show(new Shared.BreadcrumbView({
+      layout.breadcrumb.show(new Layout.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '联系我们', link : '#/contacts' }, 
           { text : '招贤纳士', link : '#/contacts/hire'},
@@ -96,7 +96,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
       
       renderSubmenu(8);
 
-      layout.breadcrumb.show(new Shared.BreadcrumbView({
+      layout.breadcrumb.show(new Layout.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '联系我们', link : '#/contacts' }, 
           { text : '公司地址', link : '#/contacts/address'}
@@ -109,7 +109,7 @@ PanlinCap.module('Contact', function(Contact, PanlinCap, Backbone, Marionette) {
       
       renderSubmenu(8);
 
-      layout.breadcrumb.show(new Shared.BreadcrumbView({
+      layout.breadcrumb.show(new Layout.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '联系我们', link : '#/contacts' }, 
           { text : '商业计划书', link : '#/contacts/plan'}

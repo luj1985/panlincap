@@ -1,7 +1,7 @@
-PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('PanlinCap.Layout', function(Layout, PanlinCap, Backbone, Marionette) {
   'use strict';
 
-  Sidebar.ScrollView = Marionette.CompositeView.extend({
+  Layout.ScrollView = Marionette.CompositeView.extend({
     onRender : function() {
       var $wrapper = $('.page');
       function startScrollUp() {

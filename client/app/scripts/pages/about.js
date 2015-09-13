@@ -1,12 +1,12 @@
 PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
   'use strict';
 
-  var Shared = PanlinCap.module('Layout.Sidebar');
+  var Layout = PanlinCap.module('PanlinCap.Layout');
 
   function renderSubmenu(menuid) {
     var promise = PanlinCap.reqres.request('submenu:fetch', menuid);
     promise.then(function(raw) {
-      PanlinCap.subRegion.show(new Shared.SidebarView({
+      PanlinCap.subRegion.show(new Layout.SubMenuView({
         collection : new Backbone.Collection(raw)
       }));
     });
@@ -16,19 +16,19 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
     var promise = PanlinCap.reqres.request('declaration:fetch', name);
     promise.then(function(raw) {
       raw.back = '#/about';
-      layout.main.show(new Shared.RevealView({ model : new Backbone.Model(raw) }));
+      layout.main.show(new Layout.RevealView({ model : new Backbone.Model(raw) }));
 
       PanlinCap.vent.trigger('reveal:active');
     });
   }
 
-  var AboutController = Shared.MainRegionController.extend({
+  var AboutController = Layout.MainRegionController.extend({
     background : 'about',
     showAbout : function() {
       var layout = this.initializeLayout();
       layout.getRegion('main').empty();
 
-      layout.breadcrumb.show(new Shared.BreadcrumbView({
+      layout.breadcrumb.show(new Layout.BreadcrumbView({
         collection : new Backbone.Collection([{ text : '关于我们', link : '#/about' }]) 
       }));
 
@@ -38,7 +38,7 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
     showAboutPanlin : function() {
       var layout = this.initializeLayout();
 
-      layout.breadcrumb.show(new Shared.BreadcrumbView({
+      layout.breadcrumb.show(new Layout.BreadcrumbView({
         collection : new Backbone.Collection([
           { text : '关于我们', link : '#/about' }, 
           { text : '关于磐霖', link : '#/about/panlin'}
@@ -50,7 +50,7 @@ PanlinCap.module('About', function(About, PanlinCap, Backbone, Marionette) {
     },
     showAdvantage : function() {
       var layout = this.initializeLayout();
-      layout.breadcrumb.show(new Shared.BreadcrumbView({ 
+      layout.breadcrumb.show(new Layout.BreadcrumbView({ 
         collection : new Backbone.Collection([
           { text : '关于我们', link : '#/about' }, 
           { text : '我们的优势', link : '#/about/advantage'}

@@ -1,7 +1,7 @@
 PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
   'use strict';
 
-  var Shared = PanlinCap.module('Layout.Sidebar');
+  var Layout = PanlinCap.module('PanlinCap.Layout');
 
   var NewsView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/news/news.hbs'],
@@ -11,13 +11,13 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
   function renderSubmenu(menuid) {
     var promise = PanlinCap.reqres.request('submenu:fetch', menuid);
     promise.then(function(raw) {
-      PanlinCap.subRegion.show(new Shared.SidebarView({
+      PanlinCap.subRegion.show(new Layout.SubMenuView({
         collection : new Backbone.Collection(raw)
       }));
     });
   }
 
-  var NewsCollectionView = Shared.ScrollView.extend({
+  var NewsCollectionView = Layout.ScrollView.extend({
     template : PanlinCapTpl['templates/news/pages.hbs'],
     childView : NewsView,
     className : 'main-container news',
@@ -83,7 +83,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
     className : 'main-container news'
   });
   
-  var NewsLayoutView = Shared.SidebarLayoutView.extend({
+  var NewsLayoutView = Layout.SidebarLayoutView.extend({
     onBeforeShow : function() {
       renderSubmenu(7);
     }
@@ -114,7 +114,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
       var layout = this.initLayout();
       layout.getRegion('main').empty();
 
-      layout.breadcrumb.show(new Shared.BreadcrumbView({
+      layout.breadcrumb.show(new Layout.BreadcrumbView({
         collection : new Backbone.Collection({ text : '新闻中心', link : '#/news' })
       }));
     },
@@ -128,7 +128,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
         }))
       });
 
-      layout.breadcrumb.show(new Shared.BreadcrumbView({
+      layout.breadcrumb.show(new Layout.BreadcrumbView({
         collection : new Backbone.Collection({ text : '新闻中心', link : '#/news' })
       }));
 
@@ -141,7 +141,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
 
       news.fetch({ reset : true });
 
-      layout.breadcrumb.show(new Shared.BreadcrumbView({
+      layout.breadcrumb.show(new Layout.BreadcrumbView({
         collection : new Backbone.Collection([{ text : '新闻中心', link : '#/news' }, { text : '被投公司新闻', link : '#/news/invested '}])
       }));
     },
@@ -153,7 +153,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
 
       news.fetch({ reset : true });
 
-      layout.breadcrumb.show(new Shared.BreadcrumbView({
+      layout.breadcrumb.show(new Layout.BreadcrumbView({
         collection : new Backbone.Collection([{ text : '新闻中心', link : '#/news' }, { text : '公司新闻', link : '#/news/company '}])
       }));
     }

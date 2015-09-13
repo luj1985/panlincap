@@ -1,7 +1,7 @@
-PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('PanlinCap.Layout', function(Layout, PanlinCap, Backbone, Marionette) {
   'use strict';
 
-  Sidebar.RevealView = Marionette.ItemView.extend({
+  Layout.RevealView = Marionette.ItemView.extend({
     template : Handlebars.compile(
       '{{{body}}}' + 
       '<a href="{{back}}" class="close">' + 

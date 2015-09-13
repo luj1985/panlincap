@@ -1,7 +1,7 @@
 PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
   'use strict';
 
-  var Shared = PanlinCap.module('Layout.Sidebar');
+  var Layout = PanlinCap.module('PanlinCap.Layout');
 
   var CaseView = Marionette.ItemView.extend({
     template : Handlebars.compile(
@@ -46,7 +46,7 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
     }
   });
 
-  var CasesCollectionView = Shared.ScrollView.extend({
+  var CasesCollectionView = Layout.ScrollView.extend({
     template : PanlinCapTpl['templates/case/container.hbs'],
     childView : CasesView,
     childViewContainer : '.main-container.cases'
@@ -55,13 +55,13 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
   function renderSubmenu(menuid) {
     var promise = PanlinCap.reqres.request('submenu:fetch', menuid);
     promise.then(function(raw) {
-      PanlinCap.subRegion.show(new Shared.SidebarView({
+      PanlinCap.subRegion.show(new Layout.SubMenuView({
         collection : new Backbone.Collection(raw)
       }));
     });
   }
   
-  var CaseLayoutView = Shared.SidebarLayoutView.extend({
+  var CaseLayoutView = Layout.SidebarLayoutView.extend({
     
     onBeforeShow : function() {
       var self = this;
@@ -77,7 +77,7 @@ PanlinCap.module('Case', function(Case, PanlinCap, Backbone, Marionette) {
 
       renderSubmenu(6);
 
-      this.breadcrumb.show(new Shared.BreadcrumbView({
+      this.breadcrumb.show(new Layout.BreadcrumbView({
         collection : new Backbone.Collection([{ text : '投资组合', link : '#/cases' }])
       }));
     }

@@ -1,8 +1,7 @@
-PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('PanlinCap.Layout', function(Layout, PanlinCap, Backbone, Marionette) {
   'use strict';
 
-
-  Sidebar.SidebarLayoutView = Marionette.LayoutView.extend({
+  Layout.SidebarLayoutView = Marionette.LayoutView.extend({
     template : Handlebars.compile(
       '<nav id="breadcrumb"></nav>' +
       '<main id="main"></main>'
@@ -14,14 +13,14 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
     }
   });
 
-  Sidebar.MainRegionController = Marionette.Controller.extend({
+  Layout.MainRegionController = Marionette.Controller.extend({
     initializeLayout : function(options) {
       var background = this.getOption('background');
       if (!background) {
         throw new Error('must assign background');
       }
       if (!this.layout || (this.layout && this.layout.isDestroyed)) {
-        this.layout = new Sidebar.SidebarLayoutView(options); 
+        this.layout = new Layout.SidebarLayoutView(options); 
         PanlinCap.bodyRegion.show(this.layout);
         PanlinCap.execute('showBackground', background);
       }
