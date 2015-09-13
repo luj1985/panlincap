@@ -3,15 +3,19 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
 
   var Shared = PanlinCap.module('Layout.Sidebar');
 
-  var slogan = [
-    { text : '被投公司资讯', link : '#/news/invested' }, 
-    { text : '公司新闻', link : '#/news/company' }
-  ];
-
   var NewsView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/news/news.hbs'],
     tagName : 'li'
   });
+
+  function renderSubmenu(menuid) {
+    var promise = PanlinCap.reqres.request('submenu:fetch', menuid);
+    promise.then(function(raw) {
+      PanlinCap.subRegion.show(new Shared.SidebarView({
+        collection : new Backbone.Collection(raw)
+      }));
+    });
+  }
 
   var NewsCollectionView = Shared.ScrollView.extend({
     template : PanlinCapTpl['templates/news/pages.hbs'],
@@ -81,9 +85,7 @@ PanlinCap.module('News', function(News, PanlinCap, Backbone, Marionette) {
   
   var NewsLayoutView = Shared.SidebarLayoutView.extend({
     onBeforeShow : function() {
-      PanlinCap.subRegion.show(new NewsSidebarView({
-        collection : new Backbone.Collection(slogan)
-      }));
+      renderSubmenu(7);
     }
   });
 
