@@ -39,7 +39,10 @@ PanlinCap.module('Background', function(Background, PanlinCap, Backbone, Marione
   });
 
   var SingleBackground = Marionette.ItemView.extend({
-    template : PanlinCapTpl['templates/revealbg.hbs'],
+    template : Handlebars.compile(
+      '<div class="slide"></div>' + 
+      '<div class="revealbg {{ cls }}"></div>'
+    ),
     initialize : function(cfg) {
       this.listenTo(PanlinCap.vent, 'reveal:active', this.revealView, this);
       this.listenTo(PanlinCap.vent, 'reveal:hide', this.hideView, this);
