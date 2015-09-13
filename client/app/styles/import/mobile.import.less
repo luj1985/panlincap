@@ -277,5 +277,18 @@
 }
 
 /* portrait phones */
-@media only screen and (max-width: 767px) and (orientation: portrait) {
+@media only screen and (max-width: 767px) and (orientation: landscape) {
+  .fixed-header {
+    height: 84px;
+  }
+  .fixed-header #header .brand {
+    display: none !important;
+  }
+  .page {
+    top: 90px !important;
+    position: relative;
+  }
+  #navigation {
+    padding-bottom: 50px;
+  }
 }
