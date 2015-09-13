@@ -52,7 +52,7 @@ PanlinCap.module('Layout.Sidebar', function(Sidebar, PanlinCap, Backbone, Marion
 
   Sidebar.RevealView = Marionette.ItemView.extend({
     template : Handlebars.compile(
-      '{{{description}}}' + 
+      '{{{body}}}' + 
       '<a href="{{back}}" class="close">' + 
       '  <i class="fa fa-angle-double-left"></i> 收起' +
       '</a>'

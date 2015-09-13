@@ -85,6 +85,9 @@ module Panlincap
       ].to_json
     end
 
+    get '/api/declaration/:name', :provides => :json do
+      Declaration.find_by_name(params['name']).to_json
+    end
 
     get '/api/cases', :provides => :json do
       Case.all.to_json

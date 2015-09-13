@@ -77,6 +77,16 @@ end
 
 
 
+reader = CSV.open(File.join(File.dirname(__FILE__), "declarations.csv"), "r") 
+reader.shift
+
+reader.each do |line|
+  name, title, body = line
+  Declaration.create(:name => name, :title => title, :body => body)
+end
+
+
+
 email     = shell.ask "Which email do you want use for logging into admin?"
 password  = shell.ask "Tell me the password to use:"
 

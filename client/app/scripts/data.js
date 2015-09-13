@@ -25,6 +25,10 @@
     return $.get('/api/submenus/' + id);
   });
 
+  PanlinCap.reqres.setHandler('declaration:fetch', function(name) {
+    return $.get('/api/declaration/' + name);
+  });
+
   PanlinCap.reqres.setHandler('founds:fetch', function() {
     return $.get('/api/founds');
   });
