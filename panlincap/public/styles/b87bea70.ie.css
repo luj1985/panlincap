@@ -13,7 +13,7 @@ a {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNolRTYBAADNgFhdT7p9AAAAABJRU5ErkJggg==);
 }
 .topic .inner {
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOYceCiPQAGhgJpxZKj6QAAAABJRU5ErkJggg==);
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOYceCiDwAGkwJ2G8VpIQAAAABJRU5ErkJggg==);
 }
 .topic .inner h2.header {
   color: #851910;
@@ -38,7 +38,7 @@ a {
   color: #851910;
 }
 #body .founds .found {
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOYceCiPQAGhgJpxZKj6QAAAABJRU5ErkJggg==);
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOYceCiDwAGkwJ2G8VpIQAAAABJRU5ErkJggg==);
   min-width: 200px;
 }
 table.chart.distribution tr.bar {
