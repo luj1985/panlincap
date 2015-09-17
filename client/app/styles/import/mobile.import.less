@@ -1,11 +1,17 @@
+@media (max-width:320px) {
+  .founds .found {
+    display: block;
+  }
+}
+
 @media (max-width:1024px) {
   .brand.column {
     width: 31.3% !important;
   }
 
   .founds .found {
-    min-width: 240px !important;
-    display: block;
+    min-width: 160px !important;
+    height: 165px;
   }
 
   #nav {
@@ -25,7 +31,6 @@
     margin-left: 90px;
   }
 }
-
 
 @media only screen and (max-width: 320px) {
   .topics {
@@ -60,7 +65,7 @@
 }
 
 @media only screen and (max-width: 1023px) and (orientation: landscape) {
-  
+
   .slides.home .slide {
     background-position-x: center;
     background-size: cover;
@@ -81,8 +86,11 @@
 
 
   .case-group {
-    padding: 0 16px;
+    padding: 0 0;
     box-sizing: border-box;
+    h4 {
+      margin: 0 16px;
+    }
   }
 
   .panlin.member {
@@ -164,11 +172,27 @@
   }
 
   .brands {
-    text-align: center;
+    padding: 0 16px;
+    text-align: left;
     .brand {
-      display: block !important;
-      width: auto !important;
+      // display: block !important;
+
+      width: calc(50% - 4px) !important;
       max-width: 500px;
+      padding: 4px !important;
+    }
+
+    .brand-logo {
+      padding: 7px;
+      height: 110px !important;
+      .logo {
+        height: 70px !important;
+        background-size: contain;
+      }
+      p {
+        // line-height: 14px;
+        margin: 7px 0;
+      }
     }
   }
 
