@@ -42,8 +42,43 @@
   }
 }
 
+@media only screen and (max-width: 767px) and (orientation:portrait) {
+
+  .slides.home .slide {
+    background-position-x: center;
+    background-size: cover;
+    &.homebg-1 {
+      background-image: url("/images/mobile/portrait/主页1.jpg");
+    }
+    &.homebg-2 {
+      background-image: url("/images/mobile/portrait/主页2.jpg");
+    }
+    &.homebg-3 {
+      background-image: url("/images/mobile/portrait/主页3.jpg");
+    }
+  }
+}
+
+@media only screen and (max-width: 1023px) and (orientation: landscape) {
+  
+  .slides.home .slide {
+    background-position-x: center;
+    background-size: cover;
+    &.homebg-1 {
+      background-image: url("/images/mobile/landscape/主页1.jpg");
+    }
+    &.homebg-2 {
+      background-image: url("/images/mobile/landscape/主页2.jpg");
+    }
+    &.homebg-3 {
+      background-image: url("/images/mobile/landscape/主页3.jpg");
+    }
+  }
+}
+
 /* phones */
 @media only screen and (max-width: 767px) {
+
 
   .case-group {
     padding: 0 16px;
