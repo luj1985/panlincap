@@ -65,17 +65,21 @@ PanlinCap.module('Background', function(Background, PanlinCap, Backbone, Marione
         PanlinCap.bgRegion.show(new HomeBg()); 
         break;
       case 'about':
-      case 'invest': 
+      case 'invest':
+        var cls = ['slides', page].join(' ');
+        PanlinCap.bgRegion.show(new SingleBackground({ 
+          className: cls, 
+          actived : $('.revealbg').hasClass('active')
+        })); 
+        break;
       case 'team':
       case 'found':
       case 'news':
       case 'contact':
       case 'cases':
         var cls = ['slides', page].join(' ');
-        var actived = $('.revealbg').hasClass('active');
         PanlinCap.bgRegion.show(new SingleBackground({ 
-          className: cls, 
-          actived : actived
+          className: cls
         })); 
         break;
     }
