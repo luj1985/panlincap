@@ -4,7 +4,7 @@ PanlinCap.module('PanlinCap.Contact', function(Contact, PanlinCap, Backbone, Mar
   var Layout = PanlinCap.module('PanlinCap.Layout');
 
   var BizPlanView = Marionette.ItemView.extend({
-    template : PanlinCapTpl['templates/contact/plan.hbs'],
+    template : PanlinCapTpl['templates/business-plan.hbs'],
     className : 'main-container plan'
   });
 

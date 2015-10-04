@@ -2,14 +2,13 @@ PanlinCap.module('PanlinCap.Home', function(Home, PanlinCap, Backbone, Marionett
   'use strict';
 
   var HomeView = Marionette.ItemView.extend({
-    template: PanlinCapTpl['templates/home/home.hbs'],
+    template: PanlinCapTpl['templates/home.hbs'],
     className: 'topics'
   });
 
   var homeController = {
     showHome: function() {
-      var promise = PanlinCap.reqres.request('topics:fetch');
-      promise.then(function(data) {
+      PanlinCap.reqres.request('topics:fetch').then(function(data) {
         var topics = new Backbone.Collection(data);
         PanlinCap.bodyRegion.show(new HomeView({ collection : topics }));
       });

@@ -24,7 +24,7 @@ PanlinCap.module('PanlinCap.Found', function(Found, PanlinCap, Backbone, Marione
   });
 
   var FoundDialogView = Marionette.ItemView.extend({
-    template: PanlinCapTpl['templates/found/dialog.hbs'],
+    template: PanlinCapTpl['templates/found-detail.hbs'],
     className : 'panlin dialog',
     onShow : function() {
       this.$el.bPopup({ 
