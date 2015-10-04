@@ -1,6 +1,10 @@
 @charset "UTF-8";
 
 @import "./import/variables.import.less";
+
+@import "./import/fonts.import.less";
+@import "./import/base.import.less";
+
 @import "./import/content.import.less";
 @import "./import/dialog.import.less";
 @import "./import/reveal.import.less";
@@ -12,64 +16,6 @@
 @import "./import/pagination.import.less";
 @import "./import/mobile.import.less";
 
-@font-face {
-  font-family: '隶书';
-  src: url('./fonts/panlin.lishu.eot');
-  src: url('./fonts/panlin.lishu.eot?#iefix') format('embedded-opentype'),
-       url('./fonts/panlin.lishu.woff') format('woff'),
-       url('./fonts/panlin.lishu.ttf') format('truetype'),
-       url('./fonts/panlin.lishu.svg#lishu') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: '楷体';
-  src: url('./fonts/panlin.kaiti.eot');
-  src: url('./fonts/panlin.kaiti.eot?#iefix') format('embedded-opentype'),
-       url('./fonts/panlin.kaiti.woff') format('woff'),
-       url('./fonts/panlin.kaiti.ttf') format('truetype'),
-       url('./fonts/panlin.kaiti.svg#kaiti') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'panlin';
-  src: url(data:application/x-font-ttf;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMg8SAboAAAC8AAAAYGNtYXAaVsyHAAABHAAAAFRnYXNwAAAAEAAAAXAAAAAIZ2x5ZusVLCkAAAF4AAADfGhlYWQFIW/lAAAE9AAAADZoaGVhBtsDxgAABSwAAAAkaG10eAUfAAYAAAVQAAAAFGxvY2EAKAHSAAAFZAAAAAxtYXhwABABHwAABXAAAAAgbmFtZZf0ElMAAAWQAAABenBvc3QAAwAAAAAHDAAAACAAAwKQAZAABQAAApkCzAAAAI8CmQLMAAAB6wAzAQkAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAABAAADmAAPA/8AAQAPAAEAAAAABAAAAAAAAAAAAAAAgAAAAAAADAAAAAwAAABwAAQADAAAAHAADAAEAAAAcAAQAOAAAAAoACAACAAIAAQAg5gD//f//AAAAAAAg5gD//f//AAH/4xoEAAMAAQAAAAAAAAAAAAAAAQAB//8ADwABAAAAAAAAAAAAAgAANzkBAAAAAAEAAAAAAAAAAAACAAA3OQEAAAAAAQAAAAAAAAAAAAIAADc5AQAAAAAKAAb/xgMZA7oAfwCGAJAAmACdAM0A8wD9AQcBHAAAEz4DNxwBFSYGFxY2MhYXBiYHFgYXPgIWFyY2FxQWFz4BJyYOASY3Fj4BFhcUFg4BBy4BJz4BByoBIy4BBwY2BwYmFxY2Fw4BBxY2FxwBFRYmNx4BFw4DJyY2JzYWNzYmNzYWNyYGJwY2Fw4BBz4BFx4BBy4DJzwBNQUqASMGMicDBhY3PgE3JgYjFzUwNhUUBjEHKgExMzcqASMOAwccARU+Ayc6ATMOASYGBx4BFwYmBwY2FzYmNzYGFxY2Fy4DJwMmNicuASMXMBYnJjYxDgEHJjYnJgYnNhY3NiY3FjY3FgY3FgYXJQ4BBy4BNxY2NycWNjcGJhcmNicVJjYnHgE3JjY3FgYHHgEXBi4CBwYhREE7GQ4pBRJDS0YTF3gsBxQBDz9GPg4GWDgBGAgZFQk+QC4GJlVTTB8BCBUWK2QUDlQjEB8QDgEvDkEOBlIBCEADEkoVJxsvKxAXIEUYF01eaTMGGQYcBR0DRwYFKwE+QzoMWQsdURwrLzAMBRFBaVI5EAGDEB8PD1sOogggJgoFCgwyGR8WFggBAQK9GTIZVXJLLhEhW0wqETt3Ows/RDYEHFcjF0UhEYMwDzIXJBIHWIpWHjdJZk19JyUXCRAIDQUTFA0lGwcdLgUdLQEUGh0cIQUkFwQiFj8CEQIBBg4zIw0JChA7JcglQBgGewQXJA0RGRQRGhMsKycXLAQeazIdP0E/HgF7DCorIwYQHxAPCx0DAwkQKyQFHRgWDRsFHCo7EwMZMQETLxUNCwgRJwIDAgUKL19WSBkbJTAEHAcSPRAkFiQWKy4iMh0iISABLwkWLBUMTgkSHxoeMh0FDjtRPAYmBygEKw0FEQUFDC4VGBwfHQQvASiRKAssRF07KVEoSxwcAecpJQMNJgwNATkmBBQVARr2DVN6llIZMhkSJy47JhUDAgsdEAEIHSQHShMIKQwWCEoVBxgFSpqJbBv+uwIyFwICHRICAykDNyARLRkBFCwUGQUQOxkXGxUGLg41bRmiFhkDFwoeKRMJMgEECjILPQkxHdQNMhgIGBQQEgMVExYwMRwLKC4aGgAAAQAAAAEAAMKlAMFfDzz1AAsEAAAAAADRdJW0AAAAANF0lbQAAP/GAxkDugAAAAgAAgAAAAAAAAABAAADwP/AAAAEAAAAAAADGQABAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAIAAAADHwAGAAAAAAAKABQAHgG+AAEAAAAFAR0ACgAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAOAK4AAQAAAAAAAQAGAAAAAQAAAAAAAgAHAFcAAQAAAAAAAwAGADMAAQAAAAAABAAGAGwAAQAAAAAABQALABIAAQAAAAAABgAGAEUAAQAAAAAACgAaAH4AAwABBAkAAQAMAAYAAwABBAkAAgAOAF4AAwABBAkAAwAMADkAAwABBAkABAAMAHIAAwABBAkABQAWAB0AAwABBAkABgAMAEsAAwABBAkACgA0AJhwYW5saW4AcABhAG4AbABpAG5WZXJzaW9uIDEuMABWAGUAcgBzAGkAbwBuACAAMQAuADBwYW5saW4AcABhAG4AbABpAG5wYW5saW4AcABhAG4AbABpAG5SZWd1bGFyAFIAZQBnAHUAbABhAHJwYW5saW4AcABhAG4AbABpAG5Gb250IGdlbmVyYXRlZCBieSBJY29Nb29uLgBGAG8AbgB0ACAAZwBlAG4AZQByAGEAdABlAGQAIABiAHkAIABJAGMAbwBNAG8AbwBuAC4AAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA) format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-html, body {
-  height: 100%;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  -webkit-tap-highlight-color: transparent; 
-}
-
-body {
-  padding : 0;
-  margin: 0;
-  font-family: @font-default;
-  font-size: @base-font-size;
-}
-
-a {
-  color : @color-main;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-  &.close:hover {
-    text-decoration: none;
-  }
-}
-
-p, ol li {
-  font-size: @base-font-size;
-  line-height: @base-line-height;
-}
 
 #header {
   position: fixed;

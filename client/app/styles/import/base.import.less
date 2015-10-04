@@ -1,0 +1,29 @@
+html, body {
+  height: 100%;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent; 
+}
+
+body {
+  padding : 0;
+  margin: 0;
+  font-family: @font-default;
+  font-size: @base-font-size;
+}
+
+a {
+  color : @color-main;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+  &.close:hover {
+    text-decoration: none;
+  }
+}
+
+p, ol li {
+  font-size: @base-font-size;
+  line-height: @base-line-height;
+}
