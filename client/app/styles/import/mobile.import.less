@@ -225,20 +225,16 @@
       }
     }
   }
+  
   #header {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
     background-position: 16px center;
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,.26);
+    border-radius: 1px; // for iOS8 compatible reason
 
     .wrapper {
       display: none;
-    }
-
-    .brand {
-      position: absolute;
-      right: 16px;
-      top: 85px;
-      pointer-events: none;
     }
   }
 
@@ -247,11 +243,6 @@
     font-size: 35px;
     padding: 8px;
     color: @color-main;
-  }
-
-  .fixed-header {
-    box-shadow: 0 3px 8px 0 rgba(0,0,0,.26);
-    border-radius: 1px; // for iOS8 compatible reason
   }
 
   #breadcrumb {

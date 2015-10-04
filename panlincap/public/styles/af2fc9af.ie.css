@@ -1,7 +1,10 @@
 a {
   color: #851910;
 }
-.fixed-header a {
+#header a {
+  color: #851910;
+}
+#header .slagon .divider {
   color: #851910;
 }
 #breadcrumb .ui.breadcrumb a,

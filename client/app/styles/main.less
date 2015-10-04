@@ -6,6 +6,7 @@
 @import "./import/reveal.import.less";
 @import "./import/background.import.less";
 @import "./import/pages.import.less";
+@import "./import/header.import.less";
 @import "./import/pagination.import.less";
 @import "./import/mobile.import.less";
 
@@ -40,14 +41,6 @@ body {
   font-size: @base-font-size;
 }
 
-#dimmer {
-  display: none;
-}
-
-.mobile {
-  display: none;
-}
-
 a {
   color : @color-main;
   text-decoration: none;
@@ -64,6 +57,14 @@ p, ol li {
   line-height: @base-line-height;
 }
 
+#header {
+  position: fixed;
+  top: 0;
+  left : 0;
+  z-index: 100;
+  width: 100%;
+  display: block;
+}
 
 
 #navigation {
@@ -98,38 +99,7 @@ p, ol li {
   }
 }
 
-.fixed-header {
-  position: fixed;
-  top: 0;
-  left : 0;
-  width: 100%;
-  z-index: 100;
 
-  a {
-    font-size: 13px;
-    color: @color-main;
-  }
-
-  .brand img {
-    height : 15px;
-  }
-
-  nav, header {
-    display: block;
-    margin: 0 auto;
-  }
-
-  header {
-    text-align: right;
-    padding: 14px 70px;
-    height: @header-height;
-    position: relative;
-    background-image: url("/images/logo.png");
-    background-repeat: no-repeat;
-    background-position: 56px center;
-    background-size: auto @header-height;
-  }
-}
 
 #breadcrumb {
   top : 135px;
@@ -149,6 +119,12 @@ p, ol li {
     color : #e8e8e8;  
     font-size: @breadcrumb-font-size;
   }
+}
+
+
+
+#dimmer, .mobile {
+  display: none;
 }
 
 .page {
