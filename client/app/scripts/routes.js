@@ -40,7 +40,7 @@ PanlinCap.module('PanlinCap.Route', function(Route, PanlinCap, Backbone, Marione
     });
 
     router.on('route', function() {
-      $('.page').scrollTop(0);
+      $('.viewport').scrollTop(0);
     });
   });
 });

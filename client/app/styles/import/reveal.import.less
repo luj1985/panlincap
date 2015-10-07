@@ -1,7 +1,6 @@
 @reveal-width: 370px;
 
 .reveal {
-  box-sizing: border-box;
   transition: opacity .5s ease-in-out .35s;
   top : 0;
   padding : 14px 28px;
@@ -10,6 +9,7 @@
   opacity: 0;
   left: 160px;
   visibility: hidden;
+
   &.active {
     visibility: visible;
     opacity: 1;
@@ -22,7 +22,7 @@
     color : black;
     font-family: @font-heiti;
     margin-top: 0;
-    margin-bottom: 4px
+    margin-bottom: 4px;
     position: relative;
     font-size: 13px;
   }
@@ -38,6 +38,7 @@
     margin-bottom: 14px;
     .content-font();
   }
+
   a.close {
     display: block;
     font-size: 13px;
@@ -56,6 +57,7 @@
   left: 216px;
   width: 0;
   background-color: transparent;
+
   &.active {
     width: @reveal-width;
     background-color: rgba(255,255,255,.8);

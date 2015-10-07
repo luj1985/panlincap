@@ -1,6 +1,6 @@
 @media (max-width:1024px) {
   #body {
-    padding: 14px !important;
+    padding: 0 !important;
   }
 
   .company.column {
@@ -87,12 +87,12 @@
   }
 }
 
+
+
 /* phones */
 @media only screen and (max-width: 767px) {
-
   .case-group {
     padding: 0 0;
-    box-sizing: border-box;
     h4 {
       margin: 0 16px;
     }
@@ -111,17 +111,6 @@
     .description {
       text-align: left;
     }
-  }
-
-  #dimmer {
-    display: none;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 900;
-    background-color: rgba(0,0,0,.3);
   }
 
   #copyright {
@@ -144,6 +133,14 @@
     margin: 0;
     padding: 16px;
     word-wrap: break-word;
+  }
+
+  div.viewport {
+    top: 88px;
+
+    .reveal {
+      min-height: 200px;
+    }
   }
   
   ul.news {
@@ -179,30 +176,6 @@
     padding: 0;
   }
 
-  div#submenu {
-    top: auto;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-
-    background-color: @color-main;
-    ul {
-      display: table;
-      width: 100%;
-      margin-top: 8px;
-      margin-bottom: 8px;
-    }
-    li {
-      text-align: center;
-      display: table-cell;
-      border: none;
-      a {
-        color: @color-white;
-        font-size: 18px;
-      }
-    }
-  }
-
   #breadcrumb {
     display: none;
   }
@@ -227,24 +200,6 @@
       line-height: 30px !important;;
       font-size: 20px !important;;
     }
-  }
-
-  #navigation, #submenu, #header, #body {
-    transition: transform .4s ease-in-out;
-  }
-
-  .push {
-    #navigation, #submenu, #header, #body {
-      transform: translateX(-140px);
-    }
-
-    #dimmer {
-      display: block;
-    }
-  }
-
-  #body {
-    padding: 0 0;
   }
 
   .topics {

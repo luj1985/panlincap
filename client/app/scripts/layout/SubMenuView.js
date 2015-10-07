@@ -7,23 +7,19 @@ PanlinCap.module('PanlinCap.Layout', function(Layout, PanlinCap, Backbone, Mario
       '<li><a href="#{{link}}">{{title}}</a></li>' +
       '{{/each}}'
     ),
-    tagName : 'ul',
-    className : 'brief'
+    tagName : 'ul'
   });
 
   Backbone.history.on('route', function() {
+    PanlinCap.subRegion.empty();
+
     var fragment = this.getFragment() || '';
-    var submenuPromise = PanlinCap.reqres.request('submenus:fetch', fragment);
-    submenuPromise.then(function(submenu) {
+    PanlinCap.reqres.request('submenus:fetch', fragment).then(function(submenu) {
       if (submenu && submenu.length > 0) {
         PanlinCap.subRegion.show(new SubMenuView({
           collection : new Backbone.Collection(submenu)
         }));
-      } else {
-        PanlinCap.subRegion.empty();
       }
-    }).fail(function() {
-      PanlinCap.subRegion.empty();
     });
   });
 });

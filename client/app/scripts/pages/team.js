@@ -52,12 +52,12 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
             PanlinCap.bodyRegion.show(new MemberView({model : person}));
           } else {
             if (subpage === 'partner') {
-              $('.page').animate({scrollTop: 0}, SCROLL_ANIMATION);
+              $('.viewport .container').animate({scrollTop: 0}, SCROLL_ANIMATION);
             } else if (subpage === 'members') {
-              var member = $('.page .pos-member:first')[0];
-              var mm = $(member).offset().top - $('.page').offset().top;
+              var member = $('.viewport .container .pos-member:first')[0];
+              var mm = $(member).offset().top - $('.viewport .container').offset().top;
 
-              $('.page').animate({scrollTop: mm}, SCROLL_ANIMATION);
+              $('.viewport .container').animate({scrollTop: mm}, SCROLL_ANIMATION);
             }
           }
         });

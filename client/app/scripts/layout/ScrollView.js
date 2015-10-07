@@ -5,7 +5,7 @@ PanlinCap.module('PanlinCap.Layout', function(Layout, PanlinCap, Backbone, Mario
     template : PanlinCapTpl['templates/scroll-indicator.hbs'],
     childViewContainer : '.collection',
     onRender : function() {
-      var $wrapper = $('.page');
+      var $wrapper = $('.viewport .container');
       function startScrollUp() {
         $wrapper.animate({scrollTop: '-=50'}, 'normal', 'linear', startScrollUp);
       }

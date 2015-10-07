@@ -3,12 +3,12 @@ PanlinCap.module('PanlinCap.Contact', function(Contact, PanlinCap, Backbone, Mar
 
   var BizPlanView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/business-plan.hbs'],
-    className : 'main-container plan'
+    className : 'main plan'
   });
 
   var HTMLView = Marionette.ItemView.extend({
     template : Handlebars.compile('{{{body}}}'),
-    className : 'main-container plan'
+    className : 'main plan'
   });
   
   var ContactController = {

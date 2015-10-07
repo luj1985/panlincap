@@ -11,7 +11,7 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
   var NewsCollectionView = Layout.ScrollView.extend({
     template : PanlinCapTpl['templates/news/pages.hbs'],
     childView : NewsView,
-    className : 'main-container news',
+    className : 'main news',
     childViewContainer : 'ul.news',
     initialize : function() {
       this.listenTo(this.collection, 'reset', this.render);
@@ -65,7 +65,7 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
 
   var NewsDetailView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/news/detail.hbs'],
-    className : 'main-container news'
+    className : 'main news'
   });
 
   var CompanyNewsCollection = Backbone.PageableCollection.extend({
