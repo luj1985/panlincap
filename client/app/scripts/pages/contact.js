@@ -13,6 +13,7 @@ PanlinCap.module('PanlinCap.Contact', function(Contact, PanlinCap, Backbone, Mar
   
   var ContactController = {
     showContacts : function(subpage, id) {
+      PanlinCap.bodyRegion.empty();
       PanlinCap.execute('showBackground', 'contact');
       var name = id || subpage;
       if (name) {

@@ -82,6 +82,7 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
 
   var newsController = {
     showNews: function(subpage, id) {
+      PanlinCap.subRegion.empty();
       PanlinCap.execute('showBackground', 'news');
       if (id) {
         var promise = PanlinCap.reqres.request('news:detail', id);

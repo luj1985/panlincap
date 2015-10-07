@@ -31,10 +31,10 @@ PanlinCap.module('PanlinCap.Found', function(Found, PanlinCap, Backbone, Marione
   var foundController = {
     showFounds: function() {
       PanlinCap.subRegion.empty();
+      PanlinCap.execute('showBackground', 'found');
       
-      var promise = PanlinCap.reqres.request('founds:fetch');
       var colors = [ 'rgb(180,6,12)', 'rgb(199,99,103)', 'rgb(178,53,55)', 'rgb(208,145,148)' ];
-      promise.then(function(raw) {
+      PanlinCap.reqres.request('founds:fetch').then(function(raw) {
         _.each(raw, function(found) {
           var portfolio = found.portfolio;
           var status = found.status;
@@ -56,7 +56,6 @@ PanlinCap.module('PanlinCap.Found', function(Found, PanlinCap, Backbone, Marione
         var founds = new Backbone.Collection(raw);
         PanlinCap.bodyRegion.show(new FoundView({ collection : founds }));
       });
-      PanlinCap.execute('showBackground', 'found');
     }
   };
 

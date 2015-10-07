@@ -56,8 +56,9 @@ PanlinCap.module('PanlinCap.Case', function(Case, PanlinCap, Backbone, Marionett
 
   var casesController = {
     showCases: function() {
-      var promise = PanlinCap.reqres.request('cases:fetch');
-      promise.then(function(raw) {
+      PanlinCap.bodyRegion.empty();
+      PanlinCap.execute('showBackground', 'cases');
+      PanlinCap.reqres.request('cases:fetch').then(function(raw) {
         var data = _.chain(raw).groupBy('area').map(function(brands, area) {
           return { area : area, brands : brands };
         }).value();
@@ -65,7 +66,6 @@ PanlinCap.module('PanlinCap.Case', function(Case, PanlinCap, Backbone, Marionett
         var cases = new Backbone.Collection(data);
         PanlinCap.bodyRegion.show(new CasesCollectionView({ collection : cases }));
       });
-      PanlinCap.execute('showBackground', 'cases');
     }
   };
 

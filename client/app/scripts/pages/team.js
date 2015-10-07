@@ -44,6 +44,9 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
   var teamController = (function() {
     return {
       showTeam : function(subpage, id) {
+        PanlinCap.subRegion.empty();
+        PanlinCap.execute('showBackground', 'team');
+        
         PanlinCap.reqres.request('members:fetch').then(function(raw) {
           var members = new Backbone.Collection(raw);
           PanlinCap.bodyRegion.show(new TeamsView({collection: members}));
@@ -61,7 +64,6 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
             }
           }
         });
-        PanlinCap.execute('showBackground', 'team');
       }
     };
   })();

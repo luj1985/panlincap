@@ -8,12 +8,12 @@ PanlinCap.module('PanlinCap.Home', function(Home, PanlinCap, Backbone, Marionett
 
   var homeController = {
     showHome: function() {
+      PanlinCap.subRegion.empty();
+      PanlinCap.execute('showBackground', 'home');
       PanlinCap.reqres.request('topics:fetch').then(function(data) {
         var topics = new Backbone.Collection(data);
         PanlinCap.bodyRegion.show(new HomeView({ collection : topics }));
       });
-      PanlinCap.subRegion.empty();
-      PanlinCap.execute('showBackground', 'home');
     }
   };
 
