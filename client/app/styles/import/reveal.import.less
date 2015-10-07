@@ -1,18 +1,14 @@
-@reveal-width: 370px;
-
 .reveal {
   transition: opacity .5s ease-in-out .35s;
-  top : 0;
-  padding : 14px 28px;
-  margin-left: 160px;
   width: @reveal-width;
   opacity: 0;
-  left: 160px;
   visibility: hidden;
 
-  &.active {
-    visibility: visible;
-    opacity: 1;
+  h2 {
+    color : @color-main;
+    font-family: @font-title;
+    margin-bottom: 7px;
+    font-size: 15px;
   }
 
   h3 {
@@ -27,13 +23,6 @@
     font-size: 13px;
   }
 
-  h2 {
-    color : @color-main;
-    font-family: @font-title;
-    margin-bottom: 7px;
-    font-size: 15px;
-  }
-
   p {
     margin-bottom: 14px;
     .content-font();
@@ -45,18 +34,21 @@
     color: black;
     margin-top: 42px;
   }
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 .revealbg {
   position: absolute;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+  background-color: transparent;
   transition: all .2s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.3) 0px -1px 2px inset;
-  display: inline-block;
-  overflow: auto;
-  height: 100%;
-  left: 216px;
-  width: 0;
-  background-color: transparent;
 
   &.active {
     width: @reveal-width;

@@ -2,13 +2,30 @@
 @media only screen 
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) {
-  #header { }
-  #navigation { }
+  
+  #header {
+    padding: @base-size 3*@base-size @base-size 2*@base-size;
+  }
+
   #submenu { }
-  #breadcrumb { }
   
   .viewport {
     top: 130px;
+  }
+
+  .founds .found {
+    width: 100%/3;
+    padding: 5px;
+    float: left;
+
+    .inner {
+      padding: 30px 10px;
+      height: 240px;
+    }
+  }
+
+  .main {
+    padding: 2*@base-size 3*@base-size;
   }
 }
 
@@ -17,18 +34,20 @@ and (max-device-width : 1024px) {
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
 and (orientation : landscape) {
-  #header {
-    padding: @base-size 3*@base-size @base-size 2*@base-size;
-  }
+
 
   #breadcrumb {
     top: 120px;
-    padding-left: 28px;
+    padding-left: 0;
   }
 
   #navigation {
     top: 88px;
     padding: 0 28px;
+  }
+
+  .trigger {
+    display: none !important;
   }
 
   #submenu {
@@ -41,6 +60,28 @@ and (orientation : landscape) {
     padding : 28px;
     margin: 0 auto;
   }
+
+  .founds .found {
+    width: 100%/3;
+  }
+
+  .reveal {
+    padding : @base-size 2*@base-size;
+    margin-left: 220px;
+  }
+  .revealbg {
+    left: 216px;
+  }
+  .mobile {
+    display: none;
+  }
+  .viewport {
+    margin-top: 2.5*@base-size;
+  }
+
+  .main {
+    margin-left: @submenu-width;
+  }
 }
 
 
@@ -48,7 +89,55 @@ and (orientation : landscape) {
 @media only screen 
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
-and (orientation : portrait) { /* STYLES GO HERE */ }
+and (orientation : portrait) {
+
+  #header {
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,.26);
+    .wrapper {
+      display: none;
+    }
+  }
+
+  #copyright {
+    display: none;
+  }
+
+  .reveal {
+    padding : @base-size;
+    padding-bottom: 2*@base-size;
+    width: auto !important;
+    margin: 0 !important;
+    background-color: rgba(255,255,255,.8);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px;
+  }
+
+  .revealbg {
+    display: none;
+  }
+
+  #breadcrumb {
+    top: 88px;
+    padding-left: 0;
+  }
+  
+  #navigation {
+    position: fixed;
+    padding: 84px 16px 0 16px;
+    left: 100%;
+    height: 100%;
+    width: 140px;
+    transition: transform .4s ease-in-out;
+    top: 0;
+    overflow: auto;
+
+    a {
+      text-align: left;
+      display: block !important;
+      line-height: 30px;;
+      font-size: 20px;;
+    }
+  }
+}
 
 
 @media (max-width:1024px) {
@@ -63,17 +152,6 @@ and (orientation : portrait) { /* STYLES GO HERE */ }
   .company {
     width: 100%/3;
     display: inline-block;
-  }
-
-  .founds {
-    display: block !important;
-    .found {
-      display: inline-block !important;
-      width: ~'calc(50% - 10px)';
-      min-width: 100px !important;
-      height: 165px;
-      padding: 30px 10px;
-    }
   }
 
   #nav {

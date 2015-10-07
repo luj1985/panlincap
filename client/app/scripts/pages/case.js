@@ -13,17 +13,17 @@ PanlinCap.module('PanlinCap.Case', function(Case, PanlinCap, Backbone, Marionett
     className : 'company',
     onRender : function() {
       var model = this.model;
+      this.$('.logo').css('background-image', 'url(' + this.model.get('logo') + ')');
+
       this.$el.on('click', function() {
         var dialog = new CaseDialogView({model : model});
         PanlinCap.dialogRegion.show(dialog);
       });
-
-      this.$('.logo').css('background-image', 'url(' + this.model.get('logo') + ')');
     }
   });
 
   var CaseDialogView = Marionette.ItemView.extend({
-    template : PanlinCapTpl['templates/case/case.hbs'],
+    template : PanlinCapTpl['templates/case/case-dialog.hbs'],
     className : 'panlin dialog',
     onShow : function() {
       this.$el.bPopup({ 

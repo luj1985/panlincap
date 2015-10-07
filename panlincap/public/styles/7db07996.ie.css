@@ -1,6 +1,94 @@
 a {
   color: #851910;
 }
+#dimmer,
+#header,
+#navigation,
+#breadcrumb {
+  position: fixed;
+  width: 100%;
+  left: 0;
+}
+#submenu ul {
+  font-family: STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体";
+}
+#submenu ul li {
+  border-bottom: 1px solid black;
+  line-height: 35px;
+  padding: 0 7px;
+  color: black;
+}
+#submenu ul li a {
+  color: black;
+  font-family: STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体";
+}
+#submenu ul li:first-of-type {
+  border-top: 1px solid black;
+}
+#header {
+  top: 0;
+  padding: 14px 70px 14px 56px;
+}
+#header .trigger {
+  display: none;
+}
+#navigation {
+  top: 88px;
+  padding: 0 56px;
+}
+#breadcrumb {
+  top: 120px;
+  padding-left: 56px;
+}
+#submenu {
+  position: fixed;
+  top: 180px;
+  left: 56px;
+  z-index: 1;
+}
+#body {
+  padding: 14px 56px;
+}
+#body .cases {
+  max-width: 900px;
+}
+.viewport {
+  top: 130px;
+}
+.company {
+  width: 25%;
+  display: inline-block;
+}
+.founds .found {
+  width: 33.33333333%;
+  float: left;
+  padding: 5px;
+}
+.founds .found .inner {
+  padding: 30px 10px;
+  height: 240px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOYceCiDwAGkwJ2G8VpIQAAAABJRU5ErkJggg==);
+}
+.founds .found.found-0,
+.founds .found.found-1,
+.founds .found.found-2,
+.founds .found.found-3 {
+  width: 25%;
+}
+.reveal {
+  padding: 14px 28px;
+  margin-left: 160px;
+}
+.revealbg {
+  left: 216px;
+}
+.main {
+  margin: 0 auto;
+  padding: 28px 42px;
+}
+.mobile {
+  display: none;
+}
 #header a {
   color: #851910;
 }
@@ -41,7 +129,6 @@ a {
   color: #851910;
 }
 #body .founds .found {
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOYceCiDwAGkwJ2G8VpIQAAAABJRU5ErkJggg==);
   min-width: 200px;
 }
 table.chart.distribution tr.bar {
@@ -65,6 +152,9 @@ table.chart.distribution tr.bar {
 .content-body a,
 .news .detail a {
   color: #851910;
+}
+.main.news {
+  background-color: white;
 }
 .main.address,
 .main.hire,

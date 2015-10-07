@@ -41,6 +41,17 @@ PanlinCap.module('PanlinCap.Route', function(Route, PanlinCap, Backbone, Marione
 
     router.on('route', function() {
       $('.viewport').scrollTop(0);
+
+      if (PanlinCap.isMobile()) {
+        var region = PanlinCap.logoRegion,
+            fragment = Backbone.history.getFragment();
+        if (fragment === '' || fragment === '/') {
+          region.$el.html('<a class="logo" href="/"></a>');
+        } else {
+          region.$el.html('<a class="back" href="#"><i class="fa fa-chevron-left"></i></a>');
+        }
+      }
     });
+    PanlinCap.Router = router;
   });
 });

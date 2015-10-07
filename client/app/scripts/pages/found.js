@@ -1,28 +1,6 @@
 PanlinCap.module('PanlinCap.Found', function(Found, PanlinCap, Backbone, Marionette, $, _) {
   'use strict';
 
-  var FoundView = Marionette.ItemView.extend({
-    template: Handlebars.compile(
-      '<div class="inner">' +
-      '<h3>{{issue}}</h3>' +
-      '<h4>{{name}}</h4>' + 
-      '</div>'
-    ),
-    className: 'found',
-    onRender : function() {
-      var model = this.model;
-      this.$el.on('click', function() {
-        var dialog = new FoundDialogView({model : model});
-        PanlinCap.dialogRegion.show(dialog);
-      });
-    }
-  });
-
-  var FoundCollectionView = Marionette.CollectionView.extend({
-    childView : FoundView,
-    className : 'founds'
-  });
-
   var FoundDialogView = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/found-detail.hbs'],
     className : 'panlin dialog',
@@ -32,6 +10,20 @@ PanlinCap.module('PanlinCap.Found', function(Found, PanlinCap, Backbone, Marione
         opacity: 0.3,
         positionStyle: 'fixed',
         amsl : 0
+      });
+    }
+  });
+
+  var FoundView = Marionette.ItemView.extend({
+    template: PanlinCapTpl['templates/found-collection.hbs'],
+    className: 'founds',
+    onRender : function(e) {
+      var collection = e.collection;
+      this.$el.on('click', '.found', function() {
+        var index = $(this).data('index');
+        var model = collection.get(index);
+        var dialog = new FoundDialogView({model : model});
+        PanlinCap.dialogRegion.show(dialog);
       });
     }
   });
@@ -62,7 +54,7 @@ PanlinCap.module('PanlinCap.Found', function(Found, PanlinCap, Backbone, Marione
           }
         });
         var founds = new Backbone.Collection(raw);
-        PanlinCap.bodyRegion.show(new FoundCollectionView({ collection : founds }));
+        PanlinCap.bodyRegion.show(new FoundView({ collection : founds }));
       });
       PanlinCap.execute('showBackground', 'found');
     }

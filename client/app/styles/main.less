@@ -10,7 +10,7 @@
 @import "./import/header.import.less";
 @import "./import/navigation.import.less";
 @import "./import/breadcrumb.import.less";
-@import "./import/pagination.import.less";
+@import "./import/vertical.scroll.import.less";
 
 @import "./import/content.import.less";
 @import "./import/reveal.import.less";
@@ -23,13 +23,10 @@
 
 #dimmer, #header, #navigation, #breadcrumb {
   position: fixed;
-  display: block;
   width: 100%;
-  left: 0;
 }
 
 #header {
-  top: 0;
   z-index: 1;
 }
 
@@ -44,6 +41,10 @@
 #submenu {
   position: fixed;
   z-index: 1;
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
 }
 
 .viewport {
@@ -76,11 +77,10 @@
 #copyright {
   line-height: @footer-height;
   text-align: right;
-  display: block;
   background-color: rgba(255,255,255,.2);
-  padding: 0 28px;
+  padding: 0 2*@base-size;
 }
 
-#dimmer, .mobile {
-  display: none;
+.clearfix {
+  clear: both;
 }

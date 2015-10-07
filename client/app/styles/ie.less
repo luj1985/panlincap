@@ -1,8 +1,9 @@
+@import "./import/variables.import.less";
+
 @ie-color-highlight: rgb(211,166,70);
 @ie-color-main: rgb(133,25,16);
 @ie-color-highlight: rgb(211,166,70);
 @ie-color-background: rgb(152,192,209);
-
 
 
 // rgba(133,25,16,.7)
@@ -15,8 +16,116 @@
 @ie-bg-reveal : url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP4fwYAAs0BzF1VEXcAAAAASUVORK5CYII=);
 // rgba(255,255,255,.5)
 @ie-bg-main : url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP4Xw8AAoABf5/NhYYAAAAASUVORK5CYII=);
+
 a {
   color: @ie-color-main;
+}
+
+#dimmer, #header, #navigation, #breadcrumb {
+  position: fixed;
+  width: 100%;
+  left: 0;
+}
+
+
+#submenu ul {
+  font-family: @font-title;
+
+  li {
+    border-bottom: 1px solid black;
+    line-height: 35px;
+    padding: 0 7px;
+    color: black;
+
+    a {
+      color: black;
+      font-family: @font-title;
+    }
+
+    &:first-of-type {
+      border-top: 1px solid black;
+    }
+  }
+}
+
+#header {
+  top: 0;
+  padding: @base-size 5*@base-size @base-size 4*@base-size;
+
+  .trigger {
+    display: none;
+  }
+}
+
+#navigation {
+  top: 88px;
+  padding: 0 4*@base-size;
+}
+
+#breadcrumb {
+  top: 120px;
+  padding-left: 4*@base-size;
+}
+
+#submenu {
+  position: fixed;
+  top: 180px;
+  left: 4*@base-size;
+  z-index: 1;
+}
+
+#body {
+  padding: @base-size 4*@base-size;
+}
+
+#body .cases {
+  max-width: 900px;
+}
+
+.viewport {
+  top: 130px;
+}
+
+.company {
+  width: 100%/4;
+  display: inline-block;
+}
+
+.founds .found {
+  width: 100%/3;
+  float:left;
+  padding: 5px;
+
+  .inner {
+    padding: 30px 10px;
+    height: 240px;
+
+    background-image: @ie-bg-color-png;
+  }
+}
+
+.founds .found {
+  // IE8 compatible
+  &.found-0, &.found-1, &.found-2, &.found-3 {
+    width: 100%/4;
+  }
+}
+
+.reveal {
+  padding : @base-size 2*@base-size;
+  margin-left: @submenu-width;
+}
+.revealbg {
+  left: 216px;
+}
+
+.main {
+  margin: 0 auto;
+  padding: 2*@base-size 3*@base-size;
+}
+
+.mobile {
+  display: none;
 }
 
 #header {
@@ -68,7 +177,6 @@ a {
 }
 
 #body .founds .found {
-  background-image: @ie-bg-color-png;
   min-width: 200px;
 }
 
@@ -103,6 +211,10 @@ table.chart.distribution {
   a {
     color : @ie-color-main;
   }
+}
+
+.main.news {
+  background-color: white;
 }
 
 .main.address, .main.hire, .main.plan {

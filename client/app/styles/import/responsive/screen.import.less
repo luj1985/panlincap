@@ -1,5 +1,11 @@
-@media only screen and (min-device-width : 1025px) {
+@media only screen and (min-width : 1025px) {
+
+  #dimmer, #header, #navigation, #breadcrumb {
+    left: 0;
+  }
+
   #header {
+    top: 0;
     padding: @base-size 5*@base-size @base-size 4*@base-size;
   }
 
@@ -20,7 +26,6 @@
     z-index: 1;
   }
 
-
   #body {
     padding: @base-size 4*@base-size;
   }
@@ -38,9 +43,42 @@
     display: inline-block;
   }
 
-  .panlin.dialog .dialog-body {
-    max-width: 960px;
-    padding : 28px;
+  .founds .found {
+    width: 100%/3;
+    float:left;
+    padding: 5px;
+
+    .inner {
+      padding: 30px 10px;
+      height: 240px;
+    }
+  }
+
+  .founds .found {
+    // IE8 compatible
+    &.found-0, &.found-1, &.found-2, &.found-3 {
+      width: 100%/4;
+    }
+  }
+
+
+  .reveal {
+    padding : @base-size 2*@base-size;
+    margin-left: @submenu-width;
+  }
+  .revealbg {
+    left: 216px;
+  }
+
+  .main {
     margin: 0 auto;
+    padding: 2*@base-size 3*@base-size;
+  }
+
+  .mobile {
+    display: none;
+  }
+  .trigger {
+    display: none !important;
   }
 }

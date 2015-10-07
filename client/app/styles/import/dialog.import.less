@@ -7,6 +7,9 @@
   overflow: auto;
 
   .dialog-body {
+    max-width: 960px;
+    padding : 28px;
+    margin: 0 auto;
     margin: 0 auto;
     position: relative;
 
@@ -37,10 +40,10 @@
     font-size : 30px;
     color: black;
     opacity: .3;
-    right: 2*@base-size;
-    top : 2*@base-size;
-    padding: 0;
+    right: @base-size;
+    top : @base-size;
     line-height: 0;
+    padding: @base-size;
 
     &:hover {
       opacity: .9;
