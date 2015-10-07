@@ -1,5 +1,10 @@
 
 @media (max-width:1024px) {
+
+
+  #body {
+    padding: 14px !important;
+  }
   .brand.column {
     width: 31.3% !important;
   }
@@ -49,6 +54,18 @@
   }
 }
 
+@media only screen and (max-width: 767px) {
+  #breadcrumb {
+    display: none !important;
+  }
+  .reveal {
+    width: auto !important;
+    margin: 0 !important;
+    background-color: rgba(255,255,255,.8);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px;
+  }
+}
+
 @media only screen and (max-width: 767px) and (orientation:portrait) {
 
   .slides.home .slide {
@@ -85,7 +102,6 @@
 
 /* phones */
 @media only screen and (max-width: 767px) {
-
 
   .case-group {
     padding: 0 0;
@@ -125,12 +141,6 @@
     display: none !important
   }
 
-  #main .reveal.active {
-    padding: 16px !important;
-    background-color: rgba(255,255,255,.8);
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px;
-  }
-
   .panlin.dialog {
     .content-body {
       padding: 60px 16px;
@@ -143,30 +153,15 @@
 
   }
 
-  .sidebar-layout.content {
-    margin: 0;
-    width: auto !important;
-  }
-
   .page {
     padding-bottom: 52px;
   }
 
   div.main-container {
     min-height: 200px;
-  }
-  .main-container.news {
+    margin: 0;
     padding: 16px;
     word-wrap: break-word;
-  }
-  .main-container.hire {
-    padding: 16px;
-  }
-  .main-container.address {
-    padding: 16px;
-  }
-  .main-container.plan {
-    padding: 16px;
   }
   
   ul.news {
@@ -230,10 +225,6 @@
     display: none;
   }
 
-  .sidebar-layout {
-    padding-top: 0;
-  }
-
   .vertical.pagination {
     display: none;  
   }
@@ -246,7 +237,6 @@
     width: 140px !important;
     transition: transform .4s ease-in-out;
     top: 0 !important;
-    z-index: 1000;
     overflow: auto;
 
     a {
@@ -257,12 +247,12 @@
     }
   }
 
-  #navigation, #submenu, .fixed-header, .page {
+  #navigation, #submenu, #header, #body {
     transition: transform .4s ease-in-out;
   }
 
-  body.push {
-    #navigation, #submenu, .fixed-header, .page {
+  .push {
+    #navigation, #submenu, #header, #body {
       transform: translateX(-140px);
     }
 
@@ -271,7 +261,7 @@
     }
   }
 
-  .page #body {
+  #body {
     padding: 0 0;
   }
 
@@ -303,14 +293,12 @@
     display: none !important;
   }
 
-  #main .reveal {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: auto !important;
+  .reveal {
     a.close {
       display: none !important;
     }
   }
+
   .teams {
     .person {
       box-sizing: content-box;
@@ -336,16 +324,6 @@
 
 /* portrait phones */
 @media only screen and (max-width: 767px) and (orientation: landscape) {
-  .fixed-header {
-    height: 84px;
-  }
-  .fixed-header #header .brand {
-    display: none !important;
-  }
-  .page {
-    top: 90px !important;
-    position: relative;
-  }
   #navigation {
     padding-bottom: 50px;
   }
