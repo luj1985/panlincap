@@ -22,18 +22,30 @@
 @import "./import/mobile.import.less";
 
 #header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   padding: @base-size 70px @base-size 56px;
   display: block;
   z-index: 100;
 }
 
 #navigation {
+  position: fixed;
+  top: 88px;
+  left: 0;
+  width: 100%;
   padding: 0 56px;
   display: block;
   z-index: 1000;
 }
 
 #breadcrumb {
+  position: fixed;
+  top: 120px;
+  left: 0;
+  width: 100%;
   padding-left: 56px;
   display: block;
   z-index: 100;
@@ -46,13 +58,25 @@
   z-index: 500;
 }
 
-#content {
-  padding: @base-size;
+.fullpage {
+  position: absolute;
+  width: 100%;
+  top: 130px;
+  bottom: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+
+  .container {
+    position: relative;
+    height: 100%;
+  }
 }
 
 #body {
   padding: @base-size 56px;
-  min-height: 100%;
+  min-height: 100%; // for browsers which doesn't support calc (IE8)
+  min-height: calc(~"100% - 70px");
 }
 
 #copyright {

@@ -9,7 +9,7 @@ PanlinCap.module('PanlinCap.Breadcrumb', function(Breadcrumb, PanlinCap, Backbon
       '<a class="section" href="#{{link}}">{{title}}</a>' +
       '{{/each}}'
     ),
-    className : 'ui breadcrumb'
+    className : 'breadcrumb'
   });
 
   

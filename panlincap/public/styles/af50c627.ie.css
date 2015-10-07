@@ -7,8 +7,8 @@ a {
 #header .slagon .divider {
   color: #851910;
 }
-#breadcrumb .ui.breadcrumb a,
-#breadcrumb .ui.breadcrumb .divider {
+#breadcrumb .breadcrumb a,
+#breadcrumb .breadcrumb .divider {
   -webkit-filter: glow(color="#3E3E3E",strength=5);
           filter: glow(color="#3E3E3E",strength=5);
 }
@@ -66,17 +66,14 @@ table.chart.distribution tr.bar {
 .news .detail a {
   color: #851910;
 }
-#main .reveal h2 {
-  color: #851910;
-}
-.main-container.address,
-.main-container.hire,
-.main-container.plan {
+.main.address,
+.main.hire,
+.main.plan {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP4Xw8AAoABf5/NhYYAAAAASUVORK5CYII=);
 }
-.main-container.address h3,
-.main-container.hire h3,
-.main-container.plan h3 {
+.main.address h3,
+.main.hire h3,
+.main.plan h3 {
   color: #851910;
 }
 .revealbg.active {
