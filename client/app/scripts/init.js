@@ -3,11 +3,12 @@
 
   PanlinCap.addRegions({
     navRegion: '#navigation',
-    bodyRegion: '#body',
+    contentRegion: '#content',
     dialogRegion: '#dialog',
     subRegion: '#submenu',
     breadcrumbRegion: '#breadcrumb',
-    bgRegion: '#background'
+    bgRegion: '#background',
+    bodyRegion: '#body'
   });
 
 

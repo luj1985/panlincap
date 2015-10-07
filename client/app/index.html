@@ -41,13 +41,14 @@
     <nav id="navigation"></nav>
     <div id="breadcrumb"></div>
     <div id="submenu"></div>
-    <div class="page">
-      <div id="body"></div>
-      <div id="copyright">&copy;上海磐霖资产管理有限公司版权所有 <a target="_blank" href="http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20120821112734336">沪ICP备10037119号</a></div>
+    <div id="body"></div>
+    <div id="copyright">
+    &copy;上海磐霖资产管理有限公司版权所有
+    <a target="_blank" href="http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20120821112734336">沪ICP备10037119号</a>
     </div>
     <div id="background"></div>
-    <div id="dialog"></div>
     <div id="dimmer"></div>
+    <div id="dialog"></div>
 
     <script type="text/javascript" src="//libs.useso.com/js/jquery/1.11.1/jquery.js"></script>
     <script type="text/javascript" src="//libs.useso.com/js/underscore.js/1.6.0/underscore.js"></script>
@@ -78,13 +79,12 @@
 
     <script>
     // IE browser doesn't have addEventListener method, use DOM1 instead
-    window.onload = function() { new FastClick(document.body); };
+    // window.onload = function() { new FastClick(document.body); };
     PanlinCap = new Backbone.Marionette.Application();
     </script>
     <!-- build:js({app,.tmp}) /scripts/main.js -->
     <script src="/templates/precompiled.handlebars.js"></script>
 
-    <script src="/scripts/layout/sidebar.js"></script>
     <script src="/scripts/layout/ScrollView.js"></script>
     <script src="/scripts/layout/BreadcrumbView.js"></script>
     <script src="/scripts/layout/SubMenuView.js"></script>

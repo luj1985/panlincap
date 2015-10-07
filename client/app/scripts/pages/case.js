@@ -51,11 +51,9 @@ PanlinCap.module('PanlinCap.Case', function(Case, PanlinCap, Backbone, Marionett
     childView : CasesView,
     childViewContainer : '.main-container.cases'
   });
-  
-  var CaseLayoutView = Layout.SidebarLayoutView.extend({
-    
-    onBeforeShow : function() {
-      var self = this;
+
+  var casesController = {
+    showCases: function() {
       var promise = PanlinCap.reqres.request('cases:fetch');
       promise.then(function(raw) {
         var data = _.chain(raw).groupBy('area').map(function(brands, area) {
@@ -63,14 +61,8 @@ PanlinCap.module('PanlinCap.Case', function(Case, PanlinCap, Backbone, Marionett
         }).value();
 
         var cases = new Backbone.Collection(data);
-        self.main.show(new CasesCollectionView({ collection : cases }));
+        PanlinCap.bodyRegion.show(new CasesCollectionView({ collection : cases }));
       });
-    }
-  });
-
-  var casesController = {
-    showCases: function() {
-      PanlinCap.bodyRegion.show(new CaseLayoutView({className : 'sidebar-layout content'}));
       PanlinCap.execute('showBackground', 'cases');
     }
   };

@@ -1,8 +1,6 @@
 PanlinCap.module('PanlinCap.Contact', function(Contact, PanlinCap, Backbone, Marionette) {
   'use strict';
 
-  var Layout = PanlinCap.module('PanlinCap.Layout');
-
   var BizPlanView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/business-plan.hbs'],
     className : 'main-container plan'
@@ -13,25 +11,24 @@ PanlinCap.module('PanlinCap.Contact', function(Contact, PanlinCap, Backbone, Mar
     className : 'main-container plan'
   });
   
-  var ContactController = Layout.MainRegionController.extend({
-    background: 'contact',
+  var ContactController = {
     showContacts : function(subpage, id) {
-      var layout = this.initializeLayout({className : 'sidebar-layout content'});
-      layout.getRegion('main').empty();
-      
+      PanlinCap.execute('showBackground', 'contact');
       var name = id || subpage;
       if (name) {
         if (name === 'plan') {
-          layout.main.show(new BizPlanView());
+          PanlinCap.bodyRegion.show(new BizPlanView());
         } else {
           PanlinCap.reqres.request('declaration:fetch', name).then(function(raw) {
             var model = new Backbone.Model(raw);
-            layout.main.show(new HTMLView({ model : model }));
+            PanlinCap.bodyRegion.show(new HTMLView({ model : model }));
           });
         }
+      } else {
+        PanlinCap.bodyRegion.empty();
       }
     }
-  });
+  };
 
-  Contact.Controller = new ContactController();
+  Contact.Controller = ContactController;
 });

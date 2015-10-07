@@ -67,8 +67,6 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
     template : PanlinCapTpl['templates/news/detail.hbs'],
     className : 'main-container news'
   });
-  
-  var NewsLayoutView = Layout.SidebarLayoutView.extend({});
 
   var CompanyNewsCollection = Backbone.PageableCollection.extend({
     url : '/api/article?type=company',
@@ -83,32 +81,24 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
   });
 
   var newsController = {
-    initLayout : function() {
-      if (!this.layout || (this.layout && this.layout.isDestroyed)) {
-        this.layout = new NewsLayoutView({className : 'sidebar-layout content'});
-        PanlinCap.bodyRegion.show(this.layout);
-        PanlinCap.execute('showBackground', 'news');
-      }
-      return this.layout;
-    },
     showNews: function(subpage, id) {
-      var layout = this.initLayout();
-      layout.getRegion('main').empty();
-
+      PanlinCap.execute('showBackground', 'news');
       if (id) {
         var promise = PanlinCap.reqres.request('news:detail', id);
         promise.then(function(data) {
-          layout.main.show(new NewsDetailView({ model : new Backbone.Model(data) }));
+          PanlinCap.bodyRegion.show(new NewsDetailView({ model : new Backbone.Model(data) }));
         });
       } else {
         if (subpage === 'company') {
           var companyNews = new CompanyNewsCollection();
-          layout.main.show(new NewsCollectionView({ collection : companyNews }));
+          PanlinCap.bodyRegion.show(new NewsCollectionView({ collection : companyNews }));
           companyNews.fetch({ reset : true });
         } else if (subpage === 'invested') {
           var investedNews = new InvestedCompanyNewsCollection();
-          layout.main.show(new NewsCollectionView({ collection : investedNews }));
+          PanlinCap.bodyRegion.show(new NewsCollectionView({ collection : investedNews }));
           investedNews.fetch({ reset : true });
+        } else {
+          PanlinCap.bodyRegion.empty();
         }
       }
     }
