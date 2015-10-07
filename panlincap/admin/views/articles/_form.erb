@@ -1,17 +1,31 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag 'froala_editor.min' %>
+  <%= javascript_include_tag 'froala_editor_ie8.min' %>
+  <%= javascript_include_tag 'langs/zh_cn' %>
+
+  <%= javascript_include_tag 'articles-editor' %>
+<% end %>
+
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'font-awesome.min' %>
+  <%= stylesheet_link_tag 'froala_editor.min' %>
+  <%= stylesheet_link_tag 'froala_style.min' %>
+<% end %>
+
 <% error = @article.errors.include?(:title) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :title, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :title, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
-    <span class='help-inline'><%= error ? f.error_message_on(:title) : "Ex: a simple text" %></span>
+    <span class='help-inline'><%= error ? f.error_message_on(:title) : "" %></span>
   </div>
 </fieldset>
 <% error = @article.errors.include?(:body) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :body, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.text_area :body, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:body) : "Ex: a simple text" %></span>
+    <%= f.text_area :body, :rows => 10, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:body) : "" %></span>
   </div>
 </fieldset>
 

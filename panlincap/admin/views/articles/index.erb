@@ -36,12 +36,10 @@
             </ul>
           </div>
         </th>
-                <th class=header> <%= mat(:article, :id) %></th>
-                <th class=header> <%= mat(:article, :title) %></th>
-                <th class=header> <%= mat(:article, :body) %></th>
-                <th class=header> <%= mat(:article, :created_at) %></th>
-                <th class=header> <%= mat(:article, :updated_at) %></th>
-                <th class="header list-row-action-header"></th>
+        <th class=header> <%= mat(:article, :title) %></th>
+        <th class=header> <%= mat(:article, :created_at) %></th>
+        <th class=header> <%= mat(:article, :updated_at) %></th>
+        <th class="header list-row-action-header"></th>
     </thead>
 
     <tbody>
@@ -50,9 +48,7 @@
           <td class="list-column list-selectable">
             <%= check_box_tag 'article_ids[]', :value => article.id, :class => 'list-selectable-checkbox' %>
            </td>
-          <td class=list-column> <%= article.id %> </td>
           <td class=list-column> <%= article.title %> </td>
-          <td class=list-column> <%= article.body %> </td>
           <td class=list-column> <%= time_ago_in_words article.created_at %></td>
           <td class=list-column> <%= time_ago_in_words article.updated_at %></td>
           <td class="list-column list-row-action">
@@ -72,5 +68,12 @@
           </td>
       <% end %>
     </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5">
+          <%=will_paginate(@articles, renderer: BootstrapPagination::Sinatra, :previous_label => '&laquo;', :next_label => '&raquo;')%>
+        </td>
+      </tr>
+    </tfoot>
   </table>
 </div>
