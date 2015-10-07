@@ -35,9 +35,8 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
   });
 
   var TeamsView = Layout.ScrollView.extend({
-    template : PanlinCapTpl['templates/team/container.hbs'],
     childView : TeamView,
-    childViewContainer : '.teams'
+    className : 'teams main'
   });
 
   var SCROLL_ANIMATION = { duration: 300, easing: 'swing'};

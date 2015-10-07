@@ -7,7 +7,7 @@ PanlinCap.module('PanlinCap.Case', function(Case, PanlinCap, Backbone, Marionett
     template : Handlebars.compile(
       '<div class="company-logo">' +
       '<div class="logo"></div>' + 
-      '<p>{{name}}</p>' + 
+      '<p>{{name}}</p>' +
       '</div>'
     ),
     className : 'company column',
@@ -50,9 +50,8 @@ PanlinCap.module('PanlinCap.Case', function(Case, PanlinCap, Backbone, Marionett
   });
 
   var CasesCollectionView = Layout.ScrollView.extend({
-    template : PanlinCapTpl['templates/case/container.hbs'],
     childView : CasesView,
-    childViewContainer : '.main-container.cases'
+    className : 'cases main'
   });
 
   var casesController = {

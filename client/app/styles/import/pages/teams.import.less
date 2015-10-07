@@ -11,11 +11,12 @@ a.card {
 
 .person {
   display: inline-block;
+  box-sizing: border-box;
   cursor: pointer;
-  width: 180px;
   text-align: center;
   position: relative;
-  margin: 10px;
+  margin: 0;
+  width: 100%/3;
   vertical-align: top;
 
   .member {
@@ -27,7 +28,6 @@ a.card {
     h4 {
       font-size: 15px;
       line-height: 24px;
-      text-align: center;
       font-family: @font-title;
       font-weight: normal;
     }

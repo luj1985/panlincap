@@ -2,6 +2,8 @@ PanlinCap.module('PanlinCap.Layout', function(Layout, PanlinCap, Backbone, Mario
   'use strict';
 
   Layout.ScrollView = Marionette.CompositeView.extend({
+    template : PanlinCapTpl['templates/scroll-indicator.hbs'],
+    childViewContainer : '.collection',
     onRender : function() {
       var $wrapper = $('.page');
       function startScrollUp() {
