@@ -19,7 +19,11 @@ class Account < ActiveRecord::Base
   # This method is for authentication purpose.
   #
   def self.authenticate(email, password)
-    account = where("lower(email) = lower(?)", email).first if email.present?
+    begin
+      account = where("lower(email) = lower(?)", email).first if email.present?
+    rescue
+      account = first(:conditions => ["lower(email) = lower(?)", email]) if email.present?
+    end
     account && account.has_password?(password) ? account : nil
   end
 
