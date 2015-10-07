@@ -33,6 +33,9 @@ module Panlincap
     end
 
     access_control.roles_for :admin do |role|
+      role.project_module :menus, '/menus'
+      role.project_module :members, '/members'
+      role.project_module :founds, '/founds'
       role.project_module :articles, '/articles'
       role.project_module :accounts, '/accounts'
     end

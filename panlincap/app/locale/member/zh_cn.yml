@@ -1,0 +1,13 @@
+zh_cn:
+  models:
+    member:
+      name: 成员
+      attributes:
+        id: 编号
+        name: 姓名
+        suffix: 称呼
+        position: 身份
+        title: 头衔
+        avatar: 照片
+        created_at: 创建时间
+        updated_at: 更新时间

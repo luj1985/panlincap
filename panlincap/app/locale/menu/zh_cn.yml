@@ -1,0 +1,11 @@
+zh_cn:
+  models:
+    menu:
+      name: 菜单
+      attributes:
+        id: 编号
+        title: 菜单名
+        link: 链接地址
+        parent: 父级菜单
+        created_at: 创建时间
+        updated_at: 更新时间

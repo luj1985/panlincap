@@ -1,0 +1,70 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag 'froala_editor.min' %>
+  <%= javascript_include_tag 'froala_editor_ie8.min' %>
+  <%= javascript_include_tag 'langs/zh_cn' %>
+
+  <%= javascript_include_tag 'members-editor' %>
+<% end %>
+
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'font-awesome.min' %>
+  <%= stylesheet_link_tag 'froala_editor.min' %>
+  <%= stylesheet_link_tag 'froala_style.min' %>
+<% end %>
+
+<% error = @member.errors.include?(:name) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :name, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :name, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+    <span class='help-inline'><%= error ? f.error_message_on(:name) : "" %></span>
+  </div>
+</fieldset>
+<% error = @member.errors.include?(:suffix) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :suffix, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :suffix, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:suffix) : "" %></span>
+  </div>
+</fieldset>
+<% error = @member.errors.include?(:position) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :position, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :position, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:position) : "" %></span>
+  </div>
+</fieldset>
+<% error = @member.errors.include?(:title) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :title, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :title, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:title) : "" %></span>
+  </div>
+</fieldset>
+<% error = @member.errors.include?(:avatar) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :avatar, :class => 'control-label' %>
+  <div class='controls'>
+    <img src="<%= @member.avatar %>" width="200px">
+  </div>
+</fieldset>
+<% error = @member.errors.include?(:description) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :description, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_area :description, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:description) : "" %></span>
+  </div>
+</fieldset>
+
+
+<div class="form-actions">
+  <%= f.submit pat(:save), :class => 'btn btn-primary' %>
+  &nbsp;
+  <%= f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue' %>
+  &nbsp;
+  <%= link_to pat(:cancel), url(:members, :index), :class => 'btn btn-default' %>
+</div>

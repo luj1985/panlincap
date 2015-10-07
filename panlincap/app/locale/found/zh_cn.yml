@@ -1,0 +1,14 @@
+zh_cn:
+  models:
+    found:
+      name: 基金
+      attributes:
+        id: 编号
+        issue: 期数
+        name: 基金名
+        status: 状态
+        period: 周期
+        company: 投资项目
+        portfolio: 投资分布
+        created_at: 创建时间
+        updated_at: 更新时间

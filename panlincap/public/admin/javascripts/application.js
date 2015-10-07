@@ -115,4 +115,5 @@
     var error_input;
     if (error_input = $('.has-error :input').first()) { error_input.focus(); }
   });
+
 }(window.jQuery);

@@ -1,7 +1,8 @@
 $(function() {
+  
+  var $htmleditor = $('textarea[name="member[description]"]');
 
-  var $htmleditor = $('textarea[name="article[body]"]');
-
+  
   $.Editable.DEFAULTS.key = 'rH-9mcbfD-13rscB1vyz==';
 
   $htmleditor.editable({
@@ -16,5 +17,4 @@ $(function() {
       console.log(data);
     }
   });
-
 });
