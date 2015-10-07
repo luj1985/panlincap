@@ -5,12 +5,12 @@ PanlinCap.module('PanlinCap.Case', function(Case, PanlinCap, Backbone, Marionett
 
   var CaseView = Marionette.ItemView.extend({
     template : Handlebars.compile(
-      '<div class="brand-logo">' +
+      '<div class="company-logo">' +
       '<div class="logo"></div>' + 
       '<p>{{name}}</p>' + 
       '</div>'
     ),
-    className : 'brand column',
+    className : 'company column',
     onRender : function() {
       var model = this.model;
       this.$el.on('click', function() {
@@ -36,10 +36,13 @@ PanlinCap.module('PanlinCap.Case', function(Case, PanlinCap, Backbone, Marionett
   });
 
   var CasesView = Marionette.CompositeView.extend({
-    template : PanlinCapTpl['templates/case/case-group.hbs'],
+    template : Handlebars.compile(
+      '{{#if area}}<h4>{{area}}</h4>{{/if}}' +
+      '<div class="companys"></div>'
+    ),
     childView : CaseView,
-    childViewContainer : '.brands',
-    className : 'case-group',
+    childViewContainer : '.companys',
+    className : 'area',
     tagName : 'section',
     initialize : function() {
       this.collection = new Backbone.Collection(this.model.get('brands'));
