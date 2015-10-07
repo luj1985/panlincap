@@ -19,47 +19,36 @@
 @import "./import/dialog.import.less";
 @import "./import/background.import.less";
 
-@import "./import/mobile.import.less";
-@import "./import/mobile.menu.import.less";
+@import "./import/responsive.import.less";
 
 #dimmer, #header, #navigation, #breadcrumb {
   position: fixed;
+  display: block;
   width: 100%;
   left: 0;
 }
 
 #header {
   top: 0;
-  padding: @base-size 70px @base-size 56px;
-  display: block;
   z-index: 1;
 }
 
 #navigation {
-  top: 88px;
-  padding: 0 56px;
-  display: block;
   z-index: 5;
 }
 
 #breadcrumb {
-  top: 120px;
-  padding-left: 56px;
-  display: block;
   z-index: 1;
 }
 
 #submenu {
   position: fixed;
-  top: 180px;
-  left: 56px;
   z-index: 1;
 }
 
 .viewport {
   position: absolute;
   width: 100%;
-  top: 130px;
   bottom: 0;
   .container {
     position: relative;
@@ -72,7 +61,6 @@
 
 #body {
   position: relative;
-  padding: @base-size 56px;
   min-height: 100%; // for browsers which doesn't support calc (IE8)
   min-height: calc(~"100% - "@footer-height);
 }

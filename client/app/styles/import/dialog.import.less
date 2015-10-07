@@ -6,11 +6,9 @@
   width: 100%;
   overflow: auto;
 
-  .content-body {
-    max-width: 960px;
+  .dialog-body {
     margin: 0 auto;
     position: relative;
-    padding : 28px;
 
     em {
       font-family: @font-kaiti; 
@@ -19,8 +17,9 @@
     }
   }
 
-  .content-body.member {
+  .member {
     display: table;
+
     .avatar {
       vertical-align: top;
       width: 180px;
@@ -31,86 +30,20 @@
       vertical-align: top;
       padding-left: 28px;
     }
-
   }
-
 
   .close {
     position: absolute;;
     font-size : 30px;
     color: black;
     opacity: .3;
-    right: 28px;
-    top : 28px;
+    right: 2*@base-size;
+    top : 2*@base-size;
     padding: 0;
     line-height: 0;
 
     &:hover {
       opacity: .9;
-    }
-  }
-
-}
-
-.modal.panlin {
-  width: 100%;
-  left: 0;
-  margin: 0;
-  border-radius: 0;
-
-  .content {
-    width: 960px;
-    margin: 0 auto;
-    position: relative;
-
-    h4 {
-      font-size: 15px;
-      margin-bottom: 7px;
-      font-family: @font-heiti;
-    }
-    h5 {
-      margin-top: 7px;
-      font-size: 13px;
-      font-family: @font-title;
-    }
-    p {
-      .content-font();
-    }
-
-    em {
-      font-family: @font-kaiti; 
-      font-weight: normal;
-      font-style: normal;
-    }
-  }
-}
-
-.dimmer.modals {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-
-.modals {
-  .dialog-close {
-    position: absolute;;
-    font-size : 30px;
-    color: black;
-    opacity: .3;
-    right: 28px;
-    top : 28px;
-    padding: 0;
-    line-height: 0;
-
-    &:hover {
-      opacity: .9;
-    }
-  }
-
-  .case-preview {
-    position: relative;
-    .dialog-close {
-      top : 0;
-      right : 0;
     }
   }
 }

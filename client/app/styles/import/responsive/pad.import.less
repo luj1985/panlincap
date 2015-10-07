@@ -1,0 +1,86 @@
+// iPad in portrait & landscape
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+  #header { }
+  #navigation { }
+  #submenu { }
+  #breadcrumb { }
+  
+  .viewport {
+    top: 130px;
+  }
+}
+
+// iPad in landscape
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+  #header {
+    padding: @base-size 3*@base-size @base-size 2*@base-size;
+  }
+
+  #breadcrumb {
+    top: 120px;
+    padding-left: 28px;
+  }
+
+  #navigation {
+    top: 88px;
+    padding: 0 28px;
+  }
+
+  #submenu {
+    top: 180px;
+    left: 28px;
+  }
+  
+  .panlin.dialog .dialog-body {
+    max-width: 960px;
+    padding : 28px;
+    margin: 0 auto;
+  }
+}
+
+
+// iPad in portrait
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) { /* STYLES GO HERE */ }
+
+
+@media (max-width:1024px) {
+  #body {
+    padding: 0;
+  }
+
+  #body .cases {
+    max-width: 800px;
+  }
+
+  .company {
+    width: 100%/3;
+    display: inline-block;
+  }
+
+  .founds {
+    display: block !important;
+    .found {
+      display: inline-block !important;
+      width: ~'calc(50% - 10px)';
+      min-width: 100px !important;
+      height: 165px;
+      padding: 30px 10px;
+    }
+  }
+
+  #nav {
+    padding : 0 14px;
+  }
+
+  #breadcrumb {
+    left : 28px;
+  }
+}
