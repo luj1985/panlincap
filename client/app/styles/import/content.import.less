@@ -1,5 +1,52 @@
 @sidebar-width: 160px;
 
+.main {
+  h3{
+    font-size: 15px;
+  }
+
+  margin: 0 auto;
+  margin-left: 120px;
+  max-width: 750px;
+  min-height: 350px;
+
+  padding: 28px 42px;
+  // background-color: rgba(255,255,255,.5);
+  // box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px;
+}
+
+.main.cases {
+  padding: 0;
+}
+
+.main.address, .main.hire {
+  h3 {
+    color: @color-main;
+  }
+}
+
+.main.news {
+  background-color: white;
+}
+
+.main {
+  .pagination {
+    text-align: right;
+
+    .first, .prev, .next, .current, .last {
+      color: #333;
+      margin: 2px;
+    }
+
+    .disabled {
+      color: #CCC;
+    }
+  }
+  .collection {
+    position: relative;
+  }
+}
+
 #submenu ul {
   list-style: none;
   padding-left: 0;

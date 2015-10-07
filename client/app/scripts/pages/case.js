@@ -10,7 +10,7 @@ PanlinCap.module('PanlinCap.Case', function(Case, PanlinCap, Backbone, Marionett
       '<p>{{name}}</p>' +
       '</div>'
     ),
-    className : 'company column',
+    className : 'company',
     onRender : function() {
       var model = this.model;
       this.$el.on('click', function() {

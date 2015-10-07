@@ -71,22 +71,22 @@
 }
 
 #body {
+  position: relative;
   padding: @base-size 56px;
   min-height: 100%; // for browsers which doesn't support calc (IE8)
-  min-height: calc(~"100% - 70px");
+  min-height: calc(~"100% - "@footer-height);
 }
-
 
 #dimmer {
   display: none;
   top: 0;
   height: 100%;
   background-color: rgba(0,0,0,.3);
-  z-index: 2;
+  z-index: 4;
 }
 
 #copyright {
-  line-height: 40px;
+  line-height: @footer-height;
   text-align: right;
   display: block;
   background-color: rgba(255,255,255,.2);
@@ -96,58 +96,3 @@
 #dimmer, .mobile {
   display: none;
 }
-
-.main {
-  h3{
-    font-size: 15px;
-  }
-
-  margin: 0 auto;
-  margin-left: 120px;
-  max-width: 750px;
-  min-height: 350px;
-
-  padding: 28px 42px;
-  // background-color: rgba(255,255,255,.5);
-  // box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px;
-}
-
-.main.cases {
-  padding: 0;
-  background-color: transparent;
-  box-shadow: none;
-}
-
-.main.address, .main.hire {
-  h3 {
-    color: @color-main;
-  }
-}
-
-.main.teams {
-  background-color: transparent;
-  box-shadow: none;
-}
-
-.main {
-  .pagination {
-    text-align: right;
-
-    .first, .prev, .next, .current, .last {
-      color: #333;
-      margin: 2px;
-    }
-
-    .disabled {
-      color: #CCC;
-    }
-  }
-  .collection {
-    position: relative;
-  }
-}
-
-.main.news {
-  background-color: white;
-}
-
