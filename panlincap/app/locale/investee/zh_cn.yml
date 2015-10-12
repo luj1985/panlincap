@@ -1,0 +1,14 @@
+zh_cn:
+  models:
+    investee:
+      name: 案例
+      attributes:
+        id: 编号
+        name: 案例名
+        brief: 副标题
+        area: 投资领域
+        website: 公司网址
+        logo: 商标
+        description: 公司简介
+        created_at: 创建时间
+        updated_at: 更新时间
