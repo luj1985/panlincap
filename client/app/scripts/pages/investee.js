@@ -1,4 +1,4 @@
-PanlinCap.module('PanlinCap.Case', function(Case, PanlinCap, Backbone, Marionette, $, _) {
+PanlinCap.module('PanlinCap.Investee', function(Case, PanlinCap, Backbone, Marionette, $, _) {
   'use strict';
 
   var Layout = PanlinCap.module('PanlinCap.Layout');
@@ -7,7 +7,8 @@ PanlinCap.module('PanlinCap.Case', function(Case, PanlinCap, Backbone, Marionett
     template : Handlebars.compile(
       '<div class="company-logo">' +
       '<div class="logo"></div>' + 
-      '<p>{{name}}</p>' +
+      '<h3>{{name}}</h3>' +
+      '<p>{{brief}}</p>' +
       '</div>'
     ),
     className : 'company',
@@ -35,7 +36,7 @@ PanlinCap.module('PanlinCap.Case', function(Case, PanlinCap, Backbone, Marionett
     }
   });
 
-  var CasesView = Marionette.CompositeView.extend({
+  var InvesteesView = Marionette.CompositeView.extend({
     template : Handlebars.compile(
       '{{#if area}}<h4>{{area}}</h4>{{/if}}' +
       '<div class="companys"></div>'
@@ -50,7 +51,7 @@ PanlinCap.module('PanlinCap.Case', function(Case, PanlinCap, Backbone, Marionett
   });
 
   var CasesCollectionView = Layout.ScrollView.extend({
-    childView : CasesView,
+    childView : InvesteesView,
     className : 'cases main'
   });
 
@@ -58,7 +59,7 @@ PanlinCap.module('PanlinCap.Case', function(Case, PanlinCap, Backbone, Marionett
     showCases: function() {
       PanlinCap.bodyRegion.empty();
       PanlinCap.execute('showBackground', 'cases');
-      PanlinCap.reqres.request('cases:fetch').then(function(raw) {
+      PanlinCap.reqres.request('investees:fetch').then(function(raw) {
         var data = _.chain(raw).groupBy('area').map(function(brands, area) {
           return { area : area, brands : brands };
         }).value();

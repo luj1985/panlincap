@@ -6,7 +6,7 @@ PanlinCap.module('PanlinCap.Route', function(Route, PanlinCap, Backbone, Marione
         RevealController = PanlinCap.module('PanlinCap.Reveal').Controller,
         TeamController = PanlinCap.module('PanlinCap.Team').Controller,
         FoundController = PanlinCap.module('PanlinCap.Found').Controller,
-        CaseController = PanlinCap.module('PanlinCap.Case').Controller,
+        InvesteeController = PanlinCap.module('PanlinCap.Investee').Controller,
         NewsController = PanlinCap.module('PanlinCap.News').Controller,
         ContactController = PanlinCap.module('PanlinCap.Contact').Controller;
 
@@ -19,7 +19,7 @@ PanlinCap.module('PanlinCap.Route', function(Route, PanlinCap, Backbone, Marione
       },
       showTeam : TeamController.showTeam.bind(TeamController),
       showFounds : FoundController.showFounds.bind(FoundController),
-      showCases : CaseController.showCases.bind(CaseController),
+      showInvestees : InvesteeController.showCases.bind(InvesteeController),
       showNews : NewsController.showNews.bind(NewsController),
       showContacts : ContactController.showContacts.bind(ContactController),
       showHome : HomeController.showHome.bind(HomeController)
@@ -32,7 +32,7 @@ PanlinCap.module('PanlinCap.Route', function(Route, PanlinCap, Backbone, Marione
         'investment(/:subpage)': 'showInvestment',
         'team(/:subpage)(/:id)' : 'showTeam',
         'founds(/)' : 'showFounds',
-        'cases(/)' : 'showCases',
+        'cases(/)' : 'showInvestees',
         'news(/:subpage)(/:id)': 'showNews',
         'contacts(/:subpage)(/:id)' : 'showContacts'
       },

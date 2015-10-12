@@ -13,8 +13,8 @@
     return $.get('/api/article/' + id + '.json');
   });
 
-  PanlinCap.reqres.setHandler('cases:fetch', function() {
-    return $.get('/api/cases');
+  PanlinCap.reqres.setHandler('investees:fetch', function() {
+    return $.get('/api/investees');
   });
 
   PanlinCap.reqres.setHandler('submenu:fetch', function(id) {

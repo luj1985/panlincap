@@ -1,7 +1,8 @@
-class CreateCases < ActiveRecord::Migration
+class CreateInvestees < ActiveRecord::Migration
   def self.up
-    create_table :cases do |t|
+    create_table :investees do |t|
       t.string :name
+      t.string :brief
       t.string :area
       t.string :website
       t.string :logo
@@ -11,6 +12,6 @@ class CreateCases < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :cases
+    drop_table :investees
   end
 end

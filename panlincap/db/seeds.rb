@@ -28,12 +28,12 @@ end
 
 
 
-reader = CSV.open(File.join(File.dirname(__FILE__), "cases.csv"), "r") 
+reader = CSV.open(File.join(File.dirname(__FILE__), "investees.csv"), "r") 
 reader.shift # ignore header
 
 reader.each do |line|
-  name, area, website, logo, description = line
-  Case.create(:name => name, :area => area, :website => website, :logo => logo, :description => description)
+  name, brief, area, website, logo, description = line
+  Investee.create(:name => name, :brief => brief, :area => area, :website => website, :logo => logo, :description => description)
 end
 
 

@@ -34,16 +34,6 @@ ActiveRecord::Schema.define(version: 9) do
     t.datetime "updated_at"
   end
 
-  create_table "cases", force: :cascade do |t|
-    t.string   "name"
-    t.string   "area"
-    t.string   "website"
-    t.string   "logo"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -65,6 +55,17 @@ ActiveRecord::Schema.define(version: 9) do
     t.string   "period"
     t.string   "company"
     t.string   "portfolio"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "investees", force: :cascade do |t|
+    t.string   "name"
+    t.string   "brief"
+    t.string   "area"
+    t.string   "website"
+    t.string   "logo"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

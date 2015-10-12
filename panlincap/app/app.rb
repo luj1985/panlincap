@@ -20,7 +20,7 @@ module Panlincap
       }, {
         :title => '投资案例',
         :description => '我们既有已在创业板首批上市的成功投资案例，也有已经入股而预期在三年内上市的项目...',
-        :link => '#/cases'
+        :link => '#/investees'
       }]
 
 
@@ -97,8 +97,8 @@ module Panlincap
       Declaration.find_by_name(params['name']).to_json
     end
 
-    get '/api/cases', :provides => :json do
-      Case.all.to_json
+    get '/api/investees', :provides => :json do
+      Investee.all.to_json
     end
 
     get '/api/menus', :provides => :json do
