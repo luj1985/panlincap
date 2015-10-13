@@ -15,21 +15,22 @@ Panlincap::Admin.controllers :images do
 
   upload = lambda do
     path = params[:path]
-
     tempfile = params[:file][:tempfile]
     filename = params[:file][:filename]
     extension = File.extname(filename)
     resource = SecureRandom.hex + extension
-    target = "public/uploads/#{resource}"
-    link =  "/uploads/#{resource}" 
+    target = "public/UploadFile/#{resource}"
+    link =  "/UploadFile/#{resource}" 
 
     cp tempfile.path, target
     chmod 0644, target # otherwise it cannot be read by nginx
 
-    img = Magick::Image.read(target).first
+    { :link => link }.to_json
 
-    Image.create :title => filename, :href => link
-    { :link => link, :width => img.columns, :height => img.rows }.to_json
+    # img = Magick::Image.read(target).first
+
+    # Image.create :title => filename, :href => link
+    # { :link => link, :width => img.columns, :height => img.rows }.to_json
   end
 
   post :upload, &upload
