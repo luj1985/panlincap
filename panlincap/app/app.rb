@@ -38,7 +38,9 @@ module Panlincap
         date = article.created_at.strftime('%Y/%m/%d') 
         body = article.body
         content = strip_tags(body).gsub(/&nbsp;/, ' ')
-        lines = content.split("\n")
+        lines = content.split("\r\n").join("\n").split("\n")
+        lines = lines.delete_if { |line| line.strip == "" }
+        lines = lines.compact
         id = article.id.to_s
         category = categories[article.category_id];
 
@@ -72,7 +74,10 @@ module Panlincap
         title = article.title
         date = article.created_at.strftime('%Y/%m/%d') 
         content = strip_tags(article.body).gsub(/&nbsp;/, ' ')
-        lines = content.split("\n")
+
+        lines = content.split("\r\n").join("\n").split("\n")
+        lines = lines.delete_if { |line| line.strip == "" }
+        lines = lines.compact
 
         news = {}
         news[:id] = article.id
