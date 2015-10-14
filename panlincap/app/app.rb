@@ -38,14 +38,11 @@ module Panlincap
         date = article.created_at.strftime('%Y/%m/%d') 
         body = article.body
         content = strip_tags(body).gsub(/&nbsp;/, ' ')
-        lines = content.split("\r\n").join("\n").split("\n")
-        lines = lines.delete_if { |line| line.strip == "" }
-        lines = lines.compact
         id = article.id.to_s
         category = categories[article.category_id];
 
         news_preview += '<h4><a href="#/news/' + category +'/' + id + '">' + date + '  [ ' + title + ' ]</a></h4>'
-        news_preview += '<p>' + lines[0] + '</p>'
+        news_preview += '<p>' + content[0..100] + '</p>'
       end
       news_preview += '</div>'
 
@@ -75,14 +72,10 @@ module Panlincap
         date = article.created_at.strftime('%Y/%m/%d') 
         content = strip_tags(article.body).gsub(/&nbsp;/, ' ')
 
-        lines = content.split("\r\n").join("\n").split("\n")
-        lines = lines.delete_if { |line| line.strip == "" }
-        lines = lines.compact
-
         news = {}
         news[:id] = article.id
         news[:title] =  date + '  ' + article.title;
-        news[:descriptions] = lines[0]
+        news[:descriptions] = content[0..100] + "..."
         news[:category] = params[:type]
         news
       end
