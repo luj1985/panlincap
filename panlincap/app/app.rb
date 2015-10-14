@@ -114,15 +114,29 @@ module Panlincap
     end
 
     get '/api/article', :with => :id, :provides => :json do
-      article = Article.find params[:id]
+      categories = {
+        168 => "company",
+        163 => "invested"
+      }
+
+      id = params[:id].to_i
+      article = Article.find id
       article.count += 1
       article.save
       data = {
         :date => article.created_at.strftime('%Y/%m/%d'),
         :count => article.count,
         :title => article.title,
-        :body => article.body
+        :body => article.body,
+        :category => categories[article.category_id]
       }
+
+      previousArticle = Article.where("id < ? and category_id = ?", id, article.category_id).order('created_at desc').first
+      nextArticle = Article.where("id > ? and category_id = ?", id, article.category_id).order('created_at asc').first
+
+      data[:prev] = previousArticle.id if previousArticle
+      data[:next] = nextArticle.id if nextArticle
+
       data.to_json
     end
 
