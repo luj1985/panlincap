@@ -131,8 +131,8 @@ module Panlincap
         :category => categories[article.category_id]
       }
 
-      previousArticle = Article.where("id < ? and category_id = ?", id, article.category_id).order('created_at desc').first
-      nextArticle = Article.where("id > ? and category_id = ?", id, article.category_id).order('created_at asc').first
+      previousArticle = Article.where("id < ? and category_id = ?", id, article.category_id).order('id desc').first
+      nextArticle = Article.where("id > ? and category_id = ?", id, article.category_id).order('id asc').first
 
       data[:prev] = previousArticle.id if previousArticle
       data[:next] = nextArticle.id if nextArticle

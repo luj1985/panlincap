@@ -40,7 +40,7 @@ PanlinCap.module('PanlinCap.Route', function(Route, PanlinCap, Backbone, Marione
     });
 
     router.on('route', function() {
-      $('.viewport').scrollTop(0);
+      $('.viewport .container').scrollTop(0);
 
       if (PanlinCap.isMobile()) {
         var region = PanlinCap.logoRegion,
