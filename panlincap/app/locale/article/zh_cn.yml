@@ -5,6 +5,7 @@ zh_cn:
       attributes:
         id: 编号
         title: 新闻标题
+        category_id: 新闻类别
         abstract: 摘要
         body: 正文内容
         created_at: 创建时间
