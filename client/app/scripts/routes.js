@@ -39,8 +39,10 @@ PanlinCap.module('PanlinCap.Route', function(Route, PanlinCap, Backbone, Marione
       controller: controller
     });
 
-    router.on('route', function() {
-      $('.viewport .container').scrollTop(0);
+    router.on('route', function(action, options) {
+      if (!(action === 'showTeam' && (options[0] === 'members' || options[0] === 'partner'))) {
+        $('.viewport .container').scrollTop(0);
+      }
 
       if (PanlinCap.isMobile()) {
         var region = PanlinCap.logoRegion,

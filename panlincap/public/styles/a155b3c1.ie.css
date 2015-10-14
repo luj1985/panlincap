@@ -154,12 +154,12 @@ table.chart.distribution tr.bar {
   color: #851910;
 }
 .main.news {
-  background-color: white;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP4/xQAAuYB5e33aXgAAAAASUVORK5CYII=);
 }
 .main.address,
 .main.hire,
 .main.plan {
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP4Xw8AAoABf5/NhYYAAAAASUVORK5CYII=);
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP4/xQAAuYB5e33aXgAAAAASUVORK5CYII=);
 }
 .main.address h3,
 .main.hire h3,

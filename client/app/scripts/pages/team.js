@@ -58,7 +58,7 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
               $('.viewport .container').animate({scrollTop: 0}, SCROLL_ANIMATION);
             } else if (subpage === 'members') {
               var member = $('.viewport .container .pos-member:first')[0];
-              var mm = $(member).offset().top - $('.viewport .container').offset().top;
+              var mm = $(member).offset().top - $('.viewport .container').offset().top - 250;
 
               $('.viewport .container').animate({scrollTop: mm}, SCROLL_ANIMATION);
             }
