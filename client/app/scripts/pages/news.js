@@ -31,7 +31,7 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
       'click a.first' : function(e) {
         e.preventDefault();
         this.collection.getFirstPage({
-          success : function() { $('.page').scrollTop(0); },
+          success : function() { $('.viewport .container').scrollTop(0); },
           reset : true
         });
       },
@@ -39,16 +39,16 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
         e.preventDefault();
         if (this.collection.hasPreviousPage()) {
           this.collection.getPreviousPage({
-            success : function() { $('.page').scrollTop(0); },
+            success : function() { $('.viewport .container').scrollTop(0); },
             reset : true
-          });  
+          });
         }
       },
       'click a.next' : function(e) {
         e.preventDefault();
         if (this.collection.hasNextPage()) {
           this.collection.getNextPage({
-            success : function() { $('.page').scrollTop(0); },
+            success : function() { $('.viewport .container').scrollTop(0); },
             reset : true
           });
         }
@@ -56,9 +56,10 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
       'click a.last' : function(e) {
         e.preventDefault();
         this.collection.getLastPage({
-          success : function() { $('.page').scrollTop(0); },
+          success : function() { $('.viewport .container').scrollTop(0); },
           reset : true
         });
+        
       }
     }
   });
