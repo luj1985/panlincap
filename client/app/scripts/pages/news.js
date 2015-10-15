@@ -31,6 +31,17 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
         pageSize : state.pageSize,
         items : this.collection.toJSON()
       };
+    },
+    events : {
+      'click button.jump' : function() {
+        var page = parseInt($('input.num').val()) || 1,
+            category = this.collection.category,
+            state = this.collection.state;
+        page = page < state.firstPage ? state.firstPage : page;
+        page = page > state.lastPage ? state.lastPage : page;
+
+        PanlinCap.Router.navigate('/news/' + category + '?page=' + page, { trigger : true });
+      }
     }
   });
 

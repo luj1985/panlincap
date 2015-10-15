@@ -8,6 +8,10 @@
     <span class="prev disabled">上一页</span>
   {{/if}}
   <span class="current">第 {{currentPage}} / {{totalPage}} 页</span>
+  <div class="goto">
+    <input type="number" class="num" min="{{firstPage}}" max="{{lastPage}}" />
+    <button class="jump">跳转</button>
+  </div>
   {{#if hasNext}}
   <a href="#/news/{{category}}?page={{nextPage}}" class="next">下一页</a>
   <a href="#/news/{{category}}?page={{lastPage}}" class="last">尾页</a>
