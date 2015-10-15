@@ -59,7 +59,7 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
 
   function parseQueryString(queryString){
     var params = {};
-    if(queryString){
+    if(queryString) {
       var pairs = decodeURI(queryString).split(/&/g);
       _.each(pairs, function(pair) {
         var kv = pair.split('=');
