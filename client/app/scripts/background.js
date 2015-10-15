@@ -31,7 +31,7 @@ PanlinCap.module('Background', function(Background, PanlinCap, Backbone, Marione
             });
           }
         });
-      }, 7000);
+      }, 5000);
     },
     onDestroy : function() {
       clearInterval(this.handler);
