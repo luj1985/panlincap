@@ -1,4 +1,4 @@
-PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionette, $, _) {
   'use strict';
 
   var Layout = PanlinCap.module('PanlinCap.Layout');
@@ -19,48 +19,18 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
     templateHelpers : function() {
       var state = this.collection.state;
       return {
+        category : this.collection.category,
         hasPrev : this.collection.hasPreviousPage(),
         hasNext : this.collection.hasNextPage(),
+        firstPage : state.firstPage,
+        prevPage : state.currentPage - 1,
         currentPage : state.currentPage,
+        nextPage : state.currentPage + 1,
+        lastPage : state.lastPage,
         totalPage : state.totalPages,
         pageSize : state.pageSize,
         items : this.collection.toJSON()
       };
-    },
-    events : {
-      'click a.first' : function(e) {
-        e.preventDefault();
-        this.collection.getFirstPage({
-          success : function() { $('.viewport .container').scrollTop(0); },
-          reset : true
-        });
-      },
-      'click a.prev' : function(e) {
-        e.preventDefault();
-        if (this.collection.hasPreviousPage()) {
-          this.collection.getPreviousPage({
-            success : function() { $('.viewport .container').scrollTop(0); },
-            reset : true
-          });
-        }
-      },
-      'click a.next' : function(e) {
-        e.preventDefault();
-        if (this.collection.hasNextPage()) {
-          this.collection.getNextPage({
-            success : function() { $('.viewport .container').scrollTop(0); },
-            reset : true
-          });
-        }
-      },
-      'click a.last' : function(e) {
-        e.preventDefault();
-        this.collection.getLastPage({
-          success : function() { $('.viewport .container').scrollTop(0); },
-          reset : true
-        });
-        
-      }
     }
   });
 
@@ -71,6 +41,7 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
 
   var CompanyNewsCollection = Backbone.PageableCollection.extend({
     url : '/api/article?type=company',
+    category : 'company',
     state : {
       currentPage : 1,
       pageSize : 10
@@ -78,11 +49,34 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
   });
 
   var InvestedCompanyNewsCollection = Backbone.PageableCollection.extend({
-    url : '/api/article?type=invested'
+    url : '/api/article?type=invested',
+    category : 'invested',
+    state : {
+      currentPage : 1,
+      pageSize : 10
+    }
   });
 
+  function parseQueryString(queryString){
+    var params = {};
+    if(queryString){
+      var pairs = decodeURI(queryString).split(/&/g);
+      _.each(pairs, function(pair) {
+        var kv = pair.split('=');
+        if (kv.length === 2) {
+          params[kv[0]] = kv[1];
+        }
+      });
+    }
+    return params;
+  }
+
+
+  var companyNews = new CompanyNewsCollection();
+  var investedNews = new InvestedCompanyNewsCollection();
+
   var newsController = {
-    showNews: function(subpage, id) {
+    showNews: function(subpage, id, params) {
       PanlinCap.subRegion.empty();
       PanlinCap.execute('showBackground', 'news');
       if (id) {
@@ -91,14 +85,15 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
           PanlinCap.bodyRegion.show(new NewsDetailView({ model : new Backbone.Model(data) }));
         });
       } else {
+        var qs = parseQueryString(params || '');
+        var page = parseInt(qs.page) || 1;
+
         if (subpage === 'company') {
-          var companyNews = new CompanyNewsCollection();
           PanlinCap.bodyRegion.show(new NewsCollectionView({ collection : companyNews }));
-          companyNews.fetch({ reset : true });
+          companyNews.getPage(page, { reset : true });
         } else if (subpage === 'invested') {
-          var investedNews = new InvestedCompanyNewsCollection();
           PanlinCap.bodyRegion.show(new NewsCollectionView({ collection : investedNews }));
-          investedNews.fetch({ reset : true });
+          investedNews.getPage(page, { reset : true });
         } else {
           PanlinCap.bodyRegion.empty();
         }

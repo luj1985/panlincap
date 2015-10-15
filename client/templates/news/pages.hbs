@@ -1,16 +1,16 @@
 <ul class="news"></ul>
 <div class="pagination">
   {{#if hasPrev}}
-    <a href="#" class="first">首页</a>
-    <a href="#" class="prev">上一页</a>
+    <a href="#/news/{{category}}?page={{firstPage}}" class="first">首页</a>
+    <a href="#/news/{{category}}?page={{prevPage}}" class="prev">上一页</a>
   {{else}}
     <span class="first disabled">首页</span>
     <span class="prev disabled">上一页</span>
   {{/if}}
   <span class="current">第 {{currentPage}} / {{totalPage}} 页</span>
   {{#if hasNext}}
-  <a href="#" class="next">下一页</a>
-  <a href="#" class="last">尾页</a>
+  <a href="#/news/{{category}}?page={{nextPage}}" class="next">下一页</a>
+  <a href="#/news/{{category}}?page={{lastPage}}" class="last">尾页</a>
   {{else}}
   <span class="next disabled">下一页</span>
   <span class="last disabled">尾页</span>
