@@ -1,14 +1,14 @@
 #!/bin/bash
 rm -rf client/dist
-rm -rf panlincap/public/images
-rm -rf panlincap/public/styles
-rm -rf panlincap/public/scripts
-rm panlincap/public/*.html
-rm panlincap/public/*.ico
-rm panlincap/public/robots.txt
+rm -rf server/public/images
+rm -rf server/public/styles
+rm -rf server/public/scripts
+rm server/public/*.html
+rm server/public/*.ico
+rm server/public/robots.txt
 
 cd client
 grunt build
 cd ..
 
-mv client/dist/* panlincap/public/
+mv client/dist/* server/public/
