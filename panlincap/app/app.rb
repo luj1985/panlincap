@@ -132,9 +132,9 @@ module Panlincap
       previousArticle = Article.where("id < ? and category_id = ?", id, article.category_id).order('id desc').first
       nextArticle = Article.where("id > ? and category_id = ?", id, article.category_id).order('id asc').first
 
-      priorsCount = Article.where("id > ? and category_id = ?", id, article.category_id).order('id asc').count
+      priorsCount = Article.where("id > ? and category_id = ?", id, article.category_id).count
       
-      pageNum  = (priorsCount / 10.0).ceil
+      pageNum  = ((priorsCount + 1) / 10.0).ceil
 
       data[:prev] = previousArticle.id if previousArticle
       data[:next] = nextArticle.id if nextArticle
