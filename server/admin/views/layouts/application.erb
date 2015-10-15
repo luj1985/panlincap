@@ -11,6 +11,11 @@
     <%= favicon_tag "favicon.ico" %>
     <%= stylesheet_link_tag 'bootstrap', 'application' %>
     <%= yield_content :stylesheets %>
+    <style>
+    .froala-wrapper .f-basic {
+      min-height: 200px;
+    }
+    </style>
   </head>
   <body>
     <div class="navbar navbar-fixed-top">
