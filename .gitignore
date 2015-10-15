@@ -7,3 +7,5 @@ bower_components
 _resources
 .DS_Store
 *.db
+*.pid
+*.log
