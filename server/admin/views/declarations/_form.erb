@@ -1,0 +1,47 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag 'froala_editor.min' %>
+  <%= javascript_include_tag 'langs/zh_cn' %>
+
+  <%= javascript_include_tag 'declarations-editor' %>
+<% end %>
+
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'font-awesome.min' %>
+  <%= stylesheet_link_tag 'froala_editor.min' %>
+  <%= stylesheet_link_tag 'froala_style.min' %>
+<% end %>
+
+
+<% error = @declaration.errors.include?(:name) %>
+<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :name, :class => 'control-label col-sm-2' %>
+  <div class='controls col-sm-10'>
+    <%= f.text_field :name, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+    <span class='help-inline'><%= error ? f.error_message_on(:name) : "" %></span>
+  </div>
+</fieldset>
+<% error = @declaration.errors.include?(:title) %>
+<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :title, :class => 'control-label col-sm-2' %>
+  <div class='controls col-sm-10'>
+    <%= f.text_field :title, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:title) : "" %></span>
+  </div>
+</fieldset>
+<% error = @declaration.errors.include?(:body) %>
+<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :body, :class => 'control-label col-sm-2' %>
+  <div class='controls col-sm-10'>
+    <%= f.text_area :body, :rows => 10, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:body) : "" %></span>
+  </div>
+</fieldset>
+
+
+<div class="form-actions">
+  <%= f.submit pat(:save), :class => 'btn btn-primary' %>
+  &nbsp;
+  <%= f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue' %>
+  &nbsp;
+  <%= link_to pat(:cancel), url(:declarations, :index), :class => 'btn btn-default' %>
+</div>
