@@ -23,7 +23,7 @@ stdout_path "#{app_root}/log/unicorn.out.log"
 # listen on both a Unix domain socket and a TCP port,
 # we use a shorter backlog for quicker failover when busy
 listen "/tmp/unicorn.panlincap.sock"
-listen 8888, :tcp_nopush => true
+listen 3000, :tcp_nopush => true
 
 # combine Ruby 2.0.0dev or REE with "preload_app true" for memory savings
 # http://rubyenterpriseedition.com/faq.html#adapt_apps_for_cow
