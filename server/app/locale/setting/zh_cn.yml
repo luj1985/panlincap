@@ -5,7 +5,7 @@ zh_cn:
       attributes:
         id: 编号
         name: 配置项
-        link: 链接地址
-        parent: 父级菜单
+        value: 取值
+        description: 配置描述
         created_at: 创建时间
         updated_at: 更新时间
