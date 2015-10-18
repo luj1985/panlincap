@@ -1,7 +1,7 @@
 zh_cn:
   models:
     article:
-      name: 新闻
+      name: 新闻管理
       attributes:
         id: 编号
         title: 新闻标题

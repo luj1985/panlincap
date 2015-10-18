@@ -1,7 +1,7 @@
 zh_cn:
   models:
     investee:
-      name: 案例
+      name: 案例管理
       attributes:
         id: 编号
         name: 案例名

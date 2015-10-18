@@ -1,7 +1,7 @@
 zh_cn:
   models:
     account:
-      name: 账号
+      name: 账号管理
       attributes:
         id: 编号
         name: 姓

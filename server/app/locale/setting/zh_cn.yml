@@ -1,10 +1,10 @@
 zh_cn:
   models:
-    menu:
-      name: 菜单管理
+    setting:
+      name: 配置管理
       attributes:
         id: 编号
-        title: 菜单名
+        name: 配置项
         link: 链接地址
         parent: 父级菜单
         created_at: 创建时间

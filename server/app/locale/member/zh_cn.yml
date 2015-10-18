@@ -1,7 +1,7 @@
 zh_cn:
   models:
     member:
-      name: 成员
+      name: 成员管理
       attributes:
         id: 编号
         name: 姓名

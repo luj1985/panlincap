@@ -31,7 +31,7 @@
               <% else %>
                 <li class=navbar-module>
               <% end %>
-                <%= link_to project_module.human_name, url(project_module.path) %>
+                <%= link_to I18n.t("modules.#{project_module.name}"), url(project_module.path) %>
                 </li>
             <% end %>
           </ul>

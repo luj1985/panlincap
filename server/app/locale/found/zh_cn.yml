@@ -1,7 +1,7 @@
 zh_cn:
   models:
     found:
-      name: 基金
+      name: 基金管理
       attributes:
         id: 编号
         issue: 期数
