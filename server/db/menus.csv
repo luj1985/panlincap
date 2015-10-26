@@ -4,7 +4,7 @@ id,title,link,parent
 3,"投资理念","/investment",
 4,"核心团队","/team",
 5,"基金管理","/founds",
-6,"投资组合","/cases",
+6,"投资组合","/investees",
 7,"新闻中心","/news",
 8,"联系我们","/contacts",
 9,"磐霖介绍","/about/panlin",2
@@ -19,7 +19,7 @@ id,title,link,parent
 18,"招贤纳士","/contacts/hire",8
 19,"公司地址","/contacts/address",8 
 20,"商业计划书","/contacts/plan",8
-21,"投资案例","/cases",6
-22,"重点案例","/cases",6
+21,"投资案例","/investees",6
+22,"重点案例","/investees",6
 23,"会计","/contacts/hire/accouting",18
 24,"行政助理","/contacts/hire/accouting",18
