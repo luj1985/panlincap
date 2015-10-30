@@ -1,8 +1,11 @@
 <% error = @investee.errors.include?(:logo) %>
 <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
   <div class='control-label col-sm-2'></div>
-  <div class='controls col-sm-10'>
+  <div class='controls col-sm-5'>
     <img src="<%= @investee.logo %>" width="200px">
+  </div>
+  <div class='controls col-sm-5'>
+    <%= f.text_field :logo, :class => 'form-control input-xlarge input-with-feedback'%>
   </div>
 </fieldset>
 <% error = @investee.errors.include?(:name) %>

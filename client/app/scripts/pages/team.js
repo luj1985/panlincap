@@ -39,8 +39,6 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
     className : 'teams main'
   });
 
-  var SCROLL_ANIMATION = { duration: 300, easing: 'swing'};
-
   var teamController = (function() {
     return {
       showTeam : function(id) {
