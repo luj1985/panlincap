@@ -1,11 +1,30 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag 'jquery.ui.widget' %>
+  <%= javascript_include_tag 'jquery.iframe-transport' %>
+  <%= javascript_include_tag 'jquery.fileupload' %>
+  <%= javascript_include_tag 'investees-image-uploader' %>
+<% end %>
+
+
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'jquery.fileupload' %>
+<% end %>
+
+
 <% error = @investee.errors.include?(:logo) %>
 <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
   <div class='control-label col-sm-2'></div>
   <div class='controls col-sm-5'>
-    <img src="<%= @investee.logo %>" width="200px">
-  </div>
-  <div class='controls col-sm-5'>
-    <%= f.text_field :logo, :class => 'form-control input-xlarge input-with-feedback'%>
+    <img id="investee-img" src="<%= @investee.logo %>" width="200px">
+    <%= f.hidden_field :logo %>
+    <span class='btn btn-primary fileinput-button'>
+      <i class='glyphicon glyphicon-upload'></i>
+      <span>上传公司Logo</span>
+      <input type='file' id='upload' class='form-control' 
+        data-url = '/admin/images/upload'
+        data-method = 'POST' />
+      <span id='progress'></span>
+    </span>
   </div>
 </fieldset>
 <% error = @investee.errors.include?(:name) %>
