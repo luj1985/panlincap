@@ -43,25 +43,17 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
 
   var teamController = (function() {
     return {
-      showTeam : function(subpage, id) {
+      showTeam : function(id) {
         PanlinCap.subRegion.empty();
         PanlinCap.execute('showBackground', 'team');
         
         PanlinCap.reqres.request('members:fetch').then(function(raw) {
           var members = new Backbone.Collection(raw);
-          PanlinCap.bodyRegion.show(new TeamsView({collection: members}));
           if (id) {
             var person = members.get(id);
             PanlinCap.bodyRegion.show(new MemberView({model : person}));
           } else {
-            if (subpage === 'partner') {
-              $('.viewport .container').animate({scrollTop: 0}, SCROLL_ANIMATION);
-            } else if (subpage === 'members') {
-              var member = $('.viewport .container .pos-member:first')[0];
-              var mm = $(member).offset().top - $('.viewport .container').offset().top - 250;
-
-              $('.viewport .container').animate({scrollTop: mm}, SCROLL_ANIMATION);
-            }
+            PanlinCap.bodyRegion.show(new TeamsView({collection: members}));
           }
         });
       }

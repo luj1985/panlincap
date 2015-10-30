@@ -30,7 +30,7 @@ PanlinCap.module('PanlinCap.Route', function(Route, PanlinCap, Backbone, Marione
         '(/)' : 'showHome',
         'about(/:subpage)': 'showAbout',
         'investment(/:subpage)': 'showInvestment',
-        'team(/:subpage)(/:id)' : 'showTeam',
+        'team(/:id)' : 'showTeam',
         'founds(/)' : 'showFounds',
         'investees(/)' : 'showInvestees',
         'news(/:subpage)(/:id)': 'showNews',
