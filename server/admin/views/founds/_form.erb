@@ -14,6 +14,14 @@
     <span class='help-inline'><%= error ? f.error_message_on(:name) : "" %></span>
   </div>
 </fieldset>
+<% error = @found.errors.include?(:fullname) %>
+<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :fullname, :class => 'control-label col-sm-2' %>
+  <div class='controls col-sm-10'>
+    <%= f.text_field :fullname, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:fullname) : "" %></span>
+  </div>
+</fieldset>
 <% error = @found.errors.include?(:status) %>
 <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :status, :class => 'control-label col-sm-2' %>

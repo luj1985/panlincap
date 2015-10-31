@@ -4,6 +4,11 @@ PanlinCap.module('PanlinCap.Found', function(Found, PanlinCap, Backbone, Marione
   var FoundDialogView = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/found-detail.hbs'],
     className : 'panlin dialog',
+    serializeModel : function() {
+      var data = this.model.toJSON();
+      data.fullname = data.fullname || data.name;
+      return data;
+    },
     onShow : function() {
       this.$el.bPopup({ 
         closeClass : 'close',

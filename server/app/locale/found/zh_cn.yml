@@ -6,6 +6,7 @@ zh_cn:
         id: 编号
         issue: 期数
         name: 基金名
+        fullname: 基金全名
         status: 状态
         period: 周期
         company: 投资项目
