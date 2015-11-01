@@ -12,6 +12,9 @@ a {
 #submenu ul {
   font-family: STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体";
 }
+#submenu ul:first-child {
+  border-top: 1px solid black;
+}
 #submenu ul li {
   border-bottom: 1px solid black;
   line-height: 35px;
@@ -22,15 +25,15 @@ a {
   color: black;
   font-family: STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体";
 }
-#submenu ul li:first-of-type {
-  border-top: 1px solid black;
-}
 #header {
   top: 0;
   padding: 14px 70px 14px 56px;
 }
 #header .trigger {
   display: none;
+}
+.person img {
+  border: none;
 }
 #navigation {
   top: 88px;

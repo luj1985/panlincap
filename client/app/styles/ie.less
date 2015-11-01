@@ -30,6 +30,10 @@ a {
 #submenu ul {
   font-family: @font-title;
 
+  &:first-child {
+    border-top: 1px solid black;
+  }
+
   li {
     border-bottom: 1px solid black;
     line-height: 35px;
@@ -39,10 +43,6 @@ a {
     a {
       color: black;
       font-family: @font-title;
-    }
-
-    &:first-of-type {
-      border-top: 1px solid black;
     }
   }
 }
@@ -54,6 +54,10 @@ a {
   .trigger {
     display: none;
   }
+}
+
+.person img {
+  border: none;
 }
 
 #navigation {
