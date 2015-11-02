@@ -1,6 +1,11 @@
 <% content_for :javascripts do %>
   <%= javascript_include_tag 'froala_editor.min' %>
   <%= javascript_include_tag 'langs/zh_cn' %>
+  
+  <%= javascript_include_tag 'plugins/lists.min' %>
+  <%= javascript_include_tag 'plugins/tables.min' %>
+  <%= javascript_include_tag 'plugins/urls.min' %>
+  <%= javascript_include_tag 'plugins/colors.min' %>
 
   <%= javascript_include_tag 'declarations-editor' %>
 <% end %>
