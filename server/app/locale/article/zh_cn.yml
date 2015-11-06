@@ -4,7 +4,7 @@ zh_cn:
       name: 新闻管理
       attributes:
         id: 编号
-        priority: 序号
+        priority: 显示顺序
         title: 新闻标题
         category_id: 新闻类别
         abstract: 摘要

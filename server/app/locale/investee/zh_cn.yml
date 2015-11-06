@@ -4,6 +4,7 @@ zh_cn:
       name: 案例管理
       attributes:
         id: 编号
+        priority: 显示顺序
         name: 案例名
         brief: 副标题
         area: 投资领域
