@@ -108,7 +108,7 @@ module Panlincap
     end
 
     get '/api/members', :provides => :json do
-      Member.all.to_json
+      Member.all.order(:priority).to_json
     end
 
     get '/api/article', :with => :id, :provides => :json do

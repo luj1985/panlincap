@@ -5,3 +5,8 @@
 .froala-wrapper .froala-view.froala-element.f-basic {
   padding-bottom: 50px;
 }
+
+
+.list-row-action a {
+  font-size: 1.3em;
+}

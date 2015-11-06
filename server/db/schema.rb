@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 11) do
+ActiveRecord::Schema.define(version: 12) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 11) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "priority"
   end
 
   create_table "menus", force: :cascade do |t|

@@ -1,8 +1,22 @@
 Panlincap::Admin.controllers :members do
   get :index do
     @title = "Members"
-    @members = Member.all
+    @members = Member.all.order("priority DESC")
     render 'members/index'
+  end
+
+  post :reorder do
+    from = params[:fromPosition]
+    to = params[:toPosition]
+    direction = params[:direction]
+    if direction == "forward"
+      Member.where("priority > ? and priority <= ?", from, to).update_all("priority = priority - 1")
+    else
+      Member.where("priority >= ? and priority < ?", to, from).update_all("priority = priority + 1")
+    end
+    member = Member.find(params[:id])
+    member.priority = to
+    member.save
   end
 
   get :new do
