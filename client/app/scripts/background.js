@@ -59,7 +59,7 @@ PanlinCap.module('Background', function(Background, PanlinCap, Backbone, Marione
     }
   });
 
-  PanlinCap.commands.setHandler('showBackground', function(page) {
+  function backgroundSwitcher(page) {
     switch (page) {
       case 'home': 
         PanlinCap.bgRegion.show(new HomeBg()); 
@@ -81,6 +81,26 @@ PanlinCap.module('Background', function(Background, PanlinCap, Backbone, Marione
         })); 
         break;
     }
-  });
+  }
+
+
+  function backgroundHandler(page) {
+    backgroundSwitcher(page);
+
+    var promise = $.Deferred();
+
+    var loading = setTimeout(function() {
+      promise.reject('timeout');
+    }, 3000);
+
+    PanlinCap.bgRegion.$el.waitForImages(function() {
+      clearTimeout(loading);
+      promise.resolve('done');
+    });
+    return promise;
+  }
+
+  PanlinCap.commands.setHandler('showBackground', backgroundSwitcher);
+  PanlinCap.reqres.setHandler('showBackground', backgroundHandler);
 
 });
