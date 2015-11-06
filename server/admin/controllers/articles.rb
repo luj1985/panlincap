@@ -11,6 +11,25 @@ Panlincap::Admin.controllers :articles do
     render 'articles/new'
   end
 
+  get :attop do
+    @articles = Article.where(:attop => true).order(:priority)
+    render 'articles/attop'
+  end
+
+  post :reorder do
+    from = params[:fromPosition]
+    to = params[:toPosition]
+    direction = params[:direction]
+    if direction == "forward"
+      Article.where("attop = true and priority > ? and priority <= ?", from, to).update_all("priority = priority - 1")
+    else
+      Article.where("attop = true and priority >= ? and priority < ?", to, from).update_all("priority = priority + 1")
+    end
+    article = Article.find(params[:id])
+    article.priority = to
+    article.save
+  end
+
   post :create do
     @article = Article.new(params[:article])
     if @article.save

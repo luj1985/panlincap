@@ -5,5 +5,7 @@ class Article < ActiveRecord::Base
 
   def init
     self.count ||= 0
+    self.attop ||= false
+    self.priority ||= 1
   end
 end
