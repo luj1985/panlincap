@@ -6,22 +6,28 @@ PanlinCap.module('PanlinCap.Home', function(Home, PanlinCap, Backbone, Marionett
     className: 'topics hide'
   });
 
+  var visited = false;
+
   var homeController = {
     showHome: function() {
       PanlinCap.subRegion.empty();
       var promise = PanlinCap.request('showBackground', 'home');
 
       PanlinCap.reqres.request('topics:fetch').then(function(data) {
-        var topics = new Backbone.Collection(data);
-        var homeView = new HomeView({ collection : topics });
+        var homeView = new HomeView({ collection : new Backbone.Collection(data) });
 
         PanlinCap.bodyRegion.show(homeView);
 
-        promise.then(function() {
-          setTimeout(function() {
-            homeView.$el.removeClass('hide');  
-          }, 1000);
-        });
+        if (visited) {
+          homeView.$el.removeClass('hide');  
+        } else {
+          promise.then(function() {
+            setTimeout(function() {
+              homeView.$el.removeClass('hide');  
+            }, 1000);
+          });
+          visited = true;
+        }
       });
     }
   };
