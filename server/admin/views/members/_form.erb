@@ -1,4 +1,9 @@
 <% content_for :javascripts do %>
+
+  <%= javascript_include_tag 'jquery.ui.widget' %>
+  <%= javascript_include_tag 'jquery.iframe-transport' %>
+  <%= javascript_include_tag 'jquery.fileupload' %>
+
   <%= javascript_include_tag 'froala_editor.min' %>
   <%= javascript_include_tag 'froala_editor_ie8.min' %>
   <%= javascript_include_tag 'langs/zh_cn' %>
@@ -10,7 +15,26 @@
   <%= stylesheet_link_tag 'font-awesome.min' %>
   <%= stylesheet_link_tag 'froala_editor.min' %>
   <%= stylesheet_link_tag 'froala_style.min' %>
+  <%= stylesheet_link_tag 'jquery.fileupload' %>
 <% end %>
+
+
+<% error = @member.errors.include?(:avatar) %>
+<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+  <div class='control-label col-sm-2'></div>
+  <div class='controls col-sm-5'>
+    <img id="member-img" src="<%= @member.avatar %>" width="200px">
+    <%= f.hidden_field :avatar %>
+    <span class='btn btn-primary fileinput-button'>
+      <i class='glyphicon glyphicon-upload'></i>
+      <span>上传头像</span>
+      <input type='file' id='upload' class='form-control' 
+        data-url = '/admin/images/upload'
+        data-method = 'POST' />
+      <span id='progress'></span>
+    </span>
+  </div>
+</fieldset>
 
 <% error = @member.errors.include?(:name) %>
 <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
@@ -44,13 +68,7 @@
     <span class='help-inline'><%= error ? f.error_message_on(:title) : "" %></span>
   </div>
 </fieldset>
-<% error = @member.errors.include?(:avatar) %>
-<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :avatar, :class => 'control-label col-sm-2' %>
-  <div class='controls col-sm-10'>
-    <img src="<%= @member.avatar %>" width="200px">
-  </div>
-</fieldset>
+
 <% error = @member.errors.include?(:description) %>
 <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :description, :class => 'control-label col-sm-2' %>
