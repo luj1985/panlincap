@@ -25,6 +25,9 @@ a {
   color: black;
   font-family: STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体";
 }
+#submenu ul li.search {
+  border: none;
+}
 #header {
   top: 0;
   padding: 14px 70px 14px 56px;

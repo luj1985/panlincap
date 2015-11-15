@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 14) do
+ActiveRecord::Schema.define(version: 15) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 14) do
     t.integer  "parent"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "param"
   end
 
   create_table "settings", force: :cascade do |t|

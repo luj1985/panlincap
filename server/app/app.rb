@@ -63,9 +63,21 @@ module Panlincap
         "company" => 168,
         "invested" => 163
       }
-      type = categories[params[:type]]
 
-      articles = Article.where(:category_id => type).page(params[:page]).order('created_at DESC')
+      reverse_categories = {
+        168 => "company",
+        163 => "invested"
+      }
+      type = params[:type]
+
+      category = categories[type]
+
+      keyword = params[:q]
+      if type == "search" then
+        articles = Article.where("body LIKE '%#{keyword}%' or title LIKE '%#{keyword}%' and (category_id = 168 or category_id = 163)").page(params[:page]).order('created_at DESC')
+      else
+        articles = Article.where(:category_id => category).page(params[:page]).order('created_at DESC')
+      end
 
       preview = articles.map do |article|
         title = article.title
@@ -76,19 +88,22 @@ module Panlincap
         news[:id] = article.id
         news[:title] =  date + '  ' + article.title;
         news[:descriptions] = content[0..100] + "..."
-        news[:category] = params[:type]
+        news[:category] = reverse_categories[article.category_id]
         news
       end
+
+      state = {
+        :page => articles.current_page,
+        :per_page => articles.per_page,
+        :total_pages => articles.total_pages,
+        :total_entries => articles.total_entries
+      }
+
+      if type == "search" then
+        state[:keyword] = keyword
+      end
       
-      [
-        {
-          :page => articles.current_page,
-          :per_page => articles.per_page,
-          :total_pages => articles.total_pages,
-          :total_entries => articles.total_entries
-        },
-        preview
-      ].to_json
+      [ state, preview ].to_json
     end
 
     get '/api/declaration/:name', :provides => :json do

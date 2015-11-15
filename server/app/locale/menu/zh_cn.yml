@@ -6,6 +6,7 @@ zh_cn:
         id: 编号
         title: 菜单名
         link: 链接地址
+        param: 链接参数
         parent: 父级菜单
         created_at: 创建时间
         updated_at: 更新时间

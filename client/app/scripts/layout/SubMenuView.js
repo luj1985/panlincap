@@ -4,7 +4,11 @@ PanlinCap.module('PanlinCap.Layout', function(Layout, PanlinCap, Backbone, Mario
   var SubMenuView = Marionette.ItemView.extend({
     template : Handlebars.compile(
       '{{#each items}}' +
-      '<li><a href="#{{link}}">{{title}}</a></li>' +
+      '{{#if this.param}}' +
+        '<li class="search"><input type="search" placeholder="{{title}}"></li>' +
+      '{{else}}' +
+        '<li><a href="#{{link}}">{{title}}</a></li>' +
+      '{{/if}}' +
       '{{/each}}'
     ),
     tagName : 'ul'

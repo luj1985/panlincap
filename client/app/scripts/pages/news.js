@@ -18,7 +18,8 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
     },
     templateHelpers : function() {
       var state = this.collection.state;
-      return {
+      var model = {
+        params : this.collection.params, 
         category : this.collection.category,
         hasPrev : this.collection.hasPreviousPage(),
         hasNext : this.collection.hasNextPage(),
@@ -31,6 +32,10 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
         pageSize : state.pageSize,
         items : this.collection.toJSON()
       };
+      if (state.keyword) {
+        model.keyword = encodeURIComponent(state.keyword);
+      }
+      return model;
     },
     events : {
       'click button.jump' : function() {
@@ -68,6 +73,21 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
     }
   });
 
+  var SearchNewsCollection = Backbone.PageableCollection.extend({
+    parseState: function (resp, queryParams, state, options) {
+      var state = Backbone.PageableCollection.prototype.parseState.apply(this, arguments);
+      var s1 = resp[0] || {};
+      state.keyword = s1.keyword;
+      return state;
+    },
+    url : '/api/article?type=search',
+    category : 'search',
+    state : {
+      currentPage : 1,
+      pageSize : 10
+    }
+  });
+
   function parseQueryString(queryString){
     var params = {};
     if(queryString) {
@@ -83,8 +103,19 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
   }
 
 
+  // should use "search" event if IE8 is out of scope...
+  $(document).on('change', 'input[type="search"]', function(e) {
+    var target = e.target,
+        value = target.value;
+    if (value) {
+      PanlinCap.Router.navigate('/news/search?q=' + encodeURIComponent(value), { trigger : true });
+    }
+  });
+
   var companyNews = new CompanyNewsCollection();
   var investedNews = new InvestedCompanyNewsCollection();
+  var searchNews = new SearchNewsCollection();
+
 
   var newsController = {
     showNews: function(subpage, id, params) {
@@ -105,6 +136,10 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
         } else if (subpage === 'invested') {
           PanlinCap.bodyRegion.show(new NewsCollectionView({ collection : investedNews }));
           investedNews.getPage(page, { reset : true });
+        } else if (subpage === 'search') {
+          PanlinCap.bodyRegion.show(new NewsCollectionView({ collection : searchNews}));
+          searchNews.params = qs;
+          searchNews.getPage(page, { reset : true, data : {q : qs.q} });
         } else {
           PanlinCap.bodyRegion.empty();
         }
