@@ -74,7 +74,7 @@ module Panlincap
 
       keyword = params[:q]
       if type == "search" then
-        articles = Article.where("body LIKE '%#{keyword}%' or title LIKE '%#{keyword}%' and (category_id = 168 or category_id = 163)").page(params[:page]).order('created_at DESC')
+        articles = Article.where("(body LIKE '%#{keyword}%' or title LIKE '%#{keyword}%') and (category_id = 168 or category_id = 163)").page(params[:page]).order('created_at DESC')
       else
         articles = Article.where(:category_id => category).page(params[:page]).order('created_at DESC')
       end
