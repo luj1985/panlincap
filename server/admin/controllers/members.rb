@@ -27,6 +27,8 @@ Panlincap::Admin.controllers :members do
 
   post :create do
     @member = Member.new(params[:member])
+    total = Member.all.count
+    @member.priority = total + 1 unless @member.priority
     if @member.save
       @title = pat(:create_title, :model => "member #{@member.id}")
       flash[:success] = pat(:create_success, :model => 'Member')
