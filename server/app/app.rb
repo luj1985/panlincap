@@ -33,7 +33,7 @@ module Panlincap
       }
       type = categories[params[:type]]
 
-      Article.where(:category_id => 163).limit(3).order('created_at desc').each do |article|
+      Article.where("category_id = 168 or category_id = 163").limit(3).order('created_at desc').each do |article|
         title = article.title
         date = article.created_at.strftime('%Y/%m/%d') 
         body = article.body
