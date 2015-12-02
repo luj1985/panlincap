@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 15) do
+ActiveRecord::Schema.define(version: 20) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 15) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "lang",       default: "zh"
   end
 
   create_table "founds", force: :cascade do |t|
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 15) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "fullname"
+    t.string   "lang",       default: "zh"
   end
 
   create_table "investees", force: :cascade do |t|
@@ -71,6 +73,7 @@ ActiveRecord::Schema.define(version: 15) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "lang",        default: "zh"
   end
 
   create_table "members", force: :cascade do |t|
@@ -83,6 +86,7 @@ ActiveRecord::Schema.define(version: 15) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "priority"
+    t.string   "lang",        default: "zh"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -92,6 +96,7 @@ ActiveRecord::Schema.define(version: 15) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "param"
+    t.string   "lang",       default: "zh"
   end
 
   create_table "settings", force: :cascade do |t|

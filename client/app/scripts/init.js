@@ -2,6 +2,7 @@
   'use strict';
 
   PanlinCap.addRegions({
+    headerRegion: '#header',
     logoRegion: '#panlin',
     navRegion: '#navigation',
     dialogRegion: '#dialog',

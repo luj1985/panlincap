@@ -7,7 +7,6 @@ module Panlincap
 
     enable :sessions
 
-
     get '/api/home', :provides => :json do
       data = [{
         :title => '关于磐霖',
@@ -115,6 +114,8 @@ module Panlincap
     end
 
     get '/api/menus', :provides => :json do
+      lang = request.cookies['my_value'] || 'zh'
+      puts "server sides language #{lang}"
       Menu.all.to_json
     end
 

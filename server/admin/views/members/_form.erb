@@ -36,6 +36,16 @@
   </div>
 </fieldset>
 
+
+<% error = @member.errors.include?(:lang) %>
+<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :lang, :class => 'control-label col-sm-2' %>
+  <div class='controls col-sm-10'>
+    <%= f.select :lang, :options => [['中文', 'zh'], ['English', 'en']], :class => 'form-control'%>
+    <span class='help-inline'><%= error ? f.error_message_on(:lang) : "" %></span>
+  </div>
+</fieldset>
+
 <% error = @member.errors.include?(:name) %>
 <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :name, :class => 'control-label col-sm-2' %>

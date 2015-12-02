@@ -4,6 +4,7 @@ zh_cn:
       name: 基金管理
       attributes:
         id: 编号
+        lang: 语言
         issue: 期数
         name: 基金名
         fullname: 基金全名
