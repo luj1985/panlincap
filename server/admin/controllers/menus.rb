@@ -1,7 +1,12 @@
 Panlincap::Admin.controllers :menus do
   get :index do
     @title = "Menus"
-    @menus = Menu.all
+    @lang = params[:lang]
+    if @lang then
+      @menus = Menu.where :lang => @lang
+    else
+      @menus = Menu.all
+    end
     render 'menus/index'
   end
 

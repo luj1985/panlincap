@@ -114,9 +114,8 @@ module Panlincap
     end
 
     get '/api/menus', :provides => :json do
-      lang = request.cookies['my_value'] || 'zh'
-      puts "server sides language #{lang}"
-      Menu.all.to_json
+      lang = request.cookies["lang"] || 'zh'
+      Menu.where(:lang => lang).to_json
     end
 
     get '/api/founds', :provides => :json do

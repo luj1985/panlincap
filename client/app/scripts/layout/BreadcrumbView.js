@@ -8,7 +8,7 @@ PanlinCap.module('PanlinCap.Breadcrumb', function(Breadcrumb, PanlinCap, Backbon
   var BreadcrumbView = Marionette.ItemView.extend({
     template : Handlebars.compile(
       '{{#if visible}}' +
-      '<a class="section" href="/#">首页</a>' +
+      '<a class="section" href="/#">{{home}}</a>' +
       '{{#each items}}' +
       ' <i class="fa fa-chevron-right"></i> ' +
       '<a class="section" href="#{{link}}">{{title}}</a>' +
@@ -40,6 +40,11 @@ PanlinCap.module('PanlinCap.Breadcrumb', function(Breadcrumb, PanlinCap, Backbon
         items : breadcrumbs, 
         visible : (breadcrumbs.length > 0)
       };
+
+      var home = collection.findWhere({ link : '/'});
+      if (home) {
+        data.home = home.get('title');
+      }
       return data;
     }
   });

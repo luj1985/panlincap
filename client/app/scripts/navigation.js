@@ -34,7 +34,7 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
   PanlinCap.addInitializer(function() {
     PanlinCap.headerRegion.show(new HeaderView());
 
-    var menus = PanlinCap.reqres.request('menus:fetch', null);
+    var menus = PanlinCap.reqres.request('menus:fetch');
     PanlinCap.navRegion.show(new MenuView({ collection : menus }));
 
     $('.mobile.menu.trigger').click(function() {

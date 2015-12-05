@@ -1,4 +1,4 @@
-PanlinCap.module('PanlinCap.Menu', function(Menu, PanlinCap, Backbone, Marionette, $, _) {
+PanlinCap.module('PanlinCap.Menu', function(Menu, PanlinCap, Backbone, Marionette) {
   'use strict';
 
   var MenuModel = Backbone.Model.extend({
@@ -18,7 +18,7 @@ PanlinCap.module('PanlinCap.Menu', function(Menu, PanlinCap, Backbone, Marionett
     collection.fetch();
   });
 
-  PanlinCap.reqres.setHandler('menus:fetch', function(parentid) {
+  PanlinCap.reqres.setHandler('menus:fetch', function() {
     return collection;
   });
 });
