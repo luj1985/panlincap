@@ -108,12 +108,12 @@ module Panlincap
     get '/api/declaration/:name', :provides => :json do
       lang = request.cookies["lang"] || 'zh'
       name = params['name']
-      puts "lang: #{lang}, name #{name}"
       Declaration.where(:lang => lang, :name => name).first.to_json
     end
 
     get '/api/investees', :provides => :json do
-      Investee.all.to_json
+      lang = request.cookies["lang"] || 'zh'
+      Investee.where(:lang => lang).to_json
     end
 
     get '/api/menus', :provides => :json do

@@ -1,7 +1,13 @@
 Panlincap::Admin.controllers :investees do
   get :index do
     @title = "Investees"
-    @investees = Investee.all
+
+    @lang = params[:lang]
+    if @lang then
+      @investees = Investee.where(:lang => @lang)
+    else
+      @investees = Investee.all
+    end
     render 'investees/index'
   end
 
