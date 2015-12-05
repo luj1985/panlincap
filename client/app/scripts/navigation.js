@@ -1,6 +1,27 @@
 PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marionette) {
   'use strict';
 
+  var MenuModel = Backbone.Model.extend({
+    defaults : { parent : null }
+  });
+
+  var MenuCollection = Backbone.Collection.extend({
+    model : MenuModel,
+    url : '/api/menus'
+  });
+
+  var collection = new MenuCollection();
+  collection.fetch();
+
+  PanlinCap.on('language', function() {
+    // reload menu with other language.
+    collection.fetch();
+  });
+
+  PanlinCap.reqres.setHandler('menus:fetch', function() {
+    return collection;
+  });
+
   var MenuView = Marionette.ItemView.extend({
     template: Handlebars.compile('{{#each items}}<a href="#{{link}}">{{title}}</a>{{/each}}'),
     className: 'menus',
@@ -20,6 +41,7 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
     template : PanlinCapTpl['templates/header.hbs'],
     events : {
       'click .lang' : function(e) {
+        e.preventDefault();
         var lang = $(e.target).data('lang');
         var current = $.cookie('lang');
         // or disable language selection button.
@@ -33,9 +55,7 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
 
   PanlinCap.addInitializer(function() {
     PanlinCap.headerRegion.show(new HeaderView());
-
-    var menus = PanlinCap.reqres.request('menus:fetch');
-    PanlinCap.navRegion.show(new MenuView({ collection : menus }));
+    PanlinCap.navRegion.show(new MenuView({ collection : collection }));
 
     $('.mobile.menu.trigger').click(function() {
       $('body').toggleClass('push');
