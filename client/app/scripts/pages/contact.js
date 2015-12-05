@@ -1,6 +1,19 @@
 PanlinCap.module('PanlinCap.Contact', function(Contact, PanlinCap, Backbone, Marionette) {
   'use strict';
 
+  var DeclareModel = Backbone.Model.extend({ 
+    load : function(name) {
+      this.name = name;
+      this.reload();
+    },
+    reload : function() {
+      var name = this.name;
+      this.fetch({ url : '/api/declaration/' + name });
+    }
+  });
+
+  var model = new DeclareModel();
+
   var BizPlanView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/business-plan.hbs'],
     className : 'main plan'
@@ -8,7 +21,13 @@ PanlinCap.module('PanlinCap.Contact', function(Contact, PanlinCap, Backbone, Mar
 
   var HTMLView = Marionette.ItemView.extend({
     template : Handlebars.compile('{{{body}}}'),
-    className : 'main plan'
+    className : 'main plan',
+    initialize : function() {
+      this.listenTo(this.model, 'sync', this.render);
+      this.listenTo(PanlinCap, 'language', function() {
+        this.model.reload();
+      });
+    }
   });
   
   var ContactController = {
@@ -20,10 +39,8 @@ PanlinCap.module('PanlinCap.Contact', function(Contact, PanlinCap, Backbone, Mar
         if (name === 'plan') {
           PanlinCap.bodyRegion.show(new BizPlanView());
         } else {
-          PanlinCap.reqres.request('declaration:fetch', name).then(function(raw) {
-            var model = new Backbone.Model(raw);
-            PanlinCap.bodyRegion.show(new HTMLView({ model : model }));
-          });
+          PanlinCap.bodyRegion.show(new HTMLView({ model : model }));
+          model.load(name);
         }
       } else {
         PanlinCap.bodyRegion.empty();

@@ -17,10 +17,6 @@
     return $.get('/api/investees');
   });
 
-  PanlinCap.reqres.setHandler('declaration:fetch', function(name) {
-    return $.get('/api/declaration/' + name);
-  });
-
   PanlinCap.reqres.setHandler('topics:fetch', function() {
     return $.get('/api/home.json');
   });

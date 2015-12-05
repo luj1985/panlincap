@@ -1,7 +1,13 @@
 Panlincap::Admin.controllers :declarations do
   get :index do
     @title = "Declarations"
-    @declarations = Declaration.all
+
+    @lang = params[:lang]
+    if @lang then
+      @declarations = Declaration.where(:lang => @lang).order("lang DESC, name ASC")
+    else
+      @declarations = Declaration.all.order("lang DESC, name ASC")
+    end
     render 'declarations/index'
   end
 

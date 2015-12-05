@@ -12,6 +12,10 @@ PanlinCap.module('PanlinCap.Layout', function(Layout, PanlinCap, Backbone, Mario
     initialize : function() {
       this.listenTo(PanlinCap.vent, 'reveal:active', this.revealView, this);
       this.listenTo(PanlinCap.vent, 'reveal:hide', this.hideView, this);
+      this.listenTo(this.model, 'sync', this.render);
+      this.listenTo(PanlinCap, 'language', function() {
+        this.model.reload();
+      });
     },
     hideView : function() {
       this.$el.removeClass('active');
