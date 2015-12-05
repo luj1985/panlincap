@@ -74,7 +74,7 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
   });
 
   var SearchNewsCollection = Backbone.PageableCollection.extend({
-    parseState: function (resp, queryParams, state, options) {
+    parseState: function (resp) {
       var state = Backbone.PageableCollection.prototype.parseState.apply(this, arguments);
       var s1 = resp[0] || {};
       state.keyword = s1.keyword;

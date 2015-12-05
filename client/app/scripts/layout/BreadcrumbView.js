@@ -1,4 +1,4 @@
-PanlinCap.module('PanlinCap.Breadcrumb', function(Breadcrumb, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('PanlinCap.Breadcrumb', function(Breadcrumb, PanlinCap, Backbone, Marionette, $, _) {
   'use strict';
 
   var breadcurmbModel = new Backbone.Model({

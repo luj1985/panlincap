@@ -1,4 +1,4 @@
-PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marionette, $, _) {
   'use strict';
 
   var MenuModel = Backbone.Model.extend({

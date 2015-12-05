@@ -1,6 +1,14 @@
 PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionette) {
   'use strict';
 
+  var MemberModel = Backbone.Model.extend({});
+  var MemberCollection = Backbone.Collection.extend({
+    model : MemberModel,
+    url : '/api/members'
+  });
+
+  var collection = new MemberCollection();
+
   var Layout = PanlinCap.module('PanlinCap.Layout');
 
   var MemberDialogView = Marionette.ItemView.extend({
@@ -36,7 +44,12 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
 
   var TeamsView = Layout.ScrollView.extend({
     childView : TeamView,
-    className : 'teams main'
+    className : 'teams main',
+    initialize : function() {
+      this.listenTo(PanlinCap, 'language', function() {
+        collection.fetch();
+      });
+    }
   });
 
   var teamController = (function() {
@@ -44,16 +57,14 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
       showTeam : function(id) {
         PanlinCap.subRegion.empty();
         PanlinCap.execute('showBackground', 'team');
-        
-        PanlinCap.reqres.request('members:fetch').then(function(raw) {
-          var members = new Backbone.Collection(raw);
-          if (id) {
-            var person = members.get(id);
-            PanlinCap.bodyRegion.show(new MemberView({model : person}));
-          } else {
-            PanlinCap.bodyRegion.show(new TeamsView({collection: members}));
-          }
-        });
+
+        if (id) {
+          var person = collection.get(id);
+          PanlinCap.bodyRegion.show(new MemberView({model : person}));
+        } else {
+          PanlinCap.bodyRegion.show(new TeamsView({collection: collection}));
+          collection.fetch();
+        }
       }
     };
   })();

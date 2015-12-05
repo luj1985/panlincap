@@ -1,7 +1,13 @@
 Panlincap::Admin.controllers :members do
   get :index do
     @title = "Members"
-    @members = Member.all.order("priority DESC")
+
+    @lang = params[:lang]
+    if @lang then
+      @members = Member.where(:lang => @lang).order("priority DESC")
+    else
+      @members = Member.all.order("priority DESC")
+    end
     render 'members/index'
   end
 

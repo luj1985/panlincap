@@ -124,7 +124,8 @@ module Panlincap
     end
 
     get '/api/members', :provides => :json do
-      Member.all.order(:priority).to_json
+      lang = request.cookies["lang"] || 'zh'
+      Member.where(:lang => lang).order(:priority).to_json
     end
 
     get '/api/article', :with => :id, :provides => :json do

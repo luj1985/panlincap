@@ -1,4 +1,4 @@
-PanlinCap.module('PanlinCap.Layout', function(Layout, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('PanlinCap.Layout', function(Layout, PanlinCap, Backbone, Marionette, $, _) {
   'use strict';
 
   function fetchMenuItem(collection, link) {
