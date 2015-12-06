@@ -1,7 +1,7 @@
 PanlinCap.module('PanlinCap.Investee', function(Case, PanlinCap, Backbone, Marionette, $, _) {
   'use strict';
 
-  var Layout = PanlinCap.module('PanlinCap.Layout');
+  var Share = PanlinCap.module('PanlinCap.Share');
 
   var CaseView = Marionette.ItemView.extend({
     template : Handlebars.compile(
@@ -50,7 +50,7 @@ PanlinCap.module('PanlinCap.Investee', function(Case, PanlinCap, Backbone, Mario
     }
   });
 
-  var CasesCollectionView = Layout.ScrollView.extend({
+  var CasesCollectionView = Share.ScrollView.extend({
     childView : InvesteesView,
     className : 'cases main'
   });

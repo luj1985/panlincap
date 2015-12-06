@@ -1,4 +1,4 @@
-PanlinCap.module('Share', function(Share, PanlinCap, Backbone, Marionette) {
+PanlinCap.module('PanlinCap.Share', function(Share, PanlinCap, Backbone, Marionette) {
   'use strict';
 
   var CONTENT_WIDTH = 960;
@@ -12,7 +12,6 @@ PanlinCap.module('Share', function(Share, PanlinCap, Backbone, Marionette) {
       'click .close' : 'expand'
     }
   });
-
 
   Share.SplitBgView = Marionette.ItemView.extend({
     updateSeparation : function() {
@@ -38,6 +37,59 @@ PanlinCap.module('Share', function(Share, PanlinCap, Backbone, Marionette) {
     },
     onDestroy : function() {
       $(window).off('reisze', this.updateSeparation);
+    }
+  });
+
+
+  Share.ScrollView = Marionette.CompositeView.extend({
+    template : PanlinCapTpl['templates/scroll-indicator.hbs'],
+    childViewContainer : '.collection',
+    onRender : function() {
+      var $wrapper = $('.viewport .container');
+      function startScrollUp() {
+        $wrapper.animate({scrollTop: '-=50'}, 'normal', 'linear', startScrollUp);
+      }
+      function startScrollDown() {
+        $wrapper.animate({scrollTop: '+=50'}, 'normal', 'linear', startScrollDown); 
+      }
+      function stopScrolling() {
+        $wrapper.stop();
+      }
+      this.$('.scroll.up').mousedown(startScrollUp).mouseup(stopScrolling);
+      this.$('.scroll.down').mousedown(startScrollDown).mouseup(stopScrolling);
+    },
+    events : {
+      'click .scroll.up' : function(e) {
+        e.preventDefault();
+      },
+      'click .scroll.down' : function(e) {
+        e.preventDefault();
+      }
+    }
+  });
+
+
+  Share.RevealView = Marionette.ItemView.extend({
+    template : Handlebars.compile(
+      '{{{body}}}' + 
+      '<a href="{{back}}" class="close">' + 
+      '  <i class="fa fa-angle-double-left"></i> 收起' +
+      '</a>'
+    ),
+    className : 'reveal',
+    initialize : function() {
+      this.listenTo(PanlinCap.vent, 'reveal:active', this.revealView, this);
+      this.listenTo(PanlinCap.vent, 'reveal:hide', this.hideView, this);
+      this.listenTo(this.model, 'sync', this.render);
+      this.listenTo(PanlinCap, 'language', function() {
+        this.model.reload();
+      });
+    },
+    hideView : function() {
+      this.$el.removeClass('active');
+    },
+    revealView : function () {
+      this.$el.addClass('active');
     }
   });
 });

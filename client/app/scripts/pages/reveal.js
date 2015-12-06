@@ -1,7 +1,7 @@
 PanlinCap.module('PanlinCap.Reveal', function(Reveal, PanlinCap, Backbone) {
   'use strict';
 
-  var Layout = PanlinCap.module('PanlinCap.Layout');
+  var Share = PanlinCap.module('PanlinCap.Share');
 
   var RevealModel = Backbone.Model.extend({
     load : function(name, back) {
@@ -31,7 +31,7 @@ PanlinCap.module('PanlinCap.Reveal', function(Reveal, PanlinCap, Backbone) {
         return;
       }
 
-      PanlinCap.bodyRegion.show(new Layout.RevealView({ model : model }));
+      PanlinCap.bodyRegion.show(new Share.RevealView({ model : model }));
       model.load(subpage, fragment).then(function() {
         PanlinCap.vent.trigger('reveal:active');
       });

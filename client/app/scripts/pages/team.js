@@ -9,7 +9,7 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
 
   var collection = new MemberCollection();
 
-  var Layout = PanlinCap.module('PanlinCap.Layout');
+  var Share = PanlinCap.module('PanlinCap.Share');
 
   var MemberDialogView = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/team/memberdialog.hbs'],
@@ -42,7 +42,7 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
     }
   });
 
-  var TeamsView = Layout.ScrollView.extend({
+  var TeamsView = Share.ScrollView.extend({
     childView : TeamView,
     className : 'teams main',
     initialize : function() {

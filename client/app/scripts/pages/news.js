@@ -1,14 +1,14 @@
 PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionette, $, _) {
   'use strict';
 
-  var Layout = PanlinCap.module('PanlinCap.Layout');
+  var Share = PanlinCap.module('PanlinCap.Share');
 
   var NewsView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/news/news.hbs'],
     tagName : 'li'
   });
 
-  var NewsCollectionView = Layout.ScrollView.extend({
+  var NewsCollectionView = Share.ScrollView.extend({
     template : PanlinCapTpl['templates/news/pages.hbs'],
     childView : NewsView,
     className : 'main news',
