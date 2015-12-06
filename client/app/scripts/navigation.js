@@ -174,7 +174,6 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
     syncLanguage();
   });
 
-
   PanlinCap.on('language', function() {
     // reload menu with other language.
     menuCollection.fetch();

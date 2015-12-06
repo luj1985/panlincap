@@ -51,11 +51,19 @@
   z-index: 5;
 }
 
+// for mobility, it displays as sidebar
+#navigation, #submenu {
+  z-index: 5;
+}
+
 #submenu {
   position: fixed;
   ul {
     list-style: none;
     padding-left: 0;
+    &:empty {
+      display: none;
+    }
   }
 }
 
