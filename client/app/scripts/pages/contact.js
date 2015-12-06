@@ -33,9 +33,7 @@ PanlinCap.module('PanlinCap.Contact', function(Contact, PanlinCap, Backbone, Mar
       if (name) {
         PanlinCap.bodyRegion.show(new HTMLView({ model : model }));
         model.load(name);
-      } else {
-        PanlinCap.bodyRegion.empty();
-      }
+      } 
     }
   };
 

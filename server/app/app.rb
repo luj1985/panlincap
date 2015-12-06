@@ -22,7 +22,6 @@ module Panlincap
         :link => '#/investees'
       }]
 
-
       news_preview = ''
       news_preview += '<div class="news-preview">'
 

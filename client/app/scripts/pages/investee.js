@@ -3,6 +3,18 @@ PanlinCap.module('PanlinCap.Investee', function(Case, PanlinCap, Backbone, Mario
 
   var Share = PanlinCap.module('PanlinCap.Share');
 
+  var Investee = Backbone.Model.extend({});
+  var InvesteeCollection = Backbone.Collection.extend({
+    model : Investee,
+    url : '/api/investees'
+  });
+
+  var collection = new InvesteeCollection();
+
+  PanlinCap.reqres.setHandler('investees:fetch', function(id) {
+    return $.get('/api/investees');
+  });
+
   var CaseView = Marionette.ItemView.extend({
     template : Handlebars.compile(
       '<div class="company-logo">' +
