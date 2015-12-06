@@ -68,22 +68,24 @@
 }
 
 .viewport {
-  position: absolute;
+  position: fixed;
   width: 100%;
   bottom: 0;
+  
   .container {
     position: relative;
     height: 100%;
     overflow: auto;
+
+  -webkit-overflow-scrolling: touch;
+          overflow-scrolling: touch;
   }
 }
 
 #body {
   position: relative;
   min-height: calc(~"100% - "@footer-height);
-  
-  -webkit-overflow-scrolling: touch;
-          overflow-scrolling: touch;
+  overflow: hidden;
 }
 
 #dimmer {

@@ -160,14 +160,16 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
     }
   });
 
-  Backbone.history.on('route', function() {
+  Backbone.history.on('route', function(action, options) {
     var fragment = this.getFragment() || '';
     fragmentModel.set('fragment', fragment);
     // the subregion may be destroyed during page switching. 
     // e.g. home page doens't have subRegion defined.
     // So update the region everytime route changed.
     PanlinCap.subRegion.show(new SubMenuView({model : fragmentModel, collection : menuCollection }));
-
+    if (!(action === 'showTeam' && (options[0] === 'members' || options[0] === 'partner'))) {
+      $('.viewport .container').scrollTop(0);
+    }
     // IE8, compatible.
     if (jQuery.placeholder) {
       jQuery.placeholder.shim();
