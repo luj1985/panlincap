@@ -8,7 +8,10 @@ module Panlincap
     enable :sessions
 
     get '/api/home', :provides => :json do
-      data = [{
+      lang = request.cookies["lang"] || 'zh'
+
+      # TODO: move those data into database
+      zhData = [{
         :title => '关于磐霖',
         :description => '上海磐霖资产管理有限公司是专业的人民币私募股权投资基金（以下简称PE基金）的投资管理平台, 主要从事未上市企业的股权投资和投资后的资产管理...',
         :link => '#/about'    
@@ -21,6 +24,23 @@ module Panlincap
         :description => '我们既有已在创业板首批上市的成功投资案例，也有已经入股而预期在三年内上市的项目...',
         :link => '#/investees'
       }]
+
+      enData  = [{
+        :title => 'About Panlin',
+        :description => '''Shanghai Pan-Lin Asset Management Co., Ltd. is a professional RMB private equity funds (hereinafter PE funds) 
+        investment management platform which is mainly engaged in assets management in equity investment and post-investment stages. ''',
+        :link => '#/about'    
+      }, {
+        :title => 'Investment Concept',
+        :description => 'Core Investment Concept - "Happy investment"...',
+        :link => '#/investment'
+      }, {
+        :title => 'Investment Cases',
+        :description => '我们既有已在创业板首批上市的成功投资案例，也有已经入股而预期在三年内上市的项目...',
+        :link => '#/investees'
+      }]
+
+      data = (lang == 'en') ? enData : zhData
 
       news_preview = ''
       news_preview += '<div class="news-preview">'
@@ -44,11 +64,19 @@ module Panlincap
       end
       news_preview += '</div>'
 
-      news = { 
+      zhNews = { 
         :title => '新闻中心',
         :link => '#/news',
         :description => news_preview
       }
+
+      enNews = {
+        :title => 'News',
+        :link => '#/news',
+        :description => news_preview
+      }
+
+      news = (lang == 'en') ? enNews : zhNews
 
       data.push(news)
       data.to_json

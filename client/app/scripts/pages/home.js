@@ -1,38 +1,50 @@
 PanlinCap.module('PanlinCap.Home', function(Home, PanlinCap, Backbone, Marionette) {
   'use strict';
-  
-  PanlinCap.reqres.setHandler('topics:fetch', function() {
-    return $.get('/api/home.json');
+
+  var HomeCollection = Backbone.Collection.extend({
+    model : Backbone.Model,
+    url : '/api/home.json'
   });
+
+  var collection = new HomeCollection();
+  var visited = false;
 
   var HomeView = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/home.hbs'],
-    className: 'topics hide'
+    className: 'topics hide',
+    initialize : function(params) {
+      this.background = params.background;
+      this.listenTo(this.collection, 'sync', this.render);
+      this.listenTo(PanlinCap, 'language', function() {
+        collection.fetch();
+      });
+    },
+    onRender : function() {
+      var background = this.background,
+          self = this;
+      if (visited) {
+        this.$el.removeClass('hide');  
+      } else {
+        background.then(function() {
+          setTimeout(function() {
+            self.$el.removeClass('hide');  
+          }, 1000);
+        });
+        visited = true;
+      }
+    }
   });
-
-  var visited = false;
 
   var homeController = {
     showHome: function() {
       PanlinCap.subRegion.empty();
-      var promise = PanlinCap.request('showBackground', 'home');
+      var background = PanlinCap.request('showBackground', 'home');
 
-      PanlinCap.reqres.request('topics:fetch').then(function(data) {
-        var homeView = new HomeView({ collection : new Backbone.Collection(data) });
-
-        PanlinCap.bodyRegion.show(homeView);
-
-        if (visited) {
-          homeView.$el.removeClass('hide');  
-        } else {
-          promise.then(function() {
-            setTimeout(function() {
-              homeView.$el.removeClass('hide');  
-            }, 1000);
-          });
-          visited = true;
-        }
-      });
+      PanlinCap.bodyRegion.show(new HomeView({ 
+        background : background,
+        collection : collection 
+      }));
+      collection.fetch();
     }
   };
 
