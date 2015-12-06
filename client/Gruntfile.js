@@ -388,6 +388,12 @@ module.exports = function (grunt) {
         }, {
           src: '.tmp/styles/ie-css3.htc',
           dest: '<%= config.dist %>/styles/ie-css3.htc'
+        }, {
+          src: '.tmp/styles/backgroundsize.htc',
+          dest: '<%= config.dist %>/styles/backgroundsize.htc'
+        }, {
+          src: '.tmp/styles/backgroundsize.min.htc',
+          dest: '<%= config.dist %>/styles/backgroundsize.min.htc'
         }]
       },
       styles: {
