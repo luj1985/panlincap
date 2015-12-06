@@ -105,13 +105,14 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
     return params;
   }
 
-
   // should use "search" event if IE8 is out of scope...
-  $(document).on('change', 'input[type="search"]', function(e) {
-    var target = e.target,
-        value = target.value;
-    if (value) {
-      PanlinCap.Router.navigate('/news/search?q=' + encodeURIComponent(value), { trigger : true });
+  $(document).on('keyup', 'input[type="search"]', function(e) {
+    if (e.keyCode === 13) { // Enter key
+      var target = e.target,
+          value = target.value;
+      if (value) {
+        PanlinCap.Router.navigate('/news/search?q=' + encodeURIComponent(value), { trigger : true });
+      }
     }
   });
 

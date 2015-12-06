@@ -109,7 +109,12 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
     template : Handlebars.compile(
       '{{#each items}}' +
       '{{#if this.param}}' +
-        '<li class="search"><input type="search" placeholder="{{title}}"></li>' +
+        '<li class="search">' +
+          '<div class="search-field">' +
+          '<i class="fa fa-search"></i>' + 
+          '<input type="search" placeholder="{{title}}">' + 
+          '</div>' +
+        '</li>' +
       '{{else}}' +
         '<li><a href="#{{link}}">{{title}}</a></li>' +
       '{{/if}}' +
@@ -141,6 +146,11 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
     // e.g. home page doens't have subRegion defined.
     // So update the region everytime route changed.
     PanlinCap.subRegion.show(new SubMenuView({model : fragmentModel, collection : menuCollection }));
+
+    // IE8, compatible.
+    if (jQuery.placeholder) {
+      jQuery.placeholder.shim();
+    }
   });
 
   

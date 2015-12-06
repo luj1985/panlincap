@@ -4,6 +4,8 @@
 
   .found {
     display: inline-block;
+    float:left;
+    padding: 5px;
 
     h3, h4 {
       font-family: @font-title;
@@ -15,15 +17,16 @@
     h3 {
       margin-bottom: 4px;
     }
+  }
 
-    .inner {
-      background-color: @color-background;
-      position: relative;
-      cursor: pointer;
-    }
+  .inner {
+    background-color: @color-background;
+    position: relative;
+    cursor: pointer;
+    padding: 30px 10px;
+    height: 240px;
   }
 }
-
 
 .content-column-left {
   width: 35%;

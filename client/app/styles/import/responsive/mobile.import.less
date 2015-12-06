@@ -97,6 +97,10 @@
     }
   }
 
+  .mobile.menu.trigger {
+    display: inline-block;
+  }
+
   .push {
     #navigation, #submenu, #header, #body, #breadcrumb {
       transform: translateX(-@sidebar-menu-width);
@@ -126,10 +130,6 @@
 
   #breadcrumb {
     display: none;
-  }
-
-  .mobile.menu.trigger {
-    display: inline-block;
   }
 
   .main {
@@ -279,7 +279,6 @@
     display: none;
   }
 
-
   table.hire {
     width : 100%;
     max-width: 500px;
@@ -298,7 +297,6 @@
     padding-bottom: 50px;
   }
 }
-
 
 @media (max-width: 320px) {
   .pagination .goto {
@@ -325,13 +323,10 @@
   }
 }
 
-
-@media (min-device-width : 768px) and (max-device-width : 1024px) {
+@media (min-width : 768px) and (max-width : 1024px) {
   #header {
     padding: @base-size 3*@base-size @base-size 2*@base-size;
   }
-
-  #submenu { }
   
   .viewport {
     top: 130px;
@@ -358,29 +353,14 @@
 }
 
 // iPad in landscape
-@media (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+@media (min-width : 768px) and (max-width : 1024px) {
   #breadcrumb {
-    top: 120px;
-    padding-left: 0;
-  }
-
-  #navigation {
-    top: 88px;
-    padding: 0 28px;
-  }
-
-  .trigger {
-    display: none !important;
-  }
-
-  #submenu {
-    top: 180px;
-    left: 28px;
+    padding-left: 2*@base-size
   }
   
   .panlin.dialog .dialog-body {
     max-width: 960px;
-    padding : 28px;
+    padding : 2*@base-size;
     margin: 0 auto;
   }
 
@@ -388,60 +368,17 @@
     width: 100%/3;
   }
 
-  .reveal {
-    padding : @base-size 2*@base-size;
-    margin-left: 220px;
-  }
-  .revealbg {
-    left: 216px;
-  }
-  .mobile {
-    display: none;
-  }
-  .viewport {
-    margin-top: 2.5*@base-size;
-  }
-
   .main {
     margin-left: @submenu-width;
   }
 }
 
-
 // iPad in portrait
-@media (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
-
+@media (min-width : 768px) and (max-width : 1024px) and (orientation : portrait) {
   #header {
     box-shadow: 0 3px 8px 0 rgba(0,0,0,.26);
     .wrapper {
       display: none;
-    }
-  }
-
-  #copyright {
-    display: none;
-  }
-
-  #breadcrumb {
-    top: 88px;
-    padding-left: 0;
-  }
-  
-  #navigation {
-    position: fixed;
-    padding: 84px 16px 0 16px;
-    left: 100%;
-    height: 100%;
-    width: 140px;
-    transition: transform .4s ease-in-out;
-    top: 0;
-    overflow: auto;
-
-    a {
-      text-align: left;
-      display: block !important;
-      line-height: 30px;
-      font-size: 20px !important;
     }
   }
 }
