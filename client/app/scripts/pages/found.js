@@ -22,6 +22,7 @@ PanlinCap.module('PanlinCap.Found', function(Found, PanlinCap, Backbone, Marione
       return data;
     }
   });
+  
   var FoundColleciton = Backbone.Collection.extend({
     model : FoundModel,
     url : '/api/founds'

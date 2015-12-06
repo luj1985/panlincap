@@ -1,19 +1,6 @@
 PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionette, $, _) {
   'use strict';
 
-  PanlinCap.reqres.setHandler('news:fetch', function() {
-    return $.get('/api/article?type=invested');
-  });
-
-  PanlinCap.reqres.setHandler('company-news:fetch', function() {
-    return $.get('/api/article?type=company');
-  });
-
-  PanlinCap.reqres.setHandler('news:detail', function(id) {
-    return $.get('/api/article/' + id + '.json');
-  });
-
-
   var Share = PanlinCap.module('PanlinCap.Share');
 
   var NewsView = Marionette.ItemView.extend({
@@ -65,7 +52,10 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
 
   var NewsDetailView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/news/detail.hbs'],
-    className : 'main news'
+    className : 'main news',
+    initialize : function() {
+      this.listenTo(this.model, 'sync', this.render);
+    }
   });
 
   var CompanyNewsCollection = Backbone.PageableCollection.extend({
@@ -128,17 +118,25 @@ PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionett
   var companyNews = new CompanyNewsCollection();
   var investedNews = new InvestedCompanyNewsCollection();
   var searchNews = new SearchNewsCollection();
+  var NewsModel = Backbone.Model.extend({
+    load : function(newsID) {
+      this.newsID = newsID;
+      this.reload();
+    },
+    reload : function() {
+      this.fetch({url : '/api/article/' + this.newsID + '.json'});
+    }
+  });
 
+  var article = new NewsModel({});
 
   var newsController = {
     showNews: function(subpage, id, params) {
       PanlinCap.subRegion.empty();
       PanlinCap.execute('showBackground', 'news');
       if (id) {
-        var promise = PanlinCap.reqres.request('news:detail', id);
-        promise.then(function(data) {
-          PanlinCap.bodyRegion.show(new NewsDetailView({ model : new Backbone.Model(data) }));
-        });
+        PanlinCap.bodyRegion.show(new NewsDetailView({ model : article }));
+        article.load(id);
       } else {
         var qs = parseQueryString(params || '');
         var page = parseInt(qs.page) || 1;

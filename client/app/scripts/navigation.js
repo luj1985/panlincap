@@ -134,6 +134,21 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
     }
   });
 
+  Backbone.history.on('route', function() {
+    var fragment = this.getFragment() || '';
+    fragmentModel.set('fragment', fragment);
+    // the subregion may be destroyed during page switching. 
+    // e.g. home page doens't have subRegion defined.
+    // So update the region everytime route changed.
+    PanlinCap.subRegion.show(new SubMenuView({model : fragmentModel, collection : menuCollection }));
+  });
+
+  
+  function syncLanguage() {
+    var lang = $.cookie('lang') || 'zh';
+    $('html').attr('lang', lang);
+  }
+
   PanlinCap.addInitializer(function() {
     PanlinCap.headerRegion.show(new HeaderView());
     PanlinCap.navRegion.show(new MenuView({ collection : menuCollection }));
@@ -155,20 +170,15 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
     $('#dimmer').on('click', function() {
       $('body').removeClass('push');
     });
+
+    syncLanguage();
   });
 
-  Backbone.history.on('route', function() {
-    var fragment = this.getFragment() || '';
-    fragmentModel.set('fragment', fragment);
-    // the subregion may be destroyed during page switching. 
-    // e.g. home page doens't have subRegion defined.
-    // So update the region everytime route changed.
-    PanlinCap.subRegion.show(new SubMenuView({model : fragmentModel, collection : menuCollection }));
-  });
 
   PanlinCap.on('language', function() {
     // reload menu with other language.
     menuCollection.fetch();
+    syncLanguage();
   });
 
   menuCollection.fetch();

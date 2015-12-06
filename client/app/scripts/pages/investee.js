@@ -1,11 +1,10 @@
-PanlinCap.module('PanlinCap.Investee', function(Case, PanlinCap, Backbone, Marionette, $, _) {
+PanlinCap.module('PanlinCap.Investee', function(Case, PanlinCap, Backbone, Marionette) {
   'use strict';
 
   var Share = PanlinCap.module('PanlinCap.Share');
 
-  var Investee = Backbone.Model.extend({});
   var InvesteeCollection = Backbone.Collection.extend({
-    model : Investee,
+    model : Backbone.Model,
     url : '/api/investees'
   });
 

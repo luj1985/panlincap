@@ -1,9 +1,8 @@
 PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionette) {
   'use strict';
 
-  var MemberModel = Backbone.Model.extend({});
   var MemberCollection = Backbone.Collection.extend({
-    model : MemberModel,
+    model : Backbone.Model,
     url : '/api/members'
   });
 
