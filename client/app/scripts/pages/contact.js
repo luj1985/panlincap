@@ -14,11 +14,6 @@ PanlinCap.module('PanlinCap.Contact', function(Contact, PanlinCap, Backbone, Mar
 
   var model = new DeclareModel();
 
-  var BizPlanView = Marionette.ItemView.extend({
-    template : PanlinCapTpl['templates/business-plan.hbs'],
-    className : 'main plan'
-  });
-
   var HTMLView = Marionette.ItemView.extend({
     template : Handlebars.compile('{{{body}}}'),
     className : 'main plan',
@@ -36,12 +31,8 @@ PanlinCap.module('PanlinCap.Contact', function(Contact, PanlinCap, Backbone, Mar
       PanlinCap.execute('showBackground', 'contact');
       var name = id || subpage;
       if (name) {
-        if (name === 'plan') {
-          PanlinCap.bodyRegion.show(new BizPlanView());
-        } else {
-          PanlinCap.bodyRegion.show(new HTMLView({ model : model }));
-          model.load(name);
-        }
+        PanlinCap.bodyRegion.show(new HTMLView({ model : model }));
+        model.load(name);
       } else {
         PanlinCap.bodyRegion.empty();
       }

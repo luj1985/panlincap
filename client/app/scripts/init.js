@@ -12,7 +12,6 @@
     bodyRegion: '#body'
   });
 
-
   // XXX: this is a hack way to detect mobile device
   // in mobile, the breadcrumb was hidden
   PanlinCap.isMobile = function() {

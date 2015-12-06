@@ -10,8 +10,7 @@ PanlinCap.module('PanlinCap.Reveal', function(Reveal, PanlinCap, Backbone) {
       return this.reload();
     },
     reload : function() {
-      var name = this.name;
-      return this.fetch({ url : '/api/declaration/' + name });
+      return this.fetch({ url : '/api/declaration/' + this.name });
     },
     toJSON : function() {
       var data = Backbone.Model.prototype.toJSON.apply(this, arguments);

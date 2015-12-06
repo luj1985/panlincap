@@ -1,5 +1,9 @@
 PanlinCap.module('PanlinCap.Home', function(Home, PanlinCap, Backbone, Marionette) {
   'use strict';
+  
+  PanlinCap.reqres.setHandler('topics:fetch', function() {
+    return $.get('/api/home.json');
+  });
 
   var HomeView = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/home.hbs'],

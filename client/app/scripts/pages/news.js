@@ -1,6 +1,19 @@
 PanlinCap.module('PanlinCap.News', function(News, PanlinCap, Backbone, Marionette, $, _) {
   'use strict';
 
+  PanlinCap.reqres.setHandler('news:fetch', function() {
+    return $.get('/api/article?type=invested');
+  });
+
+  PanlinCap.reqres.setHandler('company-news:fetch', function() {
+    return $.get('/api/article?type=company');
+  });
+
+  PanlinCap.reqres.setHandler('news:detail', function(id) {
+    return $.get('/api/article/' + id + '.json');
+  });
+
+
   var Share = PanlinCap.module('PanlinCap.Share');
 
   var NewsView = Marionette.ItemView.extend({
