@@ -39,21 +39,6 @@ PanlinCap.module('PanlinCap.Route', function(Route, PanlinCap, Backbone, Marione
       controller: controller
     });
 
-    router.on('route', function(action, options) {
-      if (!(action === 'showTeam' && (options[0] === 'members' || options[0] === 'partner'))) {
-        $('.viewport .container').scrollTop(0);
-      }
-
-      if (PanlinCap.isMobile()) {
-        var region = PanlinCap.logoRegion,
-            fragment = Backbone.history.getFragment();
-        if (fragment === '' || fragment === '/') {
-          region.$el.html('<a class="logo" href="/"></a>');
-        } else {
-          region.$el.html('<a class="back" href="#"><i class="fa fa-chevron-left"></i></a>');
-        }
-      }
-    });
     PanlinCap.Router = router;
   });
 });

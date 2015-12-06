@@ -14,6 +14,18 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
 
   var HeaderView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/header.hbs'],
+    initialize : function() {
+      this.listenTo(this.model, 'change', this.render);
+    },
+    serializeData : function() {
+      var fragment = this.model.get('fragment');
+      var mobile = PanlinCap.isMobile();
+      if (!mobile || fragment === '' || fragment === '/') {
+        return {home : true};
+      } else {
+        return {home : false};
+      }
+    },
     events : {
       'click .lang' : function(e) {
         e.preventDefault();
@@ -24,6 +36,10 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
           $.cookie('lang', lang, { expires: 365 });
           PanlinCap.trigger('language', lang);
         }
+      },
+      'click a.back' : function(e) {
+        e.preventDefault();
+        window.history.back();
       }
     }
   });
@@ -160,17 +176,12 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
   }
 
   PanlinCap.addInitializer(function() {
-    PanlinCap.headerRegion.show(new HeaderView());
+    PanlinCap.headerRegion.show(new HeaderView({model : fragmentModel}));
     PanlinCap.navRegion.show(new MenuView({ collection : menuCollection }));
     PanlinCap.breadcrumbRegion.show(new BreadcrumbView({model : fragmentModel, collection : menuCollection }));
 
     $('.mobile.menu.trigger').click(function() {
       $('body').toggleClass('push');
-    });
-
-    $('#header').on('click', 'a.back', function(e) {
-      e.preventDefault();
-      window.history.back();
     });
 
     $('#navigation').on('click', 'a', function() {
