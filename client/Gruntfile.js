@@ -29,7 +29,7 @@ module.exports = function (grunt) {
 
   var singlePage = function(req, res, next) {
     var url = req.url;
-    if (/.*\.jpg/.test(url) || /.*\.js/.test(url) || /.*\.css/.test(url) || /.*fonts\//.test(url) || (/.*\/images\//.test(url))) {
+    if (/.*\.jpg/.test(url) || /.*\.js/.test(url) || /.*\.css/.test(url) || /.*\.htc/.test(url) || /.*fonts\//.test(url) || (/.*\/images\//.test(url))) {
       return next();
     }
     req.url = '/index.html';
