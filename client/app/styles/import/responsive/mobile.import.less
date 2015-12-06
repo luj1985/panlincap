@@ -1,0 +1,447 @@
+@media (max-width:1023px) {
+  #navigation, #submenu, #header, #body, #breadcrumb {
+    transition: transform .4s ease-in-out;
+  }
+
+  #body {
+    padding: 0;
+    margin-bottom: 40px;
+  }
+
+  #breadcrumb {
+    top: 80px;
+    padding-left: @base-size;
+  }
+
+  #header {
+    padding: .5*@base-size @base-size;
+    background-position: 14px center;
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,.26);
+    border-radius: 1px; // for iOS8 compatible reason
+
+    .wrapper {
+      display: none;
+    }
+  }
+
+  #navigation {
+    position: fixed;
+    left: 100%;
+    height: 100%;
+    width: 140px;
+    transition: transform .4s ease-in-out;
+    top: 0;
+    overflow: auto;
+    padding: 4*@base-size 0 0 @base-size;
+
+    a {
+      text-align: left;
+      display: block !important;
+      line-height: 30px;;
+      font-size: 20px !important;
+    }
+  }
+
+  #submenu {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: @color-main;
+
+    a {
+      color: @color-white;
+      font-size: 18px;
+      padding: 5px;
+      display: inline-block;
+    }
+
+    ul {
+      display: table;
+      width: 100%;
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+
+    li {
+      text-align: center;
+      display: table-cell;
+    }
+  }
+
+  #body .cases {
+    max-width: 800px;
+  }
+
+  .company {
+    width: 100%/3;
+    display: inline-block;
+  }
+
+  .viewport {
+    top: 130px;
+  }
+
+  .revealbg {
+    display: none;
+  }
+
+  .reveal {
+    width: auto;
+    margin: 0;
+    background-color: rgba(255,255,255,.8);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px;
+    padding: @base-size @base-size 2*@base-size @base-size;
+    a.close {
+      display: none;
+    }
+  }
+
+  .push {
+    #navigation, #submenu, #header, #body, #breadcrumb {
+      transform: translateX(-@sidebar-menu-width);
+    }
+
+    #dimmer {
+      display: block;
+    }
+  }
+
+  html:lang(en) {
+    .push {
+      #navigation, #submenu, #header, #body, #breadcrumb {
+        transform: translateX(-@sidebar-menu-width-en);
+      }
+    }
+  }
+}
+
+/* phones */
+@media (max-width: 767px) {
+  #body .cases {
+    .company-logo p {
+      display: none !important;
+    }
+  }
+
+  #breadcrumb {
+    display: none;
+  }
+
+  .mobile.menu.trigger {
+    display: inline-block;
+  }
+
+  .main {
+    padding: @base-size 2*@base-size;
+  }
+
+  .viewport {
+    top: 74px;
+  }
+
+  .founds .found {
+    width: 50%;
+    padding: 5px;
+    float:left;
+
+    .inner {
+      padding: 30px 10px;
+      height: 180px;
+    }
+  }
+
+  .case-group {
+    padding: 0 0;
+    h4 {
+      margin: 0 16px;
+    }
+  }
+
+  .panlin.member {
+    text-align: left;
+    padding: 16px !important;
+    background-color: rgba(255,255,255,.8);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px;
+
+    img {
+      max-width: 120px;
+    }
+
+    .description {
+      text-align: left;
+    }
+  }
+
+  #copyright {
+    display: none !important
+  }
+
+  .panlin.dialog {
+    .content-body {
+      padding: 60px 16px;
+      display: block;
+    }
+    .description {
+      display: block;
+      padding: 0;
+    }
+  }
+
+  .main {
+    min-height: 200px;
+    margin: 0;
+    padding: 16px;
+    word-wrap: break-word;
+  }
+
+  div.viewport {
+    .reveal {
+      min-height: 200px;
+    }
+  }
+
+  .company {
+    width: 50%;
+    display: inline-block;
+    padding: 4px !important;
+  }
+
+  .companys {
+    padding: 0 16px;
+    text-align: left;
+
+    .company-logo {
+      padding: 7px;
+      height: 110px !important;
+      .logo {
+        height: 70px !important;
+        background-size: contain;
+      }
+      p {
+        margin: 7px 0 0 0;
+      }
+    }
+  }
+
+  .content-column-left, .content-column-right {
+    display: block !important;
+    width: 100%;
+    float: none;
+    padding: 0;
+  }
+
+  #breadcrumb {
+    display: none;
+  }
+
+  .vertical.pagination {
+    display: none;  
+  }
+
+  .topics {
+    width: auto;
+    .topic {
+      width: 50%;
+      height: 300px;
+    }
+    .topic.topic-0 {
+      top: 0;
+      left: 0;
+    }
+    .topic.topic-1 {
+      top: 0;
+      left: 50%;
+    }
+    .topic.topic-2 {
+      top: 300px;
+      left: 0;
+    }
+    .topic.topic-3 {
+      top: 300px;
+      left: 50%;
+    }
+  }
+
+  .teams {
+    .person {
+      box-sizing: content-box;
+      width: 50%;
+      margin: 10px 0;
+      text-align: center;
+      img {
+        width: 95%;
+      }
+    }
+  }
+
+  input[type="search"] {
+    display: none;
+  }
+
+
+  table.hire {
+    width : 100%;
+    max-width: 500px;
+    margin: 0;
+    tr {
+      td:nth-of-type(2), th:nth-of-type(2) {
+        padding-left: 14px;
+      }
+    }
+  }
+}
+
+/* portrait phones */
+@media (max-width: 767px) and (orientation: landscape) {
+  #navigation {
+    padding-bottom: 50px;
+  }
+}
+
+
+@media (max-width: 320px) {
+  .pagination .goto {
+    display: none !important;
+  }
+
+  .topics {
+    height : auto !important;
+    // TODO: eliminate !important;
+    .topic {
+      display: block !important;
+      width: auto !important;
+      height: 280px !important;
+      top: auto !important;
+      left: auto !important;
+      position: relative;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  #breadcrumb {
+    display: none;
+  }
+}
+
+
+@media (min-device-width : 768px) and (max-device-width : 1024px) {
+  #header {
+    padding: @base-size 3*@base-size @base-size 2*@base-size;
+  }
+
+  #submenu { }
+  
+  .viewport {
+    top: 130px;
+  }
+
+  .founds .found {
+    width: 100%/3;
+    padding: 5px;
+    float: left;
+
+    .inner {
+      padding: 30px 10px;
+      height: 240px;
+    }
+  }
+
+  .main {
+    padding: 2*@base-size 3*@base-size;
+  }
+
+  input[type="search"] {
+    display: none;
+  }
+}
+
+// iPad in landscape
+@media (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+  #breadcrumb {
+    top: 120px;
+    padding-left: 0;
+  }
+
+  #navigation {
+    top: 88px;
+    padding: 0 28px;
+  }
+
+  .trigger {
+    display: none !important;
+  }
+
+  #submenu {
+    top: 180px;
+    left: 28px;
+  }
+  
+  .panlin.dialog .dialog-body {
+    max-width: 960px;
+    padding : 28px;
+    margin: 0 auto;
+  }
+
+  .founds .found {
+    width: 100%/3;
+  }
+
+  .reveal {
+    padding : @base-size 2*@base-size;
+    margin-left: 220px;
+  }
+  .revealbg {
+    left: 216px;
+  }
+  .mobile {
+    display: none;
+  }
+  .viewport {
+    margin-top: 2.5*@base-size;
+  }
+
+  .main {
+    margin-left: @submenu-width;
+  }
+}
+
+
+// iPad in portrait
+@media (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+
+  #header {
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,.26);
+    .wrapper {
+      display: none;
+    }
+  }
+
+  #copyright {
+    display: none;
+  }
+
+  #breadcrumb {
+    top: 88px;
+    padding-left: 0;
+  }
+  
+  #navigation {
+    position: fixed;
+    padding: 84px 16px 0 16px;
+    left: 100%;
+    height: 100%;
+    width: 140px;
+    transition: transform .4s ease-in-out;
+    top: 0;
+    overflow: auto;
+
+    a {
+      text-align: left;
+      display: block !important;
+      line-height: 30px;
+      font-size: 20px !important;
+    }
+  }
+}

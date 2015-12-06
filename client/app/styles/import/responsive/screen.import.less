@@ -1,3 +1,5 @@
+
+
 @media (min-width : 1025px) {
   #dimmer, #header, #navigation, #breadcrumb {
     left: 0;
@@ -10,7 +12,6 @@
 
   #navigation {
     top: 88px;
-    padding: 0 4*@base-size;
   }
 
   #breadcrumb {
@@ -23,6 +24,26 @@
     top: 180px;
     left: 4*@base-size;
     z-index: 1;
+  }
+
+  #submenu ul {
+    font-family: @font-title;
+    li:first-child {
+      border-top: 1px solid black;
+    }
+    li {
+      border-bottom: 1px solid black;
+      line-height: 35px;
+      padding: 0 7px;
+      color: black;
+      &.search {
+        border: none;
+      }
+    }
+    a {
+      color: black;
+      font-family: @font-title;
+    }
   }
 
   #body {
@@ -60,14 +81,6 @@
     }
   }
 
-  .reveal {
-    padding : @base-size 2*@base-size;
-    margin-left: @submenu-width;
-  }
-  .revealbg {
-    left: 216px;
-  }
-
   .main {
     margin: 0 auto;
     padding: 2*@base-size 3*@base-size;
@@ -79,5 +92,22 @@
 
   .trigger {
     display: none !important;
+  }
+
+  .reveal {
+    padding : @base-size 2*@base-size;
+    margin-left: @submenu-width;
+  }
+  .revealbg {
+    left: @submenu-width + 4*@base-size;
+  }
+  
+  html:lang(en) {
+    .reveal {
+      margin-left: @submenu-width-en;
+    }
+    .revealbg {
+      left: @submenu-width-en + 4*@base-size;
+    }
   }
 }
