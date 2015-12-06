@@ -134,6 +134,9 @@ a {
 .found h4 {
   color: #851910;
 }
+#body {
+  min-height: 100%;
+}
 #body .founds .found {
   min-width: 200px;
 }

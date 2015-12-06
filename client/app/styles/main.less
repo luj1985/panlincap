@@ -3,7 +3,6 @@
 @import "./import/variables.import.less";
 
 // reset base style
-@import "./import/fonts.import.less";
 @import "./import/base.import.less";
 
 // region styles
@@ -21,8 +20,26 @@
 
 @import "./import/responsive.import.less";
 
-body {
-  -webkit-touch-callout: none;
+@font-face {
+  font-family: '隶书';
+  src: url('./fonts/panlin.lishu.eot');
+  src: url('./fonts/panlin.lishu.eot?#iefix') format('embedded-opentype'),
+       url('./fonts/panlin.lishu.woff') format('woff'),
+       url('./fonts/panlin.lishu.ttf') format('truetype'),
+       url('./fonts/panlin.lishu.svg#lishu') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: '楷体';
+  src: url('./fonts/panlin.kaiti.eot');
+  src: url('./fonts/panlin.kaiti.eot?#iefix') format('embedded-opentype'),
+       url('./fonts/panlin.kaiti.woff') format('woff'),
+       url('./fonts/panlin.kaiti.ttf') format('truetype'),
+       url('./fonts/panlin.kaiti.svg#kaiti') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 #dimmer, #header, #navigation, #breadcrumb {
@@ -30,21 +47,8 @@ body {
   width: 100%;
 }
 
-#header {
-  z-index: 1;
-}
-
-#navigation {
-  z-index: 5;
-}
-
-#breadcrumb {
-  z-index: 1;
-}
-
 #submenu {
   position: fixed;
-  z-index: 1;
   ul {
     list-style: none;
     padding-left: 0;
@@ -59,14 +63,11 @@ body {
     position: relative;
     height: 100%;
     overflow: auto;
-    -webkit-overflow-scrolling: touch;
-            overflow-scrolling: touch;
   }
 }
 
 #body {
   position: relative;
-  min-height: 100%; // for browsers which doesn't support calc (IE8)
   min-height: calc(~"100% - "@footer-height);
 }
 
@@ -87,10 +88,4 @@ body {
 
 .clearfix {
   clear: both;
-}
-
-
-input[type="search"] {
-  width: 100px;
-  padding: 2px 4px;
 }

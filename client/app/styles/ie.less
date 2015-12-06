@@ -16,6 +16,7 @@
 @ie-bg-reveal : url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP4fwYAAs0BzF1VEXcAAAAASUVORK5CYII=);
 // rgba(255,255,255,.9)  
 @ie-bg-main : url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP4/xQAAuYB5e33aXgAAAAASUVORK5CYII=);
+
 a {
   color: @ie-color-main;
 }
@@ -180,6 +181,12 @@ a {
   h3, h4 {
     color: @ie-color-main;
   }
+}
+
+#body {
+  // IE doesn't support calc ...
+  //min-height: calc(~"100% - "@footer-height); 
+  min-height: 100%;
 }
 
 #body .founds .found {
