@@ -113,7 +113,10 @@ module Panlincap
 
     get '/api/investees', :provides => :json do
       lang = request.cookies["lang"] || 'zh'
-      Investee.where(:lang => lang).to_json
+      investees = Investee.where(:lang => lang)
+      investees = investees.group_by { |i| i.area }
+      investees = investees.map {|k, v| {:area => k, :brands => v}}
+      investees.to_json
     end
 
     get '/api/menus', :provides => :json do

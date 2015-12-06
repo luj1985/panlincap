@@ -11,10 +11,6 @@ PanlinCap.module('PanlinCap.Investee', function(Case, PanlinCap, Backbone, Mario
 
   var collection = new InvesteeCollection();
 
-  PanlinCap.reqres.setHandler('investees:fetch', function(id) {
-    return $.get('/api/investees');
-  });
-
   var CaseView = Marionette.ItemView.extend({
     template : Handlebars.compile(
       '<div class="company-logo">' +
@@ -64,21 +60,21 @@ PanlinCap.module('PanlinCap.Investee', function(Case, PanlinCap, Backbone, Mario
 
   var CasesCollectionView = Share.ScrollView.extend({
     childView : InvesteesView,
-    className : 'cases main'
+    className : 'cases main',
+    initialize : function() {
+      var collection = this.collection;
+      this.listenTo(PanlinCap, 'language', function() {
+        collection.fetch();
+      });
+    }
   });
 
   var casesController = {
     showCases: function() {
       PanlinCap.bodyRegion.empty();
       PanlinCap.execute('showBackground', 'cases');
-      PanlinCap.reqres.request('investees:fetch').then(function(raw) {
-        var data = _.chain(raw).groupBy('area').map(function(brands, area) {
-          return { area : area, brands : brands };
-        }).value();
-
-        var cases = new Backbone.Collection(data);
-        PanlinCap.bodyRegion.show(new CasesCollectionView({ collection : cases }));
-      });
+      PanlinCap.bodyRegion.show(new CasesCollectionView({ collection : collection }));
+      collection.fetch();
     }
   };
 
