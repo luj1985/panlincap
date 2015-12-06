@@ -1,28 +1,13 @@
-@media (min-width : 1025px) {
-  #dimmer, #header, #navigation, #breadcrumb {
-    left: 0;
-  }
-
-  #header {
-    top: 0;
-    padding: @base-size 5*@base-size @base-size 4*@base-size;
+@media (min-width: 769px) {
+  #submenu {
+    position: fixed;
+    top: 180px;
+    left: 0
   }
 
   #navigation {
     top: 88px;
     padding: 0 4*@base-size;
-  }
-
-  #breadcrumb {
-    top: 120px;
-    padding-left: 4*@base-size;
-  }
-
-  #submenu {
-    position: fixed;
-    top: 180px;
-    left: 4*@base-size;
-    z-index: 1;
   }
 
   #submenu ul {
@@ -44,6 +29,60 @@
       font-family: @font-title;
     }
   }
+
+  .reveal {
+    padding : @base-size 2*@base-size;
+    margin-left: @submenu-width;
+  }
+  .revealbg {
+    left: @submenu-width + 4*@base-size;
+  }
+
+  .trigger {
+    display: none;
+  }
+
+  html:lang(en) {
+    .reveal {
+      margin-left: @submenu-width-en;
+    }
+    .revealbg {
+      left: @submenu-width-en + 4*@base-size;
+    }
+  }
+}
+
+@media (min-width:769px) and (max-width:1024px) {
+  #submenu {
+    left: 2*@base-size;
+  }
+  .main {
+    margin-left: @submenu-width;
+  }
+  .reveal {
+    margin-left: @submenu-width + 4*@base-size;
+  }
+}
+
+@media (min-width : 1025px) {
+  #dimmer, #header, #navigation, #breadcrumb {
+    left: 0;
+  }
+
+  #submenu {
+    left: 4*@base-size;
+  }
+
+  #header {
+    top: 0;
+    padding: @base-size 5*@base-size @base-size 4*@base-size;
+  }
+
+  #breadcrumb {
+    top: 120px;
+    padding-left: 4*@base-size;
+  }
+
 
   #body {
     padding: @base-size 4*@base-size;
@@ -77,27 +116,6 @@
 
   .mobile {
     display: none;
-  }
-
-  .trigger {
-    display: none !important;
-  }
-
-  .reveal {
-    padding : @base-size 2*@base-size;
-    margin-left: @submenu-width;
-  }
-  .revealbg {
-    left: @submenu-width + 4*@base-size;
-  }
-
-  html:lang(en) {
-    .reveal {
-      margin-left: @submenu-width-en;
-    }
-    .revealbg {
-      left: @submenu-width-en + 4*@base-size;
-    }
   }
 }
 

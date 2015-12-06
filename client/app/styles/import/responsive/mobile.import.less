@@ -1,27 +1,6 @@
-@media (max-width:1024px) {
-  #navigation, #submenu, #header, #body, #breadcrumb {
-    transition: transform .4s ease-in-out;
-  }
-
-  #body {
-    padding: 0;
-    margin-bottom: 40px;
-  }
-
-  #breadcrumb {
-    top: 80px;
-    padding-left: @base-size;
-  }
-
-  #header {
-    padding: .5*@base-size @base-size;
-    background-position: 14px center;
-    box-shadow: 0 3px 8px 0 rgba(0,0,0,.26);
-    border-radius: 1px; // for iOS8 compatible reason
-
-    .wrapper {
-      display: none;
-    }
+@media (max-width:768px) {
+  #copyright {
+    display: none;
   }
 
   #navigation {
@@ -42,13 +21,23 @@
     }
   }
 
+  #header {
+    padding: .5*@base-size @base-size;
+    background-position: 14px center;
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,.26);
+    border-radius: 1px; // for iOS8 compatible reason
+
+    .wrapper {
+      display: none;
+    }
+  }
+
   #submenu {
     top: auto;
     bottom: 0;
     left: 0;
     width: 100%;
     background-color: @color-main;
-
     a {
       color: @color-white;
       font-size: 18px;
@@ -67,19 +56,9 @@
       text-align: center;
       display: table-cell;
     }
-  }
-
-  #body .cases {
-    max-width: 800px;
-  }
-
-  .company {
-    width: 100%/3;
-    display: inline-block;
-  }
-
-  .viewport {
-    top: 130px;
+    .search {
+      display: none;
+    }
   }
 
   .revealbg {
@@ -99,6 +78,35 @@
 
   .mobile.menu.trigger {
     display: inline-block;
+  }
+}
+
+@media (max-width:1024px) {
+  #navigation, #submenu, #header, #body, #breadcrumb {
+    transition: transform .4s ease-in-out;
+  }
+
+  #body {
+    padding: 0;
+    margin-bottom: 40px;
+  }
+
+  #breadcrumb {
+    top: 120px;
+    padding-left: @base-size;
+  }
+
+  #body .cases {
+    max-width: 800px;
+  }
+
+  .company {
+    width: 100%/3;
+    display: inline-block;
+  }
+
+  .viewport {
+    top: 130px;
   }
 
   .push {
@@ -121,7 +129,7 @@
 }
 
 /* phones */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   #body .cases {
     .company-logo p {
       display: none !important;
@@ -173,10 +181,6 @@
     }
   }
 
-  #copyright {
-    display: none !important
-  }
-
   .panlin.dialog {
     .content-body {
       padding: 60px 16px;
@@ -190,15 +194,9 @@
 
   .main {
     min-height: 200px;
-    margin: 0;
+    margin: 0 auto;
     padding: 16px;
     word-wrap: break-word;
-  }
-
-  div.viewport {
-    .reveal {
-      min-height: 200px;
-    }
   }
 
   .company {
@@ -366,10 +364,6 @@
 
   .founds .found {
     width: 100%/3;
-  }
-
-  .main {
-    margin-left: @submenu-width;
   }
 }
 
