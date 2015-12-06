@@ -40,6 +40,11 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
       'click a.back' : function(e) {
         e.preventDefault();
         window.history.back();
+      },
+      'click .trigger' : function(e) {
+        e.preventDefault();
+        console.log('clicked');
+        $('body').toggleClass('push');
       }
     }
   });
@@ -179,10 +184,6 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
     PanlinCap.headerRegion.show(new HeaderView({model : fragmentModel}));
     PanlinCap.navRegion.show(new MenuView({ collection : menuCollection }));
     PanlinCap.breadcrumbRegion.show(new BreadcrumbView({model : fragmentModel, collection : menuCollection }));
-
-    $('.mobile.menu.trigger').click(function() {
-      $('body').toggleClass('push');
-    });
 
     $('#navigation').on('click', 'a', function() {
       $('body').removeClass('push');
