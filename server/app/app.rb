@@ -7,17 +7,12 @@ module Panlincap
 
     enable :sessions
 
-    categories = {
-      "company" => 168,
-      "invested" => 163
-    }
-    
-    reverse_categories = {
-      168 => "company",
-      163 => "invested"
-    }
-
     get '/api/home', :provides => :json do
+      reverse_categories = {
+        168 => "company",
+        163 => "invested"
+      }
+
       lang = request.cookies["lang"] || 'zh'
       aboutBrief = Declaration.where(:name => '_about', :lang => lang).first.body
       principleBrief = Declaration.where(:name => '_principle', :lang => lang).first.body
@@ -55,6 +50,15 @@ module Panlincap
     #168 公司新闻 company
     #163 被投公司资讯 invested
     get '/api/article', :provides => :json do
+      categories = {
+        "company" => 168,
+        "invested" => 163
+      }
+      reverse_categories = {
+        168 => "company",
+        163 => "invested"
+      }
+      
       type = params[:type]
       category = categories[type]
 
@@ -123,11 +127,10 @@ module Panlincap
     end
 
     get '/api/article', :with => :id, :provides => :json do
-      categories = {
+      reverse_categories = {
         168 => "company",
         163 => "invested"
       }
-
       id = params[:id].to_i
       article = Article.find id
       article.count += 1
@@ -137,7 +140,7 @@ module Panlincap
         :count => article.count,
         :title => article.title,
         :body => article.body,
-        :category => categories[article.category_id]
+        :category => reverse_categories[article.category_id]
       }
 
       previousArticle = Article.where("id < ? and category_id = ?", id, article.category_id).order('id desc').first
