@@ -3,8 +3,24 @@ PanlinCap.module('PanlinCap.Found', function(Found, PanlinCap, Backbone, Marione
 
   var colors = [ 'rgb(180,6,12)', 'rgb(199,99,103)', 'rgb(178,53,55)', 'rgb(208,145,148)' ];
 
+  var messages = {
+    zh : {
+      name : "基金名称：",
+      period : "投资周期：",
+      company : "投资项目：",
+      distribution : "投资行业分布："
+    },
+    en : {
+      name : "Fund Name:",
+      period : "Investment Period:",
+      company : "Invested Companies:",
+      distribution : "Industry Distribution:"
+    }
+  };
+
   var FoundModel = Backbone.Model.extend({
     toJSON : function() {
+
       var data = Backbone.Model.prototype.toJSON.apply(this, arguments);
       var portfolio = data.portfolio;
       if (portfolio) {
@@ -18,6 +34,11 @@ PanlinCap.module('PanlinCap.Found', function(Found, PanlinCap, Backbone, Marione
           };
         });
       }
+
+      var lang = $.cookie('lang');
+      var message = messages[lang];
+
+      data.labels = message;
       data.fullname = data.fullname || data.name;
       return data;
     }

@@ -4,13 +4,13 @@
   <h4>{{ fullname }}</h4>
   <div class="found-wrapper">
     <table class="content-column-left">
-      <tr><td>基金名称：</td><td>{{ name }}</td></tr>
+      <tr><td>{{ labels.name }}</td><td>{{ name }}</td></tr>
       {{#if period}}
-      <tr><td>投资周期：</td><td>{{ period }}</td></tr>
+      <tr><td>{{ labels.period }}</td><td>{{ period }}</td></tr>
       {{/if}}
 
       {{#if company }}
-      <tr><td>投资项目：</td><td>{{ company }}</td></tr>
+      <tr><td>{{ labels.company }}</td><td>{{ company }}</td></tr>
       {{/if}}
 
       {{#if statusMsg }}
@@ -20,7 +20,7 @@
 
     <div class="content-column-right">
       {{#if portfolio}}
-      <p>投资行业分布：</p>
+      <p>{{ labels.distribution }}</p>
       <table class="chart distribution">
         <tr class="bar">
         {{#each portfolio}}
