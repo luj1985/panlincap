@@ -12,6 +12,8 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
 
   var menuCollection = new MenuCollection();
 
+  var Lang = PanlinCap.module('PanlinCap.Lang');
+
   var HeaderView = Marionette.ItemView.extend({
     template : PanlinCapTpl['templates/header.hbs'],
     initialize : function() {
@@ -30,12 +32,7 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
       'click .lang' : function(e) {
         e.preventDefault();
         var lang = $(e.target).data('lang');
-        var current = $.cookie('lang');
-        // or disable language selection button.
-        if (lang !== current) {
-          $.cookie('lang', lang, { expires: 365 });
-          PanlinCap.trigger('language', lang);
-        }
+        Lang.setLanguage(lang);
       },
       'click a.back' : function(e) {
         e.preventDefault();
@@ -178,7 +175,7 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
 
   
   function syncLanguage() {
-    var lang = $.cookie('lang') || 'zh';
+    var lang = Lang.getLanguage();
     $('html').attr('lang', lang);
   }
 

@@ -1,4 +1,4 @@
-PanlinCap.module('PanlinCap.Lang', function(Lang) {
+PanlinCap.module('PanlinCap.Lang', function(Lang, PanlinCap) {
   'use strict';
 
   var messages = {
@@ -22,8 +22,21 @@ PanlinCap.module('PanlinCap.Lang', function(Lang) {
     }
   };
 
+  Lang.getLanguage = function() {
+    return $.cookie('lang') || 'zh';
+  };
+
+  Lang.setLanguage = function(lang) {
+    var current = Lang.getLanguage();
+    // or disable language selection button.
+    if (lang !== current) {
+      $.cookie('lang', lang, { expires: 365 });
+      PanlinCap.trigger('language', lang);
+    }
+  };
+
   Lang.getLabels = function() {
-    var lang = $.cookie('lang');
+    var lang = Lang.getLanguage() ;
     return messages[lang];
   };
 
