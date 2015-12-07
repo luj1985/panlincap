@@ -12,6 +12,7 @@
     <thead>
       <tr>
         <th class=header> <%= mat(:declaration, :title) %></th>
+        <th class=header> <%= mat(:declaration, :description) %></th>
         <th class=header> <%= mat(:declaration, :name) %></th>
         <th class=header> <%= mat(:declaration, :created_at) %></th>
         <th class=header> <%= mat(:declaration, :updated_at) %></th>
@@ -27,6 +28,7 @@
               <%= tag_icon(:edit) %> <%= declaration.title %>
             </a>
           </td>
+          <td class=list-column> <%= declaration.description %> </td>
           <td class=list-column> <%= declaration.name %> </td>
           <td class=list-column> <%= time_ago_in_words declaration.created_at %></td>
           <td class=list-column> <%= time_ago_in_words declaration.updated_at %></td>

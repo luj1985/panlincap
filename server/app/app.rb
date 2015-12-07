@@ -7,49 +7,25 @@ module Panlincap
 
     enable :sessions
 
+    categories = {
+      "company" => 168,
+      "invested" => 163
+    }
+    
+    reverse_categories = {
+      168 => "company",
+      163 => "invested"
+    }
+
     get '/api/home', :provides => :json do
       lang = request.cookies["lang"] || 'zh'
-
-      # TODO: move those data into database
-      zhData = [{
-        :title => '关于磐霖',
-        :description => '上海磐霖资产管理有限公司是专业的人民币私募股权投资基金（以下简称PE基金）的投资管理平台, 主要从事未上市企业的股权投资和投资后的资产管理...',
-        :link => '#/about'    
-      }, {
-        :title => '投资理念',
-        :description => '核心投资理念 –- “快乐投资”<br>差异化投资模式 –- “专业创造价值”',
-        :link => '#/investment'
-      }, {
-        :title => '投资案例',
-        :description => '我们既有已在创业板首批上市的成功投资案例，也有已经入股而预期在三年内上市的项目...',
-        :link => '#/investees'
-      }]
-
-      enData  = [{
-        :title => 'About Panlin',
-        :description => '''Shanghai Pan-Lin Asset Management Co., Ltd. is a professional RMB private equity funds (hereinafter PE funds) 
-        investment management platform which is mainly engaged in assets management in equity investment and post-investment stages. ''',
-        :link => '#/about'    
-      }, {
-        :title => 'Investment Concept',
-        :description => 'Core Investment Concept - "Happy investment"...',
-        :link => '#/investment'
-      }, {
-        :title => 'Investment Cases',
-        :description => '我们既有已在创业板首批上市的成功投资案例，也有已经入股而预期在三年内上市的项目...',
-        :link => '#/investees'
-      }]
-
-      data = (lang == 'en') ? enData : zhData
+      aboutBrief = Declaration.where(:name => '_about', :lang => lang).first.body
+      principleBrief = Declaration.where(:name => '_principle', :lang => lang).first.body
+      casesBrief = Declaration.where(:name => '_cases', :lang => lang).first.body
 
       news_preview = ''
       news_preview += '<div class="news-preview">'
 
-      categories = {
-        168 => "company",
-        163 => "invested"
-      }
-      type = categories[params[:type]]
 
       Article.where("category_id = 168 or category_id = 163").limit(3).order('created_at desc').each do |article|
         title = article.title
@@ -57,45 +33,29 @@ module Panlincap
         body = article.body
         content = strip_tags(body).gsub(/&nbsp;/, ' ')
         id = article.id.to_s
-        category = categories[article.category_id];
+        category = reverse_categories[article.category_id];
 
         news_preview += '<h4><a href="#/news/' + category +'/' + id + '">' + date + '  [ ' + title + ' ]</a></h4>'
         news_preview += '<p>' + content[0..100] + '</p>'
       end
       news_preview += '</div>'
 
-      zhNews = { 
-        :title => '新闻中心',
-        :link => '#/news',
-        :description => news_preview
-      }
+      data = [{ :link => '/about', :description => aboutBrief },
+             { :link => '/investment', :description => principleBrief },
+             { :link => '/investees', :description => casesBrief },
+             { :link => '/news', :description => news_preview }]
 
-      enNews = {
-        :title => 'News',
-        :link => '#/news',
-        :description => news_preview
-      }
-
-      news = (lang == 'en') ? enNews : zhNews
-
-      data.push(news)
+      data.map do |m|
+        link = m[:link]
+        m[:title] = Menu.where(:link => link, :lang => lang).first.title
+      end
       data.to_json
     end
 
     #168 公司新闻 company
     #163 被投公司资讯 invested
     get '/api/article', :provides => :json do
-      categories = {
-        "company" => 168,
-        "invested" => 163
-      }
-
-      reverse_categories = {
-        168 => "company",
-        163 => "invested"
-      }
       type = params[:type]
-
       category = categories[type]
 
       keyword = params[:q]
