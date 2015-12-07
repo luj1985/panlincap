@@ -9,6 +9,8 @@ PanlinCap.module('PanlinCap.Home', function(Home, PanlinCap, Backbone, Marionett
   var collection = new HomeCollection();
   var visited = false;
 
+  var Lang = PanlinCap.module('PanlinCap.Lang');
+
   var HomeView = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/home.hbs'],
     className: 'topics hide',
@@ -18,6 +20,11 @@ PanlinCap.module('PanlinCap.Home', function(Home, PanlinCap, Backbone, Marionett
       this.listenTo(PanlinCap, 'language', function() {
         collection.fetch();
       });
+    },
+    serializeData : function() {
+      var data = Marionette.ItemView.prototype.serializeData.apply(this, arguments);
+      data.more = Lang.getLabel('more');
+      return data;
     },
     onRender : function() {
       var background = this.background,

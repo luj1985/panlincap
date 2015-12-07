@@ -67,29 +67,4 @@ PanlinCap.module('PanlinCap.Share', function(Share, PanlinCap, Backbone, Marione
       }
     }
   });
-
-
-  Share.RevealView = Marionette.ItemView.extend({
-    template : Handlebars.compile(
-      '{{{body}}}' + 
-      '<a href="{{back}}" class="close">' + 
-      '  <i class="fa fa-angle-double-left"></i> 收起' +
-      '</a>'
-    ),
-    className : 'reveal',
-    initialize : function() {
-      this.listenTo(PanlinCap.vent, 'reveal:active', this.revealView, this);
-      this.listenTo(PanlinCap.vent, 'reveal:hide', this.hideView, this);
-      this.listenTo(this.model, 'sync', this.render);
-      this.listenTo(PanlinCap, 'language', function() {
-        this.model.reload();
-      });
-    },
-    hideView : function() {
-      this.$el.removeClass('active');
-    },
-    revealView : function () {
-      this.$el.addClass('active');
-    }
-  });
 });

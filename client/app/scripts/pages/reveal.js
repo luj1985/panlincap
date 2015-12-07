@@ -1,8 +1,36 @@
 PanlinCap.module('PanlinCap.Reveal', function(Reveal, PanlinCap, Backbone) {
   'use strict';
 
-  var Share = PanlinCap.module('PanlinCap.Share');
+  var Lang = PanlinCap.module('PanlinCap.Lang');
 
+  var RevealView = Marionette.ItemView.extend({
+    template : Handlebars.compile(
+      '{{{body}}}' + 
+      '<a href="{{back}}" class="close">' + 
+      '  <i class="fa fa-angle-double-left"></i> {{collapse}}' +
+      '</a>'
+    ),
+    className : 'reveal',
+    initialize : function() {
+      this.listenTo(PanlinCap.vent, 'reveal:active', this.revealView, this);
+      this.listenTo(PanlinCap.vent, 'reveal:hide', this.hideView, this);
+      this.listenTo(this.model, 'sync', this.render);
+      this.listenTo(PanlinCap, 'language', function() {
+        this.model.reload();
+      });
+    },
+    serializeData : function() {
+      var data = Marionette.ItemView.prototype.serializeData.apply(this, arguments);
+      data.collapse = Lang.getLabel('collapse');
+      return data;
+    },
+    hideView : function() {
+      this.$el.removeClass('active');
+    },
+    revealView : function () {
+      this.$el.addClass('active');
+    }
+  });
   var RevealModel = Backbone.Model.extend({
     load : function(name, back) {
       this.name = name;
@@ -30,7 +58,7 @@ PanlinCap.module('PanlinCap.Reveal', function(Reveal, PanlinCap, Backbone) {
         return;
       }
 
-      PanlinCap.bodyRegion.show(new Share.RevealView({ model : model }));
+      PanlinCap.bodyRegion.show(new RevealView({ model : model }));
       model.load(subpage, fragment).then(function() {
         PanlinCap.vent.trigger('reveal:active');
       });
