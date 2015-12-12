@@ -1,22 +1,22 @@
 #navigation {
   background-color: @color-main;
   box-shadow: 0 3px 8px 0 rgba(0,0,0,.26);
+}
 
-  .menus {
-    text-align: right;
-    white-space: nowrap;
+.menus {
+  text-align: right;
+  white-space: nowrap;
+  font-family: '隶书';
+  font-size: @menu-font-size;
 
-    a {
-      font-family: '隶书';
-      font-size: @menu-font-size;
-      padding : 8px 14px;
-      display: inline-block;
-      color : white;
-      text-decoration: none;
+  a {
+    padding : 8px 14px;
+    display: inline-block;
+    color : white;
+    text-decoration: none;
 
-      &:hover {
-        color: @color-highlight;
-      }
+    &:hover {
+      color: @color-highlight;
     }
   }
 }

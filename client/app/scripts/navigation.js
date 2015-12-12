@@ -40,14 +40,13 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
       },
       'click .trigger' : function(e) {
         e.preventDefault();
-        console.log('clicked');
         $('body').toggleClass('push');
       }
     }
   });
 
   var MenuView = Marionette.ItemView.extend({
-    template: Handlebars.compile('{{#each items}}<a href="#{{link}}">{{title}}</a>{{/each}}'),
+    template: PanlinCapTpl['templates/menu.hbs'],
     className: 'menus',
     initialize : function() {
       this.listenTo(this.collection, 'sync', this.render);
@@ -59,6 +58,13 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
       });
       var models = _.map(menus, function(m) { return m.toJSON(); });
       return {items : models};
+    },
+    events : {
+      'click .lang' : function(e) {
+        e.preventDefault();
+        var lang = $(e.target).data('lang');
+        Lang.setLanguage(lang);
+      }
     }
   });
 
