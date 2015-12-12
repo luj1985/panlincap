@@ -18,15 +18,18 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
     template : PanlinCapTpl['templates/header.hbs'],
     initialize : function() {
       this.listenTo(this.model, 'change', this.render);
+      this.listenTo(PanlinCap, 'language', this.render);
     },
     serializeData : function() {
-      var fragment = this.model.get('fragment');
-      var mobile = PanlinCap.isMobile();
-      if (!mobile || fragment === '' || fragment === '/') {
-        return {home : true};
-      } else {
-        return {home : false};
-      }
+      var mobile = PanlinCap.isMobile(),
+          fragment = this.model.get('fragment'),
+          lang = Lang.getLanguage(),
+          home = (!mobile || fragment === '' || fragment === '/');
+      return {
+        home : home,
+        zh : (lang === 'zh'),
+        en : (lang === 'en')
+      };
     },
     events : {
       'click .lang' : function(e) {
@@ -50,14 +53,20 @@ PanlinCap.module('Navigation', function(Navigation, PanlinCap, Backbone, Marione
     className: 'menus',
     initialize : function() {
       this.listenTo(this.collection, 'sync', this.render);
+      this.listenTo(PanlinCap, 'language', this.render);
     },
     serializeData : function() {
       // pick top level menu item.
       var menus = this.collection.filter(function(d) {
         return !d.get('parent');
       });
+      var lang = Lang.getLanguage();
       var models = _.map(menus, function(m) { return m.toJSON(); });
-      return {items : models};
+      return {
+        items : models,
+        zh : (lang === 'zh'),
+        en : (lang === 'en')
+      };
     },
     events : {
       'click .lang' : function(e) {

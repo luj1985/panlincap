@@ -1,7 +1,7 @@
 <div class="language-switcher">
-  <a href="#" class="lang" data-lang="zh">中文</a>
+  <a href="#" class="lang{{#if zh}} active{{/if}}" data-lang="zh">中文</a>
   <span class="divider">|</span>
-  <a href="#" class="lang" data-lang="en">En</a>
+  <a href="#" class="lang{{#if en}} active{{/if}}" data-lang="en">En</a>
 </div>
 {{#each items}}
 <a href="#{{link}}">{{title}}</a>
