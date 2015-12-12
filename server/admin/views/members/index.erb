@@ -22,6 +22,7 @@
       <tr>
         <th class=header> <%= mat(:member, :priority) %></th>
         <th class=header> <%= mat(:member, :name) %></th>
+        <th class=header> <%= mat(:member, :identity) %></th>
         <th class=header> <%= mat(:member, :title) %></th>
         <th class=header> <%= mat(:member, :created_at) %></th>
         <th class=header> <%= mat(:member, :updated_at) %></th>
@@ -38,6 +39,7 @@
               <%= tag_icon(:edit) %> <%= member.name %>
             </a>
           </td>
+          <td class=list-column> <%= member.identity %> </td>
           <td class=list-column> <%= member.title %> </td>
           <td class=list-column> <%= time_ago_in_words member.created_at %></td>
           <td class=list-column> <%= time_ago_in_words member.updated_at %></td>

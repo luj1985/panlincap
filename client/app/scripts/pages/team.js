@@ -22,11 +22,6 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
     }
   });
 
-  var MemberView = Marionette.ItemView.extend({
-    template: PanlinCapTpl['templates/team/member.hbs'],
-    className : 'panlin member'
-  });
-
   var TeamView = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/team/team.hbs'],
     className : 'person',
@@ -41,13 +36,32 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
     }
   });
 
+  var promise;
+
   var TeamsView = Share.ScrollView.extend({
     childView : TeamView,
     className : 'teams main',
     initialize : function() {
       this.listenTo(PanlinCap, 'language', function() {
-        collection.fetch();
+        promise = collection.fetch();
       });
+    }
+  });
+
+  var MemberView = Marionette.ItemView.extend({
+    template: PanlinCapTpl['templates/team/member.hbs'],
+    className : 'panlin member',
+    initialize : function(args) {
+      this.selected = args.selected;
+      this.listenTo(PanlinCap, 'language', function() {
+        promise = collection.fetch();
+      });
+      this.listenTo(this.collection, 'sync', this.render);
+    },
+    serializeData : function() {
+      var id = this.selected;
+      var person = collection.findWhere({identity: id});
+      return person ? person.toJSON() : {};
     }
   });
 
@@ -57,12 +71,14 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
         PanlinCap.subRegion.empty();
         PanlinCap.execute('showBackground', 'team');
 
+        if (!promise) {
+          promise = collection.fetch();
+        }
+
         if (id) {
-          var person = collection.get(id);
-          PanlinCap.bodyRegion.show(new MemberView({model : person}));
+          PanlinCap.bodyRegion.show(new MemberView({selected : id, collection : collection}));
         } else {
           PanlinCap.bodyRegion.show(new TeamsView({collection: collection}));
-          collection.fetch();
         }
       }
     };

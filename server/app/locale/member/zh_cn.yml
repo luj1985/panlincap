@@ -4,6 +4,7 @@ zh_cn:
       name: 成员管理
       attributes:
         id: 编号
+        identity: 唯一标示符
         lang: 语言
         priority: 显示顺序
         name: 姓名

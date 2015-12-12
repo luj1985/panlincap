@@ -46,6 +46,18 @@
   </div>
 </fieldset>
 
+
+<% error = @member.errors.include?(:identity) %>
+<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :identity, :class => 'control-label col-sm-2' %>
+  <div class='controls col-sm-10'>
+    <%= f.text_field :identity, :class => 'form-control input-xlarge input-with-feedback' %>
+    <p>因为同时存在中文版和英文版，需要一个标示符来指明两者是同一个人，这样才能在切换语言后立刻显示</p>
+    <span class='help-inline'><%= error ? f.error_message_on(:identity) : "" %></span>
+  </div>
+</fieldset>
+
+
 <% error = @member.errors.include?(:name) %>
 <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :name, :class => 'control-label col-sm-2' %>
@@ -62,14 +74,7 @@
     <span class='help-inline'><%= error ? f.error_message_on(:suffix) : "" %></span>
   </div>
 </fieldset>
-<% error = @member.errors.include?(:position) %>
-<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :position, :class => 'control-label col-sm-2' %>
-  <div class='controls col-sm-10'>
-    <%= f.select :position, :options => [['合伙人', 'partner'], ['核心团队', 'member']], :class => 'form-control'%>
-    <span class='help-inline'><%= error ? f.error_message_on(:position) : "" %></span>
-  </div>
-</fieldset>
+
 <% error = @member.errors.include?(:title) %>
 <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :title, :class => 'control-label col-sm-2' %>
