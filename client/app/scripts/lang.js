@@ -9,7 +9,9 @@ PanlinCap.module('PanlinCap.Lang', function(Lang, PanlinCap) {
       distribution : '投资行业分布：',
       back : '返回',
       more : '更多',
-      collapse : '收起'
+      collapse : '收起',
+      male : '先生',
+      female : '女士'
     },
     en : {
       name : 'Fund Name:',
@@ -18,7 +20,9 @@ PanlinCap.module('PanlinCap.Lang', function(Lang, PanlinCap) {
       distribution : 'Industry Distribution:',
       back : 'Back',
       more : 'More',
-      collapse : 'Collapse'
+      collapse : 'Collapse',
+      male : 'Mr.',
+      female : 'Ms.'
     }
   };
 

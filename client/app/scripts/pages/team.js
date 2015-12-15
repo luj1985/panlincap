@@ -8,42 +8,34 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
 
   var collection = new MemberCollection();
 
-  var Share = PanlinCap.module('PanlinCap.Share');
+  var Share = PanlinCap.module('PanlinCap.Share'),
+      Lang = PanlinCap.module ('PanlinCap.Lang');
+
+  var promise;
+
+  function buildFullName(json) {
+    var lang = Lang.getLanguage();
+    var data = json || {};
+    if (lang === 'zh') {
+      data.fullname = data.name + '  ' + Lang.getLabel(data.suffix);
+    } else {
+      data.fullname = Lang.getLabel(data.suffix) + '  ' + data.name;
+    }
+    return data;
+  }
 
   var MemberDialogView = Marionette.ItemView.extend({
     template: PanlinCapTpl['templates/team/memberdialog.hbs'],
     className : 'panlin dialog',
+    serializeData : function() {
+      var data = Marionette.ItemView.prototype.serializeData.apply(this, arguments);
+      return buildFullName(data);
+    },
     onShow : function() {
       this.$el.bPopup({ 
         closeClass : 'close',
         opacity: 0.3,
         amsl : 0
-      });
-    }
-  });
-
-  var TeamView = Marionette.ItemView.extend({
-    template: PanlinCapTpl['templates/team/team.hbs'],
-    className : 'person',
-    onRender : function() {
-      var model = this.model;
-      if (!PanlinCap.isMobile()) {
-        this.$el.click(function(e) {
-          e.preventDefault();
-          PanlinCap.dialogRegion.show(new MemberDialogView({model : model}));
-        });
-      }
-    }
-  });
-
-  var promise;
-
-  var TeamsView = Share.ScrollView.extend({
-    childView : TeamView,
-    className : 'teams main',
-    initialize : function() {
-      this.listenTo(PanlinCap, 'language', function() {
-        promise = collection.fetch();
       });
     }
   });
@@ -61,7 +53,33 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
     serializeData : function() {
       var id = this.selected;
       var person = collection.findWhere({identity: id});
-      return person ? person.toJSON() : {};
+      var data = person ? person.toJSON()  : {};
+
+      return buildFullName(data);
+    }
+  });
+
+  var TeamView = Marionette.ItemView.extend({
+    template: PanlinCapTpl['templates/team/team.hbs'],
+    className : 'person',
+    onRender : function() {
+      var model = this.model;
+      if (!PanlinCap.isMobile()) {
+        this.$el.click(function(e) {
+          e.preventDefault();
+          PanlinCap.dialogRegion.show(new MemberDialogView({model : model}));
+        });
+      }
+    }
+  });
+
+  var TeamsView = Share.ScrollView.extend({
+    childView : TeamView,
+    className : 'teams main',
+    initialize : function() {
+      this.listenTo(PanlinCap, 'language', function() {
+        promise = collection.fetch();
+      });
     }
   });
 

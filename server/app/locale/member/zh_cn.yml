@@ -8,7 +8,7 @@ zh_cn:
         lang: 语言
         priority: 显示顺序
         name: 姓名
-        suffix: 称呼
+        suffix: 性别
         position: 身份
         title: 头衔
         avatar: 照片
