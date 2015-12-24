@@ -34,7 +34,7 @@ PanlinCap.module('PanlinCap.Lang', function(Lang, PanlinCap) {
     var current = Lang.getLanguage();
     // or disable language selection button.
     if (lang !== current) {
-      $.cookie('lang', lang, { expires: 365 });
+      $.cookie('lang', lang);
       PanlinCap.trigger('language', lang);
     }
   };
@@ -45,7 +45,14 @@ PanlinCap.module('PanlinCap.Lang', function(Lang, PanlinCap) {
   };
 
   Lang.getLabel = function(name) {
-    var labels = Lang.getLabels();
+    var labels = Lang.getLabels() || {};
     return labels[name];
   };
+
+  // Chrome break the session cookie rules.
+  // has to delete this cookie manually.
+  // https://code.google.com/p/chromium/issues/detail?id=128513
+  $(window).unload(function() {
+    $.cookie('lang', 'zh', { expires : -1 });
+  });
 });
