@@ -23,6 +23,14 @@ PanlinCap.module('PanlinCap.Found', function(Found, PanlinCap, Backbone, Marione
 
       data.labels = Lang.getLabels();
       data.fullname = data.fullname || data.name;
+      var total = this.collection.length,
+          index = this.collection.indexOf(this),
+          rest = total % 4;
+
+      data.style = '';
+      if ((total - index) > rest) {
+        data.style = 'found-4-column';
+      }
       return data;
     }
   });
@@ -58,6 +66,7 @@ PanlinCap.module('PanlinCap.Found', function(Found, PanlinCap, Backbone, Marione
     },
     onRender : function(e) {
       var collection = e.collection;
+      
       this.$el.on('click', '.found', function() {
         var index = $(this).data('index');
         var model = collection.get(index);

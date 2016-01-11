@@ -9,7 +9,8 @@
     "bpopup": "~0.11.0",
     "jquery-html5-placeholder-shim": "*",
     "backbone.paginator": "~2.0.2",
-    "jquery.cookie": "~1.4.1"
+    "jquery.cookie": "~1.4.1",
+    "fastclick": "~1.0.6"
   },
   "resolutions": {
     "underscore": ">=1.4.0 <=1.8.3"
