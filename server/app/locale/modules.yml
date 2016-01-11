@@ -1,10 +1,12 @@
 zh_cn:
   modules:
     accounts: 账号管理
-    investees: 案例管理
     menus: 菜单管理
     members: 成员管理
     founds: 基金管理
     articles: 新闻管理
     settings: 配置管理
     declarations: 关于磐霖
+    investees: 投资案例管理
+    invest_areas: 投资领域
+
