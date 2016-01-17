@@ -1,7 +1,7 @@
 Panlincap::Admin.controllers :invest_areas do
   get :index do
     @title = "Invest_areas"
-    @invest_areas = InvestArea.all
+    @invest_areas = InvestArea.all.order(order: :asc)
     render 'invest_areas/index'
   end
 
@@ -22,6 +22,21 @@ Panlincap::Admin.controllers :invest_areas do
       flash.now[:error] = pat(:create_error, :model => 'invest_area')
       render 'invest_areas/new'
     end
+  end
+
+
+  post :reorder do
+    from = params[:fromPosition]
+    to = params[:toPosition]
+    direction = params[:direction]
+    if direction == "forward"
+      #Member.where("priority > ? and priority <= ?", from, to).update_all("priority = priority - 1")
+    else
+      #Member.where("priority >= ? and priority < ?", to, from).update_all("priority = priority + 1")
+    end
+    #member = Member.find(params[:id])
+    #member.priority = to
+    #member.save
   end
 
   get :edit, :with => :id do

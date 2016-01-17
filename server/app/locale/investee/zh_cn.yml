@@ -4,6 +4,7 @@ zh_cn:
       name: 案例管理
       attributes:
         id: 编号
+        order: 顺序
         lang: 语言
         priority: 显示顺序
         name: 案例名

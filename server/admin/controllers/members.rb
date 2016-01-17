@@ -4,9 +4,9 @@ Panlincap::Admin.controllers :members do
 
     @lang = params[:lang]
     if @lang then
-      @members = Member.where(:lang => @lang).order("priority DESC")
+      @members = Member.where(:lang => @lang).order(lang: :desc, priority: :asc)
     else
-      @members = Member.all.order("priority DESC")
+      @members = Member.all.order(lang: :desc, priority: :asc)
     end
     render 'members/index'
   end

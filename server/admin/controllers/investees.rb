@@ -4,9 +4,9 @@ Panlincap::Admin.controllers :investees do
 
     @lang = params[:lang]
     if @lang then
-      @investees = Investee.where(:lang => @lang)
+      @investees = Investee.joins(:invest_area).where(:lang => @lang).order(lang: :desc, invest_area_id: :asc, order: :asc)
     else
-      @investees = Investee.all
+      @investees = Investee.joins(:invest_area).all.order(lang: :desc, invest_area_id: :asc, order: :asc)
     end
     render 'investees/index'
   end

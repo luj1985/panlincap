@@ -1,3 +1,17 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag 'jquery-ui' %>
+  <%= javascript_include_tag 'jquery.dataTables' %>
+  <%= javascript_include_tag 'jquery.dataTables.rowReordering' %>
+  <%= javascript_include_tag 'panlin-sort.js' %>
+  <script type="text/javascript">
+  $(function() {
+    $.panlinSort('#list', 'invest_areas/reorder');
+  });
+  </script>
+  
+<% end %>
+
+
 <ul class="nav nav-tabs">
   <li class=active> <%= link_to tag_icon(:list, pat(:list)), url(:invest_areas, :index) %></li>
   <li> <%= link_to tag_icon(:plus, pat(:new)), url(:invest_areas, :new) %></li>
@@ -10,7 +24,6 @@
         <th class=header> <%= mat(:invest_area, :name) %></th>
         <th class=header> <%= mat(:invest_area, :name_en) %></th>
         <th class=header> <%= mat(:invest_area, :created_at) %></th>
-        <th class=header> <%= mat(:invest_area, :updated_at) %></th>
         <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -29,7 +42,6 @@
             </a>
           </td>
           <td class=list-column> <%= time_ago_in_words invest_area.created_at %></td>
-          <td class=list-column> <%= time_ago_in_words invest_area.updated_at %></td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
                <%= link_to tag_icon(:edit), :href => url(:invest_areas, :edit, :id => invest_area.id), :rel => :tooltip, :title => "#{pat(:edit)} invest_area", :class => 'list-row-action-wrapper-link' %>
