@@ -35,7 +35,7 @@
 
     <tbody>
       <% @investees.each do |investee| %>
-        <tr class=list-row>
+        <tr class=list-row id="investee-<%= investee.id %>">
           <td class=list-column> <%= investee.order %> </td>
           <td class=list-column> 
             <a href="<%= url(:investees, :edit, :id => investee.id) %>">

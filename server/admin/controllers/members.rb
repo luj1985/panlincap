@@ -15,10 +15,12 @@ Panlincap::Admin.controllers :members do
     from = params[:fromPosition]
     to = params[:toPosition]
     direction = params[:direction]
+    m = Member.find(params[:id])
+    lang = m.lang
     if direction == "forward"
-      Member.where("priority > ? and priority <= ?", from, to).update_all("priority = priority - 1")
+      Member.where("lang = ? and priority > ? and priority <= ?", lang, from, to).update_all("priority = priority - 1")
     else
-      Member.where("priority >= ? and priority < ?", to, from).update_all("priority = priority + 1")
+      Member.where("lang = ? and priority >= ? and priority < ?", lang, to, from).update_all("priority = priority + 1")
     end
     member = Member.find(params[:id])
     member.priority = to

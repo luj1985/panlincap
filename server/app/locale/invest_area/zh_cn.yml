@@ -4,7 +4,7 @@ zh_cn:
       name: 投资领域
       attributes:
         id: 编号
-        order: 顺序
+        order: 序号
         name: 名称
         name_en: 名称（英文）
         created_at: 创建时间

@@ -4,9 +4,12 @@ Panlincap::Admin.controllers :investees do
 
     @lang = params[:lang]
     if @lang then
-      @investees = Investee.joins(:invest_area).where(:lang => @lang).order(lang: :desc, invest_area_id: :asc, order: :asc)
+      @investees = Investee.joins(:invest_area)
+        .where(:lang => @lang)
+        .order(lang: :desc, invest_area_id: :asc, order: :asc)
     else
-      @investees = Investee.joins(:invest_area).all.order(lang: :desc, invest_area_id: :asc, order: :asc)
+      @investees = Investee.joins(:invest_area).all
+        .order(lang: :desc, invest_area_id: :asc, order: :asc)
     end
     render 'investees/index'
   end
@@ -28,6 +31,23 @@ Panlincap::Admin.controllers :investees do
       flash.now[:error] = pat(:create_error, :model => 'investee')
       render 'investees/new'
     end
+  end
+
+
+  post :reorder do
+    from = params[:fromPosition]
+    to = params[:toPosition]
+    direction = params[:direction]
+    m = Investee.find(params[:id])
+    lang = m.lang
+    if direction == "forward"
+      Investee.where("lang = ? and \"order\" > ? and \"order\" <= ?", lang, from, to).update_all("\"order\" = \"order\" - 1")
+    else
+      Investee.where("lang = ? and \"order\" >= ? and \"order\" < ?", lang, to, from).update_all("\"order\" = \"order\" + 1")
+    end
+    investee = Investee.find(params[:id])
+    investee.order = to
+    investee.save
   end
 
   get :edit, :with => :id do

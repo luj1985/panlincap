@@ -6,7 +6,7 @@ zh_cn:
         id: 编号
         identity: 唯一标示符
         lang: 语言
-        priority: 显示顺序
+        priority: 序号
         name: 姓名
         suffix: 性别
         position: 身份

@@ -29,7 +29,7 @@
     </thead>
     <tbody>
       <% @invest_areas.each do |invest_area| %>
-        <tr class=list-row>
+        <tr class=list-row id="invest_area-<%= invest_area.id %>">
           <td class=list-column> <%= invest_area.order %> </td>
           <td class=list-column> 
             <a href="<%= url(:invest_areas, :edit, :id => invest_area.id) %>">

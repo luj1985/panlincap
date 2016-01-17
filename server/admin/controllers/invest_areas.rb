@@ -30,13 +30,13 @@ Panlincap::Admin.controllers :invest_areas do
     to = params[:toPosition]
     direction = params[:direction]
     if direction == "forward"
-      #Member.where("priority > ? and priority <= ?", from, to).update_all("priority = priority - 1")
+      InvestArea.where("\"order\" > ? and \"order\" <= ?", from, to).update_all("\"order\" = \"order\" - 1")
     else
-      #Member.where("priority >= ? and priority < ?", to, from).update_all("priority = priority + 1")
+      InvestArea.where("\"order\" >= ? and \"order\" < ?", to, from).update_all("\"order\" = \"order\" + 1")
     end
-    #member = Member.find(params[:id])
-    #member.priority = to
-    #member.save
+    area = InvestArea.find(params[:id])
+    area.order = to
+    area.save
   end
 
   get :edit, :with => :id do

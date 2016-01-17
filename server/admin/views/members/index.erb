@@ -29,7 +29,6 @@
         <th class=header> <%= mat(:member, :name) %></th>
         <th class=header> <%= mat(:member, :identity) %></th>
         <th class=header> <%= mat(:member, :title) %></th>
-        <th class=header> <%= mat(:member, :created_at) %></th>
         <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -45,7 +44,6 @@
           </td>
           <td class=list-column> <%= member.identity %> </td>
           <td class=list-column> <%= member.title %> </td>
-          <td class=list-column> <%= time_ago_in_words member.created_at %></td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
                <%= link_to tag_icon(:trash), :rel => :tooltip, :title => "#{pat(:delete)}", :class => 'list-row-action-delete-one' %>
