@@ -64,9 +64,9 @@ module Panlincap
 
       keyword = params[:q]
       if type == "search" then
-        articles = Article.where("(body LIKE '%#{keyword}%' or title LIKE '%#{keyword}%') and (category_id = 168 or category_id = 163)").page(params[:page]).order('created_at DESC')
+        articles = Article.where("(body LIKE '%#{keyword}%' or title LIKE '%#{keyword}%') and (category_id = 168 or category_id = 163)").page(params[:page]).order(attop: :desc, created_at: :desc)
       else
-        articles = Article.where(:category_id => category).page(params[:page]).order('created_at DESC')
+        articles = Article.where(:category_id => category).page(params[:page]).order(attop: :desc, created_at: :desc)
       end
 
       preview = articles.map do |article|
@@ -105,7 +105,7 @@ module Panlincap
 
     get '/api/investees', :provides => :json do
       lang = request.cookies["lang"] || 'zh'
-      investees = Investee.includes(:invest_area).where(:lang => lang)
+      investees = Investee.includes(:invest_area).where(:lang => lang).order(order: :asc)
       investees = investees.group_by { |i| i.invest_area }
       investees = investees.map do |k, v| 
         name = k.name_en

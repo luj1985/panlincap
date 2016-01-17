@@ -1,21 +1,12 @@
-<% content_for :javascripts do %>
-  <%= javascript_include_tag 'jquery-ui' %>
-  <%= javascript_include_tag 'jquery.dataTables' %>
-  <%= javascript_include_tag 'jquery.dataTables.rowReordering' %>
-  <%= javascript_include_tag 'articles-atop-list' %>
-<% end %>
-
 <ul class="nav nav-tabs">
   <li> <%= link_to tag_icon(:list, pat(:list)), url(:articles, :index) %></li>
   <li> <%= link_to tag_icon(:plus, pat(:new)), url(:articles, :new) %></li>
   <li class="active"> <%= link_to tag_icon(:pushpin, "置顶"), url(:articles, :attop) %></li>
 </ul>
 <div class="tabs-content">
-  <p class="well warning">暂时还不好用!!!</p>
   <table id=list class="table table-striped table-hover table-condensed">
     <thead>
       <tr>
-        <th class="header"> <%= mat(:article, :priority) %></th>
         <th class="header"> <%= mat(:article, :title) %></th>
         <th class="header"> <%= mat(:article, :created_at) %></th>
         <th class="header"> <%= mat(:article, :updated_at) %></th>
@@ -24,9 +15,11 @@
     </thead>
     <tbody>
       <% @articles.each do |article| %>
-        <tr class="list-row" id="member-<%= article.id %>">
-          <td class="list-column"> <%= article.priority %> </td>
-          <td class="list-column"> <%= article.title %> </td>
+        <tr class="list-row">
+          <td class="list-column"> 
+          <a href="<%= url(:articles, :edit, :id => article.id) %>">
+            <%= tag_icon(:edit) %> <%= article.title %>
+          </a> 
           <td class="list-column"> <%= time_ago_in_words article.created_at %></td>
           <td class="list-column"> <%= time_ago_in_words article.updated_at %></td>
           <td class="list-column"> 取消置顶 </td>
