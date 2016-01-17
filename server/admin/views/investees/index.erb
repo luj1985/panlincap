@@ -15,6 +15,7 @@
   <li> <%= link_to tag_icon(:plus, pat(:new)), url(:investees, :new) %></li>
 </ul>
 <div class=tabs-content>
+  <p class="well">鼠标拖拽记录调整顺序，无需保存立即生效</p>
   <div class="btn-group" role="group">
     <%= link_to "全部", url(:investees, :index), :class => (@lang ? 'btn btn-default' : 'btn btn-primary') %> 
     <%= link_to "中文", url(:investees, :index, :lang => 'zh'), :class => (@lang == 'zh' ? 'btn btn-primary' : 'btn btn-default') %>
