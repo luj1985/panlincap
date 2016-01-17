@@ -8,7 +8,7 @@ zh_cn:
         priority: 显示顺序
         name: 案例名
         brief: 副标题
-        area: 投资领域
+        invest_area: 投资领域
         website: 公司网址
         logo: 商标
         description: 公司简介

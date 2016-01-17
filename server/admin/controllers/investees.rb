@@ -33,6 +33,9 @@ Panlincap::Admin.controllers :investees do
   get :edit, :with => :id do
     @title = pat(:edit_title, :model => "investee #{params[:id]}")
     @investee = Investee.find(params[:id])
+    @areas = InvestArea.all.map do |area|
+      [ "#{area.name} | #{area.name_en}", area.id ]
+    end
     if @investee
       render 'investees/edit'
     else

@@ -15,7 +15,7 @@
         <th class=header> <%= mat(:investee, :id) %></th>
         <th class=header> <%= mat(:investee, :name) %></th>
         <th class=header> <%= mat(:investee, :brief) %></th>
-        <th class=header> <%= mat(:investee, :area) %></th>
+        <th class=header> <%= mat(:investee, :invest_area) %></th>
         <th class=header> <%= mat(:investee, :created_at) %></th>
         <th class=header> <%= mat(:investee, :updated_at) %></th>
         <th class="header list-row-action-header"></th>
@@ -32,7 +32,7 @@
             </a>
           </td>
           <td class=list-column> <%= investee.brief %> </td>
-          <td class=list-column> <%= investee.area %> </td>
+          <td class=list-column> <%= "#{investee.invest_area.name} | #{investee.invest_area.name_en}" if investee.invest_area %> </td>
           <td class=list-column> <%= time_ago_in_words investee.created_at %></td>
           <td class=list-column> <%= time_ago_in_words investee.updated_at %></td>
           <td class="list-column list-row-action">
