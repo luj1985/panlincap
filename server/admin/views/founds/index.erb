@@ -10,8 +10,8 @@
       <tr>
         <th class=header> <%= mat(:found, :id) %></th>
         <th class=header> <%= mat(:found, :name) %></th>
-        <th class=header> <%= mat(:found, :name_en) %></th>
         <th class=header> <%= mat(:found, :issue) %></th>
+        <th class=header> <%= mat(:found, :name_en) %></th>
         <th class=header> <%= mat(:found, :issue_en) %></th>
         <th class="header list-row-action-header"></th>
       </tr>
@@ -26,8 +26,8 @@
               <%= tag_icon(:edit) %> <%= found.name %>
             </a>
           </td>
-          <td class=list-column> <%= found.name_en %> </td>
           <td class=list-column> <%= found.issue %> </td>
+          <td class=list-column> <%= found.name_en %> </td>
           <td class=list-column> <%= found.issue_en %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>

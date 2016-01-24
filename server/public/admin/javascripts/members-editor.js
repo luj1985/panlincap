@@ -12,6 +12,7 @@ $(function() {
     imageUploadURL: "/admin/images/upload",
     imageDeleteURL: "/admin/images/delete",
     imagesLoadURL: "/admin/images/list",
+    editorClass: 'member-editor-style',
     imageErrorCallback: function (data) {
       console.log(data);
     }
@@ -26,6 +27,7 @@ $(function() {
     imageUploadURL: "/admin/images/upload",
     imageDeleteURL: "/admin/images/delete",
     imagesLoadURL: "/admin/images/list",
+    editorClass: 'member-editor-style',
     imageErrorCallback: function (data) {
       console.log(data);
     }
