@@ -1,18 +1,7 @@
 class Found < ActiveRecord::Base
 
   def to_localized lang
-    if lang == 'zh' then
-      {
-        :id => self.id,
-        :issue => self.issue,
-        :name => self.name,
-        :status => self.status,
-        :period => self.period,
-        :company => self.company,
-        :portfolio => self.portfolio,
-        :fullname => self.fullname
-      }
-    else
+    if lang == 'en' then
       {
         :id => self.id,
         :issue => self.issue_en,
@@ -22,6 +11,17 @@ class Found < ActiveRecord::Base
         :company => self.company_en,
         :portfolio => self.portfolio_en,
         :fullname => self.fullname_en
+      }
+    else
+      {
+        :id => self.id,
+        :issue => self.issue,
+        :name => self.name,
+        :status => self.status,
+        :period => self.period,
+        :company => self.company,
+        :portfolio => self.portfolio,
+        :fullname => self.fullname
       }
     end
   end

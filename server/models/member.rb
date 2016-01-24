@@ -7,13 +7,13 @@ class Member < ActiveRecord::Base
 
 
   def to_localized lang
-    if lang == 'zh' then
+    if lang == 'en' then
       model = {
         :id => self.id,
         :avatar => self.avatar,
-        :name => self.name,
-        :title => self.title,
-        :description => self.description,
+        :name => (self.name_en || self.name),
+        :title => (self.title_en || self.title),
+        :description => (self.description_en || self.description),
         :suffix => self.suffix,
         :position => self.position
       }
@@ -21,9 +21,9 @@ class Member < ActiveRecord::Base
       model = {
         :id => self.id,
         :avatar => self.avatar,
-        :name => (self.name_en || self.name),
-        :title => (self.title_en || self.title),
-        :description => (self.description_en || self.description),
+        :name => self.name,
+        :title => self.title,
+        :description => self.description,
         :suffix => self.suffix,
         :position => self.position
       }
