@@ -11,9 +11,9 @@ class Member < ActiveRecord::Base
       model = {
         :id => self.id,
         :avatar => self.avatar,
-        :name => (self.name_en || self.name),
-        :title => (self.title_en || self.title),
-        :description => (self.description_en || self.description),
+        :name => (self.name_en.blank? ? self.name : self.name_en),
+        :title => (self.title_en.blank? ? self.title : self.title_en),
+        :description => (self.description_en.blank? ? self.description : self.description_en),
         :suffix => self.suffix,
         :position => self.position
       }
