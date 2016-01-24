@@ -52,7 +52,7 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
     },
     serializeData : function() {
       var id = this.selected;
-      var person = collection.findWhere({identity: id});
+      var person = collection.get(id);
       var data = person ? person.toJSON()  : {};
 
       return buildFullName(data);
@@ -77,6 +77,7 @@ PanlinCap.module('PanlinCap.Team', function(Team, PanlinCap, Backbone, Marionett
     childView : TeamView,
     className : 'teams main',
     initialize : function() {
+      this.listenTo(this.collection, 'sync', this.render);
       this.listenTo(PanlinCap, 'language', function() {
         promise = collection.fetch();
       });

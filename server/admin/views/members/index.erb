@@ -16,19 +16,18 @@
   <li> <%= link_to tag_icon(:plus, pat(:new)), url(:members, :new) %></li>
 </ul>
 <div class=tabs-content>
-  <div class="btn-group" role="group">
-    <%= link_to "全部", url(:members, :index), :class => (@lang ? 'btn btn-default' : 'btn btn-primary') %> 
-    <%= link_to "中文", url(:members, :index, :lang => 'zh'), :class => (@lang == 'zh' ? 'btn btn-primary' : 'btn btn-default') %>
-    <%= link_to "English", url(:members, :index, :lang => 'en'), :class => (@lang == 'en' ? 'btn btn-primary' : 'btn btn-default') %>
-  </div>
-  <p class="well">鼠标拖拽记录调整顺序，无需保存立即生效</p>
+  <ul class="well">
+    <li>鼠标拖拽记录调整顺序，无需保存立即生效</li>
+    <li>英文版和中文版合并，公用相同的设置（包括头像，排序等）。如英文版内容为空，则使用中文内容替代</li>
+  </ul>
   <table id="list" class="table table-striped table-hover table-condensed">
     <thead>
       <tr>
         <th class=header> <%= mat(:member, :priority) %></th>
         <th class=header> <%= mat(:member, :name) %></th>
-        <th class=header> <%= mat(:member, :identity) %></th>
         <th class=header> <%= mat(:member, :title) %></th>
+        <th class=header> <%= mat(:member, :name_en) %></th>
+        <th class=header> <%= mat(:member, :title_en) %></th>
         <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -42,8 +41,10 @@
               <%= tag_icon(:edit) %> <%= member.name %>
             </a>
           </td>
-          <td class=list-column> <%= member.identity %> </td>
+
           <td class=list-column> <%= member.title %> </td>
+          <td class=list-column> <%= member.name_en %></td>
+          <td class=list-column> <%= member.title_en %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
                <%= link_to tag_icon(:trash), :rel => :tooltip, :title => "#{pat(:delete)}", :class => 'list-row-action-delete-one' %>

@@ -7,11 +7,14 @@ zh_cn:
         identity: 唯一标示符
         lang: 语言
         priority: 序号
-        name: 姓名
         suffix: 性别
         position: 身份
-        title: 头衔
         avatar: 照片
+        name: 姓名
+        title: 头衔
         description: 介绍
+        name_en: 姓名（英文）
+        title_en: 头衔（英文）
+        description_en: 介绍（英文）
         created_at: 创建时间
         updated_at: 更新时间

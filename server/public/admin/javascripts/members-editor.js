@@ -1,11 +1,24 @@
 $(function() {
   
-  var $htmleditor = $('textarea[name="member[description]"]');
-
   
   $.Editable.DEFAULTS.key = 'rH-9mcbfD-13rscB1vyz==';
 
-  $htmleditor.editable({
+
+  $('textarea[name="member[description]"]').editable({
+    preloaderSrc: "/images/preloader.gif",
+    inlineMode: false,
+    language: "zh_cn",
+    mediaManager: true,
+    imageUploadURL: "/admin/images/upload",
+    imageDeleteURL: "/admin/images/delete",
+    imagesLoadURL: "/admin/images/list",
+    imageErrorCallback: function (data) {
+      console.log(data);
+    }
+  });
+
+
+  $('textarea[name="member[description_en]').editable({
     preloaderSrc: "/images/preloader.gif",
     inlineMode: false,
     language: "zh_cn",
@@ -40,4 +53,10 @@ $(function() {
       }
     }
   });
+
+
+  $('#multi-lang a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  })
 });

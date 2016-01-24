@@ -36,43 +36,12 @@
   </div>
 </fieldset>
 
-
-<% error = @member.errors.include?(:lang) %>
-<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :lang, :class => 'control-label col-sm-2' %>
-  <div class='controls col-sm-10'>
-    <%= f.select :lang, :options => [['中文', 'zh'], ['English', 'en']], :class => 'form-control'%>
-    <span class='help-inline'><%= error ? f.error_message_on(:lang) : "" %></span>
-  </div>
-</fieldset>
-
-
 <% error = @member.errors.include?(:priority) %>
 <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :priority, :class => 'control-label col-sm-2' %>
   <div class='controls col-sm-10'>
     <%= f.text_field :priority, :class => 'form-control input-xlarge input-with-feedback' %>
     <span class='help-inline'><%= error ? f.error_message_on(:priority) : "" %></span>
-  </div>
-</fieldset>
-
-<% error = @member.errors.include?(:identity) %>
-<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :identity, :class => 'control-label col-sm-2' %>
-  <div class='controls col-sm-10'>
-    <%= f.text_field :identity, :class => 'form-control input-xlarge input-with-feedback' %>
-    <p>因为同时存在中文版和英文版，需要一个标示符来指明两者是同一个人，这样才能在切换语言后立刻显示</p>
-    <span class='help-inline'><%= error ? f.error_message_on(:identity) : "" %></span>
-  </div>
-</fieldset>
-
-
-<% error = @member.errors.include?(:name) %>
-<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :name, :class => 'control-label col-sm-2' %>
-  <div class='controls col-sm-10'>
-    <%= f.text_field :name, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:name) : "" %></span>
   </div>
 </fieldset>
 
@@ -85,24 +54,88 @@
   </div>
 </fieldset>
 
-<% error = @member.errors.include?(:title) %>
-<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :title, :class => 'control-label col-sm-2' %>
-  <div class='controls col-sm-10'>
-    <%= f.text_field :title, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:title) : "" %></span>
-  </div>
-</fieldset>
 
-<% error = @member.errors.include?(:description) %>
-<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :description, :class => 'control-label col-sm-2' %>
-  <div class='controls col-sm-10'>
-    <%= f.text_area :description, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:description) : "" %></span>
-  </div>
-</fieldset>
+<div>
 
+<ul id='multi-lang' class='nav nav-tabs' role='tablist'>
+  <li role='presentation' class='active'><a href="#zh" aria-controls='zh' role='tab' data-toggle='tab'>中文</a></li>
+  <li role='presentation'><a href="#en" aria-controls='en' role='tab' data-toggle='tab'>English</a></li>
+</ul>
+
+
+
+<div class='tab-content'>
+  <p></p>
+  <div role='tabpanel' class='tab-pane active' id='zh'>
+
+    <% error = @member.errors.include?(:name) %>
+    <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+      <%= f.label :name, :class => 'control-label col-sm-2' %>
+      <div class='controls col-sm-10'>
+        <%= f.text_field :name, :class => 'form-control input-xlarge input-with-feedback' %>
+        <span class='help-inline'><%= error ? f.error_message_on(:name) : "" %></span>
+      </div>
+    </fieldset>
+
+    <% error = @member.errors.include?(:title) %>
+    <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+      <%= f.label :title, :class => 'control-label col-sm-2' %>
+      <div class='controls col-sm-10'>
+        <%= f.text_field :title, :class => 'form-control input-xlarge input-with-feedback' %>
+        <span class='help-inline'><%= error ? f.error_message_on(:title) : "" %></span>
+      </div>
+    </fieldset>
+
+    <% error = @member.errors.include?(:description) %>
+    <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+      <%= f.label :description, :class => 'control-label col-sm-2' %>
+      <div class='controls col-sm-10'>
+        <%= f.text_area :description, :class => 'form-control input-xlarge input-with-feedback' %>
+        <span class='help-inline'><%= error ? f.error_message_on(:description) : "" %></span>
+      </div>
+    </fieldset>
+
+  </div>
+
+
+
+
+
+  <div role='tabpanel' class='tab-pane' id='en'>
+
+    <% error = @member.errors.include?(:name_en) %>
+    <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+      <%= f.label :name_en, :class => 'control-label col-sm-2' %>
+      <div class='controls col-sm-10'>
+        <%= f.text_field :name_en, :class => 'form-control input-xlarge input-with-feedback' %>
+        <span class='help-inline'><%= error ? f.error_message_on(:name_en) : "" %></span>
+      </div>
+    </fieldset>
+
+    <% error = @member.errors.include?(:title_en) %>
+    <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+      <%= f.label :title_en, :class => 'control-label col-sm-2' %>
+      <div class='controls col-sm-10'>
+        <%= f.text_field :title_en, :class => 'form-control input-xlarge input-with-feedback' %>
+        <span class='help-inline'><%= error ? f.error_message_on(:title_en) : "" %></span>
+      </div>
+    </fieldset>
+
+    <% error = @member.errors.include?(:description_en) %>
+    <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+      <%= f.label :description_en, :class => 'control-label col-sm-2' %>
+      <div class='controls col-sm-10'>
+        <%= f.text_area :description_en, :class => 'form-control input-xlarge input-with-feedback' %>
+        <span class='help-inline'><%= error ? f.error_message_on(:description_en) : "" %></span>
+      </div>
+    </fieldset>
+
+  </div>
+</div>
+
+
+
+</div>
 
 <div class="form-actions">
   <%= f.submit pat(:save), :class => 'btn btn-primary' %>
