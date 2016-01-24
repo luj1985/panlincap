@@ -123,7 +123,7 @@ module Panlincap
 
     get '/api/founds', :provides => :json do
       lang = request.cookies["lang"] || 'zh'
-      Found.where(:lang => lang).to_json
+      Found.all.map {|f| f.to_localized(lang)}.to_json
     end
 
     get '/api/members', :provides => :json do

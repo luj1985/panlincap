@@ -12,5 +12,15 @@ zh_cn:
         period: 周期
         company: 投资项目
         portfolio: 投资分布
+
+
+        issue_en: 期数（英文）
+        name_en: 基金名（英文）
+        fullname_en: 基金全名（英文）
+        status_en: 状态（英文）
+        period_en: 周期（英文）
+        company_en: 投资项目（英文）
+        portfolio_en: 投资分布（英文）
+
         created_at: 创建时间
         updated_at: 更新时间

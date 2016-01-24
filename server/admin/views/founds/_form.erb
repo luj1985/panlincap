@@ -1,18 +1,27 @@
+
+<% content_for :javascripts do %>
+  <%= javascript_include_tag 'multi-lang' %>
+<% end %>
+
+<div>
+
+
+<ul id='multi-lang' class='nav nav-tabs' role='tablist'>
+  <li role='presentation' class='active'><a href="#zh" aria-controls='zh' role='tab' data-toggle='tab'>中文</a></li>
+  <li role='presentation'><a href="#en" aria-controls='en' role='tab' data-toggle='tab'>English</a></li>
+</ul>
+
+
+<div class='tab-content'>
+<p></p>
+
+<div role='tabpanel' class='tab-pane active' id='zh'>
 <% error = @found.errors.include?(:issue) %>
 <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :issue, :class => 'control-label col-sm-2' %>
   <div class='controls col-sm-10'>
     <%= f.text_field :issue, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
     <span class='help-inline'><%= error ? f.error_message_on(:issue) : "" %></span>
-  </div>
-</fieldset>
-
-<% error = @found.errors.include?(:lang) %>
-<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :lang, :class => 'control-label col-sm-2' %>
-  <div class='controls col-sm-10'>
-    <%= f.select :lang, :options => [['中文', 'zh'], ['English', 'en']], :class => 'form-control'%>
-    <span class='help-inline'><%= error ? f.error_message_on(:lang) : "" %></span>
   </div>
 </fieldset>
 
@@ -30,14 +39,6 @@
   <div class='controls col-sm-10'>
     <%= f.text_field :fullname, :class => 'form-control input-xlarge input-with-feedback' %>
     <span class='help-inline'><%= error ? f.error_message_on(:fullname) : "" %></span>
-  </div>
-</fieldset>
-<% error = @found.errors.include?(:status) %>
-<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :status, :class => 'control-label col-sm-2' %>
-  <div class='controls col-sm-10'>
-    <%= f.text_field :status, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:status) : "" %></span>
   </div>
 </fieldset>
 <% error = @found.errors.include?(:period) %>
@@ -63,6 +64,68 @@
     <%= f.text_field :portfolio, :class => 'form-control input-xlarge input-with-feedback' %>
     <span class='help-inline'><%= error ? f.error_message_on(:portfolio) : "" %></span>
   </div>
+</div>
+
+
+
+
+<div role='tabpanel' class='tab-pane' id='en'>
+<% error = @found.errors.include?(:issue_en) %>
+<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :issue_en, :class => 'control-label col-sm-2' %>
+  <div class='controls col-sm-10'>
+    <%= f.text_field :issue_en, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+    <span class='help-inline'><%= error ? f.error_message_on(:issue_en) : "" %></span>
+  </div>
+</fieldset>
+
+<% error = @found.errors.include?(:name_en) %>
+<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :name_en, :class => 'control-label col-sm-2' %>
+  <div class='controls col-sm-10'>
+    <%= f.text_field :name_en, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:name_en) : "" %></span>
+  </div>
+</fieldset>
+<% error = @found.errors.include?(:fullname_en) %>
+<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :fullname_en, :class => 'control-label col-sm-2' %>
+  <div class='controls col-sm-10'>
+    <%= f.text_field :fullname_en, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:fullname_en) : "" %></span>
+  </div>
+</fieldset>
+<% error = @found.errors.include?(:period_en) %>
+<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :period_en, :class => 'control-label col-sm-2' %>
+  <div class='controls col-sm-10'>
+    <%= f.text_field :period_en, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:period_en) : "" %></span>
+  </div>
+</fieldset>
+<% error = @found.errors.include?(:company_en) %>
+<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :company_en, :class => 'control-label col-sm-2' %>
+  <div class='controls col-sm-10'>
+    <%= f.text_field :company_en, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:company_en) : "" %></span>
+  </div>
+</fieldset>
+<% error = @found.errors.include?(:portfolio_en) %>
+<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :portfolio_en, :class => 'control-label col-sm-2' %>
+  <div class='controls col-sm-10'>
+    <%= f.text_field :portfolio_en, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:portfolio_en) : "" %></span>
+  </div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
 </fieldset>
 
 

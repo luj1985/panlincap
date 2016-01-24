@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 29) do
+ActiveRecord::Schema.define(version: 32) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -62,8 +62,17 @@ ActiveRecord::Schema.define(version: 29) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "fullname"
-    t.string   "lang",       default: "zh"
+    t.string   "issue_en"
+    t.string   "name_en"
+    t.string   "status_en"
+    t.string   "period_en"
+    t.string   "company_en"
+    t.string   "portfolio_en"
+    t.string   "fullname_en"
   end
+
+# Could not dump table "founds_en" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "invest_areas", force: :cascade do |t|
     t.string   "name"
@@ -100,13 +109,6 @@ ActiveRecord::Schema.define(version: 29) do
     t.string   "name_en"
     t.string   "title_en"
     t.text     "description_en"
-  end
-
-  create_table "men", id: false, force: :cascade do |t|
-    t.text "identity"
-    t.text "name"
-    t.text "title"
-    t.text "description"
   end
 
   create_table "menus", force: :cascade do |t|
