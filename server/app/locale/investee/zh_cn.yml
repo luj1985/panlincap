@@ -7,11 +7,14 @@ zh_cn:
         order: 序号
         lang: 语言
         priority: 显示顺序
-        name: 案例名
-        brief: 副标题
         invest_area: 投资领域
         website: 公司网址
         logo: 商标
+        name: 案例名
+        brief: 副标题
         description: 公司简介
+        name_en: 案例名（英文）
+        brief_en: 副标题（英文）
+        description_en: 公司简介（英文）
         created_at: 创建时间
         updated_at: 更新时间
