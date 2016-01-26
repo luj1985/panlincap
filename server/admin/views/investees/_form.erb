@@ -29,21 +29,24 @@
   </div>
 </fieldset>
 
-<% error = @investee.errors.include?(:invest_area) %>
-<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :invest_area, :class => 'control-label col-sm-2' %>
-  <div class='controls col-sm-10'>
-    <%= f.select :invest_area_id, :options => @areas, :class => 'form-control' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:invest_area_id) : "" %></span>
-  </div>
-</fieldset>
-
 <% error = @investee.errors.include?(:website) %>
 <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :website, :class => 'control-label col-sm-2' %>
   <div class='controls col-sm-10'>
     <%= f.text_field :website, :class => 'form-control input-xlarge input-with-feedback' %>
     <span class='help-inline'><%= error ? f.error_message_on(:website) : "" %></span>
+  </div>
+</fieldset>
+
+<% error = @investee.errors.include?(:invest_area) %>
+<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :invest_area, :class => 'control-label col-sm-2' %>
+  <div class='controls col-sm-7'>
+    <%= f.select :invest_area_id, :options => @areas, :class => 'form-control' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:invest_area_id) : "" %></span>
+  </div>
+  <div class='controls col-sm-3'>
+    <%= link_to tag_icon(:plus, "添加投资领域"), url(:invest_areas, :new), :class => 'btn btn-primary' %></a>
   </div>
 </fieldset>
 
