@@ -35,7 +35,6 @@ module Panlincap
     access_control.roles_for :admin do |role|
       role.project_module :invest_areas, '/invest_areas'
       role.project_module :declarations, '/declarations'
-      role.project_module :settings, '/settings'
       role.project_module :investees, '/investees'
       role.project_module :menus, '/menus'
       role.project_module :members, '/members'
