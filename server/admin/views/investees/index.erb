@@ -16,11 +16,6 @@
 </ul>
 <div class=tabs-content>
   <p class="well">鼠标拖拽记录调整顺序，无需保存立即生效</p>
-  <div class="btn-group" role="group">
-    <%= link_to "全部", url(:investees, :index), :class => (@lang ? 'btn btn-default' : 'btn btn-primary') %> 
-    <%= link_to "中文", url(:investees, :index, :lang => 'zh'), :class => (@lang == 'zh' ? 'btn btn-primary' : 'btn btn-default') %>
-    <%= link_to "English", url(:investees, :index, :lang => 'en'), :class => (@lang == 'en' ? 'btn btn-primary' : 'btn btn-default') %>
-  </div>
 
   <table id=list class="table table-striped table-hover table-condensed">
     <thead>

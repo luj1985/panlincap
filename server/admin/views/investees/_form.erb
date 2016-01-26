@@ -3,6 +3,7 @@
   <%= javascript_include_tag 'jquery.iframe-transport' %>
   <%= javascript_include_tag 'jquery.fileupload' %>
   <%= javascript_include_tag 'investees-image-uploader' %>
+  <%= javascript_include_tag 'multi-lang' %>
 <% end %>
 
 
@@ -47,27 +48,6 @@
   </div>
 </fieldset>
 
-<% error = @investee.errors.include?(:name) %>
-<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :name, :class => 'control-label col-sm-2' %>
-  <div class='controls col-sm-10'>
-    <%= f.text_field :name, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
-    <span class='help-inline'><%= error ? f.error_message_on(:name) : "" %></span>
-  </div>
-</fieldset>
-
-
-<% error = @investee.errors.include?(:brief) %>
-<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :brief, :class => 'control-label col-sm-2' %>
-  <div class='controls col-sm-10'>
-    <%= f.text_field :brief, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:brief) : "" %></span>
-  </div>
-</fieldset>
-
-
-
 <% error = @investee.errors.include?(:website) %>
 <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :website, :class => 'control-label col-sm-2' %>
@@ -76,14 +56,91 @@
     <span class='help-inline'><%= error ? f.error_message_on(:website) : "" %></span>
   </div>
 </fieldset>
-<% error = @investee.errors.include?(:description) %>
-<fieldset class='form-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :description, :class => 'control-label col-sm-2' %>
-  <div class='controls col-sm-10'>
-    <%= f.text_area :description, :rows => 10, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:description) : "" %></span>
+
+
+
+
+<div>
+
+<ul id='multi-lang' class='nav nav-tabs' role='tablist'>
+  <li role='presentation' class='active'><a href="#zh" aria-controls='zh' role='tab' data-toggle='tab'>中文</a></li>
+  <li role='presentation'><a href="#en" aria-controls='en' role='tab' data-toggle='tab'>English</a></li>
+</ul>
+
+
+
+
+<div class='tab-content'>
+  <p></p>
+  <div role='tabpanel' class='tab-pane active' id='zh'>
+    <% error = @investee.errors.include?(:name) %>
+    <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+      <%= f.label :name, :class => 'control-label col-sm-2' %>
+      <div class='controls col-sm-10'>
+        <%= f.text_field :name, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+        <span class='help-inline'><%= error ? f.error_message_on(:name) : "" %></span>
+      </div>
+    </fieldset>
+
+
+    <% error = @investee.errors.include?(:brief) %>
+    <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+      <%= f.label :brief, :class => 'control-label col-sm-2' %>
+      <div class='controls col-sm-10'>
+        <%= f.text_field :brief, :class => 'form-control input-xlarge input-with-feedback' %>
+        <span class='help-inline'><%= error ? f.error_message_on(:brief) : "" %></span>
+      </div>
+    </fieldset>
+
+
+
+    <% error = @investee.errors.include?(:description) %>
+    <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+      <%= f.label :description, :class => 'control-label col-sm-2' %>
+      <div class='controls col-sm-10'>
+        <%= f.text_area :description, :rows => 10, :class => 'form-control input-xlarge input-with-feedback' %>
+        <span class='help-inline'><%= error ? f.error_message_on(:description) : "" %></span>
+      </div>
+    </fieldset>
   </div>
-</fieldset>
+
+
+
+  <div role='tabpanel' class='tab-pane' id='en'>
+    <% error = @investee.errors.include?(:name_en) %>
+    <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+      <%= f.label :name_en, :class => 'control-label col-sm-2' %>
+      <div class='controls col-sm-10'>
+        <%= f.text_field :name_en, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+        <span class='help-inline'><%= error ? f.error_message_on(:name_en) : "" %></span>
+      </div>
+    </fieldset>
+
+
+    <% error = @investee.errors.include?(:brief_en) %>
+    <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+      <%= f.label :brief_en, :class => 'control-label col-sm-2' %>
+      <div class='controls col-sm-10'>
+        <%= f.text_field :brief_en, :class => 'form-control input-xlarge input-with-feedback' %>
+        <span class='help-inline'><%= error ? f.error_message_on(:brief_en) : "" %></span>
+      </div>
+    </fieldset>
+
+
+
+    <% error = @investee.errors.include?(:description_en) %>
+    <fieldset class='form-group <%= error ? 'has-error' : ''%>'>
+      <%= f.label :description_en, :class => 'control-label col-sm-2' %>
+      <div class='controls col-sm-10'>
+        <%= f.text_area :description_en, :rows => 10, :class => 'form-control input-xlarge input-with-feedback' %>
+        <span class='help-inline'><%= error ? f.error_message_on(:description_en) : "" %></span>
+      </div>
+    </fieldset>
+  </div>
+
+</div>
+
+
 
 
 <div class="form-actions">

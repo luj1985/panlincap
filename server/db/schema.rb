@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 35) do
+ActiveRecord::Schema.define(version: 38) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -83,15 +83,16 @@ ActiveRecord::Schema.define(version: 35) do
   create_table "investees", force: :cascade do |t|
     t.string   "name"
     t.string   "brief"
-    t.string   "area"
     t.string   "website"
     t.string   "logo"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "lang",           default: "zh"
     t.integer  "invest_area_id"
     t.integer  "order"
+    t.string   "name_en"
+    t.string   "brief_en"
+    t.text     "description_en"
   end
 
   create_table "members", force: :cascade do |t|
@@ -117,11 +118,6 @@ ActiveRecord::Schema.define(version: 35) do
     t.datetime "updated_at"
     t.string   "param"
     t.string   "title_en"
-  end
-
-  create_table "menus_en", id: false, force: :cascade do |t|
-    t.text "link"
-    t.text "title"
   end
 
   create_table "settings", force: :cascade do |t|
