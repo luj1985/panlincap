@@ -1,6 +1,6 @@
 Panlincap::Admin.controllers :founds do
   get :index do
-    @title = "Founds"
+    @title = "基金管理"
     @lang = params[:lang]
     if @lang then
       @founds = Found.where :lang => @lang

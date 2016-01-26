@@ -1,6 +1,6 @@
 Panlincap::Admin.controllers :accounts do
   get :index do
-    @title = "Accounts"
+    @title = "账号管理"
     @accounts = Account.all
     render 'accounts/index'
   end

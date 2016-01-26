@@ -1,6 +1,6 @@
 Panlincap::Admin.controllers :members do
   get :index do
-    @title = "Members"
+    @title = "团队管理"
     @members = Member.all.order(priority: :asc)
     render 'members/index'
   end

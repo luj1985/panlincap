@@ -1,6 +1,6 @@
 Panlincap::Admin.controllers :investees do
   get :index do
-    @title = "Investees"
+    @title = "投资管理"
 
     @lang = params[:lang]
     if @lang then

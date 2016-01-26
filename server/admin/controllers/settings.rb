@@ -1,6 +1,6 @@
 Panlincap::Admin.controllers :settings do
   get :index do
-    @title = "Settings"
+    @title = "配置管理"
     @settings = Setting.all
     render 'settings/index'
   end

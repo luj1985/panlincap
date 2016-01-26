@@ -1,6 +1,6 @@
 Panlincap::Admin.controllers :articles do
   get :index do
-    @title = "Articles"
+    @title = "新闻管理"
     @articles = Article.all.order(created_at: :desc).paginate(:page => params[:page])
     render 'articles/index'
   end

@@ -1,6 +1,6 @@
 Panlincap::Admin.controllers :invest_areas do
   get :index do
-    @title = "Invest_areas"
+    @title = "投资领域"
     @invest_areas = InvestArea.all.order(order: :asc)
     render 'invest_areas/index'
   end

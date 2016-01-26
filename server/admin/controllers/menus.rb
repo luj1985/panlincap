@@ -1,6 +1,6 @@
 Panlincap::Admin.controllers :menus do
   get :index do
-    @title = "Menus"
+    @title = "菜单管理"
     @lang = params[:lang]
     if @lang then
       @menus = Menu.where :lang => @lang

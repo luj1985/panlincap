@@ -1,13 +1,7 @@
 Panlincap::Admin.controllers :declarations do
   get :index do
-    @title = "Declarations"
-
-    @lang = params[:lang]
-    if @lang then
-      @declarations = Declaration.where(:lang => @lang).order("lang DESC, name ASC")
-    else
-      @declarations = Declaration.all.order("lang DESC, name ASC")
-    end
+    @title = "固定页面"
+    @declarations = Declaration.all.order(:name => :asc)
     render 'declarations/index'
   end
 

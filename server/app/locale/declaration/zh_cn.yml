@@ -6,8 +6,10 @@ zh_cn:
         id: 编号
         lang: 语言
         name: 链接名
-        title: 标题
         description: 用途描述
+        title: 标题
         body: 正文
+        title_en: 标题（英文）
+        body_en: 正文（英文）
         created_at: 创建时间
         updated_at: 更新时间

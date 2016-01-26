@@ -3,19 +3,13 @@
   <li> <%= link_to tag_icon(:plus, pat(:new)), url(:declarations, :new) %></li>
 </ul>
 <div class=tabs-content>
-  <div class="btn-group" role="group">
-    <%= link_to "全部", url(:declarations, :index), :class => (@lang ? 'btn btn-default' : 'btn btn-primary') %> 
-    <%= link_to "中文", url(:declarations, :index, :lang => 'zh'), :class => (@lang == 'zh' ? 'btn btn-primary' : 'btn btn-default') %>
-    <%= link_to "English", url(:declarations, :index, :lang => 'en'), :class => (@lang == 'en' ? 'btn btn-primary' : 'btn btn-default') %>
-  </div>
   <table id=list class="table table-striped table-hover table-condensed">
     <thead>
       <tr>
         <th class=header> <%= mat(:declaration, :title) %></th>
+        <th class=header> <%= mat(:declaration, :title_en) %></th>
         <th class=header> <%= mat(:declaration, :description) %></th>
         <th class=header> <%= mat(:declaration, :name) %></th>
-        <th class=header> <%= mat(:declaration, :created_at) %></th>
-        <th class=header> <%= mat(:declaration, :updated_at) %></th>
         <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -28,10 +22,9 @@
               <%= tag_icon(:edit) %> <%= declaration.title %>
             </a>
           </td>
+          <td class=list-column> <%= declaration.title_en %> </td>
           <td class=list-column> <%= declaration.description %> </td>
           <td class=list-column> <%= declaration.name %> </td>
-          <td class=list-column> <%= time_ago_in_words declaration.created_at %></td>
-          <td class=list-column> <%= time_ago_in_words declaration.updated_at %></td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
                <%= link_to tag_icon(:trash), :rel => :tooltip, :title => "#{pat(:delete)} declaration", :class => 'list-row-action-delete-one' %>

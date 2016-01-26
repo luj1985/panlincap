@@ -14,13 +14,11 @@ module Panlincap
       }
 
       lang = request.cookies["lang"] || 'zh'
-      aboutBrief = Declaration.where(:name => '_about', :lang => lang).first.body
-      principleBrief = Declaration.where(:name => '_principle', :lang => lang).first.body
-      casesBrief = Declaration.where(:name => '_cases', :lang => lang).first.body
+      about = Declaration.where(:name => '_about').first.to_localized(lang)
+      principle = Declaration.where(:name => '_principle').first.to_localized(lang)
+      cases = Declaration.where(:name => '_cases').first.to_localized(lang)
 
-      news_preview = ''
-      news_preview += '<div class="news-preview">'
-
+      news_preview = '<div class="news-preview">'
 
       Article.where("category_id = 168 or category_id = 163").limit(3).order('created_at desc').each do |article|
         title = article.title
@@ -35,10 +33,10 @@ module Panlincap
       end
       news_preview += '</div>'
 
-      data = [{ :link => '/about', :description => aboutBrief },
-             { :link => '/investment', :description => principleBrief },
-             { :link => '/investees', :description => casesBrief },
-             { :link => '/news', :description => news_preview }]
+      data = [{ :link => '/about', :description => about[:body] },
+              { :link => '/investment', :description => principle[:body] },
+              { :link => '/investees', :description => cases[:body] },
+              { :link => '/news', :description => news_preview }]
 
       data.map do |m|
         link = m[:link]
@@ -99,8 +97,8 @@ module Panlincap
     get '/api/declaration/:name', :provides => :json do
       lang = request.cookies["lang"] || 'zh'
       name = params['name']
-      puts "lang #{lang}, name #{name}"
-      Declaration.where(:lang => lang, :name => name).first.to_json
+      declearation = Declaration.where(:name => name).first;
+      declearation.to_localized(lang).to_json if declearation
     end
 
     get '/api/investees', :provides => :json do
