@@ -14,7 +14,7 @@ Panlincap::Admin.controllers :accounts do
   post :create do
     @account = Account.new(params[:account])
     if @account.save
-      @title = pat(:create_title, :model => "account #{@account.id}")
+      @title = pat(:create_title, :model => "账号 #{@account.id}")
       flash[:success] = pat(:create_success, :model => 'Account')
       params[:save_and_continue] ? redirect(url(:accounts, :index)) : redirect(url(:accounts, :edit, :id => @account.id))
     else
