@@ -5,7 +5,7 @@ class Investee < ActiveRecord::Base
     if lang == 'en' then
       {
         :id => self.id,
-        :name => self.name,
+        :name => self.name_en,
         :brief => self.brief_en,
         :description => self.description_en,
         :website => self.website,

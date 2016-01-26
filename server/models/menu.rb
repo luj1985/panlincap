@@ -5,14 +5,16 @@ class Menu < ActiveRecord::Base
         :id => self.id,
         :title => self.title_en,
         :parent => self.parent,
-        :link => self.link
+        :link => self.link,
+        :param => self.param
       }
     else
       {
         :id => self.id,
         :title => self.title,
         :parent => self.parent,
-        :link => self.link
+        :link => self.link,
+        :param => self.param
       }
     end
   end
