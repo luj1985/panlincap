@@ -10,7 +10,6 @@
       <tr>
         <th class=header> <%= mat(:article, :id) %></th>
         <th class=header> <%= mat(:article, :title) %></th>
-        <th class=header> <%= mat(:article, :created_at) %></th>
         <th class=header> <%= mat(:article, :attop) %></th>
         <th class="header list-row-action-header"></th>
       </tr>
@@ -25,7 +24,6 @@
             <%= tag_icon(:edit) %> <%= article.title %>
           </a> 
           </td>
-          <td class=list-column> <%= time_ago_in_words article.created_at %></td>
           <td class=list-column> <%= tag_icon(:ok) if article.attop %></td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
