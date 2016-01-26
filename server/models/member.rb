@@ -1,10 +1,11 @@
 class Member < ActiveRecord::Base
   after_initialize :init
 
+  validates_presence_of :name, :description
+
   def init
     self.priority ||= self.id
   end
-
 
   def to_localized lang
     if lang == 'en' then

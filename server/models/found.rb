@@ -1,5 +1,8 @@
 class Found < ActiveRecord::Base
 
+  validates_presence_of :issue, :name
+  validates_presence_of :issue_en, :name_en
+
   def to_localized lang
     if lang == 'en' then
       {
