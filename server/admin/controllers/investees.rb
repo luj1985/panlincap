@@ -1,16 +1,8 @@
 Panlincap::Admin.controllers :investees do
   get :index do
     @title = "投资管理"
-
-    @lang = params[:lang]
-    if @lang then
-      @investees = Investee.joins(:invest_area)
-        .where(:lang => @lang)
-        .order(lang: :desc, invest_area_id: :asc, order: :asc)
-    else
-      @investees = Investee.joins(:invest_area).all
-        .order(lang: :desc, invest_area_id: :asc, order: :asc)
-    end
+    @investees = Investee.joins(:invest_area).all
+        .order(invest_area_id: :asc, order: :asc)
     render 'investees/index'
   end
 
