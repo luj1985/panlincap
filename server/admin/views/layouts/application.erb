@@ -24,13 +24,9 @@
 
   <ul class="nav navbar-nav pull-left">
   <% project_modules.each do |project_module| %>
-    <% if request.path_info =~ /^#{project_module.path}/ %>
-      <li class="navbar-module active">
-    <% else %>
-      <li class="navbar-module">
-    <% end %>
-      <%= link_to I18n.t("modules.#{project_module.name}"), url(project_module.path) %>
-      </li>
+    <li class="navbar-module <%= 'active' if request.path_info =~ /^#{project_module.path}/ %>">
+    <%= link_to I18n.t("modules.#{project_module.name}"), url(project_module.path) %>
+    </li>
   <% end %>
   </ul>
   </div>
