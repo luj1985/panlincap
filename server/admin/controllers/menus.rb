@@ -1,12 +1,7 @@
 Panlincap::Admin.controllers :menus do
   get :index do
     @title = "菜单管理"
-    @lang = params[:lang]
-    if @lang then
-      @menus = Menu.where :lang => @lang
-    else
-      @menus = Menu.all
-    end
+    @menus = Menu.all.order(:link => :asc)
     render 'menus/index'
   end
 

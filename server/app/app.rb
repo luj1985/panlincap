@@ -40,7 +40,8 @@ module Panlincap
 
       data.map do |m|
         link = m[:link]
-        m[:title] = Menu.where(:link => link, :lang => lang).first.title
+        l = Menu.where(:link => link).first.to_localized(lang);
+        m[:title] = l[:title]
       end
       data.to_json
     end
@@ -116,7 +117,7 @@ module Panlincap
 
     get '/api/menus', :provides => :json do
       lang = request.cookies["lang"] || 'zh'
-      Menu.where(:lang => lang).to_json
+      Menu.all.map {|m| m.to_localized(lang) }.to_json
     end
 
     get '/api/founds', :provides => :json do
