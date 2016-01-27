@@ -5,8 +5,6 @@ zh_cn:
       attributes:
         id: 编号
         order: 序号
-        lang: 语言
-        priority: 显示顺序
         invest_area: 投资领域
         website: 公司网址
         logo: 商标

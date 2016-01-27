@@ -4,7 +4,6 @@ zh_cn:
       name: 基金管理
       attributes:
         id: 编号
-        lang: 语言
         issue: 期数
         name: 基金名
         fullname: 基金全名
@@ -12,7 +11,6 @@ zh_cn:
         period: 周期
         company: 投资项目
         portfolio: 投资分布
-
 
         issue_en: 期数（英文）
         name_en: 基金名（英文）

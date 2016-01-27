@@ -4,7 +4,6 @@ zh_cn:
       name: 公司介绍
       attributes:
         id: 编号
-        lang: 语言
         name: 链接名
         description: 用途描述
         title: 标题

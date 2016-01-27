@@ -4,7 +4,6 @@ zh_cn:
       name: 菜单管理
       attributes:
         id: 编号
-        lang: 语言
         title: 菜单名
         title_en: 菜单名（英文）
         link: 链接地址
