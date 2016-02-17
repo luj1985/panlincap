@@ -18,6 +18,7 @@ $(function() {
     imageUploadURL: "/admin/images/upload",
     imageDeleteURL: "/admin/images/delete",
     imagesLoadURL: "/admin/images/list",
+    editorClass: 'panlin-style',
     imageErrorCallback: function (data) {
       console.log(data);
     }

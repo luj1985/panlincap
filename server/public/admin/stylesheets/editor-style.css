@@ -1,7 +1,50 @@
-.member-editor-style {
-
+.panlin-style {
+  font-size: 14px;
+  color: #333;
 }
 
-.member-editor-style p {
-  color: #333;
+.panlin-style table {
+  width: 600px;
+  border-collapse : separate;
+  border-spacing: 2px;
+}
+
+.panlin-style table th {
+  text-align: left;
+  background-color: transparent;
+  font-weight: bold;
+  border: none;
+  font-size: 15px;
+}
+
+.panlin-style table td {
+  line-height: 25px;
+  border: none;
+}
+
+.panlin-style table tr td:first-child {
+  min-width: 105px;
+}
+
+.panlin-style table.hire a {
+  color : black;
+  text-decoration: underline;
+}
+
+.panlin-style p, .panlin-style ol li {
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.panlin-style a {
+  color : rgba(133,25,16,.7);
+  text-decoration: none;
+}
+
+.panlin-style a:hover {
+  text-decoration: underline;
+}
+
+.panlin-style a.close:hover {
+  text-decoration: none;
 }
