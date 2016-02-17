@@ -1,9 +1,6 @@
 class Investee < ActiveRecord::Base
   belongs_to :invest_area
-
-  def init
-    self.priority ||= self.id
-  end
+  before_create :create_order
 
   def to_localized lang
     if lang == 'en' then
@@ -29,5 +26,11 @@ class Investee < ActiveRecord::Base
         :area => self.invest_area.name
       }
     end
+  end
+
+private
+  def create_order
+    max = Investee.maximum("order") || 0
+    self.order = max + 1
   end
 end

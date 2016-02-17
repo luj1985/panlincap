@@ -9,6 +9,9 @@ Panlincap::Admin.controllers :investees do
   get :new do
     @title = pat(:new_title, :model => 'investee')
     @investee = Investee.new
+    @areas = InvestArea.all.map do |area|
+      [ "#{area.name} | #{area.name_en}", area.id ]
+    end
     render 'investees/new'
   end
 

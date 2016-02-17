@@ -1,11 +1,6 @@
 class Member < ActiveRecord::Base
-  after_initialize :init
-
   validates_presence_of :name, :description
-
-  def init
-    self.priority ||= self.id
-  end
+  before_create :create_order
 
   def to_localized lang
     if lang == 'en' then
@@ -30,5 +25,11 @@ class Member < ActiveRecord::Base
       }
     end
     model
+  end
+
+private
+  def create_order
+    max = Member.maximum("priority") || 0
+    self.priority = max + 1
   end
 end
