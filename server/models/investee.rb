@@ -1,6 +1,10 @@
 class Investee < ActiveRecord::Base
   belongs_to :invest_area
 
+  def init
+    self.priority ||= self.id
+  end
+
   def to_localized lang
     if lang == 'en' then
       {
