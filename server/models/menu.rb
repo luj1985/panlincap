@@ -3,7 +3,7 @@ class Menu < ActiveRecord::Base
     if lang == 'en' then
       {
         :id => self.id,
-        :title => self.title_en,
+        :title => (self.title_en.blank? ? self.title : self.title_en),
         :parent => self.parent,
         :link => self.link,
         :param => self.param

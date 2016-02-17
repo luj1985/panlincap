@@ -5,8 +5,8 @@ class Declaration < ActiveRecord::Base
       {
         :id => self.id,
         :name => self.name,
-        :title => self.title_en,
-        :body => self.body_en
+        :title => (self.title_en.blank? ? self.title : self.title_en),
+        :body => (self.body_en.blank? ? self.body : self.body_en)
       }
     else
       {

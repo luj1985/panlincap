@@ -7,13 +7,13 @@ class Found < ActiveRecord::Base
     if lang == 'en' then
       {
         :id => self.id,
-        :issue => self.issue_en,
-        :name => self.name_en,
-        :status => self.status_en,
-        :period => self.period_en,
-        :company => self.company_en,
-        :portfolio => self.portfolio_en,
-        :fullname => self.fullname_en
+        :issue => (self.issue_en.blank? ? self.issue : self.issue_en),
+        :name => (self.name_en.blank? ? self.name : self.name_en),
+        :status => (self.status_en.blank? ? self.status : self.status_en),
+        :period => (self.period_en.blank? ? self.period : self.period_en),
+        :company => (self.company_en.blank? ? self.company : self.company_en),
+        :portfolio => (self.portfolio_en.blank? ? self.portfolio : self.portfolio_en),
+        :fullname => (self.fullname_en.blank? ? self.fullname : self.fullname_en)
       }
     else
       {
