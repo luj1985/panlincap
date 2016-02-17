@@ -31,11 +31,10 @@ Panlincap::Admin.controllers :investees do
     to = params[:toPosition]
     direction = params[:direction]
     m = Investee.find(params[:id])
-    lang = m.lang
     if direction == "forward"
-      Investee.where("lang = ? and \"order\" > ? and \"order\" <= ?", lang, from, to).update_all("\"order\" = \"order\" - 1")
+      Investee.where("\"order\" > ? and \"order\" <= ?", from, to).update_all("\"order\" = \"order\" - 1")
     else
-      Investee.where("lang = ? and \"order\" >= ? and \"order\" < ?", lang, to, from).update_all("\"order\" = \"order\" + 1")
+      Investee.where("\"order\" >= ? and \"order\" < ?", to, from).update_all("\"order\" = \"order\" + 1")
     end
     investee = Investee.find(params[:id])
     investee.order = to
