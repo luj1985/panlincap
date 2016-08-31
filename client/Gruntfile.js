@@ -380,6 +380,11 @@ module.exports = function (grunt) {
             'styles/fonts/{,*/}*.*'
           ]
         }, {
+          expand: true,
+          flatten: true,
+          src: 'bower_components/font-awesome/fonts/{,*/}*.*',
+          dest: '<%= config.dist %>/styles/fonts/'
+        }, {
           src: 'node_modules/apache-server-configs/dist/.htaccess',
           dest: '<%= config.dist %>/.htaccess'
         }, {
