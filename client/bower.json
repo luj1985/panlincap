@@ -11,7 +11,6 @@
     "backbone.paginator": "~2.0.2",
     "jquery.cookie": "~1.4.1",
     "fastclick": "~1.0.6",
-    "font-awesome": "^4.2.0",
     "waitForImages": "^2.2.0"
   },
   "resolutions": {
