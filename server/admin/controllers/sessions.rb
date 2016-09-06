@@ -3,6 +3,10 @@ Panlincap::Admin.controllers :sessions do
     render "/sessions/new", nil, :layout => false
   end
 
+  get :create do
+    redirect "/admin"
+  end
+
   post :create do
     if account = Account.authenticate(params[:email], params[:password])
       set_current_account(account)

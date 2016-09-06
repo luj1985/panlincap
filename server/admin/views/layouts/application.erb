@@ -6,7 +6,7 @@
   <meta name="renderer" content="webkit" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title><%= @title.present? ? "#{@title} | 磐霖资本" : "磐霖资本" %></title>
-  <%= favicon_tag "favicon.ico" %>
+  <%= favicon_tag "/admin/favicon.ico" %>
   <%= stylesheet_link_tag 'bootstrap', 'application', 'admin' %>
   <%= yield_content :stylesheets %>
 </head>
@@ -45,7 +45,7 @@
 
 <footer>
   <div class='footer-wrapper container'>
-  <p class='pull-left'>Copyright &copy; 2015 上海磐霖资产管理有限公司版权所有</p>
+  <p class='pull-left'>Copyright &copy; 2016 上海磐霖资产管理有限公司版权所有</p>
   </div>
 </footer>
 
